@@ -9,17 +9,14 @@ body {
   font-family: "Mukta", sans-serif;
   color: #444;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 a {
   color: #333;
   text-decoration: none;
 }
-
 form {
 
 }
@@ -30,6 +27,26 @@ input {
   input {
     /* font-size: .9rem; */
   }
+}
+.alert {
+  color: #fff;
+  padding: 0.1rem;
+  width: 100%;
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+.error {
+  background: pink;
+  color: red;
+  border: 1px solid red;
+}
+.message {
+  background: rgb(183, 215, 136);
+  color: green;
+  border: 1px solid green;
 }
 
 /* @media (max-width: 500px) {

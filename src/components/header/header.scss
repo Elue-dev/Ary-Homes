@@ -12,7 +12,7 @@
   background: #fff;
   box-shadow: $box-shadow;
   height: 3rem;
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-out;
   @include flexBox(center, center, column);
   height: 3.7rem;
   z-index: 1000000;
@@ -30,6 +30,11 @@
           color: $mainColor;
           font-size: 1.3rem;
         }
+        .admin__btn {
+          @include button();
+          background: $mainColor;
+          color: #fff;
+        }
       }
     }
     .auth {
@@ -46,6 +51,13 @@
       :nth-child(2) {
         font-size: 1.4rem;
       }
+      .dot {
+        position: absolute;
+        top: -12px;
+        right: -5px;
+        font-size: 2.5rem;
+        color: rgb(11, 152, 11);
+      }
       &:hover,
       &:focus {
         box-shadow: $box-shadow;
@@ -58,7 +70,7 @@
       z-index: 10000;
       color: #333;
       background: #fff;
-      height: 100px;
+      height: auto;
       width: 200px;
       padding: 1rem;
       border-radius: 0.5rem;
@@ -66,6 +78,25 @@
       line-height: 2;
       transform: scale(0);
       transition: transform 0.2s ease-in-out;
+      .logout__btn {
+        @include button();
+        margin-top: 1rem;
+        display: block;
+        width: 100%;
+        background: $mainColor;
+        color: #fff;
+      }
+      .logged__in {
+        li {
+          list-style: none;
+          @include flexBox(left, center, row);
+          gap: 0.6rem;
+          :nth-child(1) {
+            color: $mainColor;
+            font-size: 1.3rem;
+          }
+        }
+      }
       p {
         border-bottom: 1px solid rgb(207, 205, 205);
         @include flexBox(auto, center, auto);
@@ -79,6 +110,13 @@
       }
       :last-child {
         border-bottom: 0;
+      }
+      .header__verify__btn {
+        @include button();
+        background: $mainColor;
+        color: #fff;
+        padding: 0.2rem 0.5rem;
+        margin-top: 0.8rem;
       }
     }
   }
@@ -137,6 +175,12 @@
           font-size: 0.8rem;
         }
       }
+    }
+    .admin__btn {
+      @include button();
+      padding: 0.5rem 0.8rem;
+      background: $mainColor;
+      color: #fff;
     }
   }
 }

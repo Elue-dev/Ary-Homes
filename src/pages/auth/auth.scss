@@ -35,6 +35,16 @@
           font-size: 1rem;
         }
       }
+      .name {
+        display: flex;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        input {
+          display: block;
+          width: 50%;
+          padding: 0.5rem;
+        }
+      }
       .btn {
         @include button();
       }
@@ -44,6 +54,9 @@
         background: $mainColor;
         border-radius: 1rem;
         color: #fff;
+        &:hover {
+          background: #c99b2f;
+        }
       }
     }
     .btn {
@@ -55,6 +68,7 @@
       margin-top: 1.6rem;
       margin-bottom: 0.8rem;
       background: #fff;
+      color: #333;
       border: 1px solid rgb(148, 148, 148);
       @include flexBox(center, center, row);
       gap: 1rem;
@@ -106,6 +120,57 @@
         }
       }
     }
+    .verification__message {
+      background: #f8f8f8;
+      border-left: 3px solid $mainColor;
+      padding: 0.3rem;
+    }
+    .buttons {
+      width: 100%;
+      margin-bottom: 1.3rem;
+      .proceed__btn,
+      .refresh__btn {
+        @include button();
+      }
+      .proceed__btn {
+        background-color: $mainColor;
+        color: #fff;
+        width: 48.5%;
+        &:hover {
+          background: #c99b2f;
+        }
+      }
+      .refresh__btn {
+        background-color: #111;
+        color: #fff;
+        width: 48.5%;
+        &:hover {
+          background: #444;
+        }
+      }
+    }
+    .resend {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+      .verification__btn {
+        @include button();
+        background: #fff;
+        border: 1px solid rgb(148, 148, 148);
+        margin-top: 0.5rem;
+        &:hover {
+          background: #e7e7e7;
+        }
+      }
+    }
+    .info {
+      line-height: 1.3;
+      margin-top: 1rem;
+      background: #b39e6f;
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
   }
 }
 
@@ -119,5 +184,12 @@
   }
   .auth__modal .auth__contents form label input {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .auth__modal .auth__contents {
+    width: "";
+    height: "";
   }
 }

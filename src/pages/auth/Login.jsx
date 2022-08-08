@@ -1,18 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormClose } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import "./auth.scss";
+import { useAuth } from "../../contexts/authContext";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      setError("Please enter your email");
+      return;
+    } else if (!password) {
+      setError("Please enter your password");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+      await login(email, password);
+      setLoading(false);
+      navigate("/");
+    } catch (error) {
+      if (error.message === "Firebase: Error (auth/user-not-found).") {
+        setError("User not found");
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+      if (error.message === "Firebase: Error (auth/wrong-password).") {
+        setError("Wrong password");
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+      if (error.message === "Firebase: Error (auth/network-request-failed).") {
+        setError("Please check your internet connection");
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+      if (
+        error.message ===
+        "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
+      ) {
+        setError(
+          "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later"
+        );
+        window.setTimeout(() => {
+          setError("");
+        }, 12000);
+      }
+    }
+    setLoading(false);
+  };
 
   return (
     <section className="auth__modal">
       <div className="auth__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
-          <GrFormClose />
+          {/* <GrFormClose /> */}
+          &larr;
         </p>
         <br />
         <div className="logo">
@@ -20,19 +79,43 @@ export default function Login() {
             <h1>ARY HOMES LOG IN</h1>
           </Link>
         </div>
+        {error && <p className="alert error">{error}</p>}
         <form>
           <label>
             <span>Email Address:</span>
-            <input type="text" placeholder="Enter your email" />
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+            />
           </label>
           <br />
           <label>
             <span>Password:</span>
-            <input type="password" placeholder="Enter your password" />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Enter your password"
+            />
           </label>
-          <button type="submit" className="btn submit__btn">
-            Continue
-          </button>
+          {loading && (
+            <button type="submit" className="btn submit__btn">
+              <BeatLoader loading={loading} size={10} color={"#fff"} />
+            </button>
+          )}
+          {!loading && (
+            <button
+              type="submit"
+              className="btn submit__btn"
+              onClick={loginUser}
+            >
+              Continue
+            </button>
+          )}
         </form>
 
         <div className="line">

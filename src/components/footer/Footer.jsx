@@ -11,7 +11,7 @@ export default function Footer() {
   const year = date.getFullYear();
 
   useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/signup") {
+    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === '/verify') {
       setShowFooter(false);
     } else {
       setShowFooter(true);
