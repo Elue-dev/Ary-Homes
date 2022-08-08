@@ -1,0 +1,33 @@
+@mixin container() {
+  max-width: 1300px;
+  width: 85%;
+  margin: auto;
+}
+
+@mixin flexBox($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin button {
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 6px 8px;
+  margin: 0 5px 0 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Roboto Slab", serif;
+}
+
+@mixin mQ($respond) {
+  @media (max-width: $respond) {
+    @content;
+  }
+}
+
+$mainColor: #ae8625;
+$box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); ;

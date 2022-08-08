@@ -1,0 +1,16 @@
+@import "../../global_styles/global.scss";
+
+.modal {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  @include flexBox(center, center, column);
+  .modal__contents {
+    background: #fff;
+    z-index: 1000000000000;
+    width: 500px;
+    height: 300px;
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../global_styles//global.scss";
+
+footer {
+  background: #111;
+  color: #fff;
+  margin-top: auto;
+  height: 2rem;
+  .footer__contents {
+    text-align: center;
+  }
+}

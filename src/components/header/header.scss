@@ -1,0 +1,148 @@
+@import "../../global_styles//global.scss";
+
+.fixed {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  transition: all 0.5s;
+  z-index: 9;
+}
+
+.header__wrapper {
+  background: #fff;
+  box-shadow: $box-shadow;
+  height: 3rem;
+  transition: all 1s ease-out;
+  @include flexBox(center, center, column);
+  height: 3.7rem;
+  z-index: 1000000;
+  .header__contents {
+    @include container();
+    @include flexBox(space-between, center, row);
+    ul {
+      @include flexBox(center, center, row);
+      gap: 1.7rem;
+      li {
+        list-style: none;
+        @include flexBox(center, center, row);
+        gap: 0.2rem;
+        :nth-child(1) {
+          color: $mainColor;
+          font-size: 1.3rem;
+        }
+      }
+    }
+    .auth {
+      border: 1px solid rgb(207, 205, 205);
+      padding: 0.4rem 0.6rem;
+      border-radius: 1rem;
+      @include flexBox(center, center, row);
+      gap: 0.5rem;
+      cursor: pointer;
+      position: relative;
+      :nth-child(1) {
+        font-size: 1.1rem;
+      }
+      :nth-child(2) {
+        font-size: 1.4rem;
+      }
+      &:hover,
+      &:focus {
+        box-shadow: $box-shadow;
+      }
+    }
+    .auth__popup {
+      position: absolute;
+      top: 2.7rem;
+      right: 0rem;
+      z-index: 10000;
+      color: #333;
+      background: #fff;
+      height: 100px;
+      width: 200px;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: $box-shadow;
+      line-height: 2;
+      transform: scale(0);
+      transition: transform 0.2s ease-in-out;
+      p {
+        border-bottom: 1px solid rgb(207, 205, 205);
+        @include flexBox(auto, center, auto);
+        gap: 0.5rem;
+        :first-child {
+          font-size: 1.3rem;
+        }
+      }
+      :nth-child(2) {
+        font-size: 1.2rem;
+      }
+      :last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+  .auth__popup.show {
+    transform: scale(1);
+  }
+}
+
+.nav__bottom {
+  display: none;
+}
+
+@include mQ(800px) {
+  .header__wrapper .header__contents {
+    width: 92%;
+  }
+}
+@include mQ(768px) {
+  .header__wrapper .header__contents ul {
+    display: none;
+  }
+  .nav__bottom {
+    position: fixed;
+    display: flex;
+    align-content: center;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: $box-shadow;
+    background: #fff;
+    border-top: 1px solid #fff;
+    border-top: 1px solid rgb(207, 205, 205);
+    height: 4rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+    z-index: 1000000000;
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: auto;
+      li {
+        list-style: none;
+        @include flexBox(center, center, column);
+        :nth-child(1) {
+          font-size: 1.7rem;
+          color: $mainColor;
+          margin-bottom: 0.2rem;
+        }
+        :nth-child(2) {
+          font-weight: 400;
+          font-size: 0.9rem;
+        }
+        span {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@include mQ(300px) {
+  .nav__bottom ul {
+    gap: 1.2rem;
+  }
+}
