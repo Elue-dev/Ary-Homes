@@ -22,7 +22,6 @@
     }
     .logo {
       text-align: center;
-      padding-bottom: 1rem;
     }
     form {
       label {
@@ -115,7 +114,10 @@
     width: 90%;
   }
   .auth__modal .auth__contents .close__icon {
-    top: 2rem;
-    right: 0rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  .auth__modal .auth__contents form label input {
+    font-size: 0.8rem;
   }
 }

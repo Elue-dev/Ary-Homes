@@ -14,7 +14,7 @@ export default function Login() {
         <p className="close__icon" onClick={() => navigate(-1)}>
           <GrFormClose />
         </p>
-        <br /><br />
+        <br />
         <div className="logo">
           <Link to="/">
             <h1>ARY HOMES LOG IN</h1>

@@ -20,7 +20,10 @@
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.3s;
-  font-family: "Roboto Slab", serif;
+  font-family: "Mukta", sans-serif;
+  @include mQ(500px) {
+    font-size: .9rem;
+  }
 }
 
 @mixin mQ($respond) {

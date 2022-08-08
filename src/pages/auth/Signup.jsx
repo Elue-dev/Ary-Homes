@@ -14,7 +14,6 @@ export default function Signup() {
           <GrFormClose />
         </p>
         <br />
-        <br />
         <div className="logo">
           <Link to="/">
             <h1>ARY HOMES SIGN UP</h1>
@@ -34,10 +33,10 @@ export default function Signup() {
             <span>Password:</span>
             <input type="password" placeholder="At least 6 characters" />
           </label>
-          <label>
+          {/* <label>
             <span>Confirm Password:</span>
             <input type="password" placeholder="Confirm your password" />
-          </label>
+          </label> */}
           <button type="submit" className="btn submit__btn">
             Continue
           </button>
