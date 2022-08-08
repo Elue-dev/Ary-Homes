@@ -174,6 +174,13 @@
   }
 }
 
+@media (max-width: 900px) and (orientation: landscape) {
+  .auth__modal .auth__contents {
+    width: "";
+    height: "";
+  }
+}
+
 @include mQ(500px) {
   .auth__modal .auth__contents {
     width: 90%;
@@ -185,11 +192,11 @@
   .auth__modal .auth__contents form label input {
     font-size: 0.8rem;
   }
-}
-
-@media (max-width: 900px) and (orientation: landscape) {
-  .auth__modal .auth__contents {
-    width: "";
-    height: "";
+  .auth__modal .auth__contents .buttons .refresh__btn {
+    background-color: #111;
+    color: #fff;
+    width: 47.5%;
   }
 }
+
+

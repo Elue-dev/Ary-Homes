@@ -81,7 +81,6 @@ export default function Header() {
 
     return () => unsubscribe();
   }, [dispatch, displayName]);
-  console.log(user);
 
   const sendVerificationEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
