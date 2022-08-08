@@ -17,7 +17,7 @@ export default function Header() {
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   const fixNavbar = () => {
-    if (window.scrollY > 150) {
+    if (window.scrollY > 50) {
       setScrollpage(true);
     } else {
       setScrollpage(false);

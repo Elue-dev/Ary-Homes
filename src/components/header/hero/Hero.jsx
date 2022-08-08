@@ -8,9 +8,7 @@ export default function Hero() {
       <div className="hero__contents">
         <h2>Enjoy premium</h2>
         <h1>Luxury Shortlet Apartments</h1>
-        <p>
-          <i>Let's find the perfect place for you...</i>
-        </p>
+        <p>Let's find the perfect place for you</p>
         <Link to="/contact">
           <button className="hero__btn">Reach out to us</button>
         </Link>

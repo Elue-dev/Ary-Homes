@@ -1,7 +1,7 @@
 @import "../../../global_styles//global.scss";
 
 .hero {
-  font-family: "Roboto Slab", serif;
+  font-family: Roboto, sans-serif;
   background: url("../../../../public//home.jpg");
   background-position: center;
   background-size: cover;
@@ -85,5 +85,23 @@
   .hero .hero__contents .hero__btn {
     font-size: 0.8rem;
     padding: 3px 6px;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero {
+    height: 70vh;
+  }
+  .hero .hero__contents h2 {
+    font-size: 1.5rem;
+  }
+  .hero .hero__contents h1 {
+    font-size: 2rem;
+  }
+  .hero .hero__contents p {
+    font-size: 1rem;
+  }
+  .hero .hero__contents .hero__btn {
+    padding: 3px 8px;
   }
 }
