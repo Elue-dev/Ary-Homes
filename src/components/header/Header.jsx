@@ -113,7 +113,7 @@ export default function Header() {
 
               <ul>
                 <AdminOnlyLink>
-                  <Link to="/user/admin">
+                  <Link to="/user/admin/home">
                     <li>
                       <button className="admin__btn">Admin</button>
                     </li>
@@ -245,12 +245,14 @@ export default function Header() {
               <p>Contact</p>
             </li>
           </Link>
-          <Link to="/user/admin">
-            <li>
-              <div />
-              <button className="admin__btn">Admin</button>
-            </li>
-          </Link>
+          <AdminOnlyLink>
+            <Link to="/user/admin/home">
+              <li>
+                <div />
+                <button className="admin__btn">Admin</button>
+              </li>
+            </Link>
+          </AdminOnlyLink>
         </ul>
       </div>
     </>

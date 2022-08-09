@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GrFormClose } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { v4 as uuidv4 } from "uuid";
@@ -19,7 +18,7 @@ export default function Signup() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { updateName, signup } = useAuth();
+  const { updateName, signup, googleSignIn, facebookSignIn } = useAuth();
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -95,10 +94,52 @@ export default function Signup() {
       createdAt: Timestamp.now().toDate(),
     };
     try {
-      const usersRef = collection(database, "Users");
+      const usersRef = collection(database, "users");
       await addDoc(usersRef, usersConfig);
     } catch (error) {
       console.log(error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      navigate("/");
+    } catch (err) {
+      if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
+        setError("Google sign in failed. (You exited the google sign in)");
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+      if (err.message === "Firebase: Error (auth/network-request-failed).") {
+        setError(
+          "Google sign in failed, this is mostly due to network connectivity issues, please check your network and try again."
+        );
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+    }
+  };
+
+  const handleFacebookSignIn = async () => {
+    try {
+      await facebookSignIn();
+      navigate("/");
+    } catch (err) {
+      if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
+        setError("Facebook sign in failed. (You exited the facebook sign in)");
+        window.setTimeout(() => {
+          setError("");
+        }, 3500);
+      }
+      if (err.message === "Firebase: Error (auth/network-request-failed).") {
+        setError("Facebook sign in failed.c");
+        window.setTimeout(() => {
+          setError("");
+        }, 3500);
+      }
     }
   };
 
@@ -106,7 +147,6 @@ export default function Signup() {
     <section className="auth__modal">
       <div className="auth__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
-          {/* <GrFormClose /> */}
           &larr;
         </p>
         <br />
@@ -171,13 +211,13 @@ export default function Signup() {
           <p className="or">or</p>
         </div>
         <div className="google">
-          <button className="btn google__btn">
+          <button onClick={handleGoogleSignIn} className="btn google__btn">
             <FcGoogle />
             Continue with google
           </button>
         </div>
         <div className="facebook">
-          <button className=" btn facebook__btn">
+          <button onClick={handleFacebookSignIn} className=" btn facebook__btn">
             <BsFacebook />
             Continue with facebook
           </button>

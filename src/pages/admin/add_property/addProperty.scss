@@ -1,0 +1,127 @@
+@import "../../../global_styles//global.scss";
+
+.add__property {
+  @include flexBox(center, center, column);
+  padding: 1rem;
+  h2 {
+    @include flexBox(center, center, row);
+  }
+  form {
+    width: 500px;
+    padding-top: 1rem;
+    label {
+      display: block;
+      span {
+        display: block;
+        font-weight: 600;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 0.5px solid rgb(134, 134, 134);
+        border-radius: 0.3rem;
+        outline: 0;
+      }
+      select {
+        cursor: pointer;
+      }
+      textarea {
+        line-height: 1.5;
+        font-family: sans-serif;
+      }
+    }
+    .upload__btn {
+      background: #222;
+      color: #fff;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      margin-top: 0.3rem;
+      width: 50px;
+      cursor: pointer;
+    }
+    .success__msg {
+      @include flexBox(left, center, row);
+      gap: 0.4rem;
+      background: rgb(19, 178, 19);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.3rem;
+      margin-top: 0.3rem;
+      :first-child {
+        color: #fff;
+      }
+    }
+    .features {
+      display: flex;
+      gap: 0.2rem;
+      .features__btn {
+        background: #222;
+        color: #fff;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.3rem;
+        border: 0;
+        outline: 0;
+        font-weight: 700;
+        width: 80px;
+        cursor: pointer;
+      }
+    }
+    .images__info,
+    .feature__info {
+      @include flexBox(left, center, row);
+      gap: 0.3rem;
+      background: rgb(193, 180, 100);
+      color: #fff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .features__list {
+      background: #f4f4f4;
+      padding: 0.8rem;
+    }
+    .submit__property__btn {
+      background: #222;
+      color: #fff;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
+
+@include mQ(600px) {
+  .add__property {
+    display: block;
+  }
+  .add__property form {
+    width: auto;
+  }
+  .add__property form label {
+    width: 100%;
+  }
+  .add__property form label input {
+    width: 100%;
+  }
+  .add__property form .images__info,
+  .add__property form .feature__info {
+    line-height: 1.5;
+    padding: .1rem 0.2rem;
+    font-size: .8rem;
+    :first-child {
+        font-size: 1.2rem;
+    }
+  }
+}

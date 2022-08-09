@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GrFormClose } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import "./auth.scss";
@@ -13,7 +12,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, googleSignIn, facebookSignIn } = useAuth();
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -64,6 +63,48 @@ export default function Login() {
       }
     }
     setLoading(false);
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      navigate("/");
+    } catch (err) {
+      if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
+        setError("Google sign in failed. (You exited the google sign in)");
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+      if (err.message === "Firebase: Error (auth/network-request-failed).") {
+        setError(
+          "Google sign in failed, this is mostly due to network connectivity issues, please check your network and try again."
+        );
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+      }
+    }
+  };
+
+  const handleFacebookSignIn = async () => {
+    try {
+      await facebookSignIn();
+      navigate('/')
+    } catch (err) {
+      if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
+        setError("Facebook sign in failed. (You exited the facebook sign in)");
+        window.setTimeout(() => {
+          setError("");
+        }, 3500);
+      }
+      if (err.message === "Firebase: Error (auth/network-request-failed).") {
+        setError("Facebook sign in failed.c");
+        window.setTimeout(() => {
+          setError("");
+        }, 3500);
+      }
+    }
   };
 
   return (
@@ -122,13 +163,13 @@ export default function Login() {
           <p className="or">or</p>
         </div>
         <div className="google">
-          <button className="btn google__btn">
+          <button onClick={handleGoogleSignIn} className="btn google__btn">
             <FcGoogle />
             Continue with google
           </button>
         </div>
         <div className="facebook">
-          <button className=" btn facebook__btn">
+          <button onClick={handleFacebookSignIn} className=" btn facebook__btn">
             <BsFacebook />
             Continue with facebook
           </button>

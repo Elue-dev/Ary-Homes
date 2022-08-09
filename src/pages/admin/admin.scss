@@ -1,0 +1,30 @@
+@import "../../global_styles//global.scss";
+
+.admin {
+  display: flex;
+  padding-bottom: 4rem;
+  .admin__navbar {
+    width: 25%;
+    min-height: 100vh;
+    background-color: $mainColor;
+  }
+  .admin__contents {
+    width: 75%;
+  }
+}
+
+@include mQ(600px) {
+  .admin {
+    flex-direction: column;
+  }
+  .admin .admin__navbar {
+    width: 100%;
+    min-height: auto;
+  }
+  .admin__nav nav ul {
+    margin-left: auto;
+  }
+  .admin .admin__contents {
+    width: 100%;
+  }
+}
