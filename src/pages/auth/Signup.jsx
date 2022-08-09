@@ -22,7 +22,7 @@ export default function Signup() {
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      alert("verification sent");
+      // then...
     });
   };
 
