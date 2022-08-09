@@ -5,14 +5,17 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { AuthProvider } from "./contexts/AuthContext";
+import { AlertProvider } from "./contexts/AlertContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <AlertProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </AlertProvider>
     </AuthProvider>
   </React.StrictMode>
 );

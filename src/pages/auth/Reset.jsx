@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -61,7 +61,7 @@ export default function Reset() {
 
   return (
     <section className="auth__modal">
-      <div className="auth__contents">
+      <div className="auth__contents reset__contents">
         <h2>Reset your password</h2>
 
         <div className="reset__info">
@@ -95,6 +95,9 @@ export default function Reset() {
             </button>
           )}
         </form>
+        <p className="back__to__login">
+          <Link to="/login">Back to login</Link>
+        </p>
       </div>
     </section>
   );

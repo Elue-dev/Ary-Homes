@@ -8,12 +8,29 @@
   height: 100%;
   @include flexBox(center, center, column);
   z-index: 100000000000;
+  .login__contents {
+    animation: slide-down 0.5s ease;
+  }
+  .signup__contents {
+    animation: slide-up 0.5s ease
+  }
+  .verify__contents {
+    animation: slide-up 0.5s ease;
+  }
+  .reset__contents {
+    animation: slide-down 0.5s ease;
+    h2 {
+      text-align: center;
+      margin-bottom: .6rem;
+    }
+  }
   .auth__contents {
     background: #fff;
     width: 400px;
     height: auto;
     padding: 1rem;
     position: relative;
+    
     .close__icon {
       position: absolute;
       right: 1rem;
@@ -26,6 +43,9 @@
     form {
       label {
         line-height: 2;
+        span {
+          font-weight: 600;
+        }
         input {
           padding: 0.7rem;
           width: 100%;
@@ -147,6 +167,7 @@
     .new__user {
       text-align: center;
       margin-top: 1.2rem;
+      font-weight: 600;
       a {
         .signup__btn {
           width: 60%;
@@ -208,6 +229,29 @@
       padding: 0.5rem;
       border-radius: 0.5rem;
     }
+  }
+  .back__to__login {
+    @include flexBox(center, center, auto);
+    text-decoration: underline;
+    margin-top: .5rem;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(5rem);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 

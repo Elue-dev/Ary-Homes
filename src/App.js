@@ -13,20 +13,11 @@ import ProtectedRoute from "./components/protected_route/ProtectedRoute";
 import AdminOnlyRoute from "./components/admin_only/AdminOnlyRoute";
 import Admin from "./pages/admin/Admin";
 import Reset from "./pages/auth/Reset";
-import { useAuth } from "./contexts/AuthContext";
 import Alert from "./components/alert/Alert";
-import { BiWindowOpen } from "react-icons/bi";
-import { useEffect } from "react";
+import { useCustomAlert } from "./contexts/AlertContext";
 
 function App() {
-  const { showAlert, alertMessage, alertType,  } = useAuth();
-  console.log(showAlert, alertMessage, alertType);
-
-  // useEffect(() => {
-  //   window.setTimeout(() => {
-  //     set
-  //   })
-  // }, [showAlert, alertMessage, alertType])
+  const { showAlert, alertMessage, alertType } = useCustomAlert();
 
   return (
     <BrowserRouter>

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../../contexts/AuthContext";
@@ -10,6 +9,7 @@ import { database } from "../../firebase/firebase";
 import { auth } from "../../firebase/firebase";
 import { sendEmailVerification } from "firebase/auth";
 import BeatLoader from "react-spinners/BeatLoader";
+import { useCustomAlert } from "../../contexts/AlertContext";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -25,6 +25,7 @@ export default function Signup() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const {
     user,
     updateName,
@@ -118,6 +119,14 @@ export default function Signup() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      setShowAlert(true);
+      setAlertMessage(`Google sign in was successful!`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
       navigate("/");
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
@@ -192,7 +201,7 @@ export default function Signup() {
 
   return (
     <section className="auth__modal">
-      <div className="auth__contents">
+      <div className="auth__contents signup__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
           &larr;
         </p>

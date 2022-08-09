@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./auth.scss";
 import { useAuth } from "../../contexts/AuthContext";
 import BeatLoader from "react-spinners/BeatLoader";
+import { useCustomAlert } from "../../contexts/AlertContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,14 +15,8 @@ export default function Login() {
   const [visible, setVisible] = useState(false);
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const {
-    login,
-    googleSignIn,
-    facebookSignIn,
-    setShowAlert,
-    setAlertMessage,
-    setAlertType,
-  } = useAuth();
+  const { login, googleSignIn, facebookSignIn } = useAuth();
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -45,7 +40,7 @@ export default function Login() {
         setShowAlert(false);
         setAlertMessage(null);
         setAlertType(null);
-      }, 5000)
+      }, 6000);
       setLoading(false);
       navigate("/");
     } catch (error) {
@@ -85,6 +80,14 @@ export default function Login() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      setShowAlert(true);
+      setAlertMessage(`You are successfully logged in!`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
       navigate("/");
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
@@ -135,7 +138,7 @@ export default function Login() {
 
   return (
     <section className="auth__modal">
-      <div className="auth__contents">
+      <div className="auth__contents login__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
           &larr;
         </p>

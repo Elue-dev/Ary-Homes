@@ -22,6 +22,7 @@ import {
 } from "../../redux/slice/authSlice";
 import { AdminOnlyLink } from "../admin_only/AdminOnlyRoute";
 import { useAuth } from "../../contexts/AuthContext";
+import { useCustomAlert } from "../../contexts/AlertContext";
 
 export default function Header() {
   const [scrollPage, setScrollpage] = useState(false);
@@ -32,6 +33,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const modifiedUserName =
     userName?.charAt(0).toUpperCase() + userName?.slice(1);
   const location = useLocation();
@@ -93,6 +95,14 @@ export default function Header() {
 
   const logoutUser = async () => {
     await logout();
+    setShowAlert(true);
+    setAlertMessage(`You have successfully logged out from ${user.email}`);
+    setAlertType("success");
+    window.setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage(null);
+      setAlertType(null);
+    }, 6000);
     navigate("/");
   };
 

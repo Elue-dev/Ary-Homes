@@ -7,7 +7,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "./addProperty.scss";
 import { database, storage } from "../../../firebase/firebase";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
+import BeatLoader from "react-spinners/BeatLoader";
+import { useCustomAlert } from "../../../contexts/AlertContext";
 
 const initialState = {
   name: "",
@@ -30,6 +33,7 @@ export default function AddProperty() {
   const [imagesUrl, setImagesUrl] = useState([]);
   const imageRef = useRef(null);
   const navigate = useNavigate();
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -85,13 +89,14 @@ export default function AddProperty() {
   };
 
   const addPropertyToDatabase = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    
-
+    const today = new Date();
+    const date = today.toDateString();
     try {
       const collectionRef = collection(database, "properties");
       addDoc(collectionRef, {
+        id: uuidv4().substring(0,7),
         name: property.name,
         imagesUrl,
         features,
@@ -99,8 +104,17 @@ export default function AddProperty() {
         location: property.location,
         availability: property.availability,
         description: property.description,
+        addedAt: date,
         createdAt: Timestamp.now().toDate(),
       });
+      setShowAlert(true);
+      setAlertMessage(`Product added successfully`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
       setLoading(false);
       setProperty({ ...initialState });
       setImgUploadProgress(0);
@@ -228,7 +242,9 @@ export default function AddProperty() {
           <div className="features__list">
             <b>Features:</b>{" "}
             {features.map((i) => (
-              <em key={i}>{i}, </em>
+              <li>
+                <em key={i}>{i}.</em>
+              </li>
             ))}
           </div>
         </label>
@@ -246,9 +262,16 @@ export default function AddProperty() {
             required
           />
         </label>
-        <button type="submit" className="submit__property__btn">
-          Submit
-        </button>
+        {loading && (
+          <button type="submit" className="submit__property__btn">
+            <BeatLoader loading={loading} size={10} color={"#fff"} />
+          </button>
+        )}
+        {!loading && (
+          <button type="submit" className="submit__property__btn">
+            Submit
+          </button>
+        )}
       </form>
     </div>
   );

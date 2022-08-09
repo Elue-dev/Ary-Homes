@@ -25,9 +25,6 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
-  const [showAlert, setShowAlert] = useState(false)
-  const [alertMessage, setAlertMessage] = useState(null)
-  const [alertType, setAlertType] = useState(null)
 
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -100,12 +97,6 @@ export const AuthProvider = ({ children }) => {
     updateName,
     updateMail,
     updatePass,
-    showAlert,
-    setShowAlert,
-    alertMessage,
-    setAlertMessage,
-    alertType,
-    setAlertType
   };
 
   return (

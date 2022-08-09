@@ -29,7 +29,7 @@ export default function Verify() {
   };
   return (
     <div className="auth__modal">
-      <div className="auth__contents">
+      <div className="auth__contents verify__contents">
         <p className='verification__message' style={{ marginBottom: "1rem" }}>
           A verification link has been set to your email, when you have verified
           it, click on the <b>Done</b> button, then click on the <b>Proceed</b>{" "}

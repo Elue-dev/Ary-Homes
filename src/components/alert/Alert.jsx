@@ -2,11 +2,11 @@ import React from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
 import { TiWarning } from "react-icons/ti";
-import { useAuth } from "../../contexts/AuthContext";
-import './alert.scss'
+import { useCustomAlert } from "../../contexts/AlertContext";
+import "./alert.scss";
 
 export default function Alert() {
-  const { alertMessage, alertType } = useAuth();
+  const { alertMessage, alertType } = useCustomAlert();
 
   let background;
   let color;
@@ -18,12 +18,12 @@ export default function Alert() {
     icon = <MdError />;
   }
   if (alertType === "warning") {
-    background = "pink";
+    background = "#c1b464";
     color = "white";
     icon = <TiWarning />;
   }
   if (alertType === "success") {
-    background = "green";
+    background = "rgb(11, 152, 11)";
     color = "white";
     icon = <BsFillCheckCircleFill />;
   }
@@ -32,17 +32,13 @@ export default function Alert() {
     <div
       style={{
         background: background,
-        color: color,
-        height: "auto",
-        zIndex: 3000000000,
-        fontSize: "1.3rem",
-        textAlign: "center",
+        color: color
       }}
-      className='custom__alert'
+      className="custom__alert"
     >
-      <h4>
+      <p>
         {icon} {alertMessage}
-      </h4>
+      </p>
     </div>
   );
 }

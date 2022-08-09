@@ -1,8 +1,15 @@
-@import '../../global_styles/global.scss';
+@import "../../global_styles/global.scss";
 
 .custom__alert {
-    h4 {
-        @include flexBox(center, center, row);
-        gap: 1rem;
-    }
+  height: auto;
+  z-index: 3000000000;
+  text-align: center;
+  font-size: 1.3rem;
+  transition: all .5s ease;
+  p {
+    @include flexBox(center, center, row);
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
 }
