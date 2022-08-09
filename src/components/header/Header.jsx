@@ -20,7 +20,8 @@ import {
   selectUserName,
   SET_ACTIVE_USER,
 } from "../../redux/slice/authSlice";
-import { useAuth } from "../../contexts/authContext";
+import { AdminOnlyLink } from "../admin_only/AdminOnlyRoute";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Header() {
   const [scrollPage, setScrollpage] = useState(false);
@@ -111,11 +112,13 @@ export default function Header() {
               </div>
 
               <ul>
-                <Link to="/user/admin">
-                  <li>
-                    <button className="admin__btn">Admin</button>
-                  </li>
-                </Link>
+                <AdminOnlyLink>
+                  <Link to="/user/admin">
+                    <li>
+                      <button className="admin__btn">Admin</button>
+                    </li>
+                  </Link>
+                </AdminOnlyLink>
 
                 <Link to="/">
                   <li>
@@ -197,6 +200,12 @@ export default function Header() {
                               className="header__verify__btn"
                             >
                               Verify now
+                            </button>
+                            <button
+                              className="logout__btn"
+                              onClick={logoutUser}
+                            >
+                              Log out
                             </button>
                           </p>
                         )}

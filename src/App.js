@@ -10,6 +10,8 @@ import Footer from "./components/footer/Footer";
 import Contact from "./pages/contact/Contact";
 import Verify from "./pages/auth/Verify";
 import ProtectedRoute from "./components/protected_route/ProtectedRoute";
+import AdminOnlyRoute from "./components/admin_only/AdminOnlyRoute";
+import Admin from "./pages/admin/Admin";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/user/admin" element={<AdminOnlyRoute><Admin /></AdminOnlyRoute>} />
           <Route
             path="/verify"
             element={

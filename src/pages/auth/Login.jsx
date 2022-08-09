@@ -4,7 +4,7 @@ import { GrFormClose } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import "./auth.scss";
-import { useAuth } from "../../contexts/authContext";
+import { useAuth } from "../../contexts/AuthContext";
 import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Login() {

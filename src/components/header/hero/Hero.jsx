@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../contexts/authContext";
+import { useAuth } from "../../../contexts/AuthContext";
 import { selectUserName, selectUsers } from "../../../redux/slice/authSlice";
 import "./hero.scss";
 

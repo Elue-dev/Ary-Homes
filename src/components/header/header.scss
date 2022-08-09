@@ -113,7 +113,8 @@
       }
       .header__verify__btn {
         @include button();
-        background: $mainColor;
+        background: #111;
+        width: 100%;
         color: #fff;
         padding: 0.2rem 0.5rem;
         margin-top: 0.8rem;
