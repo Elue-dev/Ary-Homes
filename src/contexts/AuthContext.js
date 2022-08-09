@@ -12,6 +12,8 @@ import {
   updateEmail,
   updatePassword,
   updateProfile,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
@@ -23,6 +25,9 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState(null)
+  const [alertType, setAlertType] = useState(null)
 
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -43,6 +48,16 @@ export const AuthProvider = ({ children }) => {
   const googleSignIn = () => {
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider);
+  };
+
+  const setUpRecaptcha = (number) => {
+    const recaptchaVerifier = new RecaptchaVerifier(
+      "recaptcha-container",
+      {},
+      auth
+    );
+    recaptchaVerifier.render()
+    return signInWithPhoneNumber(auth, number, recaptchaVerifier)
   };
 
   const facebookSignIn = () => {
@@ -80,10 +95,17 @@ export const AuthProvider = ({ children }) => {
     logout,
     resetPassword,
     googleSignIn,
+    setUpRecaptcha,
     facebookSignIn,
     updateName,
     updateMail,
     updatePass,
+    showAlert,
+    setShowAlert,
+    alertMessage,
+    setAlertMessage,
+    alertType,
+    setAlertType
   };
 
   return (

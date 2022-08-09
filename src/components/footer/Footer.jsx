@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import './footer.scss'
+import "./footer.scss";
 
 export default function Footer() {
   const location = useLocation();
@@ -11,7 +11,12 @@ export default function Footer() {
   const year = date.getFullYear();
 
   useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === '/verify') {
+    if (
+      location.pathname === "/login" ||
+      location.pathname === "/signup" ||
+      location.pathname === "/verify" ||
+      location.pathname === "/reset-password"
+    ) {
       setShowFooter(false);
     } else {
       setShowFooter(true);

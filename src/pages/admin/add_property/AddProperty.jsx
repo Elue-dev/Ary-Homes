@@ -129,7 +129,7 @@ export default function AddProperty() {
         </label>
         <br />
         <label>
-          <span>Property Image:</span>
+          <span>Property Images:</span>
           <p className="images__info">
             <IoInformationCircleOutline />
             Enter as many images as possible, Let the rooms be the last set of
@@ -218,7 +218,7 @@ export default function AddProperty() {
               value={newFeature}
               ref={featuresInput}
               onChange={(e) => setNewFeature(e.target.value)}
-              placeholder="ENTER ONE, THEN ADD, e.g: 24hr Electricity"
+              placeholder="ENTER ONE, THEN ADD, e.g: 24hrs Electricity"
               required
             />
             <button onClick={handleAdd} className="features__btn">

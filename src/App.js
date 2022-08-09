@@ -12,16 +12,32 @@ import Verify from "./pages/auth/Verify";
 import ProtectedRoute from "./components/protected_route/ProtectedRoute";
 import AdminOnlyRoute from "./components/admin_only/AdminOnlyRoute";
 import Admin from "./pages/admin/Admin";
+import Reset from "./pages/auth/Reset";
+import { useAuth } from "./contexts/AuthContext";
+import Alert from "./components/alert/Alert";
+import { BiWindowOpen } from "react-icons/bi";
+import { useEffect } from "react";
 
 function App() {
+  const { showAlert, alertMessage, alertType,  } = useAuth();
+  console.log(showAlert, alertMessage, alertType);
+
+  // useEffect(() => {
+  //   window.setTimeout(() => {
+  //     set
+  //   })
+  // }, [showAlert, alertMessage, alertType])
+
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
+        {showAlert ? <Alert message={alertMessage} type={alertType} /> : null}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/reset-password" element={<Reset />} />
           <Route
             path="/user/admin/*"
             element={

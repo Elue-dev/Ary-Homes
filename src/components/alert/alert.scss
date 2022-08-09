@@ -1,0 +1,8 @@
+@import '../../global_styles/global.scss';
+
+.custom__alert {
+    h4 {
+        @include flexBox(center, center, row);
+        gap: 1rem;
+    }
+}

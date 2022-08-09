@@ -40,7 +40,8 @@ export default function Header() {
     if (
       location.pathname === "/login" ||
       location.pathname === "/signup" ||
-      location.pathname === "/verify"
+      location.pathname === "/verify" ||
+      location.pathname === "/reset-password"
     ) {
       setShowHeader(false);
     } else {
@@ -49,7 +50,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 100) {
       setScrollpage(true);
     } else {
       setScrollpage(false);
@@ -174,9 +175,9 @@ export default function Header() {
                     )}
                     {user && (
                       <>
-                        {user.emailVerified ? (
+                        {user.emailVerified || user.phoneNumber ? (
                           <div className="logged__in">
-                            <p>Hi, {modifiedUserName}!</p>
+                            <p>Hi, {modifiedUserName || user.phoneNumber}!</p>
                             <Link to="/bookmarks">
                               <li>
                                 <IoBookmarksOutline />

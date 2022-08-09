@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./auth.scss";
 import { useAuth } from "../../contexts/AuthContext";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -11,8 +11,17 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const passwordRef = useRef();
   const navigate = useNavigate();
-  const { login, googleSignIn, facebookSignIn } = useAuth();
+  const {
+    login,
+    googleSignIn,
+    facebookSignIn,
+    setShowAlert,
+    setAlertMessage,
+    setAlertType,
+  } = useAuth();
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -29,6 +38,14 @@ export default function Login() {
       setLoading(true);
       setError("");
       await login(email, password);
+      setShowAlert(true);
+      setAlertMessage(`You are successfully logged in!`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 5000)
       setLoading(false);
       navigate("/");
     } catch (error) {
@@ -90,7 +107,7 @@ export default function Login() {
   const handleFacebookSignIn = async () => {
     try {
       await facebookSignIn();
-      navigate('/')
+      navigate("/");
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Facebook sign in failed. (You exited the facebook sign in)");
@@ -107,11 +124,19 @@ export default function Login() {
     }
   };
 
+  const handlePasswordVisibility = () => {
+    setVisible(!visible);
+    if (passwordRef.current.type === "password") {
+      passwordRef.current.setAttribute("type", "text");
+    } else {
+      passwordRef.current.setAttribute("type", "password");
+    }
+  };
+
   return (
     <section className="auth__modal">
       <div className="auth__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
-          {/* <GrFormClose /> */}
           &larr;
         </p>
         <br />
@@ -135,13 +160,22 @@ export default function Login() {
           <br />
           <label>
             <span>Password:</span>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Enter your password"
-            />
+            <div className="password__visibility__toggler">
+              <input
+                type="password"
+                value={password}
+                ref={passwordRef}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="At least 6 characters"
+              />
+              <span onClick={handlePasswordVisibility}>
+                {visible ? (
+                  <AiOutlineEye size={20} />
+                ) : (
+                  <AiOutlineEyeInvisible size={20} />
+                )}
+              </span>
+            </div>
           </label>
           {loading && (
             <button type="submit" className="btn submit__btn">
@@ -158,6 +192,9 @@ export default function Login() {
             </button>
           )}
         </form>
+        <p className="reset__password">
+          <Link to="/reset-password">Forgot Password?</Link>
+        </p>
 
         <div className="line">
           <p className="or">or</p>
@@ -168,12 +205,12 @@ export default function Login() {
             Continue with google
           </button>
         </div>
-        <div className="facebook">
+        {/* <div className="facebook">
           <button onClick={handleFacebookSignIn} className=" btn facebook__btn">
             <BsFacebook />
             Continue with facebook
           </button>
-        </div>
+        </div> */}
         <hr />
         <div className="new__user">
           <p>New to AryHomes? </p>
