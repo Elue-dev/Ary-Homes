@@ -32,7 +32,7 @@ export default function Alert() {
     <div
       style={{
         background: background,
-        color: color
+        color: color,
       }}
       className="custom__alert"
     >

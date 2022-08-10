@@ -87,7 +87,8 @@ export default function Account() {
 
   const updateUserAccountInfo = (e) => {
     e.preventDefault();
-
+    window.scrollTo(0, 0);
+    
     try {
       updateUserEmail();
       const docRef = doc(database, "users", userID.userId);

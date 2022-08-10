@@ -5,11 +5,17 @@
   z-index: 3000000000;
   text-align: center;
   font-size: 1.3rem;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   p {
     @include flexBox(center, center, row);
     gap: 0.5rem;
     font-size: 1rem;
     font-weight: 700;
+  }
+}
+
+@include mQ(500px) {
+  .custom__alert p {
+    font-size: 0.85rem;
   }
 }

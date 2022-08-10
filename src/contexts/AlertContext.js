@@ -7,12 +7,12 @@ export const useCustomAlert = () => {
 };
 
 export const AlertProvider = ({ children }) => {
-  const [showAlert, setShowAlert] = useState(true);
+  const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState(null);
   const [alertType, setAlertType] = useState(null);
 
   const formatCurrency = (price) => {
-    return new Intl.NumberFormat().format(price);
+    return new Intl.NumberFormat.format(price);
   };
 
   const values = {
