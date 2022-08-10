@@ -99,7 +99,7 @@ export default function Header() {
   const logoutUser = async () => {
     await logout();
     setShowAlert(true);
-    setAlertMessage(`You have successfully logged out from ${user.email}`);
+    setAlertMessage(`You have successfully logged out.`);
     setAlertType("success");
     window.setTimeout(() => {
       setShowAlert(false);
