@@ -224,6 +224,16 @@
   }
 }
 
+@include mQ(500px) {
+  .header__wrapper .header__contents .logo img {
+    height: 37px;
+    width: 37px;
+  }
+  .header__wrapper .header__contents .logo h2 {
+    font-size: 1.3rem;
+  }
+}
+
 @include mQ(300px) {
   .nav__bottom ul {
     gap: 1.2rem;

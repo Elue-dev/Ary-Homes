@@ -124,7 +124,6 @@ export default function Header() {
                 <Link to='/'>
                 <img src={logo} alt="ary homes logo" />
                 </Link>
-              
                 <Link to="/">
                   <h2><span>ary</span>homes</h2>
                 </Link>
