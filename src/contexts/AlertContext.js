@@ -12,7 +12,7 @@ export const AlertProvider = ({ children }) => {
   const [alertType, setAlertType] = useState(null);
 
   const formatCurrency = (price) => {
-    return new Intl.NumberFormat.format(price);
+    return new Intl.NumberFormat().format(price);
   };
 
   const values = {
