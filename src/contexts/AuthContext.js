@@ -66,6 +66,10 @@ export const AuthProvider = ({ children }) => {
     updateProfile(auth.currentUser, { displayName: displayName });
   };
 
+  const updatePP = (photo) => {
+    updateProfile(auth.currentUser, { photoURL: photo });
+  };
+
   const updateMail = (newmail) => {
     updateEmail(auth.currentUser, newmail);
   };
@@ -95,6 +99,7 @@ export const AuthProvider = ({ children }) => {
     setUpRecaptcha,
     facebookSignIn,
     updateName,
+    updatePP,
     updateMail,
     updatePass,
   };

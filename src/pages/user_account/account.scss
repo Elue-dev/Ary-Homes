@@ -2,7 +2,7 @@
 
 .user__account__info {
   min-height: 100vh;
-  padding-bottom: 5rem;
+  padding: 2rem 0 5rem 0;
   @include flexBox(center, flex-start, column);
   .user__account__info__contents {
     .account__info__desc {
@@ -11,10 +11,66 @@
       h2 {
         color: $mainColor;
         @include flexBox(flex-start, center, row);
-        gap: .5rem;
+        gap: 0.5rem;
         :first-child {
           color: rgb(85, 85, 85);
           font-size: 1.8rem;
+        }
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+      }
+      .click__to__change {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .user__img__details {
+        display: none;
+        .progress {
+          background-color: #aaa;
+          border: 1px solid transparent;
+          border-radius: 10px;
+          display: inline-block;
+          margin-bottom: 0.5rem;
+          .progress-bar {
+            background-color: #111;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.3rem;
+          }
+        }
+
+        .pp__upload__input {
+          border: 0.5px solid #999;
+          padding: 0.5rem;
+          border-radius: 0.3rem;
+        }
+        .pp__upload__btn {
+          @include button();
+          border-radius: 0.3rem;
+          background: $mainColor;
+          color: #fff;
+          font-weight: 700;
+        }
+        .user__img__wrapper {
+          width: fit-content;
+          height: auto;
+          border-radius: 0.5rem;
+          padding-top: 1rem;
+          .uploaded__image {
+            height: 100px;
+            width: 100px;
+            border-radius: 0.3rem;
+            object-fit: cover;
+          }
+          .fallback__image {
+            height: 100px;
+          }
         }
       }
       h3 {
@@ -68,6 +124,7 @@
         width: 100%;
         border-radius: 0.3rem;
         margin-top: 1rem;
+        font-weight: 700;
       }
     }
   }
@@ -76,6 +133,7 @@
 @include mQ(600px) {
   .user__account__info {
     background: #f8f9fa;
+    padding-bottom: 6rem;
   }
   .user__account__info .user__account__info__contents {
     width: 100%;
@@ -110,6 +168,19 @@
     gap: 1rem;
     padding-top: 0rem;
   }
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    .user__img__details
+    .pp__upload__btn,
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    .user__img__details
+    .pp__upload__input {
+    width: 90%;
+    margin-bottom: .3rem;
+  }
 }
 
 @include mQ(350px) {
@@ -121,4 +192,5 @@
     font-size: 0.72rem;
     width: initial;
   }
+
 }

@@ -139,6 +139,11 @@
         margin-top: 0.8rem;
       }
     }
+    .user__img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
   }
   .auth__popup.show {
     transform: scale(1);

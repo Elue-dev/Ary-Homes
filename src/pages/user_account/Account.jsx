@@ -19,17 +19,27 @@ import "./account.scss";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import { useEffect } from "react";
 import { useCustomAlert } from "../../contexts/AlertContext";
-import { database } from "../../firebase/firebase";
+import { database, storage } from "../../firebase/firebase";
 import { doc, setDoc, Timestamp } from "firebase/firestore";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import userFallback from "../../assets/user.png";
 import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
 
 export default function Account() {
+  const [photo] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [showFields, setShowFields] = useState(false);
   const { data, loading } = useFetchCollection("users");
   const usersList = useSelector(selectUsers);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, updateMail, setUpRecaptcha } = useAuth();
+  const { user, updateMail, updatePP } = useAuth();
   const lastLogin = user.metadata.lastSignInTime;
   const createdAt = user.metadata.creationTime;
   const signedInUser = usersList.users?.find((u) => u.email === user.email);
@@ -40,8 +50,7 @@ export default function Account() {
       "Unavailable. Enter your first name and save"
   );
   const [lastName, setLastName] = useState(
-    info.userInfo?.signedInUserL ||
-      "Unavailable. Enter your last name and save"
+    info.userInfo?.signedInUserL || "Unavailable. Enter your last name and save"
   );
   const [email, setEmail] = useState(user?.email);
   const [phone, setPhone] = useState(
@@ -85,10 +94,56 @@ export default function Account() {
     }
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const storageRef = ref(storage, `Ary Homes/${Date.now()}${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setUploadProgress(progress);
+      },
+      (error) => {},
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImageUrl(downloadURL);
+        });
+      }
+    );
+  };
+
+  const updateUserProfilePhoto = async (e) => {
+    e.preventDefault();
+    try {
+      await updatePP(imageUrl);
+      setShowAlert(true);
+      setAlertMessage("Profile picture updated successfully!");
+      window.setTimeout(() => window.location.reload(), 2000);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+    } catch (error) {
+      setShowAlert(true);
+      setAlertMessage(error.message);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+    }
+  };
+
   const updateUserAccountInfo = (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
-    
+
     try {
       updateUserEmail();
       const docRef = doc(database, "users", userID.userId);
@@ -149,13 +204,71 @@ export default function Account() {
     signedInUser?.phone,
   ]);
 
-  console.log(user);
-
   return (
     <section className="user__account__info">
       <div className="user__account__info__contents">
         <div className="account__info__desc">
-          <h2><RiUserShared2Line />{userName}</h2>
+          <h2>
+            {user.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="user"
+                className="user__profile__img"
+              />
+            ) : (
+              <RiUserShared2Line />
+            )}
+            {userName}
+          </h2>
+          <p
+            className="click__to__change"
+            onClick={() => setShowFields(true)}
+            style={{ display: showFields ? "none" : "block" }}
+          >
+            Change profile picture
+          </p>
+          <div
+            className="user__img__details"
+            style={{ display: showFields ? "block" : "none" }}
+          >
+            <div className="user__img__wrapper">
+              {imageUrl !== "" ? (
+                <img src={imageUrl} alt="profile" className="uploaded__image" />
+              ) : (
+                <img
+                  src={userFallback}
+                  alt="user"
+                  className="fallback__image"
+                />
+              )}
+            </div>
+            {uploadProgress === 0 ? null : (
+              <div className="progress">
+                <div
+                  className="progress-bar"
+                  style={{ width: `${uploadProgress}%` }}
+                >
+                  {uploadProgress < 100
+                    ? `Uploading ${uploadProgress}%`
+                    : `Upload Complete ${uploadProgress}%`}
+                </div>
+              </div>
+            )}
+            <form onSubmit={updateUserProfilePhoto}>
+              {imageUrl === "" ? (
+                <input
+                  type="file"
+                  value={photo}
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="pp__upload__input"
+                />
+              ) : null}
+              &nbsp;
+              <button className="pp__upload__btn">Save Image</button>
+            </form>
+          </div>
+          <br />
           <h3>Account information</h3>
           <p>
             <IoIosCreate />

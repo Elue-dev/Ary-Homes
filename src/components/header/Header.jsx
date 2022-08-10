@@ -26,6 +26,7 @@ import {
 import { AdminOnlyLink } from "../admin_only/AdminOnlyRoute";
 import { useAuth } from "../../contexts/AuthContext";
 import { useCustomAlert } from "../../contexts/AlertContext";
+import PulseLoder from "react-spinners/PulseLoader";
 
 export default function Header() {
   const [scrollPage, setScrollpage] = useState(false);
@@ -60,7 +61,6 @@ export default function Header() {
     } else {
       setScrollpage(false);
     }
-
   };
   window.addEventListener("scroll", fixNavbar);
 
@@ -117,15 +117,17 @@ export default function Header() {
             className={
               scrollPage ? ` header__wrapper fixed` : "header__wrapper"
             }
-            style={{transition: scrollPage && 'all 1s ease'}}
+            style={{ transition: scrollPage && "all 1s ease" }}
           >
             <div className="header__contents">
               <div className="logo">
-                <Link to='/'>
-                <img src={logo} alt="ary homes logo" />
+                <Link to="/">
+                  <img src={logo} alt="ary homes logo" />
                 </Link>
                 <Link to="/">
-                  <h2><span>ary</span>homes</h2>
+                  <h2>
+                    <span>ary</span>homes
+                  </h2>
                 </Link>
               </div>
 
@@ -169,7 +171,20 @@ export default function Header() {
                 onClick={() => setShowAuthModal(!showAuthModal)}
               >
                 <CgMenuGridO />
-                <FaRegUserCircle />
+
+                {user ? (
+                  <>
+                    {user.photoURL ? (
+                      <img src={user.photoURL} alt="" className="user__img" />
+                    ) : (
+                      <FaRegUserCircle />
+                     
+                    )}
+                  </>
+                ) : (
+                  <FaRegUserCircle />
+                )}
+
                 {user && <BsDot className="dot" />}
                 <>
                   <div
