@@ -177,7 +177,7 @@
     width: 92%;
   }
 }
-@include mQ(768px) {
+@include mQ(900px) {
   .header__wrapper .header__contents ul {
     display: none;
   }
