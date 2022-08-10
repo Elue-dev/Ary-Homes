@@ -4,23 +4,41 @@
   width: 100%;
   position: fixed;
   top: 0;
-  transition: all 0.5s;
   z-index: 9;
 }
 
 .header__wrapper {
+  transition: all 0.5s;
   background: #fff;
   box-shadow: $box-shadow;
   height: 3rem;
-  transition: all 0.5s ease-out;
   @include flexBox(center, center, column);
   height: 3.7rem;
   z-index: 1000000;
   .header__contents {
     @include container();
     @include flexBox(space-between, center, row);
+    .logo {
+      @include flexBox(flex-start, center, row);
+      animation: slide-right 0.5s ease;
+      font-family: "Nunito", sans-serif;
+      gap: 0.4rem;
+      img {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+      }
+      a {
+        h2 {
+          span {
+            color: $mainColor;
+          }
+        }
+      }
+    }
     ul {
       @include flexBox(center, center, row);
+      animation: slide-up 0.5s ease;
       gap: 1.7rem;
       li {
         list-style: none;
@@ -42,6 +60,7 @@
       padding: 0.4rem 0.6rem;
       border-radius: 1rem;
       @include flexBox(center, center, row);
+      animation: slide-left 0.5s ease;
       gap: 0.5rem;
       cursor: pointer;
       position: relative;
@@ -128,6 +147,24 @@
 
 .nav__bottom {
   display: none;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @include mQ(800px) {

@@ -54,9 +54,6 @@
           font-weight: 700;
           color: #000;
           @include flexBox(space-between, center, row);
-          :last-child {
-            font-size: 1.2rem;
-          }
         }
         .property__price {
           @include flexBox(flex-start, center, row);

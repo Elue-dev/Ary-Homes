@@ -8,6 +8,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { auth } from "../../firebase/firebase";
 import { sendEmailVerification } from "firebase/auth";
+import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 
@@ -182,7 +183,8 @@ export default function Signup() {
         <br />
         <div className="logo">
           <Link to="/">
-            <h1>ARY HOMES SIGN UP</h1>
+            <img src={logo} alt="ary homes logo" />
+            <h1>SIGN UP</h1>
           </Link>
         </div>
         {error && <p className="alert error">{error}</p>}

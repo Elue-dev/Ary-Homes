@@ -15,6 +15,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 import { auth } from "../../firebase/firebase";
 import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
+import logo from "../../assets/logo.jpg";
 import "./header.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -59,6 +60,7 @@ export default function Header() {
     } else {
       setScrollpage(false);
     }
+
   };
   window.addEventListener("scroll", fixNavbar);
 
@@ -115,11 +117,16 @@ export default function Header() {
             className={
               scrollPage ? ` header__wrapper fixed` : "header__wrapper"
             }
+            style={{transition: scrollPage && 'all 1s ease'}}
           >
             <div className="header__contents">
               <div className="logo">
+                <Link to='/'>
+                <img src={logo} alt="ary homes logo" />
+                </Link>
+              
                 <Link to="/">
-                  <h2>AryHomes</h2>
+                  <h2><span>ary</span>homes</h2>
                 </Link>
               </div>
 

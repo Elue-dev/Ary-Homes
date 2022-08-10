@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { auth } from "../../firebase/firebase";
 import { sendEmailVerification } from "firebase/auth";
+import logo from "../../assets/logo.jpg";
 import { TiInfoOutline } from "react-icons/ti";
 
 export default function Verify() {
@@ -30,7 +31,8 @@ export default function Verify() {
   return (
     <div className="auth__modal">
       <div className="auth__contents verify__contents">
-        <p className='verification__message' style={{ marginBottom: "1rem" }}>
+          <img src={logo} alt="ary homes logo" />
+        <p className="verification__message" style={{ marginBottom: "1rem" }}>
           A verification link has been set to your email, when you have verified
           it, click on the <b>Done</b> button, then click on the <b>Proceed</b>{" "}
           button to continue.
@@ -49,7 +51,6 @@ export default function Verify() {
         </div>
         <hr />
         <div className="resend">
-          <p>Need verification link ?</p>
           <button onClick={verifyUser} className="verification__btn">
             Resend verification link
           </button>

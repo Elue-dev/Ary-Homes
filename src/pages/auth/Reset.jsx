@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Reset() {
@@ -66,6 +67,12 @@ export default function Reset() {
           &larr;
         </p>
         <br />
+        <div className="reset__logo">
+          <Link to="/">
+            <img src={logo} alt="ary homes logo" />
+          </Link>
+        </div>
+
         <h2>Reset your password</h2>
         <div className="reset__info">
           <p>

@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./auth.scss";
 import { useAuth } from "../../contexts/AuthContext";
+import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 
@@ -145,7 +146,8 @@ export default function Login() {
         <br />
         <div className="logo">
           <Link to="/">
-            <h1>ARY HOMES LOG IN</h1>
+            <img src={logo} alt="ary homes logo" />
+            <h1>LOG IN</h1>
           </Link>
         </div>
         {error && <p className="alert error">{error}</p>}
