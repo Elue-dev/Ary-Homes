@@ -21,11 +21,7 @@ import { useEffect } from "react";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import { database, storage } from "../../firebase/firebase";
 import { doc, setDoc, Timestamp } from "firebase/firestore";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import userFallback from "../../assets/user.png";
 import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
@@ -265,7 +261,9 @@ export default function Account() {
                 />
               ) : null}
               &nbsp;
-              <button className="pp__upload__btn">Save Image</button>
+              {imageUrl !== "" && (
+                <button className="pp__upload__btn">Set as profile picture</button>
+              )}
             </form>
           </div>
           <br />

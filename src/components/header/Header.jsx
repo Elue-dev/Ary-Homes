@@ -26,7 +26,6 @@ import {
 import { AdminOnlyLink } from "../admin_only/AdminOnlyRoute";
 import { useAuth } from "../../contexts/AuthContext";
 import { useCustomAlert } from "../../contexts/AlertContext";
-import PulseLoder from "react-spinners/PulseLoader";
 
 export default function Header() {
   const [scrollPage, setScrollpage] = useState(false);

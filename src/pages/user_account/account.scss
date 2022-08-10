@@ -20,6 +20,7 @@
           width: 60px;
           height: 60px;
           border-radius: 50%;
+          object-fit: cover;
         }
       }
       .click__to__change {
@@ -39,9 +40,9 @@
             border: 1px solid transparent;
             border-radius: 10px;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            padding: 0.3rem;
+            padding: 0 .4rem;
           }
         }
 
@@ -56,6 +57,7 @@
           background: $mainColor;
           color: #fff;
           font-weight: 700;
+          // width: 140px;
         }
         .user__img__wrapper {
           width: fit-content;
