@@ -16,58 +16,58 @@ import Reset from "./pages/auth/Reset";
 import Alert from "./components/alert/Alert";
 import { useCustomAlert } from "./contexts/AlertContext";
 import Account from "./pages/user_account/Account";
+import ScrollToTop from "./components/utilities/ScrollToTop";
 
 function App() {
   const { showAlert, alertMessage, alertType } = useCustomAlert();
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <Header />
-        {showAlert ? <Alert message={alertMessage} type={alertType} /> : null}
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/reset-password" element={<Reset />} />
-          <Route
-            path="/user/admin/*"
-            element={
-              <AdminOnlyRoute>
-                <Admin />
-              </AdminOnlyRoute>
-            }
-          />
-          <Route
-            path="/verify"
-            element={
-              <ProtectedRoute>
-                <Verify />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/user/account/:uid"
-            element={
-              <ProtectedRoute>
-                <Account />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/blog" element={<Blog />} />
-          <Route
-            path="/bookmarks"
-            element={
-              <ProtectedRoute>
-                <Bookmarks />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </div>
+      <ScrollToTop />
+      <Header />
+      {showAlert ? <Alert message={alertMessage} type={alertType} /> : null}
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/reset-password" element={<Reset />} />
+        <Route
+          path="/user/admin/*"
+          element={
+            <AdminOnlyRoute>
+              <Admin />
+            </AdminOnlyRoute>
+          }
+        />
+        <Route
+          path="/verify"
+          element={
+            <ProtectedRoute>
+              <Verify />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/account/:uid"
+          element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/blog" element={<Blog />} />
+        <Route
+          path="/bookmarks"
+          element={
+            <ProtectedRoute>
+              <Bookmarks />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
