@@ -1,0 +1,61 @@
+@import '../../../global_styles/global.scss';
+
+.users__admin {
+    @include container();
+    width: 95%;
+    min-height: 82vh;
+    padding: 3rem 0 0 1rem;
+    h2 {
+        text-align: center;
+    }
+  }
+  .table {
+    padding: 5px;
+    width: 100%;
+    overflow-x: auto;
+  
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 1rem;
+  
+      thead {
+        border-top: 2px solid $mainColor;
+        border-bottom: 2px solid $mainColor;
+      }
+  
+      th {
+        border: 1px solid #eee;
+      }
+  
+      th,
+      td {
+        vertical-align: top;
+        text-align: left;
+        padding: 8px;
+        &.icons {
+          > * {
+            margin-right: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+  
+      tr {
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+      .delievered {
+        color: orangered;
+        font-weight: 500;
+      }
+      .pending {
+        color: green;
+        font-weight: 500;
+      }
+    }
+  }

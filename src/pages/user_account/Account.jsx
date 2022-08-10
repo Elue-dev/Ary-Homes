@@ -10,7 +10,7 @@ import {
   STORE_USER_ID,
   STORE_USER_INFO,
 } from "../../redux/slice/authSlice";
-import { IoIosCreate } from "react-icons/io";
+import { IoIosClose, IoIosCreate } from "react-icons/io";
 import { RiUserShared2Line } from "react-icons/ri";
 import { GiBackwardTime } from "react-icons/gi";
 import { MdOutlinePersonPin, MdOutlineAlternateEmail } from "react-icons/md";
@@ -148,6 +148,7 @@ export default function Account() {
         firstName,
         lastName,
         phone,
+        joinedAt: user.joinedAt,
         email: email || user.email,
         editedAt: Timestamp.now().toDate(),
         createdAt: user.metadata.creationTime,
@@ -219,7 +220,7 @@ export default function Account() {
           <p
             className="click__to__change"
             onClick={() => setShowFields(true)}
-            style={{ display: showFields ? "none" : "block" }}
+            style={{ display: showFields ? "none" : "inline-block" }}
           >
             Change profile picture
           </p>
@@ -231,11 +232,17 @@ export default function Account() {
               {imageUrl !== "" ? (
                 <img src={imageUrl} alt="profile" className="uploaded__image" />
               ) : (
-                <img
-                  src={userFallback}
-                  alt="user"
-                  className="fallback__image"
-                />
+                <div className="flex__wrapper">
+                  <img
+                    src={userFallback}
+                    alt="user"
+                    className="fallback__image"
+                  />
+                  <IoIosClose
+                    onClick={() => setShowFields(false)}
+                    className="close__upload"
+                  />
+                </div>
               )}
             </div>
             {uploadProgress === 0 ? null : (
@@ -262,7 +269,9 @@ export default function Account() {
               ) : null}
               &nbsp;
               {imageUrl !== "" && (
-                <button className="pp__upload__btn">Set as profile picture</button>
+                <button className="pp__upload__btn">
+                  Set as profile picture
+                </button>
               )}
             </form>
           </div>

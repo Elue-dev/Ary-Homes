@@ -3,6 +3,7 @@
 .user__account__info {
   min-height: 100vh;
   padding: 2rem 0 5rem 0;
+  animation: slide-up 0.5s ease;
   @include flexBox(center, flex-start, column);
   .user__account__info__contents {
     .account__info__desc {
@@ -26,9 +27,12 @@
       .click__to__change {
         text-decoration: underline;
         cursor: pointer;
+        padding-bottom: 1rem;
+        animation: slide-left 0.5s ease;
       }
       .user__img__details {
         display: none;
+        animation: slide-right 0.5s ease;
         .progress {
           background-color: #aaa;
           border: 1px solid transparent;
@@ -42,7 +46,7 @@
             color: #fff;
             font-size: 0.8rem;
             font-weight: 500;
-            padding: 0 .4rem;
+            padding: 0 0.4rem;
           }
         }
 
@@ -57,7 +61,7 @@
           background: $mainColor;
           color: #fff;
           font-weight: 700;
-          // width: 140px;
+          animation: slide-right 0.5s ease;
         }
         .user__img__wrapper {
           width: fit-content;
@@ -70,8 +74,15 @@
             border-radius: 0.3rem;
             object-fit: cover;
           }
-          .fallback__image {
-            height: 100px;
+          .flex__wrapper {
+            @include flexBox(space-between, flex-start, row);
+            .fallback__image {
+              height: 100px;
+            }
+            .close__upload {
+              font-size: 2rem;
+              cursor: pointer;
+            }
           }
         }
       }
@@ -181,7 +192,7 @@
     .user__img__details
     .pp__upload__input {
     width: 90%;
-    margin-bottom: .3rem;
+    margin-bottom: 0.3rem;
   }
 }
 
@@ -194,5 +205,4 @@
     font-size: 0.72rem;
     width: initial;
   }
-
 }
