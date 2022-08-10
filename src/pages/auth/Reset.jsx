@@ -62,8 +62,11 @@ export default function Reset() {
   return (
     <section className="auth__modal">
       <div className="auth__contents reset__contents">
+        <p className="close__icon" onClick={() => navigate(-1)}>
+          &larr;
+        </p>
+        <br />
         <h2>Reset your password</h2>
-
         <div className="reset__info">
           <p>
             If the email goes to your spam folder, click on{" "}

@@ -11,6 +11,7 @@ import {
   STORE_USER_INFO,
 } from "../../redux/slice/authSlice";
 import { IoIosCreate } from "react-icons/io";
+import { RiUserShared2Line } from "react-icons/ri";
 import { GiBackwardTime } from "react-icons/gi";
 import { MdOutlinePersonPin, MdOutlineAlternateEmail } from "react-icons/md";
 import { HiPhoneIncoming } from "react-icons/hi";
@@ -153,7 +154,7 @@ export default function Account() {
     <section className="user__account__info">
       <div className="user__account__info__contents">
         <div className="account__info__desc">
-          <h2>{userName}</h2>
+          <h2><RiUserShared2Line />{userName}</h2>
           <h3>Account information</h3>
           <p>
             <IoIosCreate />

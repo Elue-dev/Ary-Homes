@@ -122,7 +122,7 @@ export default function AddProperty() {
       setLoading(false);
       setProperty({ ...initialState });
       setImgUploadProgress(0);
-      navigate("/admin/all-propertys");
+      navigate("/admin/home");
     } catch (error) {
       setLoading(false);
     }
