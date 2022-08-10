@@ -79,6 +79,7 @@
   }
   .user__account__info .user__account__info__contents {
     width: 100%;
+    padding: 1.3rem 1rem;
   }
   .user__account__info .user__account__info__contents .account__info__desc h2 {
     font-size: 1.4rem;
@@ -93,7 +94,7 @@
     .account__info__desc
     span {
     font-size: 0.9rem;
-    width: max-content;
+    width: initial;
   }
   .user__account__info
     .user__account__info__contents
@@ -108,5 +109,16 @@
     grid-template-columns: 1fr;
     gap: 1rem;
     padding-top: 0rem;
+  }
+}
+
+@include mQ(350px) {
+  .user__account__info .user__account__info__contents .account__info__desc p,
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    span {
+    font-size: 0.72rem;
+    width: initial;
   }
 }

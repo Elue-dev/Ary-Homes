@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +8,12 @@ import {
   STORE_PROPERTIES,
 } from "../../redux/slice/propertySlice";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { MdFeaturedPlayList } from "react-icons/md";
+import { BsExclude } from "react-icons/bs";
 import { BsCamera } from "react-icons/bs";
 import "./properties.scss";
 import { useCustomAlert } from "../../contexts/AlertContext";
-import Recommended from "./Recommended";
 
-export default function Properties() {
+export default function Recommended() {
   const [like, setLike] = useState(false);
   const { data, loading } = useFetchCollection("properties");
   const properties = useSelector(selectProperties);
@@ -29,15 +29,13 @@ export default function Properties() {
   }, [dispatch, data]);
 
   return (
-    <>
     <section className="properties">
-      <h2>
-        <MdFeaturedPlayList />
-        Featured Properties
+      <h2 style={{ marginBottom: ".5rem" }}>
+        <BsExclude />
+        Exclusive homes for you
       </h2>
-      <Link to="/">View all properties</Link>
-      <div className="properties__contents">
-        {properties.slice(0, 4)?.map((property) => {
+      <div className="properties__contents exclusive__contents">
+        {properties.slice(5, 9)?.map((property) => {
           const {
             id,
             name,
@@ -50,7 +48,7 @@ export default function Properties() {
           } = property;
           return (
             <div key={id} className="properties__details">
-              <div className="properties__details__image">
+              <div className="properties__details__image exclusive">
                 <img src={imagesUrl[0]} alt={name} />
                 <p
                   className="property__availability"
@@ -73,12 +71,8 @@ export default function Properties() {
                 </div>
               </div>
               <div className="properties__details__texts">
-                <p className="property__name">
+                <p className="property__name exclusive">
                   <span>{name}</span>
-                  <span>
-                    <BsCamera />
-                    <span style={{fontWeight: '500', fontSize: '.8rem'}}>{imagesUrl.length}</span>
-                  </span>
                 </p>
 
                 <p className="property__id">{addedAt}</p>
@@ -97,7 +91,5 @@ export default function Properties() {
         })}
       </div>
     </section>
-     <Recommended />
-     </>
   );
 }

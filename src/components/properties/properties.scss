@@ -55,7 +55,7 @@
           color: #000;
           @include flexBox(space-between, center, row);
           :last-child {
-            font-size: 1.2rem
+            font-size: 1.2rem;
           }
         }
         .property__price {
@@ -86,7 +86,16 @@
   .properties .properties__contents {
     grid-template-columns: 1fr;
     row-gap: 1.4rem;
+  }
+  .properties .exclusive__contents {
     margin-bottom: 5rem;
+  }
+  .properties .exclusive__contents {
+    display: flex;
+    overflow-x: auto;
+  }
+  .properties .exclusive__contents::-webkit-scrollbar {
+    display: none;
   }
   .properties
     .properties__contents
@@ -94,6 +103,10 @@
     .properties__details__image
     img {
     height: 200px;
+  }
+  .properties .exclusive__contents .properties__details .exclusive {
+    position: relative;
+    width: 295px;
   }
 }
 
@@ -104,5 +117,12 @@
   }
   .properties a {
     font-size: 0.9rem;
+  }
+}
+
+@include mQ(350px) {
+  .properties .exclusive__contents .properties__details .exclusive {
+    position: relative;
+    width: 215px;
   }
 }
