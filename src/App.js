@@ -15,6 +15,7 @@ import Admin from "./pages/admin/Admin";
 import Reset from "./pages/auth/Reset";
 import Alert from "./components/alert/Alert";
 import { useCustomAlert } from "./contexts/AlertContext";
+import Account from "./pages/user_account/Account";
 
 function App() {
   const { showAlert, alertMessage, alertType } = useCustomAlert();
@@ -42,6 +43,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Verify />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/account/:uid"
+            element={
+              <ProtectedRoute>
+                <Account />
               </ProtectedRoute>
             }
           />

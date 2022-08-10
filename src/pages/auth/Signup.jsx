@@ -14,14 +14,11 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const passwordRef = useRef();
-  // const [number, setNumber] = useState("");
-  // const [otp, setOtp] = useState("");
-  // const [flag, setFlag] = useState(false);
-  // const [confirmObj, setConfirmObj] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -37,7 +34,7 @@ export default function Signup() {
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      // then...
+      // fill later
     });
   };
 
@@ -104,6 +101,7 @@ export default function Signup() {
       assignedID: uuidv4(),
       firstName,
       lastName,
+      phone,
       email: email,
       joinedAt: date,
       createdAt: Timestamp.now().toDate(),
@@ -154,30 +152,6 @@ export default function Signup() {
       passwordRef.current.setAttribute("type", "password");
     }
   };
-  // const phoneSignUp = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await setUpRecaptcha(number);
-  //     console.log(response);
-  //     setConfirmObj(response);
-  //     setFlag(true);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
-
-  // const verifyOTP = async (e) => {
-  //   e.preventDefault();
-  //   console.log(otp);
-  //   if (otp === "" || otp === null) return;
-  //   try {
-  //     await confirmObj.confirm(otp)
-  //     navigate('/')
-  //   } catch (err) {
-  //     console.log(err.message)
-  //   }
-  // };
 
   const handleFacebookSignIn = async () => {
     try {
@@ -229,6 +203,15 @@ export default function Signup() {
                 placeholder="Last name"
               />
             </div>
+          </label>
+          <label>
+            <span>Phone Number:</span>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Enter your phone number"
+            />
           </label>
           <label>
             <span>Email Address:</span>
@@ -283,41 +266,6 @@ export default function Signup() {
             <FcGoogle />
             Continue with google
           </button>
-        </div>
-        <div className="facebook">
-          {/* <button className=" btn facebook__btn">
-            <BsFacebook />
-            Continue with Phone
-          </button> */}
-          {/* <form
-            onSubmit={phoneSignUp}
-            style={{ display: !flag ? "block" : "none" }}
-          >
-            <div id="recaptcha-container" />
-            <input
-              type="text"
-              required
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-            <button>Cancel</button>
-            <button type="submit">Send OTP</button>
-            Firebase: Error (auth/argument-error).
-          </form> */}
-
-          {/* <form
-            onSubmit={verifyOTP}
-            style={{ display: flag ? "block" : "none" }}
-          >
-            <input
-              type="text"
-              required
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-            />
-            <button>Cancel</button>
-            <button type="submit">Verify OTP</button>
-          </form> */}
         </div>
         <hr />
         <div className="new__user">

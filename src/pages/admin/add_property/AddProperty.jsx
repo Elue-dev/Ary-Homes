@@ -60,6 +60,10 @@ export default function AddProperty() {
   };
 
   const handleUpload = () => {
+    if (images.length === 0) {
+      setError("You cannot leave this blank");
+      return;
+    }
     if (images.length === 1) {
       setError("Images must be more than 1, please add more.");
       return;
@@ -96,7 +100,7 @@ export default function AddProperty() {
     try {
       const collectionRef = collection(database, "properties");
       addDoc(collectionRef, {
-        id: uuidv4().substring(0,7),
+        reference_id: uuidv4().substring(0, 7),
         name: property.name,
         imagesUrl,
         features,
@@ -169,6 +173,7 @@ export default function AddProperty() {
               ) : (
                 <button
                   onClick={handleUpload}
+                  type="button"
                   style={{ width: "50%", fontSize: ".8rem" }}
                   className="upload__btn"
                 >
@@ -233,7 +238,6 @@ export default function AddProperty() {
               ref={featuresInput}
               onChange={(e) => setNewFeature(e.target.value)}
               placeholder="ENTER ONE, THEN ADD, e.g: 24hrs Electricity"
-              required
             />
             <button onClick={handleAdd} className="features__btn">
               Add

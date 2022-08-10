@@ -5,6 +5,8 @@ import {
   IoBookmarksOutline,
   IoInformationCircleOutline,
 } from "react-icons/io5";
+import { BsBookmarkStar } from "react-icons/bs";
+import { MdOutlineManageAccounts } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { CgMenuGridO } from "react-icons/cg";
@@ -52,7 +54,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 250) {
       setScrollpage(true);
     } else {
       setScrollpage(false);
@@ -88,7 +90,6 @@ export default function Header() {
 
   const sendVerificationEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      alert("verification sent");
       navigate("/verify");
     });
   };
@@ -185,13 +186,20 @@ export default function Header() {
                     )}
                     {user && (
                       <>
-                        {user.emailVerified || user.phoneNumber ? (
+                        {user.emailVerified ? (
                           <div className="logged__in">
-                            <p>Hi, {modifiedUserName || user.phoneNumber}!</p>
-                            <Link to="/bookmarks">
+                            <p>Hi, {modifiedUserName}!</p>
+                            {/* <Link to="/bookmarks">
                               <li>
                                 <IoBookmarksOutline />
+                                <BsBookmarkStar />
                                 Bookmarks
+                              </li>
+                            </Link> */}
+                            <Link to={`/user/account/${user.uid}`}>
+                              <li>
+                                <MdOutlineManageAccounts />
+                                My Account
                               </li>
                             </Link>
 
@@ -204,7 +212,9 @@ export default function Header() {
                           </div>
                         ) : (
                           <p style={{ display: "block", lineHeight: 1.2 }}>
-                            Seems you have yet to verifiy your email
+                            Seems you have yet to verifiy your email, either you
+                            changed your email or you failed to do this when
+                            signing up
                             <br />
                             <button
                               onClick={sendVerificationEmail}

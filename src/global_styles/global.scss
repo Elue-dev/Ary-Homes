@@ -11,6 +11,12 @@
   flex-direction: $direction;
 }
 
+@mixin grid($tempCol, $gap) {
+  display: grid;
+  grid-template-columns: $tempCol;
+  gap: $gap;
+}
+
 @mixin button {
   font-size: 1rem;
   font-weight: 400;
@@ -22,7 +28,7 @@
   transition: all 0.3s;
   font-family: "Mukta", sans-serif;
   @include mQ(500px) {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 

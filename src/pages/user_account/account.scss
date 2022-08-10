@@ -1,0 +1,106 @@
+@import "../../global_styles//global.scss";
+
+.user__account__info {
+  min-height: 100vh;
+  padding-bottom: 5rem;
+  @include flexBox(center, flex-start, column);
+  .user__account__info__contents {
+    .account__info__desc {
+      line-height: 2;
+      margin-bottom: 1rem;
+      h2 {
+        color: $mainColor;
+      }
+      h3 {
+        text-decoration: underline;
+      }
+      p {
+        @include flexBox(flex-start, center, row);
+        gap: 0.3rem;
+        :first-child {
+          color: $mainColor;
+          font-size: 1.3rem;
+        }
+      }
+    }
+    @include container();
+    background: #f8f9fa;
+    padding: 3rem;
+    form {
+      h3 {
+        text-decoration: underline;
+        padding: 2rem 0 1rem 0;
+      }
+      .form__inputs {
+        @include grid(repeat(2, 1fr), 1rem);
+
+        label {
+          span {
+            @include flexBox(flex-start, center, row);
+            width: max-content;
+            margin-bottom: 0.3rem;
+            gap: 0.4rem;
+            font-weight: 600;
+            :first-child {
+              font-size: 1.3rem;
+              color: rgb(174, 174, 174);
+            }
+          }
+          input {
+            padding: 0.7rem;
+            width: 100%;
+            border-radius: 0.3rem;
+            outline: 0;
+            border: 1px solid #999;
+          }
+        }
+      }
+      .user__profile__btn {
+        @include button();
+        background: $mainColor;
+        color: #fff;
+        width: 100%;
+        border-radius: 0.3rem;
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@include mQ(600px) {
+  .user__account__info {
+    background: #f8f9fa;
+  }
+  .user__account__info .user__account__info__contents {
+    width: 100%;
+  }
+  .user__account__info .user__account__info__contents .account__info__desc h2 {
+    font-size: 1.2rem;
+  }
+  .user__account__info .user__account__info__contents .account__info__desc h3 {
+    text-decoration: underline;
+    font-size: 1.08rem;
+  }
+  .user__account__info .user__account__info__contents .account__info__desc p,
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    span {
+    font-size: 0.9rem;
+    width: max-content;
+  }
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    p
+    :first-child {
+    color: #ae8625;
+    font-size: 1rem;
+  }
+  .user__account__info .user__account__info__contents form .form__inputs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 0rem;
+  }
+}
