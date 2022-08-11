@@ -12,12 +12,12 @@
   }
   a {
     color: #666;
-    display: inline-block;
-    margin-bottom: 1rem;
+    display: inline;
     text-decoration: underline;
   }
   .properties__contents {
     @include grid(repeat(4, 1fr), 0.5rem);
+    margin-top: 1rem;
     .properties__details {
       .properties__details__image {
         position: relative;

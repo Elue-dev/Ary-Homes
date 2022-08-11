@@ -15,7 +15,8 @@ export default function Footer() {
       location.pathname === "/login" ||
       location.pathname === "/signup" ||
       location.pathname === "/verify" ||
-      location.pathname === "/reset-password"
+      location.pathname === "/reset-password" ||
+      location.pathname.includes("property")
     ) {
       setShowFooter(false);
     } else {

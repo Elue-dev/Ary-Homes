@@ -17,6 +17,7 @@ import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../utilities/GoBack";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -24,10 +25,11 @@ export default function PropertyDetail() {
   const [property, setProperty] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideLength = property && property.imagesUrl.length;
-  const refID = id.substring(0, 6);
   const { formatCurrency } = useCustomAlert();
   const form = useRef();
   const [message, setMessage] = useState("");
+  const [copied, setCopied] = useState(false);
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   // slide length = 1 2 3...
   // currentSlide = 0 1 2 3...
 
@@ -51,6 +53,19 @@ export default function PropertyDetail() {
     setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
   };
 
+  useEffect(() => {
+    if (copied) {
+      setShowAlert(true);
+      setAlertMessage(`Reference ID copied to clipboard`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+    }
+  }, [copied]);
+
   if (!property) {
     return <Loader />;
   }
@@ -61,7 +76,7 @@ export default function PropertyDetail() {
 
   return (
     <section className="property__details">
-        <GoBack />
+      <GoBack />
       <p className="details__links">
         <Link to="/">Home</Link>
         <BiChevronsRight /> <span>{property?.name}</span>
@@ -83,6 +98,9 @@ export default function PropertyDetail() {
               <AiFillTags />
               <b>Ref. ID:</b> {id}
             </span>
+            <CopyToClipboard text={id} onCopy={() => setCopied(true)}>
+              <button className="copy__btn">Copy Ref ID to clipboard</button>
+            </CopyToClipboard>
             <p>
               <AiOutlineCalendar />
               <b>Date Added:</b> {property.addedAt}

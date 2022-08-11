@@ -29,7 +29,8 @@
       @include flexBox(space-between, center, row);
       .card__name {
         h2 {
-          font-weight: 600;
+          font-weight: 700;
+          color: $mainColor
         }
       }
       .property__location {
@@ -53,6 +54,15 @@
           color: $mainColor;
           font-size: 1.4rem;
         }
+      }
+      .copy__btn {
+        @include button();
+        background: #222;
+        color: #fff;
+        border-radius: 0.2rem;
+        padding: 0.1rem 0.2rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
       }
     }
     .property__details__images {
@@ -171,10 +181,9 @@
   .property__details__contents .left__contents .left__contents__card {
     flex-direction: column;
     display: block;
-    line-height: 1.9;
+    line-height: 2;
+    font-size: 0.9rem;
   }
-}
-@include mQ(600px) {
   .property__details .details__links {
     font-size: 0.9rem;
   }
@@ -185,8 +194,13 @@
     .left__contents
     .left__contents__card
     .card__name
-    h2 {
-    font-size: 1.1rem;
+    h2,
+  .property__details__contents
+    .left__contents
+    .left__contents__card
+    .card__name
+    h3 {
+    font-size: 1rem;
   }
   .property__details__contents
     .left__contents
@@ -197,6 +211,7 @@
   .property__details__contents .left__contents .property__details__images {
     display: flex;
     overflow-x: auto;
+    margin-top: 2rem;
   }
   .property__details__contents .left__contents .property__details__images img {
     width: 290px;
@@ -213,11 +228,16 @@
   .property__details__contents .left__contents .property__description h2 {
     font-size: 1.25rem;
   }
+  .property__details__contents .right__contents form {
+    font-size: 1.4rem;
+  }
   .property__details__contents .right__contents form p {
     font-size: 0.8rem;
   }
+  .property__details__contents .right__contents {
+    height: auto;
+  }
 }
-
 //  ==================
 .images__wrapper {
   width: 100%;
