@@ -21,18 +21,16 @@
       }
       .similar__list {
         @include grid(repeat(2, 1fr), 0.4rem);
+       
       }
       ul {
+        
         li {
           list-style: none;
           font-size: 0.9rem;
           font-weight: 600;
           @include flexBox(flex-start, center, row);
           gap: 0.4rem;
-          :first-child {
-            color: #000;
-            font-size: 1.2rem;
-          }
         }
       }
       .similar__price {
@@ -57,6 +55,7 @@
     .similar__properties__details
     .similar__list {
     grid-template-columns: 1fr;
+    line-height: 2.2;
   }
   .similar__properties
     .similar__properties__contents

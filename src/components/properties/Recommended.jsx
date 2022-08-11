@@ -64,11 +64,11 @@ export default function Recommended() {
                     {availability}
                   </p>
                   <div>
-                    {like ? (
+                    {/* {like ? (
                       <FaHeart className="like__property" color="crimson" />
                     ) : (
                       <FaRegHeart className="like__property" />
-                    )}
+                    )} */}
                   </div>
                 </div>
                 <div className="properties__details__texts">
