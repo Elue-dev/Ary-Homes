@@ -18,6 +18,7 @@ import { useCustomAlert } from "./contexts/AlertContext";
 import Account from "./pages/user_account/Account";
 import ScrollToTop from "./components/utilities/ScrollToTop";
 import PropertyDetail from "./components/property_detail/PropertyDetail";
+import Error404 from "./pages/404/Error404";
 
 function App() {
   const { showAlert, alertMessage, alertType } = useCustomAlert();
@@ -68,6 +69,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </BrowserRouter>

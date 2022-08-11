@@ -18,6 +18,7 @@ import Loader from "../utilities/Loader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../utilities/GoBack";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import SimilarProducts from "./SimilarProducts";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -94,18 +95,7 @@ export default function PropertyDetail() {
             <h3>NGN {formatCurrency(property.price)}/night</h3>
           </div>
           <div className="other__details">
-            <span>
-              <AiFillTags />
-              <b>Ref. ID:</b> {id}
-            </span>
-            <CopyToClipboard text={id} onCopy={() => setCopied(true)}>
-              <button className="copy__btn">Copy Ref ID to clipboard</button>
-            </CopyToClipboard>
-            <p>
-              <AiOutlineCalendar />
-              <b>Date Added:</b> {property.addedAt}
-            </p>
-            <p>
+            <p className="availability__texts">
               <MdBookmarkAdd />
               <b>Availabiity status:</b>
               <span
@@ -114,9 +104,25 @@ export default function PropertyDetail() {
                     property.availability === "Available" ? "green" : "crimson",
                 }}
               >
-                {property.availability}
+                {property.availability}{" "}
+                {property.availability === "Not Available" && "(currently)"}
+                {/* {property.availability === "Not Available" &&
+                <span style={{color:'#333', fontSize:'1rem'}}>(check back later)</span>} */}
               </span>
             </p>
+            <p>
+              <AiOutlineCalendar />
+              <b>Date Added:</b> {property.addedAt}
+            </p>
+            <span>
+              <AiFillTags />
+              <b>Ref. ID:</b> {id}
+            </span>
+            <CopyToClipboard text={id} onCopy={() => setCopied(true)}>
+              <button className="copy__btn">
+                Copy Reference ID to clipboard
+              </button>
+            </CopyToClipboard>
           </div>
           <div className="property__details__images">
             {property.imagesUrl.slice(0, 6)?.map((image, index) => (
@@ -147,52 +153,55 @@ export default function PropertyDetail() {
           </div>
         </div>
         <div className="right__contents">
-          <h3>Need to reach out?</h3>
-          <form ref={form}>
-            <label>
-              <FaUser />
-              <input
-                type="text"
-                name="user_name"
-                placeholder="Full Name"
-                required
-              />
-            </label>
-            <label>
-              <MdOutlineAlternateEmail />
-              <input
-                type="email"
-                name="user_email"
-                placeholder="Your email"
-                required
-              />
-            </label>
-            <label>
-              <MdOutlineSubject />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                required
-              />
-            </label>
-            <label>
-              <textarea
-                name="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                cols=""
-                rows="3"
-              ></textarea>
-            </label>
-            <button type="submit" className="property__message__btn">
-              Send Message
-            </button>
-          </form>
-          <p>
-            By proceeding, you consent to receive texts at the email you
-            provided. We promise not to spam you.
-          </p>
+          <div>
+            <h3>Need to reach out?</h3>
+            <form ref={form}>
+              <label>
+                <FaUser />
+                <input
+                  type="text"
+                  name="user_name"
+                  placeholder="Full Name"
+                  required
+                />
+              </label>
+              <label>
+                <MdOutlineAlternateEmail />
+                <input
+                  type="email"
+                  name="user_email"
+                  placeholder="Your email"
+                  required
+                />
+              </label>
+              <label>
+                <MdOutlineSubject />
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  required
+                />
+              </label>
+              <label>
+                <textarea
+                  name="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  cols=""
+                  rows="3"
+                ></textarea>
+              </label>
+              <button type="submit" className="property__message__btn">
+                Send Message
+              </button>
+            </form>
+            <p>
+              By proceeding, you consent to receive texts at the email you
+              provided. We promise not to spam you.
+            </p>
+          </div>
+          <SimilarProducts />
         </div>
       </div>
     </section>

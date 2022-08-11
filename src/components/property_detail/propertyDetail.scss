@@ -20,8 +20,10 @@
 .property__details__contents {
   @include container();
   display: flex;
+  gap: .5rem;
   .left__contents {
     width: 70%;
+    animation: slide-right .5s ease;
     .left__contents__card {
       box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
       padding: 1rem;
@@ -70,6 +72,7 @@
       grid-template-columns: repeat(3, 1fr);
       padding-top: 1rem;
       column-gap: 0.5rem;
+      margin-top: 2rem;
       img {
         width: 100%;
         height: 280px;
@@ -113,11 +116,12 @@
   }
   .right__contents {
     width: 35%;
+    animation: slide-left .5s ease;
     height: -webkit-fill-available;
     background: rgb(240, 240, 240);
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.6rem;
+    border-bottom-right-radius: 0.3rem;
     h3 {
       text-align: center;
       margin-bottom: 0.7rem;
@@ -236,6 +240,10 @@
   }
   .property__details__contents .right__contents {
     height: auto;
+    border-radius: .3rem;
+  }
+  .property__details__contents .left__contents .other__details .availability__texts {
+    font-size: .93rem;
   }
 }
 //  ==================

@@ -1,0 +1,66 @@
+@import "../../global_styles/global.scss";
+
+.similar__properties {
+  margin-top: 1rem;
+  .similar__properties__contents {
+    h3 {
+      padding-top: 1.1rem;
+      border-top: 1px solid rgb(169, 169, 169);
+    }
+    .similar__properties__details {
+      padding: 0.3rem 1.3rem;
+      max-width: 400px;
+      img {
+        width: 100%;
+      }
+      h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+      .similar__list {
+        @include grid(repeat(2, 1fr), 0.4rem);
+      }
+      ul {
+        li {
+          list-style: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          @include flexBox(flex-start, center, row);
+          gap: 0.4rem;
+          :first-child {
+            color: #000;
+            font-size: 1.2rem;
+          }
+        }
+      }
+      .similar__price {
+        font-weight: 700;
+        font-size: 1rem;
+        color: $mainColor;
+        border-bottom: 1px solid rgb(169, 169, 169);
+      }
+    }
+  }
+}
+
+@include mQ(600px) {
+  .similar__properties
+    .similar__properties__contents
+    .similar__properties__details
+    h2 {
+    font-size: 0.9rem;
+  }
+  .similar__properties
+    .similar__properties__contents
+    .similar__properties__details
+    .similar__list {
+    grid-template-columns: 1fr;
+  }
+  .similar__properties
+    .similar__properties__contents
+    .similar__properties__details
+    ul
+    li {
+    font-size: 0.7rem;
+  }
+}
