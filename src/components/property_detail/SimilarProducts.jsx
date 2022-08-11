@@ -33,7 +33,7 @@ export default function SimilarProducts() {
             <Link to={`/property/${id}`}>
               <div key={id} className="similar__properties__details">
                 <div className="similar__images">
-                  <img src={imagesUrl[1]} alt={name} />
+                  <img src={imagesUrl[0]} alt={name} />
                 </div>
                 <h2>{name}</h2>
                 <p className="similar__list">

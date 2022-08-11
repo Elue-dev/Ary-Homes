@@ -12,6 +12,8 @@
       max-width: 400px;
       img {
         width: 100%;
+        object-fit: cover;
+        border-radius: .3rem;
       }
       h2 {
         font-size: 1.15rem;
@@ -48,7 +50,7 @@
     .similar__properties__contents
     .similar__properties__details
     h2 {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .similar__properties
     .similar__properties__contents
@@ -61,6 +63,23 @@
     .similar__properties__details
     ul
     li {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+  }
+  .similar__properties
+    .similar__properties__contents
+    .similar__properties__details
+    .similar__price {
+    font-size: 1.1rem;
+  }
+  .similar__properties
+    .similar__properties__contents
+    .similar__properties__details {
+    padding: 0.3rem 0rem;
+  }
+  .similar__properties
+    .similar__properties__contents
+    .similar__properties__details
+    img {
+    height: 250px;
   }
 }
