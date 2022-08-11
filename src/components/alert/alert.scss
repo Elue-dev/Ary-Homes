@@ -6,6 +6,7 @@
   text-align: center;
   font-size: 1.3rem;
   transition: all 0.5s ease;
+  animation: slide-right .5s ease;
   p {
     @include flexBox(center, center, row);
     gap: 0.5rem;

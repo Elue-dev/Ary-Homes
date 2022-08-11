@@ -24,14 +24,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
-  const {
-    user,
-    updateName,
-    signup,
-    googleSignIn,
-    facebookSignIn,
-    setUpRecaptcha,
-  } = useAuth();
+  const { updateName, signup, googleSignIn } = useAuth();
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -151,26 +144,6 @@ export default function Signup() {
       passwordRef.current.setAttribute("type", "text");
     } else {
       passwordRef.current.setAttribute("type", "password");
-    }
-  };
-
-  const handleFacebookSignIn = async () => {
-    try {
-      await facebookSignIn();
-      navigate("/");
-    } catch (err) {
-      if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
-        setError("Facebook sign in failed. (You exited the facebook sign in)");
-        window.setTimeout(() => {
-          setError("");
-        }, 3500);
-      }
-      if (err.message === "Firebase: Error (auth/network-request-failed).") {
-        setError("Facebook sign in failed.c");
-        window.setTimeout(() => {
-          setError("");
-        }, 3500);
-      }
     }
   };
 

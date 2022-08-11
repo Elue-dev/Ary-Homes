@@ -48,44 +48,46 @@ export default function Recommended() {
           } = property;
           return (
             <div key={id} className="properties__details">
-              <div className="properties__details__image exclusive">
-                <img src={imagesUrl[0]} alt={name} />
-                <p
-                  className="property__availability"
-                  style={{
-                    background:
-                      availability === "Available"
-                        ? "rgba(136, 229, 29, 0.575)"
-                        : "rgba(243, 90, 52, 0.411)",
-                  }}
-                >
-                  {" "}
-                  {availability}
-                </p>
-                <div>
-                  {like ? (
-                    <FaHeart className="like__property" color="crimson" />
-                  ) : (
-                    <FaRegHeart className="like__property" />
-                  )}
+              <Link to={`/property/${id}`} style={{textDecoration: 'none'}}>
+                <div className="properties__details__image exclusive">
+                  <img src={imagesUrl[0]} alt={name} />
+                  <p
+                    className="property__availability"
+                    style={{
+                      background:
+                        availability === "Available"
+                          ? "rgba(136, 229, 29, 0.575)"
+                          : "rgba(243, 90, 52, 0.411)",
+                    }}
+                  >
+                    {" "}
+                    {availability}
+                  </p>
+                  <div>
+                    {like ? (
+                      <FaHeart className="like__property" color="crimson" />
+                    ) : (
+                      <FaRegHeart className="like__property" />
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="properties__details__texts">
-                <p className="property__name exclusive">
-                  <span>{name}</span>
-                </p>
+                <div className="properties__details__texts">
+                  <p className="property__name exclusive">
+                    <span>{name}</span>
+                  </p>
 
-                <p className="property__id">{addedAt}</p>
-                <p className="property__location">{location}</p>
-                <p className="property__price">
-                  <span>NGN{formatCurrency(price)}</span>/night
-                </p>
-                <p>
-                  {features.map((feature, index) => {
-                    <li key={index}>{feature}</li>;
-                  })}
-                </p>
-              </div>
+                  <p className="property__id">{addedAt}</p>
+                  <p className="property__location">{location}</p>
+                  <p className="property__price">
+                    <span>NGN{formatCurrency(price)}</span>/night
+                  </p>
+                  <p>
+                    {features.map((feature, index) => {
+                      <li key={index}>{feature}</li>;
+                    })}
+                  </p>
+                </div>
+              </Link>
             </div>
           );
         })}

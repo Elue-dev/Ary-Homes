@@ -1,17 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mukta:wght@200;300;400;500;600;700&family=Poppins:wght@200;300;400;500;600;700&family=Rubik+Moonrocks&display=swap");
 /* @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap"); */
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Nunito&family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
-  font-family: "Mukta", sans-serif;
+  /* font-family: "Mukta", sans-serif; */
+  font-family: 'Figtree', sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #444;
+  color: #222;
+  line-height: 1.5;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -20,12 +26,6 @@ code {
 a {
   color: #333;
   text-decoration: none;
-}
-form {
-
-}
-input {
-  
 }
 @media (max-width: 500px) {
   input {

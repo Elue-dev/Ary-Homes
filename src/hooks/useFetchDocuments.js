@@ -1,10 +1,11 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useCustomAlert } from "../contexts/AlertContext";
 import { database } from "../firebase/firebase";
 
 export default function useFetchDocuments(collectionName, documentID) {
   const [document, setDocument] = useState(null);
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
   useEffect(() => {
     const getDocument = async () => {
@@ -15,10 +16,14 @@ export default function useFetchDocuments(collectionName, documentID) {
         const obj = { id: documentID, ...docSnap.data() };
         setDocument(obj);
       } else {
-        toast.error("Document not found", {
-          autoClose: 5000,
-          pauseOnFocusLoss: false,
-        });
+        setShowAlert(true);
+        setAlertMessage(`Document not found`);
+        setAlertType("error");
+        window.setTimeout(() => {
+          setShowAlert(false);
+          setAlertMessage(null);
+          setAlertType(null);
+        }, 6000);
       }
     };
     getDocument();

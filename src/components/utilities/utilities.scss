@@ -1,0 +1,35 @@
+@import '../../global_styles/global.scss';
+
+.loader {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    z-index: 1;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      z-index: -1;
+    }
+    .loader__icon {
+      font-size: 1rem;
+    }
+  }
+
+  .go__back {
+    @include container();
+    p {
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+  }
+  

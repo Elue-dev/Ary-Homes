@@ -2,14 +2,14 @@ import { useRef } from "react";
 import { useState } from "react";
 import { GrFormAdd } from "react-icons/gr";
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { IoInformationCircleOutline } from "react-icons/io5";
+import { IoInformationCircleOutline, IoOptionsOutline } from "react-icons/io5";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "./addProperty.scss";
 import { database, storage } from "../../../firebase/firebase";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
+import Select from "react-select";
 import { useCustomAlert } from "../../../contexts/AlertContext";
 
 const initialState = {
@@ -21,19 +21,26 @@ const initialState = {
   description: "",
 };
 
+const status = [
+  { value: "Available", label: "Available" },
+  { value: "Not Available", label: "Not Available" },
+];
+
 export default function AddProperty() {
   const [property, setProperty] = useState(initialState);
+  const [option, setOption] = useState("");
   const [newFeature, setNewFeature] = useState("");
   const [features, setFeatures] = useState([]);
   const featuresInput = useRef(null);
   const [imgUploadProgress, setImgUploadProgress] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [images, setImages] = useState([]);
   const [imagesUrl, setImagesUrl] = useState([]);
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
+  console.log(option.label);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +69,7 @@ export default function AddProperty() {
   const handleUpload = () => {
     if (images.length === 0) {
       setError("You cannot leave this blank");
+      window.setTimeout(() => setError(""), 6000);
       return;
     }
     if (images.length === 1) {
@@ -95,18 +103,35 @@ export default function AddProperty() {
   const addPropertyToDatabase = (e) => {
     e.preventDefault();
 
+    if (features.length <= 4) {
+      setError("please add at least 5 features of this property");
+      window.setTimeout(() => setError(""), 6000);
+      return;
+    }
+
+    if (imagesUrl.length === 0) {
+      setError("please add images");
+      window.setTimeout(() => setError(""), 6000);
+      return;
+    }
+
+    if (!option) {
+      setError("please select the availability status for this property");
+      window.setTimeout(() => setError(""), 6000);
+      return;
+    }
+    window.scrollTo(0, 0);
     const today = new Date();
     const date = today.toDateString();
     try {
       const collectionRef = collection(database, "properties");
       addDoc(collectionRef, {
-        reference_id: uuidv4().substring(0, 7),
         name: property.name,
         imagesUrl,
         features,
         price: Number(property.price),
         location: property.location,
-        availability: property.availability,
+        availability: option.label,
         description: property.description,
         addedAt: date,
         createdAt: Timestamp.now().toDate(),
@@ -129,11 +154,13 @@ export default function AddProperty() {
   };
 
   return (
-    <div className="add__property">
+    <section className="add__property">
       <h2>
         <GrFormAdd /> Add New Property
       </h2>
+
       <form onSubmit={addPropertyToDatabase}>
+        {error && <p className="alert error">{error}</p>}
         <label>
           <span>Property Name:</span>
           <input
@@ -153,7 +180,6 @@ export default function AddProperty() {
             Enter as many images as possible, Let the rooms be the last set of
             images
           </p>
-          {error && <p className="alert error">{error}</p>}
           <input
             type="file"
             accept="image/*"
@@ -198,7 +224,7 @@ export default function AddProperty() {
         <br />
         <label>
           <span>Availability of property</span>
-          <select
+          {/* <select
             name="availability"
             value={property.availability}
             onChange={(e) => handleInputChange(e)}
@@ -208,7 +234,22 @@ export default function AddProperty() {
             </option>
             <option value="Available">Available</option>
             <option value="Not Available">Not Available</option>
-          </select>
+          </select> */}
+          <Select
+            options={status}
+            onChange={(option) => setOption(option)}
+            placeholder="Choose one"
+            className="select__input"
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+                ...theme.colors,
+                primary25: "rgb(193, 180, 100)",
+                primary: "rgb(193, 180, 100)",
+              },
+            })}
+          />
         </label>
 
         <br />
@@ -277,6 +318,6 @@ export default function AddProperty() {
           </button>
         )}
       </form>
-    </div>
+    </section>
   );
 }

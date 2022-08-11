@@ -1,0 +1,269 @@
+@import "../../global_styles/global.scss";
+
+.property__details {
+  width: 100%;
+  padding-top: 2rem;
+  min-height: 100vh;
+  .details__links {
+    @include container();
+    @include flexBox(flex-start, center, center);
+    gap: 0.3rem;
+    padding-bottom: 0.8rem;
+    a {
+      color: #555;
+    }
+    :last-child {
+      font-weight: 500;
+    }
+  }
+}
+.property__details__contents {
+  @include container();
+  display: flex;
+  .left__contents {
+    width: 70%;
+    .left__contents__card {
+      box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      @include flexBox(space-between, center, row);
+      .card__name {
+        h2 {
+          font-weight: 600;
+        }
+      }
+      .property__location {
+        @include flexBox(flex-start, center, row);
+        gap: 0.2rem;
+        :first-child {
+          color: $mainColor;
+          font-size: 1.4rem;
+        }
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+    .other__details {
+      line-height: 2;
+      p,
+      span {
+        @include flexBox(flex-start, center, center);
+        gap: 0.3rem;
+        :first-child {
+          color: $mainColor;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .property__details__images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding-top: 1rem;
+      column-gap: 0.5rem;
+      img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    }
+    .property__features {
+      padding-top: 1rem;
+      h2 {
+        padding-bottom: 0.5rem;
+      }
+      .flex__features {
+        @include grid(repeat(3, 1fr), 1rem);
+        ul {
+          li {
+            @include flexBox(flex-start, center, row);
+            gap: 0.3rem;
+            list-style: none;
+            :first-child {
+              font-size: 1.4rem;
+              color: $mainColor;
+            }
+          }
+        }
+      }
+    }
+    .property__description {
+      padding: 2rem 0;
+      line-height: 1.9;
+      h2 {
+        @include flexBox(flex-start, center, center);
+        gap: 0.3rem;
+        margin-bottom: 0.5rem;
+        :first-child {
+          color: #888;
+        }
+      }
+    }
+  }
+  .right__contents {
+    width: 35%;
+    height: -webkit-fill-available;
+    background: rgb(240, 240, 240);
+    padding: 2rem 1rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.6rem;
+    h3 {
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+    form {
+      label {
+        @include flexBox(flex-start, center, center);
+        gap: 0.7rem;
+        border: 1px solid #555;
+        border-radius: 0.2rem;
+        background: #fff;
+        margin-bottom: 0.4rem;
+        :first-child {
+          margin-left: 0.4rem;
+        }
+        input,
+        textarea {
+          border: 0;
+          outline: 0;
+          padding: 0.8rem;
+          background: transparent;
+        }
+        textarea {
+          font-family: "Figtree", sans-serif;
+          line-height: 1.7;
+          word-spacing: 0.2rem;
+          width: 100%;
+        }
+      }
+      button {
+        @include button();
+        border-radius: 0.2rem;
+        background: $mainColor;
+        color: #fff;
+        width: 100%;
+        margin-bottom: 0.6rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@include mQ(1400px) {
+  .property__details {
+    margin-bottom: 5rem;
+  }
+  .property__details__contents {
+    flex-direction: column;
+  }
+  .property__details__contents .left__contents {
+    width: 100%;
+  }
+  .property__details__contents .right__contents {
+    width: 100%;
+  }
+  .property__details__contents .left__contents .property__details__images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@include mQ(600px) {
+  .property__details__contents .left__contents .left__contents__card {
+    flex-direction: column;
+    display: block;
+    line-height: 1.9;
+  }
+}
+@include mQ(600px) {
+  .property__details .details__links {
+    font-size: 0.9rem;
+  }
+  .property__details .details__links :last-child {
+    font-size: 0.88rem;
+  }
+  .property__details__contents
+    .left__contents
+    .left__contents__card
+    .card__name
+    h2 {
+    font-size: 1.1rem;
+  }
+  .property__details__contents
+    .left__contents
+    .left__contents__card
+    .property__location {
+    font-size: 1rem;
+  }
+  .property__details__contents .left__contents .property__details__images {
+    display: flex;
+    overflow-x: auto;
+  }
+  .property__details__contents .left__contents .property__details__images img {
+    width: 290px;
+  }
+  .property__details__contents .left__contents .property__features h2 {
+    font-size: 1.25rem;
+  }
+  .property__details__contents
+    .left__contents
+    .property__features
+    .flex__features {
+    grid-template-columns: 1fr;
+  }
+  .property__details__contents .left__contents .property__description h2 {
+    font-size: 1.25rem;
+  }
+  .property__details__contents .right__contents form p {
+    font-size: 0.8rem;
+  }
+}
+
+//  ==================
+.images__wrapper {
+  width: 100%;
+}
+.slider {
+  // background: url('../../assets//loader.gif');
+  // background-position: center center;
+  // background-size: auto;
+  // background-repeat: no-repeat;
+  .slide {
+    img {
+      height: 400px;
+      width: 700px;
+      object-fit: cover;
+      position: relative;
+    }
+  }
+}
+
+.arrow {
+  font-size: 2.1rem;
+  cursor: pointer;
+  color: $mainColor;
+  font-weight: 700;
+}
+
+hr {
+  height: 2px;
+  background: white;
+  width: 50%;
+}
+
+@keyframes slide-up {
+  0% {
+    visibility: visible;
+    top: 23rem;
+  }
+  100% {
+    visibility: visible;
+    top: 17rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .slide img {
+    width: 100%;
+    height: 100%;
+  }
+}

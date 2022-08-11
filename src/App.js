@@ -17,6 +17,7 @@ import Alert from "./components/alert/Alert";
 import { useCustomAlert } from "./contexts/AlertContext";
 import Account from "./pages/user_account/Account";
 import ScrollToTop from "./components/utilities/ScrollToTop";
+import PropertyDetail from "./components/property_detail/PropertyDetail";
 
 function App() {
   const { showAlert, alertMessage, alertType } = useCustomAlert();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<Reset />} />
+        <Route path="/property/:id" element={<PropertyDetail />} />
         <Route
           path="/user/admin/*"
           element={

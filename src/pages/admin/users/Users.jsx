@@ -8,9 +8,10 @@ import { selectUsers, STORE_USERS } from "../../../redux/slice/authSlice";
 import { database } from "../../../firebase/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { useCustomAlert } from "../../../contexts/AlertContext";
+import Loader from "../../../components/utilities/Loader";
 
 export default function Users() {
-  const { data } = useFetchCollection("users");
+  const { data, loading } = useFetchCollection("users");
   const dispatch = useDispatch();
   const users = useSelector(selectUsers);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
@@ -54,12 +55,16 @@ export default function Users() {
       {
         width: "320px",
         borderRadius: "5px",
-        titleColor: "#c07d53",
-        okButtonBackground: "#c07d53",
+        titleColor: "#ae8625",
+        okButtonBackground: "#ae8625",
         cssAnimationStyle: "zoom",
       }
     );
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <section className="users__admin">
@@ -84,7 +89,7 @@ export default function Users() {
                 </thead>
                 <tbody>
                   {users.map((user, index) => {
-                    const { id, email, username, joinedAt, firstName, lastName } = user;
+                    const { id, email, joinedAt, firstName, lastName } = user;
                     return (
                       <tr key={id}>
                         <td>{index + 1}</td>
@@ -92,13 +97,15 @@ export default function Users() {
                         <td>{joinedAt}</td>
                         <td>{email}</td>
                         <td>
-                          <p style={{ fontWeight: "500" }}>{firstName + ' ' + lastName}</p>
+                          <p style={{ fontWeight: "500" }}>
+                            {firstName + " " + lastName}
+                          </p>
                         </td>
                         <td>
                           <FaTrashAlt
                             size={18}
-                            color="red"
-                            onClick={() => confirmDelete(id, username)}
+                            color="#ae8625"
+                            onClick={() => confirmDelete(id, firstName)}
                           />
                         </td>
                       </tr>

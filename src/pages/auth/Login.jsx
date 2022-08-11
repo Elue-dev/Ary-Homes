@@ -16,7 +16,7 @@ export default function Login() {
   const [visible, setVisible] = useState(false);
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const { login, googleSignIn, facebookSignIn } = useAuth();
+  const { login, googleSignIn } = useAuth();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
   const loginUser = async (e) => {
@@ -82,7 +82,7 @@ export default function Login() {
     try {
       await googleSignIn();
       setShowAlert(true);
-      setAlertMessage(`You are successfully logged in!`);
+      setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -104,26 +104,6 @@ export default function Login() {
         window.setTimeout(() => {
           setError("");
         }, 6000);
-      }
-    }
-  };
-
-  const handleFacebookSignIn = async () => {
-    try {
-      await facebookSignIn();
-      navigate("/");
-    } catch (err) {
-      if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
-        setError("Facebook sign in failed. (You exited the facebook sign in)");
-        window.setTimeout(() => {
-          setError("");
-        }, 3500);
-      }
-      if (err.message === "Firebase: Error (auth/network-request-failed).") {
-        setError("Facebook sign in failed.c");
-        window.setTimeout(() => {
-          setError("");
-        }, 3500);
       }
     }
   };

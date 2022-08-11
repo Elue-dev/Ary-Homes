@@ -25,6 +25,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import userFallback from "../../assets/user.png";
 import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
+import GoBack from "../../components/utilities/GoBack";
 
 export default function Account() {
   const [photo] = useState("");
@@ -203,6 +204,7 @@ export default function Account() {
 
   return (
     <section className="user__account__info">
+      <GoBack />
       <div className="user__account__info__contents">
         <div className="account__info__desc">
           <h2>

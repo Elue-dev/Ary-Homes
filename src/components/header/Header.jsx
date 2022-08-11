@@ -17,7 +17,7 @@ import { auth } from "../../firebase/firebase";
 import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 import logo from "../../assets/logo.jpg";
 import "./header.scss";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation, Link } from "react-router-dom";
 import {
   REMOVE_ACTIVE_USER,
   selectUserName,
@@ -132,38 +132,38 @@ export default function Header() {
 
               <ul>
                 <AdminOnlyLink>
-                  <Link to="/user/admin/home">
+                  <NavLink to="/user/admin/home">
                     <li>
                       <button className="admin__btn">Admin</button>
                     </li>
-                  </Link>
+                  </NavLink>
                 </AdminOnlyLink>
 
-                <Link to="/">
+                <NavLink to="/">
                   <li>
                     <BiHomeAlt />
                     <p>Home</p>
                   </li>
-                </Link>
+                </NavLink>
 
-                <Link to="/blog">
+                <NavLink to="/blog">
                   <li>
                     <RiArticleLine />
                     <p>Blog</p>
                   </li>
-                </Link>
-                <Link to="/about">
+                </NavLink>
+                <NavLink to="/about">
                   <li>
                     <IoInformationCircleOutline />
                     <p>About</p>
                   </li>
-                </Link>
-                <Link to="/contact">
+                </NavLink>
+                <NavLink to="/contact">
                   <li>
                     <MdOutlineContactSupport />
                     <p>Contact</p>
                   </li>
-                </Link>
+                </NavLink>
               </ul>
               <div
                 className="auth"
@@ -196,11 +196,11 @@ export default function Header() {
                         <p>
                           {" "}
                           <FiUserPlus />
-                          <Link to="/signup">Sign up</Link>
+                          <NavLink to="/signup">Sign up</NavLink>
                         </p>
                         <p>
                           <BiLogInCircle />
-                          <Link to="/login">Log in</Link>
+                          <NavLink to="/login">Log in</NavLink>
                         </p>
                       </>
                     )}
@@ -209,19 +209,19 @@ export default function Header() {
                         {user.emailVerified ? (
                           <div className="logged__in">
                             <p>Hi, {modifiedUserName}!</p>
-                            {/* <Link to="/bookmarks">
+                            {/* <NavLink to="/bookmarks">
                               <li>
                                 <IoBookmarksOutline />
                                 <BsBookmarkStar />
                                 Bookmarks
                               </li>
-                            </Link> */}
-                            <Link to={`/user/account/${user.uid}`}>
+                            </NavLink> */}
+                            <NavLink to={`/user/account/${user.uid}`}>
                               <li>
                                 <MdOutlineManageAccounts />
                                 My Account
                               </li>
-                            </Link>
+                            </NavLink>
 
                             <button
                               className="logout__btn"
@@ -262,37 +262,37 @@ export default function Header() {
 
       <div className="nav__bottom">
         <ul>
-          <Link to="/">
+          <NavLink to="/">
             <li>
               <BiHomeAlt />
               <p>Home</p>
             </li>
-          </Link>
-          <Link to="/blog">
+          </NavLink>
+          <NavLink to="/blog">
             <li>
               <RiArticleLine />
               <p>Blog</p>
             </li>
-          </Link>
-          <Link to="/about">
+          </NavLink>
+          <NavLink to="/about">
             <li>
               <IoInformationCircleOutline />
               <p>About</p>
             </li>
-          </Link>
-          <Link to="/contact">
+          </NavLink>
+          <NavLink to="/contact">
             <li>
               <MdOutlineContactSupport />
               <p>Contact</p>
             </li>
-          </Link>
+          </NavLink>
           <AdminOnlyLink>
-            <Link to="/user/admin/home">
+            <NavLink to="/user/admin/home">
               <li>
                 <div />
                 <button className="admin__btn">Admin</button>
               </li>
-            </Link>
+            </NavLink>
           </AdminOnlyLink>
         </ul>
       </div>
