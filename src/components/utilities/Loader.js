@@ -12,7 +12,7 @@ export default function Loader() {
   return (
     <div className="loader">
       {loading && (
-        <SkewLoader color={"#ae8625"} loading={loading} size={50} className='loader__icon' />
+        <SkewLoader color={"#ae8625"} loading={loading} size={40} className='loader__icon' />
       )}
     </div>
   );

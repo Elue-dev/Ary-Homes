@@ -104,8 +104,7 @@ export default function PropertyDetail() {
                     property.availability === "Available" ? "green" : "crimson",
                 }}
               >
-                {property.availability}{" "}
-                {property.availability === "Not Available" && "(currently)"}
+                {property.availability}
                 {/* {property.availability === "Not Available" &&
                 <span style={{color:'#333', fontSize:'1rem'}}>(check back later)</span>} */}
               </span>

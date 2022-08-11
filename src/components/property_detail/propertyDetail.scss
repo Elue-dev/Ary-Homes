@@ -20,10 +20,10 @@
 .property__details__contents {
   @include container();
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   .left__contents {
     width: 70%;
-    animation: slide-right .5s ease;
+    animation: slide-right 0.5s ease;
     .left__contents__card {
       box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
       padding: 1rem;
@@ -32,7 +32,7 @@
       .card__name {
         h2 {
           font-weight: 700;
-          color: $mainColor
+          color: $mainColor;
         }
       }
       .property__location {
@@ -116,7 +116,7 @@
   }
   .right__contents {
     width: 35%;
-    animation: slide-left .5s ease;
+    animation: slide-left 0.5s ease;
     height: -webkit-fill-available;
     background: rgb(240, 240, 240);
     padding: 1.5rem 1rem;
@@ -235,17 +235,21 @@
   .property__details__contents .right__contents form {
     font-size: 1.4rem;
   }
+  .property__details__contents .right__contents form label input,
+  .property__details__contents .right__contents form label textarea {
+    font-size: 1rem;
+  }
   .property__details__contents .right__contents form p {
     font-size: 0.8rem;
   }
   .property__details__contents .right__contents {
     height: auto;
-    border-radius: .3rem;
-  }
-  .property__details__contents .left__contents .other__details .availability__texts {
-    font-size: .93rem;
+    border-radius: 0.3rem;
   }
 }
+
+
+
 //  ==================
 .images__wrapper {
   width: 100%;
