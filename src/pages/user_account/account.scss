@@ -9,27 +9,39 @@
     .account__info__desc {
       line-height: 2;
       margin-bottom: 1rem;
-      h2 {
-        color: $mainColor;
-        @include flexBox(flex-start, center, row);
-        gap: 0.5rem;
-        :first-child {
-          color: rgb(85, 85, 85);
-          font-size: 1.8rem;
+      .account__info__flex {
+        h2 {
+          color: $mainColor;
+          @include flexBox(flex-start, center, row);
+          gap: 0.5rem;
+          :first-child {
+            color: rgb(85, 85, 85);
+            font-size: 1.8rem;
+          }
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
         }
-        img {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          object-fit: cover;
+        .click__to__change {
+          text-decoration: underline;
+          cursor: pointer;
+          padding-bottom: 1rem;
+          animation: slide-left 0.5s ease;
+        }
+        .account__info__logout {
+          @include button();
+          border-radius: .3rem;
+          background: #222;
+          color: #fff;
+          font-weight: 700;
+          width: 200px;
+          cursor: pointer;
         }
       }
-      .click__to__change {
-        text-decoration: underline;
-        cursor: pointer;
-        padding-bottom: 1rem;
-        animation: slide-left 0.5s ease;
-      }
+
       .user__img__details {
         display: none;
         animation: slide-right 0.5s ease;

@@ -103,7 +103,7 @@ export default function Login() {
         );
         window.setTimeout(() => {
           setError("");
-        }, 6000);
+        }, 8000);
       }
     }
   };
@@ -190,13 +190,6 @@ export default function Login() {
             Continue with google
           </button>
         </div>
-        {/* <div className="facebook">
-          <button onClick={handleFacebookSignIn} className=" btn facebook__btn">
-            <BsFacebook />
-            Continue with facebook
-          </button>
-        </div> */}
-        <hr />
         <div className="new__user">
           <p>New to AryHomes? </p>
           <Link to="/signup">

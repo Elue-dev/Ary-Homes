@@ -198,14 +198,9 @@
     .left__contents
     .left__contents__card
     .card__name
-    h2,
-  .property__details__contents
-    .left__contents
-    .left__contents__card
-    .card__name
-    h3 {
-    font-size: 1rem;
-  }
+    h2 {
+      font-size: 1.15rem;
+    }
   .property__details__contents
     .left__contents
     .left__contents__card
@@ -246,9 +241,10 @@
     height: auto;
     border-radius: 0.3rem;
   }
+  .property__details__contents .right__contents form button {
+    font-size: 1rem;
+  }
 }
-
-
 
 //  ==================
 .images__wrapper {

@@ -99,7 +99,7 @@ export default function Header() {
     await logout();
     setShowAlert(true);
     setAlertMessage(`You have successfully logged out.`);
-    setAlertType("success");
+    setAlertType("info");
     window.setTimeout(() => {
       setShowAlert(false);
       setAlertMessage(null);

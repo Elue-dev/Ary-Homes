@@ -72,25 +72,21 @@ export default function Properties() {
                         {" "}
                         {availability}
                       </p>
-                      <div>
+                      <span className="camera__icon">
+                        <BsCamera />
+                        <span>{imagesUrl.length}</span>
+                      </span>
+                      {/* <div>
                         {like ? (
                           <FaHeart className="like__property" color="crimson" />
                         ) : (
                           <FaRegHeart className="like__property" />
                         )}
-                      </div>
+                      </div> */}
                     </div>
                     <div className="properties__details__texts">
                       <p className="property__name">
                         <span>{name}</span>
-                        <span>
-                          <BsCamera />
-                          <span
-                            style={{ fontWeight: "500", fontSize: ".8rem" }}
-                          >
-                            {imagesUrl.length}
-                          </span>
-                        </span>
                       </p>
 
                       <p className="property__id">{addedAt}</p>

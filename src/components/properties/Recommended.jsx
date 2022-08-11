@@ -48,7 +48,7 @@ export default function Recommended() {
           } = property;
           return (
             <div key={id} className="properties__details">
-              <Link to={`/property/${id}`} style={{textDecoration: 'none'}}>
+              <Link to={`/property/${id}`} style={{ textDecoration: "none" }}>
                 <div className="properties__details__image exclusive">
                   <img src={imagesUrl[0]} alt={name} />
                   <p

@@ -133,7 +133,7 @@ export default function Signup() {
         );
         window.setTimeout(() => {
           setError("");
-        }, 6000);
+        }, 8000);
       }
     }
   };
@@ -232,7 +232,6 @@ export default function Signup() {
             </button>
           )}
         </form>
-
         <div className="line">
           <p className="or">or</p>
         </div>
@@ -242,7 +241,6 @@ export default function Signup() {
             Continue with google
           </button>
         </div>
-        <hr />
         <div className="new__user">
           <p>Own a AryHomes account?</p>
           <Link to="/login">

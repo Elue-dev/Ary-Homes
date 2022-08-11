@@ -6,6 +6,7 @@
   h2 {
     @include flexBox(flex-start, center, row);
     gap: 0.4rem;
+    font-size: 1.7rem;
     :first-child {
       color: #717171;
     }
@@ -27,7 +28,7 @@
           object-fit: cover;
           border-radius: 0.6rem;
           border: 0.5px solid rgb(200, 200, 200);
-          transition: transform .3s ease-in-out;
+          transition: transform 0.3s ease-in-out;
         }
         .property__availability {
           position: absolute;
@@ -38,18 +39,36 @@
           padding: 0.09rem 0.9rem;
           font-weight: 500;
         }
-        .like__property {
+        // .like__property {
+        //   position: absolute;
+        //   bottom: 20px;
+        //   right: 16px;
+        //   font-weight: 500;
+        //   font-size: 2rem;
+        //   color: #fff;
+        //   cursor: pointer;
+        // }
+        .camera__icon {
           position: absolute;
-          bottom: 42px;
+          bottom: 20px;
           right: 16px;
           font-weight: 500;
-          font-size: 2rem;
+          font-size: 1.3rem;
           color: #fff;
           cursor: pointer;
+          background: rgba(0,0,0,0.5);
+          padding: .1rem .6rem;
+          border-radius: .2rem;
+          @include flexBox(flex-start, center, center);
+          gap: .3rem;
+          :last-child {
+            font-size: 1rem;
+            font-weight: 500;
+          }
         }
       }
       .properties__details__texts {
-        line-height: 1.8;
+        line-height: 1.9;
         .property__name {
           font-weight: 700;
           color: #000;

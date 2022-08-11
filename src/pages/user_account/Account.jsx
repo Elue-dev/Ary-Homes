@@ -35,8 +35,8 @@ export default function Account() {
   const { data, loading } = useFetchCollection("users");
   const usersList = useSelector(selectUsers);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user, updateMail, updatePP } = useAuth();
+  const navigate = useNavigate()
+  const { user, updateMail, updatePP, logout } = useAuth();
   const lastLogin = user.metadata.lastSignInTime;
   const createdAt = user.metadata.creationTime;
   const signedInUser = usersList.users?.find((u) => u.email === user.email);
@@ -74,6 +74,19 @@ export default function Account() {
       })
     );
   }, [dispatch, signedInUser?.id]);
+
+  const logUserOut = async () => {
+    await logout();
+    navigate('/')
+    setShowAlert(true);
+    setAlertMessage(`You have logged out of your account, ${user.displayName}`);
+    setAlertType("info");
+    window.setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage(null);
+      setAlertType(null);
+    }, 6000);
+  };
 
   const updateUserEmail = async () => {
     try {
@@ -207,25 +220,33 @@ export default function Account() {
       <GoBack />
       <div className="user__account__info__contents">
         <div className="account__info__desc">
-          <h2>
-            {user.photoURL ? (
-              <img
-                src={user.photoURL}
-                alt="user"
-                className="user__profile__img"
-              />
-            ) : (
-              <RiUserShared2Line />
-            )}
-            {userName}
-          </h2>
-          <p
-            className="click__to__change"
-            onClick={() => setShowFields(true)}
-            style={{ display: showFields ? "none" : "inline-block" }}
-          >
-            Change profile picture
-          </p>
+          <div className="account__info__flex">
+            <>
+              <h2>
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="user"
+                    className="user__profile__img"
+                  />
+                ) : (
+                  <RiUserShared2Line />
+                )}
+                {userName}
+              </h2>
+              <p
+                className="click__to__change"
+                onClick={() => setShowFields(true)}
+                style={{ display: showFields ? "none" : "inline-block" }}
+              >
+                Change profile picture
+              </p>
+            </>
+            <div>
+              <button  onClick={logUserOut} className="account__info__logout">Log Out</button>
+            </div>
+          </div>
+
           <div
             className="user__img__details"
             style={{ display: showFields ? "block" : "none" }}

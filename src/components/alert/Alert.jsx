@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
-import { TiWarning } from "react-icons/ti";
+import { FaInfo } from "react-icons/fa";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import "./alert.scss";
 
@@ -17,10 +17,10 @@ export default function Alert() {
     color = "white";
     icon = <MdError />;
   }
-  if (alertType === "warning") {
+  if (alertType === "info") {
     background = "#c1b464";
     color = "white";
-    icon = <TiWarning />;
+    icon = <FaInfo />;
   }
   if (alertType === "success") {
     background = "rgb(11, 152, 11)";
