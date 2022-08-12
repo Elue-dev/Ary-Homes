@@ -20,7 +20,7 @@
 .property__details__contents {
   @include container();
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   .left__contents {
     width: 70%;
     animation: slide-right 0.5s ease;
@@ -47,7 +47,7 @@
       }
     }
     .other__details {
-      line-height: 2;
+      line-height: 2.9;
       p,
       span {
         @include flexBox(flex-start, center, center);
@@ -65,6 +65,21 @@
         padding: 0.1rem 0.2rem;
         margin-bottom: 0.8rem;
         font-weight: 600;
+      }
+      .details__warning {
+        @include flexBox(flex-start, center, center);
+        // width: fit-content;
+        gap: 0.6rem;
+        background: rgb(193, 180, 100);
+        color: #fff;
+        padding: 0.1rem 0.4rem;
+        border-radius: 0.3rem;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        :first-child {
+          color: #fff;
+        }
       }
     }
     .property__details__images {
@@ -112,6 +127,72 @@
           color: #888;
         }
       }
+    }
+    .contact__info {
+      padding-bottom: 2rem;
+      .contact__info__details {
+        h2 {
+          @include flexBox(flex-start, center, center);
+          gap: 0.3rem;
+        }
+        .admins {
+          @include flexBox(auto, center, center);
+          gap: 5rem;
+          padding-top: 1.5rem;
+          .admin__image__wrapper {
+            position: relative;
+          }
+          img {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            position: relative;
+          }
+          a {
+            @include flexBox(flex-start, center, row);
+            display: block;
+            margin-bottom: 0.4rem;
+            border: 1px solid #777;
+            border-radius: 0.3rem;
+            padding: 0.3rem 0.5rem;
+            :first-child {
+              font-size: 2rem;
+              margin-right: 0.7rem;
+            }
+            :last-child {
+              font-weight: 700;
+              font-size: 1.1rem;
+            }
+          }
+          .admin__fallback__icon {
+            font-size: 3rem;
+          }
+          .whatsapp {
+            @include flexBox(flex-start, center, row);
+            padding: 0.5rem 1.2rem;
+            background: rgb(26, 28, 26);
+            color: #fff;
+            border: 0;
+            outline: 0;
+            border-radius: 0.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            :first-child {
+              font-size: 1.5rem;
+              margin-right: 0.7rem;
+            }
+          }
+          .verified__icon {
+            position: absolute;
+            color: $mainColor;
+            font-size: 1.2rem;
+          }
+        }
+      }
+      // position: fixed;
+      // bottom: 0;
     }
   }
   .right__contents {
@@ -164,7 +245,7 @@
   }
 }
 
-@include mQ(1400px) {
+@include mQ(1000px) {
   .property__details {
     margin-bottom: 5rem;
   }
@@ -179,6 +260,10 @@
   }
   .property__details__contents .left__contents .property__details__images {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .property__details__contents .left__contents .contact__info,
+  .contact__info__details {
+    bottom: 4rem;
   }
 }
 @include mQ(600px) {
@@ -199,8 +284,8 @@
     .left__contents__card
     .card__name
     h2 {
-      font-size: 1.15rem;
-    }
+    font-size: 1.15rem;
+  }
   .property__details__contents
     .left__contents
     .left__contents__card
@@ -213,7 +298,7 @@
     margin-top: 2rem;
   }
   .property__details__contents .left__contents .property__details__images img {
-    width: 290px;
+    width: 295px;
   }
   .property__details__contents .left__contents .property__features h2 {
     font-size: 1.25rem;
@@ -223,7 +308,6 @@
     .property__features
     .flex__features {
     grid-template-columns: 1fr;
-   
   }
   .property__details__contents .left__contents .property__description h2 {
     font-size: 1.25rem;
@@ -244,6 +328,56 @@
   }
   .property__details__contents .right__contents form button {
     font-size: 1rem;
+  }
+  .property__details__contents
+    .left__contents
+    .other__details
+    .details__warning {
+    padding: 0.2rem 0.4rem;
+    line-height: 1.3rem;
+    font-size: 0.8rem;
+  }
+}
+
+@include mQ(500px) {
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins {
+    gap: 1rem;
+  }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    h2 {
+    font-size: 1.25rem;
+  }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins
+    a {
+    font-size: 0.9rem;
+  }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins
+    .whatsapp {
+    font-size: 0.7rem;
+  }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins
+    .whatsapp
+    :first-child {
+    font-size: 1.3rem;
   }
 }
 

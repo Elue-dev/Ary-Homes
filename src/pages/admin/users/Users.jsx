@@ -19,7 +19,6 @@ export default function Users() {
   useEffect(() => {
     dispatch(STORE_USERS(data));
   }, [dispatch, data]);
-  console.log(users);
 
   const deleteUserFromDatabase = async (id) => {
     try {
@@ -88,7 +87,7 @@ export default function Users() {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user, index) => {
+                  {users?.map((user, index) => {
                     const { id, email, joinedAt, firstName, lastName } = user;
                     return (
                       <tr key={id}>

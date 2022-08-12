@@ -218,40 +218,31 @@
     }
     .buttons {
       width: 100%;
-      margin-bottom: 1.3rem;
-      .proceed__btn,
+      display: block;
       .refresh__btn {
         @include button();
-      }
-      .proceed__btn {
-        background-color: $mainColor;
-        color: #fff;
-        width: 48.5%;
-        &:hover {
-          background: #c99b2f;
-        }
-      }
-      .refresh__btn {
+        text-align: center;
         background-color: #111;
+        border: 1px solid #111;
         color: #fff;
-        width: 48.5%;
         &:hover {
-          background: #444;
+          background: #333;
         }
       }
-    }
-    .resend {
-      text-align: center;
-      margin-top: 1rem;
-      font-weight: 600;
-      .verification__btn {
-        @include button();
-        background: #fff;
-        border: 1px solid rgb(148, 148, 148);
-        margin-top: 0.5rem;
-        color: #333;
-        &:hover {
-          background: #e7e7e7;
+      .refresh__btn {
+        width: 100%;
+      }
+      .resend {
+        button {
+          @include button();
+          width: 100%;
+          background: #fff;
+          border: 1px solid rgb(148, 148, 148);
+          margin-top: 0.5rem;
+          color: #333;
+          &:hover {
+            background: #e7e7e7;
+          }
         }
       }
     }

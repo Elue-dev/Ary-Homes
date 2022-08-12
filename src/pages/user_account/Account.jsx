@@ -19,8 +19,8 @@ import "./account.scss";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import { useEffect } from "react";
 import { useCustomAlert } from "../../contexts/AlertContext";
-import { database, storage } from "../../firebase/firebase";
-import { doc, setDoc, Timestamp } from "firebase/firestore";
+import { auth, database, storage } from "../../firebase/firebase";
+import { doc, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import userFallback from "../../assets/user.png";
 import { uuidv4 } from "@firebase/util";
@@ -35,7 +35,7 @@ export default function Account() {
   const { data, loading } = useFetchCollection("users");
   const usersList = useSelector(selectUsers);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user, updateMail, updatePP, logout } = useAuth();
   const lastLogin = user.metadata.lastSignInTime;
   const createdAt = user.metadata.creationTime;
@@ -57,6 +57,11 @@ export default function Account() {
   const userName = useSelector(selectUserName);
   const userID = useSelector(selectUserId);
 
+  const browser = auth.clientVersion.substring(
+    0,
+    auth.clientVersion.indexOf("/")
+  );
+
   useEffect(() => {
     setFirstName(info.userInfo?.signedInUserF);
     setLastName(info.userInfo?.signedInUserL);
@@ -77,7 +82,7 @@ export default function Account() {
 
   const logUserOut = async () => {
     await logout();
-    navigate('/')
+    navigate("/");
     setShowAlert(true);
     setAlertMessage(`You have logged out of your account, ${user.displayName}`);
     setAlertType("info");
@@ -125,13 +130,27 @@ export default function Account() {
     );
   };
 
+  //functionality for updating the avatar when the user changes their avatar, this code is to get the logged in users firestore collection id to link it to the document
+  const getColID = data.filter((u) => u.email === user.email);
+  const [updateId, setUpdateId] = useState("");
+
+  useEffect(() => {
+    setUpdateId(getColID[0]?.id);
+  }, [getColID]);
+
   const updateUserProfilePhoto = async (e) => {
     e.preventDefault();
+
     try {
       await updatePP(imageUrl);
+      //as they are updating their PP, the avatar field in users is changing as well
+      const docRef = doc(database, "users", updateId);
+      await updateDoc(docRef, {
+        avatar: imageUrl,
+      });
       setShowAlert(true);
       setAlertMessage("Profile picture updated successfully!");
-      window.setTimeout(() => window.location.reload(), 2000);
+      // window.setTimeout(() => window.location.reload(), 1500);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -162,7 +181,8 @@ export default function Account() {
         firstName,
         lastName,
         phone,
-        joinedAt: user.joinedAt,
+        avatar: "",
+        joinedAt: user.joinedAt && user.joinedAt,
         email: email || user.email,
         editedAt: Timestamp.now().toDate(),
         createdAt: user.metadata.creationTime,
@@ -242,9 +262,6 @@ export default function Account() {
                 Change profile picture
               </p>
             </>
-            <div>
-              <button  onClick={logUserOut} className="account__info__logout">Log Out</button>
-            </div>
           </div>
 
           <div
@@ -300,21 +317,24 @@ export default function Account() {
           </div>
           <br />
           <h3>Account information</h3>
-          <p>
-            <IoIosCreate />
-            <b>Date created:</b> {createdAt}
-          </p>
-          <p>
-            <GiBackwardTime />
-            <b>Last log in:</b> {lastLogin}
-          </p>
-          <div>
-            <b>Email verification status:</b>{" "}
-            {user.emailVerified ? (
-              <span style={{ color: "green" }}>Verified</span>
-            ) : (
-              <span style={{ color: "crimson" }}>Not Verified</span>
-            )}
+          <div className="account__info__details">
+            <p>
+              <IoIosCreate />
+              <b>Date created:</b> {createdAt}
+            </p>
+            <p className="last__login">
+              <GiBackwardTime />
+              <b>Last log in:</b> {lastLogin}
+            </p>
+            <i>(login was via {browser} browser)</i>
+            <div>
+              <b>Email verification status:</b>{" "}
+              {user.emailVerified ? (
+                <span style={{ color: "green" }}>Verified</span>
+              ) : (
+                <span style={{ color: "crimson" }}>Not Verified</span>
+              )}
+            </div>
           </div>
         </div>
         <hr />
@@ -371,6 +391,11 @@ export default function Account() {
             Save
           </button>
         </form>
+        <div>
+          <button onClick={logUserOut} className="account__info__logout">
+            Log Out
+          </button>
+        </div>
       </div>
     </section>
   );

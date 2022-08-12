@@ -32,6 +32,7 @@ export default function Header() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [displayName, setDisplayname] = useState(null);
+  const [showBottomNav, setShowBottomNav] = useState(false);
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,6 +52,14 @@ export default function Header() {
       setShowHeader(false);
     } else {
       setShowHeader(true);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!location.pathname.includes("property")) {
+      setShowBottomNav(true);
+    } else {
+      setShowBottomNav(false);
     }
   }, [location.pathname]);
 
@@ -98,7 +107,7 @@ export default function Header() {
   const logoutUser = async () => {
     await logout();
     setShowAlert(true);
-    setAlertMessage(`You have successfully logged out.`);
+    setAlertMessage(`You have logged out your account, ${user.displayName}.`);
     setAlertType("info");
     window.setTimeout(() => {
       setShowAlert(false);
@@ -177,7 +186,6 @@ export default function Header() {
                       <img src={user.photoURL} alt="" className="user__img" />
                     ) : (
                       <FaRegUserCircle />
-                     
                     )}
                   </>
                 ) : (
@@ -260,42 +268,43 @@ export default function Header() {
         </>
       ) : null}
 
-      <div className="nav__bottom">
-        <ul>
-          <NavLink to="/">
-            <li>
-              <BiHomeAlt />
-              <p>Home</p>
-            </li>
-          </NavLink>
-          <NavLink to="/blog">
-            <li>
-              <RiArticleLine />
-              <p>Blog</p>
-            </li>
-          </NavLink>
-          <NavLink to="/about">
-            <li>
-              <IoInformationCircleOutline />
-              <p>About</p>
-            </li>
-          </NavLink>
-          <NavLink to="/contact">
-            <li>
-              <MdOutlineContactSupport />
-              <p>Contact</p>
-            </li>
-          </NavLink>
-          <AdminOnlyLink>
-            <NavLink to="/user/admin/home">
+        <div className="nav__bottom">
+          <ul>
+            <NavLink to="/">
               <li>
-                <div />
-                <button className="admin__btn">Admin</button>
+                <BiHomeAlt />
+                <p>Home</p>
               </li>
             </NavLink>
-          </AdminOnlyLink>
-        </ul>
-      </div>
+            <NavLink to="/blog">
+              <li>
+                <RiArticleLine />
+                <p>Blog</p>
+              </li>
+            </NavLink>
+            <NavLink to="/about">
+              <li>
+                <IoInformationCircleOutline />
+                <p>About</p>
+              </li>
+            </NavLink>
+            <NavLink to="/contact">
+              <li>
+                <MdOutlineContactSupport />
+                <p>Contact</p>
+              </li>
+            </NavLink>
+            <AdminOnlyLink>
+              <NavLink to="/user/admin/home">
+                <li>
+                  <div />
+                  <button className="admin__btn">Admin</button>
+                </li>
+              </NavLink>
+            </AdminOnlyLink>
+          </ul>
+        </div>
+    
     </>
   );
 }

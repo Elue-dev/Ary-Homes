@@ -31,15 +31,6 @@
           padding-bottom: 1rem;
           animation: slide-left 0.5s ease;
         }
-        .account__info__logout {
-          @include button();
-          border-radius: .3rem;
-          background: #222;
-          color: #fff;
-          font-weight: 700;
-          width: 200px;
-          cursor: pointer;
-        }
       }
 
       .user__img__details {
@@ -97,6 +88,10 @@
             }
           }
         }
+        
+      }
+      .account__info__details {
+        line-height: 2.5;
       }
       h3 {
         text-decoration: underline;
@@ -139,6 +134,7 @@
             border-radius: 0.3rem;
             outline: 0;
             border: 1px solid #999;
+            font-size: .99rem;
           }
         }
       }
@@ -150,7 +146,18 @@
         border-radius: 0.3rem;
         margin-top: 1rem;
         font-weight: 700;
+        font-size: 1.3rem;
       }
+    }
+    .account__info__logout {
+      @include button();
+      border-radius: 0.3rem;
+      background: #222;
+      color: #fff;
+      font-weight: 700;
+      width: 200px;
+      cursor: pointer;
+      margin-top: 1rem;
     }
   }
 }
@@ -205,6 +212,12 @@
     .pp__upload__input {
     width: 90%;
     margin-bottom: 0.3rem;
+  }
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    span {
+    font-weight: 600;
   }
 }
 

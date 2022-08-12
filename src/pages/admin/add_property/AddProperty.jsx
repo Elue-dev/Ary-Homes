@@ -40,7 +40,6 @@ export default function AddProperty() {
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
-  console.log(option.label);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -269,7 +268,8 @@ export default function AddProperty() {
           <span>Property Features:</span>
           <p className="feature__info">
             <IoInformationCircleOutline />
-            Enter the features one after the other, start with a capital letter
+            Must not be less than 5. Enter the features one after the other, start each with a capital letter
+            (e.g: 24hrs Electricity, WiFi access, Great security)
           </p>
           <div className="features">
             <input
@@ -278,7 +278,7 @@ export default function AddProperty() {
               value={newFeature}
               ref={featuresInput}
               onChange={(e) => setNewFeature(e.target.value)}
-              placeholder="ENTER ONE, THEN ADD, e.g: 24hrs Electricity"
+              placeholder="ENTER ONE, THEN CLICK ADD BUTTON"
             />
             <button onClick={handleAdd} className="features__btn">
               Add

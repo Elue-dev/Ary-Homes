@@ -24,7 +24,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
-  const { updateName, signup, googleSignIn } = useAuth();
+  const { updateName, signup, googleSignIn, user } = useAuth();
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -98,6 +98,7 @@ export default function Signup() {
       phone,
       email: email,
       joinedAt: date,
+      avatar: "",
       createdAt: Timestamp.now().toDate(),
     };
     try {

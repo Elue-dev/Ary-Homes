@@ -1,15 +1,31 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { auth } from "../../firebase/firebase";
 import { sendEmailVerification } from "firebase/auth";
 import logo from "../../assets/logo.jpg";
 import { TiInfoOutline } from "react-icons/ti";
+import { useCustomAlert } from "../../contexts/AlertContext";
 
 export default function Verify() {
   const [error, setError] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
+
+  if (location.pathname === "/verify" && user.emailVerified) {
+    navigate("/");
+    setShowAlert(true);
+    setAlertMessage(`Your email (${user.email}) has been verified.`);
+    setAlertType("info");
+    window.setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage(null);
+      setAlertType(null);
+    }, 7000);
+    return;
+  }
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -31,11 +47,10 @@ export default function Verify() {
   return (
     <div className="auth__modal">
       <div className="auth__contents verify__contents">
-          <img src={logo} alt="ary homes logo" />
+        <img src={logo} alt="ary homes logo" />
         <p className="verification__message" style={{ marginBottom: "1rem" }}>
-          A verification link has been set to your email, when you have verified
-          it, click on the <b>Done</b> button, then click on the <b>Proceed</b>{" "}
-          button to continue.
+          Click on the <b>Proceed</b> button when you have verified your email
+          with the link sent to you
         </p>
         {error && <p className="alert error">{error}</p>}
         <div className="buttons">
@@ -43,18 +58,15 @@ export default function Verify() {
             onClick={() => window.location.reload()}
             className="refresh__btn"
           >
-            Done
-          </button>
-          <button onClick={validate} className="proceed__btn">
             Proceed
           </button>
-        </div>
-        <hr />
-        <div className="resend">
+          <div className="resend">
           <button onClick={verifyUser} className="verification__btn">
             Resend verification link
           </button>
         </div>
+        </div>
+       
         <p className="info">
           <b>
             <TiInfoOutline /> Verifying your email is useful to access some of

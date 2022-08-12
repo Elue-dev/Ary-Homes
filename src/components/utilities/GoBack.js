@@ -8,7 +8,7 @@ export default function GoBack() {
 
   return (
     <div className='go__back'>
-        <p onClick={()=>navigate('/')}><BsFillSkipBackwardFill /></p>
+        <p onClick={()=>navigate(-1)}><BsFillSkipBackwardFill /></p>
     </div>
   )
 }

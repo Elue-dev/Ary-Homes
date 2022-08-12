@@ -6,7 +6,8 @@
   text-align: center;
   font-size: 1.3rem;
   transition: all 0.5s ease;
-  animation: slide-right .5s ease;
+  animation: slide-right 0.5s ease;
+  padding: 0.5rem 0;
   p {
     @include flexBox(center, center, row);
     gap: 0.5rem;
@@ -18,5 +19,6 @@
 @include mQ(500px) {
   .custom__alert p {
     font-size: 0.85rem;
+    padding: 0rem 0;
   }
 }

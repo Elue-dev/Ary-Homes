@@ -71,6 +71,7 @@
         line-height: 1.9;
         .property__name {
           font-weight: 700;
+          font-size: 1.15rem;
           color: #000;
           @include flexBox(space-between, center, row);
         }

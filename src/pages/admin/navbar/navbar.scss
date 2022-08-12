@@ -5,7 +5,12 @@
     text-align: center;
     padding: 2rem;
     color: rgb(241, 241, 241);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgb(197, 197, 197);
+    .admin__user__photo {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+    }
   }
   nav {
     margin-top: 40px;
@@ -29,6 +34,9 @@
             color: #555;
             background: #fff;
             border-radius: 20px 0 0 20px;
+            @include mQ(600px) {
+              border-radius: 0;
+            }
           }
           :first-child {
             font-size: 1.3rem;

@@ -1,17 +1,26 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import useFetchDocuments from "../../hooks/useFetchDocuments";
-import { BsArrow90DegLeft, BsArrow90DegRight } from "react-icons/bs";
+import {
+  BsArrow90DegLeft,
+  BsArrow90DegRight,
+  BsInfoCircle,
+  BsPatchCheckFill,
+  BsTelephoneForwardFill,
+} from "react-icons/bs";
+import { TbBrandWhatsapp } from "react-icons/tb";
 import { AiOutlineCalendar, AiFillTags } from "react-icons/ai";
 import { TiArrowForwardOutline } from "react-icons/ti";
 import { IoLocation } from "react-icons/io5";
 import { ImSortAmountDesc } from "react-icons/im";
+import { GrUserAdmin } from "react-icons/gr";
 import {
   MdBookmarkAdd,
   MdOutlineAlternateEmail,
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
+import { RiUser3Fill, RiWhatsappLine } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
@@ -19,11 +28,15 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../utilities/GoBack";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import SimilarProducts from "./SimilarProducts";
+import ReactWhatsapp from "react-whatsapp";
+import useFetchCollection from "../../hooks/useFetchCollection";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function PropertyDetail() {
   const { id } = useParams();
   const { document } = useFetchDocuments("properties", id);
   const [property, setProperty] = useState(null);
+  const [users, setUsers] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideLength = property && property.imagesUrl.length;
   const { formatCurrency } = useCustomAlert();
@@ -31,12 +44,26 @@ export default function PropertyDetail() {
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
-  // slide length = 1 2 3...
-  // currentSlide = 0 1 2 3...
+  const { data } = useFetchCollection("users");
+  const { user } = useAuth();
+
+  const adminUserOne = users?.filter(
+    (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL
+  );
+  const adminUserTwo = users?.filter(
+    (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL_TWO
+  );
+
+  console.log(adminUserOne);
+  console.log(adminUserTwo);
 
   useEffect(() => {
     setMessage(`I am interested in ${property?.name}...`);
   }, [property?.name]);
+
+  useEffect(() => {
+    setUsers(data);
+  }, [data]);
 
   useEffect(() => {
     setProperty(document);
@@ -105,8 +132,6 @@ export default function PropertyDetail() {
                 }}
               >
                 {property.availability}
-                {/* {property.availability === "Not Available" &&
-                <span style={{color:'#333', fontSize:'1rem'}}>(check back later)</span>} */}
               </span>
             </p>
             <p>
@@ -122,6 +147,13 @@ export default function PropertyDetail() {
                 Copy Reference ID to clipboard
               </button>
             </CopyToClipboard>
+            {property.availability === "Not Available" && (
+              <p className="details__warning">
+                <BsInfoCircle />
+                Properties that are unavilable can be available at later dates,
+                ensure to keep checking.
+              </p>
+            )}
           </div>
           <div className="property__details__images">
             {property.imagesUrl.slice(0, 6)?.map((image, index) => (
@@ -149,6 +181,67 @@ export default function PropertyDetail() {
               Description
             </h2>
             <p>{property.description}</p>
+          </div>
+          <div className="contact__info">
+            <div className="contact__info__details">
+              <h2>
+                <GrUserAdmin />
+                Contact the administrators
+              </h2>
+              <div className="admins">
+                <div className="admin__one">
+                  {!adminUserOne[0]?.avatar || !user ? (
+                    <RiUser3Fill className="admin__fallback__icon" />
+                  ) : (
+                    <div className="admin__image__wrapper">
+                      <img
+                        src={adminUserOne[0]?.avatar}
+                        alt={adminUserOne[0]?.lastName}
+                      />
+                      <BsPatchCheckFill className="verified__icon" />
+                    </div>
+                  )}
+                  <a href="tel:+2348107339039">
+                    <BsTelephoneForwardFill />
+                    {adminUserOne[0]?.phone}
+                  </a>
+                  <ReactWhatsapp
+                    number="234-810-733-9039"
+                    message="Hi there, i am from Ary Homes website, i want to make an inquiry about a property.."
+                    className="whatsapp"
+                  >
+                    <RiWhatsappLine />
+                    &nbsp; <span>Send Message</span>
+                  </ReactWhatsapp>
+                </div>
+
+                <div className="admin__two">
+                  {!adminUserTwo[0]?.avatar || !user ? (
+                    <RiUser3Fill className="admin__fallback__icon" />
+                  ) : (
+                    <>
+                      <img
+                        src={adminUserTwo[0]?.avatar}
+                        alt={adminUserTwo[0]?.lastName}
+                      />
+                      <BsPatchCheckFill className="verified__icon" />
+                    </>
+                  )}
+                  <a href="tel:+2348125258449">
+                    <BsTelephoneForwardFill />
+                    {adminUserTwo[0]?.phone}
+                  </a>
+                  <ReactWhatsapp
+                    number="234-812-525-8449"
+                    message="Hi there, i am from Ary Homes website, i want to make an inquiry about a property.."
+                    className="whatsapp"
+                  >
+                    <RiWhatsappLine />
+                    &nbsp; <span>Send Message</span>
+                  </ReactWhatsapp>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="right__contents">

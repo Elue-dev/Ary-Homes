@@ -21,9 +21,15 @@
     width: 100%;
     min-height: auto;
   }
+  .admin .admin__nav {
+    font-size: 0.9rem;
+  }
   .admin__nav nav ul {
     margin-left: auto;
   }
+  .admin__nav nav ul li {
+    border-bottom: 0.8px solid #fff;
+}
   .admin .admin__contents {
     width: 100%;
   }
