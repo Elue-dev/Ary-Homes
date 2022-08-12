@@ -17,6 +17,7 @@ export default function Comments({ id }) {
   const [comment, setComment] = useState("");
   const [showComments, setShowComments] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
+  const [error, setError] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
   const userID = useSelector(selectUserID);
@@ -39,6 +40,20 @@ export default function Comments({ id }) {
 
   const addComment = async (e) => {
     e.preventDefault();
+
+    if(!comment) {
+      window.scrollTo(0, 0);
+      setComment("");
+      setShowAlert(true);
+      setAlertMessage(`Add a comment before submiting`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+      return
+    }
 
     const today = new Date();
     const date = today.toDateString();

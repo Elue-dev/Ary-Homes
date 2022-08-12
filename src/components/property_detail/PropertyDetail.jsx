@@ -20,7 +20,7 @@ import {
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
-import { FaUser } from "react-icons/fa";
+import { FaProductHunt, FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
 import { useCustomAlert } from "../../contexts/AlertContext";
@@ -186,42 +186,49 @@ export default function PropertyDetail() {
                 <GrUserAdmin />
                 Contact the administrators
               </h2>
-              <div className="admins">
-                <div className="admin__one">
-                  <div className="admin__image__wrapper">
-                    <img src={admin1} alt={adminUserOne[0]?.lastName} />
-                    <BsPatchCheckFill className="verified__icon" />
+              {property.availability === "Not Available" ? (
+                <p style={{ marginTop: ".5rem" }}>
+                  Contacts of the administrators will be provided when this
+                  product is avilable.
+                </p>
+              ) : (
+                <div className="admins">
+                  <div className="admin__one">
+                    <div className="admin__image__wrapper">
+                      <img src={admin1} alt={adminUserOne[0]?.lastName} />
+                      <BsPatchCheckFill className="verified__icon" />
+                    </div>
+                    <a href="tel:+2348107339039">
+                      <BsTelephoneForwardFill />
+                      {adminUserOne[0]?.phone}
+                    </a>
+                    <ReactWhatsapp
+                      number="234-810-733-9039"
+                      message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
+                      className="whatsapp"
+                    >
+                      <TbBrandWhatsapp />
+                      &nbsp; <span>Message</span>
+                    </ReactWhatsapp>
                   </div>
-                  <a href="tel:+2348107339039">
-                    <BsTelephoneForwardFill />
-                    {adminUserOne[0]?.phone}
-                  </a>
-                  <ReactWhatsapp
-                    number="234-810-733-9039"
-                    message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
-                    className="whatsapp"
-                  >
-                    <TbBrandWhatsapp />
-                    &nbsp; <span>Message</span>
-                  </ReactWhatsapp>
+                  <div className="admin__two">
+                    <img src={admin2} alt={adminUserTwo[0]?.lastName} />
+                    <BsPatchCheckFill className="verified__icon" />
+                    <a href="tel:+2348125258449">
+                      <BsTelephoneForwardFill />
+                      {adminUserTwo[0]?.phone}
+                    </a>
+                    <ReactWhatsapp
+                      number="234-812-525-8449"
+                      message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
+                      className="whatsapp"
+                    >
+                      <TbBrandWhatsapp />
+                      &nbsp; <span>Message</span>
+                    </ReactWhatsapp>
+                  </div>
                 </div>
-                <div className="admin__two">
-                  <img src={admin2} alt={adminUserTwo[0]?.lastName} />
-                  <BsPatchCheckFill className="verified__icon" />
-                  <a href="tel:+2348125258449">
-                    <BsTelephoneForwardFill />
-                    {adminUserTwo[0]?.phone}
-                  </a>
-                  <ReactWhatsapp
-                    number="234-812-525-8449"
-                    message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
-                    className="whatsapp"
-                  >
-                    <TbBrandWhatsapp />
-                    &nbsp; <span>Message</span>
-                  </ReactWhatsapp>
-                </div>
-              </div>
+              )}
             </div>
           </div>
           <Comments id={id} />
