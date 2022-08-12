@@ -26,6 +26,7 @@ import userFallback from "../../assets/user.png";
 import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
 import GoBack from "../../components/utilities/GoBack";
+import Notiflix from "notiflix";
 
 export default function Account() {
   const [photo] = useState("");
@@ -126,6 +127,29 @@ export default function Account() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL);
         });
+      }
+    );
+  };
+
+  const confirmLogOut = () => {
+    Notiflix.Confirm.show(
+      "You are about to log out",
+      "Are you sure you want to log out?",
+      "PROCEED",
+      "CANCEL",
+      function okCb() {
+        logUserOut();
+      },
+      function cancelCb() {
+        console.log("Deleted");
+      },
+      {
+        width: "320px",
+        borderRadius: "5px",
+        titleColor: "#ae8625",
+        okButtonBackground: "#ae8625",
+        cssAnimationStyle: "zoom",
+        //other styles can be added
       }
     );
   };
@@ -394,7 +418,7 @@ export default function Account() {
           </button>
         </form>
         <div>
-          <button onClick={logUserOut} className="account__info__logout">
+          <button onClick={confirmLogOut} className="account__info__logout">
             Log Out
           </button>
         </div>
