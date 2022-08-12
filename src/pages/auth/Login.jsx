@@ -127,8 +127,8 @@ export default function Login() {
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="ary homes logo" />
-            <h1>LOG IN</h1>
           </Link>
+          <h1>LOG IN</h1>
         </div>
         {error && <p className="alert error">{error}</p>}
         <form>

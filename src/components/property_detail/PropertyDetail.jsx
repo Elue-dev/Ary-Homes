@@ -179,7 +179,7 @@ export default function PropertyDetail() {
               onClick={() => setShowSlider(true)}
               style={{ textDecoration: "underline", cursor:'pointer' }}
             >
-              <b>See all images</b>
+              <b>See all {property.imagesUrl.length} images</b>
             </h3>
             <div className="property__features">
               <h2>What does this property offer?</h2>

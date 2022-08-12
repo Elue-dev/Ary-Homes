@@ -385,14 +385,6 @@
     a {
     font-size: 0.9rem;
   }
-  // .property__details__contents
-  //   .left__contents
-  //   .contact__info
-  //   .contact__info__details
-  //   .admins
-  //   .whatsapp {
-  //   font-size: 0.7rem;
-  // }
   .property__details__contents
     .left__contents
     .contact__info
@@ -403,53 +395,3 @@
     font-size: 1.3rem;
   }
 }
-
-//  ==================
-// .images__wrapper {
-//   width: 100%;
-// }
-// .slider {
-//   background: url('../../assets//loader.gif');
-//   background-position: center center;
-//   background-size: auto;
-//   background-repeat: no-repeat;
-//   .slide {
-//     img {
-//       height: 400px;
-//       width: 700px;
-//       object-fit: cover;
-//       position: relative;
-//     }
-//   }
-// }
-
-// .arrow {
-//   font-size: 2.1rem;
-//   cursor: pointer;
-//   color: $mainColor;
-//   font-weight: 700;
-// }
-
-// hr {
-//   height: 2px;
-//   background: white;
-//   width: 50%;
-// }
-
-// @keyframes slide-up {
-//   0% {
-//     visibility: visible;
-//     top: 23rem;
-//   }
-//   100% {
-//     visibility: visible;
-//     top: 17rem;
-//   }
-// }
-
-// @media screen and (min-width: 600px) {
-//   .slide img {
-//     width: 100%;
-//     height: 100%;
-//   }
-// }

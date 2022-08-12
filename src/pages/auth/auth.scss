@@ -174,7 +174,7 @@
         border-radius: 0.3rem;
         border: 1px solid #333;
         outline: 0;
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
       .reset__password__btn {
         @include button();
@@ -292,11 +292,11 @@
     width: 90%;
   }
   .auth__modal .auth__contents .close__icon {
-    top: 1rem;
+    top: 2rem;
     right: 1rem;
   }
   .auth__modal .auth__contents form label input {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .auth__modal .auth__contents .buttons .refresh__btn {
     background-color: #111;

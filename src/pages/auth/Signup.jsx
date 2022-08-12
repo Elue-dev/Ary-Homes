@@ -158,8 +158,8 @@ export default function Signup() {
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="ary homes logo" />
-            <h1>SIGN UP</h1>
           </Link>
+          <h1>SIGN UP</h1>
         </div>
         {error && <p className="alert error">{error}</p>}
         <form>
