@@ -43,7 +43,7 @@
   gap: 1rem;
   .left__contents {
     width: 70%;
-    animation: slide-right 0.5s ease;
+    // animation: slide-right 0.5s ease;
     .left__contents__card {
       box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
       padding: 1rem;
@@ -217,7 +217,7 @@
   }
   .right__contents {
     width: 35%;
-    animation: slide-left 0.5s ease;
+    // animation: slide-left 0.5s ease;
     height: -webkit-fill-available;
     background: rgb(240, 240, 240);
     padding: 1.5rem 1rem;
