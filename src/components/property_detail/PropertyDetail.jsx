@@ -47,6 +47,7 @@ export default function PropertyDetail() {
   const [copied, setCopied] = useState(false);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const { data } = useFetchCollection("users");
+  const [fixPropName, setFixPropName] = useState(false);
 
   const adminUserOne = users?.filter(
     (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL
@@ -79,6 +80,15 @@ export default function PropertyDetail() {
     setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
   };
 
+  const fixPropertyName = () => {
+    if (window.scrollY > 300) {
+      setFixPropName(true);
+    } else {
+      setFixPropName(false);
+    }
+  };
+  window.addEventListener("scroll", fixPropertyName);
+
   useEffect(() => {
     if (copied) {
       setShowAlert(true);
@@ -109,7 +119,11 @@ export default function PropertyDetail() {
       </p>
       <div className="property__details__contents">
         <div className="left__contents">
-          <div className="left__contents__card">
+          <div
+            className={
+              fixPropName ? "left__contents__card fix" : "left__contents__card"
+            }
+          >
             <div className="card__name">
               {property && <h2>{property.name}</h2>}
               <p className="property__location">

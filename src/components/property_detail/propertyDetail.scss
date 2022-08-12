@@ -1,5 +1,17 @@
 @import "../../global_styles/global.scss";
 
+.fix {
+  position: fixed;
+  top: 59px;
+  right: 0;
+  width: 100%;
+  z-index: 9;
+  box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 1rem;
+  @include flexBox(space-between, center, row);
+}
+
 .property__details {
   width: 100%;
   padding-top: 2rem;
@@ -28,6 +40,7 @@
       box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
       padding: 1rem;
       margin-bottom: 1rem;
+      transition: 0.2s ease-in-out;
       @include flexBox(space-between, center, row);
       .card__name {
         h2 {

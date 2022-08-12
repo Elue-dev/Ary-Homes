@@ -30,6 +30,11 @@ export default function Comments({ id }) {
     : "comments__section__details reduce__height";
   const contents = showComments ? null : "hide";
 
+  const hanndleShowComments = () => {
+    setShowComments(!showComments);
+    setShowCommentForm(false);
+  };
+
   const handleCommentForm = () => {
     if (!user) {
       navigate("/login");
@@ -41,7 +46,7 @@ export default function Comments({ id }) {
   const addComment = async (e) => {
     e.preventDefault();
 
-    if(!comment) {
+    if (!comment) {
       window.scrollTo(0, 0);
       setComment("");
       setShowAlert(true);
@@ -52,7 +57,7 @@ export default function Comments({ id }) {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
-      return
+      return;
     }
 
     const today = new Date();
@@ -67,7 +72,7 @@ export default function Comments({ id }) {
     };
     await addDoc(collection(database, "comments"), commentsConfig);
     setShowComments(false);
-    setShowCommentForm(false)
+    setShowCommentForm(false);
     window.scrollTo(0, 0);
     setComment("");
     setShowAlert(true);
@@ -83,16 +88,13 @@ export default function Comments({ id }) {
   return (
     <div className="comments__section">
       <div className={wrapper}>
-        <h1>
+        <h1 onClick={hanndleShowComments}>
           <span>
             <GoCommentDiscussion />
             Comments ({filteredComments.length})
           </span>
 
-          <div
-            onClick={() => setShowComments(!showComments)}
-            className="toggle__icon"
-          >
+          <div onClick={hanndleShowComments} className="toggle__icon">
             {showComments ? <BsChevronUp /> : <BsChevronDown />}
           </div>
         </h1>
