@@ -13,7 +13,7 @@ export default function Alert() {
   let icon;
 
   if (alertType === "error") {
-    background = "crimson";
+    background = "rgb(239, 58, 94)";
     color = "white";
     icon = <MdError />;
   }

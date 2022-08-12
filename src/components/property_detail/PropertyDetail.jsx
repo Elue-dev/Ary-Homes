@@ -162,7 +162,7 @@ export default function PropertyDetail() {
             {property.availability === "Not Available" && (
               <p className="details__warning">
                 <BsInfoCircle />
-                Properties that are unavilable can be available at later dates,
+                Properties like this that are unavilable can be available at later dates,
                 ensure to keep checking.
               </p>
             )}

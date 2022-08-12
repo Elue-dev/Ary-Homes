@@ -150,6 +150,13 @@ export default function Comments({ id }) {
           <button type="submit" className="submit__comment__btn">
             Submit comment
           </button>
+          <button
+            onClick={() => setShowCommentForm(false)}
+            type="button"
+            className="close__comment__btn"
+          >
+            Close comment
+          </button>
         </form>
       </div>
     </div>

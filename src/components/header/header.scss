@@ -5,10 +5,11 @@
   position: fixed;
   top: 0;
   z-index: 9;
+  animation: slide-down 0.2s ease;
+  transition: 0.2s ease-in-out;
 }
 
 .header__wrapper {
-  transition: all 0.5s;
   background: rgba(255, 255, 255, 1);
   box-shadow: $box-shadow;
   height: 3rem;
@@ -16,6 +17,7 @@
   height: 3.7rem;
   z-index: 1000000;
   .header__contents {
+
     @include container();
     @include flexBox(space-between, center, row);
     opacity: 1;

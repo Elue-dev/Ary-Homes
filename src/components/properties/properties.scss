@@ -56,15 +56,28 @@
           font-size: 1.3rem;
           color: #fff;
           cursor: pointer;
-          background: rgba(0,0,0,0.5);
-          padding: .1rem .6rem;
-          border-radius: .2rem;
+          background: rgba(0, 0, 0, 0.5);
+          padding: 0.1rem 0.6rem;
+          border-radius: 0.2rem;
           @include flexBox(flex-start, center, center);
-          gap: .3rem;
+          gap: 0.3rem;
           :last-child {
             font-size: 1rem;
             font-weight: 500;
           }
+        }
+        .exclusive__image__wrapper {
+          position: relative;
+        }
+        .view__in__detail {
+          position: absolute;
+          color: #fff;
+          font-size: 3rem;
+          bottom: 1rem;
+          right: 1rem;
+          padding: 0.1rem 0.6rem;
+          border-radius: 0.4rem;
+          background: rgba(0, 0, 0, 0.5);
         }
       }
       .properties__details__texts {

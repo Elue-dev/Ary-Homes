@@ -86,6 +86,18 @@
         font-weight: 600;
         font-family: "Figtree", sans-serif;
       }
+      .close__comment__btn {
+        @include button();
+        padding: 0.5rem;
+        background: transparent;
+        color: #111;
+        font-weight: 700;
+        margin-top: 0.3rem;
+        border: 1px solid #777;
+        border-radius: 0.3rem;
+        font-weight: 600;
+        font-family: "Figtree", sans-serif;
+      }
     }
   }
   .reduce__height {
@@ -103,7 +115,11 @@
   .reduce__height {
     height: 30px;
   }
-  .comments__section .comments__section__details form .submit__comment__btn {
+  .comments__section .comments__section__details form .submit__comment__btn,
+  .comments__section .comments__section__details form .close__comment__btn {
     width: 100%;
-}
+  }
+  .comments__section .reduce__height {
+    height: 25px;
+  }
 }
