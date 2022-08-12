@@ -76,7 +76,7 @@ export default function Comments({ id }) {
           </div>
         </h1>
         {filteredComments.length === 0 ? (
-          <p className="no__comments">
+          <p className={`no__comments ${contents}`}>
             There are no comments for this property yet.
           </p>
         ) : (
@@ -105,7 +105,6 @@ export default function Comments({ id }) {
             );
           })
         )}
-
         <form onSubmit={addComment} className={showCommentForm ? null : "hide"}>
           <textarea
             name=""
