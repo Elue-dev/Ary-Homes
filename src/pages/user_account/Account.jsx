@@ -63,6 +63,8 @@ export default function Account() {
     auth.clientVersion.indexOf("/")
   );
 
+  const getUser = data.find((d) => d.email === user.email);
+
   useEffect(() => {
     setFirstName(info.userInfo?.signedInUserF);
     setLastName(info.userInfo?.signedInUserL);
@@ -206,7 +208,7 @@ export default function Account() {
         lastName,
         phone,
         avatar: "",
-        joinedAt: user.joinedAt && user.joinedAt,
+        joinedAt: getUser.joinedAt,
         email: email || user.email,
         editedAt: Timestamp.now().toDate(),
         createdAt: user.metadata.creationTime,
@@ -230,6 +232,7 @@ export default function Account() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
+      console.log(error.message);
     }
   };
 

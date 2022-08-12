@@ -40,14 +40,12 @@ input {
   border-radius: 3px;
 }
 .error {
-  background: pink;
-  color: red;
-  border: 1px solid red;
+  background: #fff;
+  color: crimson;
 }
 .message {
-  background: rgb(183, 215, 136);
+  background: #fff;
   color: green;
-  border: 1px solid green;
 }
 
 /* @media (max-width: 500px) {

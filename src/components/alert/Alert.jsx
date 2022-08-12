@@ -10,21 +10,27 @@ export default function Alert() {
 
   let background;
   let color;
+  let border;
   let icon;
 
   if (alertType === "error") {
-    background = "rgb(239, 58, 94)";
-    color = "white";
+    // background = "rgb(239, 58, 94)";
+    background = "#fff";
+    color = "crimson";
+    border = ".3px solid #ae8625";
     icon = <MdError />;
   }
   if (alertType === "info") {
-    background = "#c1b464";
-    color = "white";
+    background = "#fff";
+    // color = "#c1b464";
+    color = "#333";
+    border = ".3px solid #ae8625";
     icon = <FaInfo />;
   }
   if (alertType === "success") {
-    background = "rgb(11, 152, 11)";
-    color = "white";
+    background = "#fff";
+    color = "rgb(11, 152, 11)";
+    border = ".3px solid #ae8625";
     icon = <BsFillCheckCircleFill />;
   }
 
@@ -33,6 +39,7 @@ export default function Alert() {
       style={{
         background: background,
         color: color,
+        border: border,
       }}
       className="custom__alert"
     >

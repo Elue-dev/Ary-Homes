@@ -34,14 +34,20 @@ export default function Verify() {
   };
 
   const validate = () => {
+    window.location.reload();
     if (user.emailVerified === false) {
-      setError(
-        "You have to verify your email first, if you have, click on Done, then Proceed"
+      window.setTimeout(
+        () =>
+          setError(
+            "You have to verify your email first, if you have, click on Done, then Proceed"
+          ),
+        4000
       );
+
       return;
     } else {
       setError("");
-      window.location.reload()
+      window.location.reload();
       navigate("/");
     }
   };
@@ -55,19 +61,16 @@ export default function Verify() {
         </p>
         {error && <p className="alert error">{error}</p>}
         <div className="buttons">
-          <button
-            onClick={validate}
-            className="refresh__btn"
-          >
+          <button onClick={validate} className="refresh__btn">
             Proceed
           </button>
           <div className="resend">
-          <button onClick={verifyUser} className="verification__btn">
-            Resend verification link
-          </button>
+            <button onClick={verifyUser} className="verification__btn">
+              Resend verification link
+            </button>
+          </div>
         </div>
-        </div>
-       
+
         <p className="info">
           <b>
             <TiInfoOutline /> Verifying your email is useful to access some of

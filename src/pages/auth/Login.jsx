@@ -24,8 +24,8 @@ export default function Login() {
   const previousURL = useSelector(selectPreviousURL);
   const { data } = useFetchCollection("users");
 
-  const emails = [];
-  const getemails = data.map((d) => emails.push(d.email));
+  const allEmails = [];
+  data.map((mails) => allEmails.push(mails.email));
 
   const redirectUser = () => {
     if (previousURL.includes("property")) {
@@ -59,16 +59,16 @@ export default function Login() {
         setAlertType(null);
       }, 6000);
       setLoading(false);
-      // navigate("/");
       redirectUser();
     } catch (error) {
-      if (emails.includes(email)) {
+      if (allEmails.includes(email)) {
         setError(
-          "Seems this email has already been signed in using google"
+          "This email has already been signed in using google, log in using google instead."
         );
-        window.setTimeout(() => {
-          setError("");
-        }, 6000);
+        // window.setTimeout(() => {
+        //   setError("");
+        // }, 9000);
+        setLoading(false);
         return;
       }
       if (error.message === "Firebase: Error (auth/user-not-found).") {
