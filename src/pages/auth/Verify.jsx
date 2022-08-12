@@ -41,6 +41,7 @@ export default function Verify() {
       return;
     } else {
       setError("");
+      window.location.reload()
       navigate("/");
     }
   };
@@ -55,7 +56,7 @@ export default function Verify() {
         {error && <p className="alert error">{error}</p>}
         <div className="buttons">
           <button
-            onClick={() => window.location.reload()}
+            onClick={validate}
             className="refresh__btn"
           >
             Proceed

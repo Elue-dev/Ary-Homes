@@ -167,11 +167,11 @@
             }
           }
           .admin__fallback__icon {
-            font-size: 3rem;
+            font-size: 6rem;
           }
           .whatsapp {
             @include flexBox(flex-start, center, row);
-            padding: 0.5rem 1.2rem;
+            padding: 0.45rem 1.6rem;
             background: rgb(26, 28, 26);
             color: #fff;
             border: 0;
@@ -362,14 +362,14 @@
     a {
     font-size: 0.9rem;
   }
-  .property__details__contents
-    .left__contents
-    .contact__info
-    .contact__info__details
-    .admins
-    .whatsapp {
-    font-size: 0.7rem;
-  }
+  // .property__details__contents
+  //   .left__contents
+  //   .contact__info
+  //   .contact__info__details
+  //   .admins
+  //   .whatsapp {
+  //   font-size: 0.7rem;
+  // }
   .property__details__contents
     .left__contents
     .contact__info

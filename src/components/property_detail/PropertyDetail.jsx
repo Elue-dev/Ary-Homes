@@ -31,6 +31,7 @@ import SimilarProducts from "./SimilarProducts";
 import ReactWhatsapp from "react-whatsapp";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import { useAuth } from "../../contexts/AuthContext";
+import Comments from "./Comments";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -207,14 +208,13 @@ export default function PropertyDetail() {
                   </a>
                   <ReactWhatsapp
                     number="234-810-733-9039"
-                    message="Hi there, i am from Ary Homes website, i want to make an inquiry about a property.."
+                    message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
                     className="whatsapp"
                   >
-                    <RiWhatsappLine />
-                    &nbsp; <span>Send Message</span>
+                    <TbBrandWhatsapp />
+                    &nbsp; <span>Message</span>
                   </ReactWhatsapp>
                 </div>
-
                 <div className="admin__two">
                   {!adminUserTwo[0]?.avatar || !user ? (
                     <RiUser3Fill className="admin__fallback__icon" />
@@ -233,16 +233,17 @@ export default function PropertyDetail() {
                   </a>
                   <ReactWhatsapp
                     number="234-812-525-8449"
-                    message="Hi there, i am from Ary Homes website, i want to make an inquiry about a property.."
+                    message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
                     className="whatsapp"
                   >
-                    <RiWhatsappLine />
-                    &nbsp; <span>Send Message</span>
+                    <TbBrandWhatsapp />
+                    &nbsp; <span>Message</span>
                   </ReactWhatsapp>
                 </div>
               </div>
             </div>
           </div>
+          <Comments />
         </div>
         <div className="right__contents">
           <div>

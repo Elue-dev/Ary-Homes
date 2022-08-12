@@ -150,7 +150,7 @@ export default function Account() {
       });
       setShowAlert(true);
       setAlertMessage("Profile picture updated successfully!");
-      // window.setTimeout(() => window.location.reload(), 1500);
+      setShowFields(false);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
