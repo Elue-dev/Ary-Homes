@@ -64,7 +64,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 50) {
       setScrollpage(true);
     } else {
       setScrollpage(false);
@@ -239,24 +239,41 @@ export default function Header() {
                             </button>
                           </div>
                         ) : (
-                          <p style={{ display: "block", lineHeight: 1.2 }}>
-                            Seems you have yet to verifiy your email, either you
-                            changed your email or you failed to do this when
-                            signing up
-                            <br />
-                            <button
-                              onClick={sendVerificationEmail}
-                              className="header__verify__btn"
-                            >
-                              Verify now
-                            </button>
-                            <button
-                              className="logout__btn"
-                              onClick={logoutUser}
-                            >
-                              Log out
-                            </button>
-                          </p>
+                          // <p style={{ display: "block", lineHeight: 1.2 }}>
+                          //   Seems you have yet to verifiy your email, either you
+                          //   changed your email or you failed to do this when
+                          //   signing up
+                          //   <br />
+                          //   <button
+                          //     onClick={sendVerificationEmail}
+                          //     className="header__verify__btn"
+                          //   >
+                          //     Verify now
+                          //   </button>
+                          //   <button
+                          //     className="logout__btn"
+                          //     onClick={logoutUser}
+                          //   >
+                          //     Log out
+                          //   </button>
+                          // </p>
+
+                          // ===uncomment the above later annd remove this===
+                          <>
+                          <NavLink to={`/user/account/${user.uid}`}>
+                          <li>
+                            <MdOutlineManageAccounts />
+                            My Account
+                          </li>
+                        </NavLink>
+
+                        <button
+                          className="logout__btn"
+                          onClick={logoutUser}
+                        >
+                          Log out
+                        </button>
+                        </>
                         )}
                       </>
                     )}

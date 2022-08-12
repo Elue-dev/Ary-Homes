@@ -40,6 +40,7 @@ export default function PropertyDetail() {
   const { document } = useFetchDocuments("properties", id);
   const [property, setProperty] = useState(null);
   const [users, setUsers] = useState([]);
+  const [alert, setAlert] = useState(null);
   const { formatCurrency } = useCustomAlert();
   const form = useRef();
   const [message, setMessage] = useState("");
@@ -68,25 +69,27 @@ export default function PropertyDetail() {
     setProperty(document);
   }, [document]);
 
-  const fixPropertyName = () => {
-    if (window.scrollY > 300) {
-      setFixPropName(true);
-    } else {
-      setFixPropName(false);
-    }
-  };
-  window.addEventListener("scroll", fixPropertyName);
+  // const fixPropertyName = () => {
+  //   if (window.scrollY > 50) {
+  //     setFixPropName(true);
+  //   } else {
+  //     setFixPropName(false);
+  //   }
+  // };
+  // window.addEventListener("scroll", fixPropertyName);
 
   useEffect(() => {
     if (copied) {
-      setShowAlert(true);
-      setAlertMessage(`Reference ID copied to clipboard`);
-      setAlertType("success");
+      setAlert('Reference ID copied to clipboard')
+      // setShowAlert(true);
+      // setAlertMessage(`Reference ID copied to clipboard`);
+      // setAlertType("success");
       window.setTimeout(() => {
-        setShowAlert(false);
-        setAlertMessage(null);
-        setAlertType(null);
-      }, 6000);
+        // setShowAlert(false);
+        // setAlertMessage(null);
+        // setAlertType(null);
+        setAlert('')
+      }, 4000);
     }
   }, [copied]);
 
@@ -155,6 +158,7 @@ export default function PropertyDetail() {
                 <AiFillTags />
                 <b>Ref. ID:</b> {id}
               </span>
+              {alert && <p className="alert message" style={{width:'fit-content', height:'1.6rem'}}>{alert}</p>}
               <CopyToClipboard text={id} onCopy={() => setCopied(true)}>
                 <button className="copy__btn">
                   Copy Reference ID to clipboard

@@ -32,12 +32,11 @@ input {
 }
 .alert {
   color: #fff;
-  padding: 0.1rem;
   width: 100%;
   text-align: left;
   font-weight: 700;
   margin-bottom: 1rem;
-  padding: 0.5rem;
+  padding: 0.2rem;
   border-radius: 3px;
 }
 .error {
