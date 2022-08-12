@@ -55,9 +55,6 @@ export default function PropertyDetail() {
     (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL_TWO
   );
 
-  console.log(adminUserOne);
-  console.log(adminUserTwo);
-
   useEffect(() => {
     setMessage(`I am interested in ${property?.name}...`);
   }, [property?.name]);
@@ -243,7 +240,7 @@ export default function PropertyDetail() {
               </div>
             </div>
           </div>
-          <Comments />
+          <Comments id={id} />
         </div>
         <div className="right__contents">
           <div>

@@ -1,0 +1,91 @@
+@import "../../global_styles/global.scss";
+
+.comments__section {
+  box-shadow: $box-shadow;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  .comments__section__details {
+    h1 {
+      padding-bottom: 2rem;
+      @include flexBox(space-between, center, row);
+      .toggle__icon {
+        cursor: pointer;
+      }
+    }
+    .no__comments {
+      border-top: 1px solid rgb(239, 238, 238);
+      font-weight: 500;
+    }
+    ul {
+      border-top: 1px solid rgb(239, 238, 238);
+      li {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgb(203, 203, 203);
+        list-style: none;
+        :first-child {
+          font-weight: 700;
+        }
+        .comment__name,
+        .comment__date {
+          @include flexBox(flex-start, center, row);
+          gap: 0.4rem;
+          font-weight: 500;
+          margin-bottom: 0.6rem;
+          :first-child {
+            color: $mainColor;
+            font-size: 1.4rem;
+          }
+        }
+      }
+      .add__comment__btn {
+        @include button();
+        padding: 0.3rem 0.5rem;
+        background-color: #333;
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+
+    form {
+      padding-top: 1rem;
+      transition: 0.5s ease;
+      textarea {
+        padding: 0.8rem;
+        width: 100%;
+        height: 100px;
+        outline: 0;
+        border: 1px solid #888;
+        border-radius: 0.3rem;
+        display: block;
+        font-size: 1rem;
+        font-family: "Figtree", sans-serif;
+      }
+      .submit__comment__btn {
+        @include button();
+        padding: 0.3rem 0.5rem;
+        background-color: $mainColor;
+        color: #fff;
+        font-weight: 700;
+        margin-top: 0.3rem;
+        border-radius: 0.3rem;
+        font-weight: 600;
+        font-family: "Figtree", sans-serif;
+      }
+    }
+  }
+  .reduce__height {
+    height: 40px;
+  }
+  .hide {
+    display: none;
+  }
+}
+
+@include mQ(500px) {
+  .comments__section .comments__section__details h1 {
+    font-size: 1.2rem;
+  }
+  .reduce__height {
+    height: 30px;
+  }
+}
