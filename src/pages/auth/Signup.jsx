@@ -60,7 +60,7 @@ export default function Signup() {
       firstName,
       lastName,
       // phone,
-      email: email,
+      email: email || user.email,
       joinedAt: date,
       avatar: "",
       createdAt: Timestamp.now().toDate(),
