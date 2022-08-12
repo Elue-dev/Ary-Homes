@@ -7,6 +7,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
+import { useSelector } from "react-redux";
+import { selectPreviousURL } from "../../redux/slice/authSlice";
+import useFetchCollection from "../../hooks/useFetchCollection";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -18,6 +21,19 @@ export default function Login() {
   const navigate = useNavigate();
   const { login, googleSignIn } = useAuth();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
+  const previousURL = useSelector(selectPreviousURL);
+  const { data } = useFetchCollection("users");
+
+  const emails = [];
+  const getemails = data.map((d) => emails.push(d.email));
+
+  const redirectUser = () => {
+    if (previousURL.includes("property")) {
+      return navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -43,8 +59,18 @@ export default function Login() {
         setAlertType(null);
       }, 6000);
       setLoading(false);
-      navigate("/");
+      // navigate("/");
+      redirectUser();
     } catch (error) {
+      if (emails.includes(email)) {
+        setError(
+          "Seems this email has already been signed in using google"
+        );
+        window.setTimeout(() => {
+          setError("");
+        }, 6000);
+        return;
+      }
       if (error.message === "Firebase: Error (auth/user-not-found).") {
         setError("No user with these credentials exist");
         window.setTimeout(() => {
@@ -89,7 +115,7 @@ export default function Login() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
-      navigate("/");
+      redirectUser();
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Google sign in failed. (You exited the google sign in)");

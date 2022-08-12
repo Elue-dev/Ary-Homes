@@ -64,7 +64,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 300) {
       setScrollpage(true);
     } else {
       setScrollpage(false);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { GoCommentDiscussion } from "react-icons/go";
@@ -9,7 +9,7 @@ import "./comments.scss";
 import { useAuth } from "../../contexts/AuthContext";
 import { database } from "../../firebase/firebase";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { selectUserID } from "../../redux/slice/authSlice";
+import { SAVE_URL, selectUserID } from "../../redux/slice/authSlice";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import useFetchCollection from "../../hooks/useFetchCollection";
 
@@ -17,9 +17,11 @@ export default function Comments({ id }) {
   const [comment, setComment] = useState("");
   const [showComments, setShowComments] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
+
   const [error, setError] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const userID = useSelector(selectUserID);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const { data } = useFetchCollection("comments");
@@ -35,8 +37,11 @@ export default function Comments({ id }) {
     setShowCommentForm(false);
   };
 
+  const url = window.location.href;
+
   const handleCommentForm = () => {
     if (!user) {
+      dispatch(SAVE_URL(url));
       navigate("/login");
     } else {
       setShowCommentForm(!showCommentForm);
@@ -126,12 +131,14 @@ export default function Comments({ id }) {
                     {commentDate}
                   </div>
                 </li>
-                <button
-                  className="add__comment__btn"
-                  onClick={handleCommentForm}
-                >
-                  Add a comment
-                </button>
+                {!showCommentForm ? (
+                  <button
+                    className="add__comment__btn"
+                    onClick={handleCommentForm}
+                  >
+                    Add a comment
+                  </button>
+                ) : null}
               </ul>
             );
           })

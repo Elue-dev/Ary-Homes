@@ -225,7 +225,7 @@ export default function PropertyDetail() {
                       </div>
                       <a href="tel:+2348107339039">
                         <BsTelephoneForwardFill />
-                        {adminUserOne[0]?.phone}
+                        08107339039
                       </a>
                       <ReactWhatsapp
                         number="234-810-733-9039"
@@ -241,7 +241,7 @@ export default function PropertyDetail() {
                       <BsPatchCheckFill className="verified__icon" />
                       <a href="tel:+2348125258449">
                         <BsTelephoneForwardFill />
-                        {adminUserTwo[0]?.phone}
+                        08125258449
                       </a>
                       <ReactWhatsapp
                         number="234-812-525-8449"

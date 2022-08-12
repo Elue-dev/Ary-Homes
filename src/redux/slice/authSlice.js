@@ -9,6 +9,7 @@ const initialState = {
   userInfo: [],
   userId: "",
   deletedUsers: [],
+  previousURL: ''
 };
 
 const authSlice = createSlice({
@@ -40,6 +41,9 @@ const authSlice = createSlice({
     DELETED_USERS: (state, action) => {
       state.deletedUsers = action.payload;
     },
+    SAVE_URL: (state, action) => {
+      state.previousURL = action.payload;
+    },
   },
 });
 
@@ -50,6 +54,7 @@ export const {
   STORE_USER_INFO,
   STORE_USER_ID,
   DELETED_USERS,
+  SAVE_URL
 } = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
@@ -60,5 +65,6 @@ export const selectUsers = (state) => state.auth.users;
 export const selectUserInfo = (state) => state.auth.userInfo;
 export const selectUserId = (state) => state.auth.userId;
 export const selectDeletedUsers = (state) => state.auth.deletedUsers;
+export const selectPreviousURL = (state) => state.auth.previousURL;
 
 export default authSlice.reducer;

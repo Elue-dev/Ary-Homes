@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { FaUser } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../../contexts/AuthContext";
@@ -12,6 +13,8 @@ import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../../components/utilities/GoBack";
+import { selectPreviousURL } from "../../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -26,11 +29,48 @@ export default function Signup() {
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const { updateName, signup, googleSignIn, user } = useAuth();
+  const previousURL = useSelector(selectPreviousURL);
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
       // fill later
     });
+  };
+
+  const redirectUser = () => {
+    if (previousURL.includes("property")) {
+      return navigate(-1);
+    } else {
+      navigate("/verify");
+    }
+  };
+  const redirectGUser = () => {
+    if (previousURL.includes("property")) {
+      return navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
+  const storeUsersInDatabase = async () => {
+    const today = new Date();
+    const date = today.toDateString();
+    const usersConfig = {
+      assignedID: uuidv4(),
+      firstName,
+      lastName,
+      // phone,
+      email: email,
+      joinedAt: date,
+      avatar: "",
+      createdAt: Timestamp.now().toDate(),
+    };
+    try {
+      const usersRef = collection(database, "users");
+      await addDoc(usersRef, usersConfig);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const registerUser = async (e) => {
@@ -55,9 +95,11 @@ export default function Signup() {
       setError("");
       await signup(email, password);
       await updateName(firstName + " " + lastName);
+      storeUsersInDatabase();
       verifyUser();
       setLoading(false);
-      navigate("/verify");
+      // navigate("/verify");
+      redirectUser();
     } catch (error) {
       if (error.message === "Firebase: Error (auth/email-already-in-use).") {
         setError("Email already in use");
@@ -88,31 +130,12 @@ export default function Signup() {
       }
       setLoading(false);
     }
-
-    // ===== add users to database =======
-    const today = new Date();
-    const date = today.toDateString();
-    const usersConfig = {
-      assignedID: uuidv4(),
-      firstName,
-      lastName,
-      // phone,
-      email: email,
-      joinedAt: date,
-      avatar: "",
-      createdAt: Timestamp.now().toDate(),
-    };
-    try {
-      const usersRef = collection(database, "users");
-      await addDoc(usersRef, usersConfig);
-    } catch (error) {
-      console.log(error.message);
-    }
   };
 
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      storeUsersInDatabase();
       setShowAlert(true);
       setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");
@@ -121,7 +144,7 @@ export default function Signup() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
-      navigate("/");
+      redirectGUser();
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Google sign in failed. (You exited the google sign in)");
@@ -167,18 +190,24 @@ export default function Signup() {
           <label>
             <span>Name:</span>
             <div className="name">
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder="First name"
-              />
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                placeholder="Last name"
-              />
+              <label>
+                <FaUser />
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="First name"
+                />
+              </label>
+              <label>
+                <FaUser />
+                <input
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Last name"
+                />
+              </label>
             </div>
           </label>
           {/* <label>
