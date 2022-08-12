@@ -259,7 +259,9 @@ export default function Account() {
                 onClick={() => setShowFields(true)}
                 style={{ display: showFields ? "none" : "inline-block" }}
               >
-                Change profile picture
+                {user.photoURL
+                  ? "   Update your profile picture"
+                  : "  Add a profile picture"}
               </p>
             </>
           </div>
