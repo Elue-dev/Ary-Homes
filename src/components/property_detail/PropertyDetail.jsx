@@ -20,7 +20,6 @@ import {
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
-import { RiUser3Fill, RiWhatsappLine } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
@@ -32,6 +31,8 @@ import ReactWhatsapp from "react-whatsapp";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import { useAuth } from "../../contexts/AuthContext";
 import Comments from "./Comments";
+import admin1 from "../../assets/wisdom.jpeg";
+import admin2 from "../../assets/admin2.jpeg";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -46,7 +47,6 @@ export default function PropertyDetail() {
   const [copied, setCopied] = useState(false);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const { data } = useFetchCollection("users");
-  const { user } = useAuth();
 
   const adminUserOne = users?.filter(
     (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL
@@ -188,17 +188,10 @@ export default function PropertyDetail() {
               </h2>
               <div className="admins">
                 <div className="admin__one">
-                  {!adminUserOne[0]?.avatar || !user ? (
-                    <RiUser3Fill className="admin__fallback__icon" />
-                  ) : (
-                    <div className="admin__image__wrapper">
-                      <img
-                        src={adminUserOne[0]?.avatar}
-                        alt={adminUserOne[0]?.lastName}
-                      />
-                      <BsPatchCheckFill className="verified__icon" />
-                    </div>
-                  )}
+                  <div className="admin__image__wrapper">
+                    <img src={admin1} alt={adminUserOne[0]?.lastName} />
+                    <BsPatchCheckFill className="verified__icon" />
+                  </div>
                   <a href="tel:+2348107339039">
                     <BsTelephoneForwardFill />
                     {adminUserOne[0]?.phone}
@@ -213,17 +206,8 @@ export default function PropertyDetail() {
                   </ReactWhatsapp>
                 </div>
                 <div className="admin__two">
-                  {!adminUserTwo[0]?.avatar || !user ? (
-                    <RiUser3Fill className="admin__fallback__icon" />
-                  ) : (
-                    <>
-                      <img
-                        src={adminUserTwo[0]?.avatar}
-                        alt={adminUserTwo[0]?.lastName}
-                      />
-                      <BsPatchCheckFill className="verified__icon" />
-                    </>
-                  )}
+                  <img src={admin2} alt={adminUserTwo[0]?.lastName} />
+                  <BsPatchCheckFill className="verified__icon" />
                   <a href="tel:+2348125258449">
                     <BsTelephoneForwardFill />
                     {adminUserTwo[0]?.phone}

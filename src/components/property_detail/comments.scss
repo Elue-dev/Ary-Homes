@@ -8,6 +8,13 @@
     h1 {
       padding-bottom: 2rem;
       @include flexBox(space-between, center, row);
+      span {
+        @include flexBox(space-between, center, row);
+        gap: 0.3rem;
+        :first-child {
+          color: #888;
+        }
+      }
       .toggle__icon {
         cursor: pointer;
       }
@@ -15,6 +22,14 @@
     .no__comments {
       border-top: 1px solid rgb(239, 238, 238);
       font-weight: 500;
+    }
+    .add__comment__btn__none {
+      @include button();
+      padding: 0.3rem 0.5rem;
+      background-color: #333;
+      color: #fff;
+      font-weight: 700;
+      margin-top: 0.6rem;
     }
     ul {
       border-top: 1px solid rgb(239, 238, 238);
@@ -62,7 +77,7 @@
       }
       .submit__comment__btn {
         @include button();
-        padding: 0.3rem 0.5rem;
+        padding: 0.5rem;
         background-color: $mainColor;
         color: #fff;
         font-weight: 700;

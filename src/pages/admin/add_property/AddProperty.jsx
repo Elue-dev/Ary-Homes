@@ -176,7 +176,7 @@ export default function AddProperty() {
           <span>Property Images:</span>
           <p className="images__info">
             <IoInformationCircleOutline />
-            Enter as many images as possible, Let the rooms be the last set of
+            Enter as many images as possible(6 at least), Let the rooms be the last set of
             images
           </p>
           <input

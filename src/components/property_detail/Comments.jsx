@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
+import { GoCommentDiscussion } from "react-icons/go";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import "./comments.scss";
 import { useAuth } from "../../contexts/AuthContext";
@@ -51,6 +52,7 @@ export default function Comments({ id }) {
     };
     await addDoc(collection(database, "comments"), commentsConfig);
     setShowComments(false);
+    setShowCommentForm(false)
     window.scrollTo(0, 0);
     setComment("");
     setShowAlert(true);
@@ -67,7 +69,11 @@ export default function Comments({ id }) {
     <div className="comments__section">
       <div className={wrapper}>
         <h1>
-          Comments
+          <span>
+            <GoCommentDiscussion />
+            Comments ({filteredComments.length})
+          </span>
+
           <div
             onClick={() => setShowComments(!showComments)}
             className="toggle__icon"
@@ -76,9 +82,17 @@ export default function Comments({ id }) {
           </div>
         </h1>
         {filteredComments.length === 0 ? (
-          <p className={`no__comments ${contents}`}>
-            There are no comments for this property yet.
-          </p>
+          <>
+            <p className={`no__comments ${contents}`}>
+              There are no comments for this property yet.
+            </p>
+            <button
+              className={`add__comment__btn__none ${contents}`}
+              onClick={handleCommentForm}
+            >
+              Add a comment
+            </button>
+          </>
         ) : (
           filteredComments.map((com, index) => {
             const { comment, name, commentDate } = com;
