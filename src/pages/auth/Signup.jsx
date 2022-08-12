@@ -11,6 +11,7 @@ import { sendEmailVerification } from "firebase/auth";
 import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
+import GoBack from "../../components/utilities/GoBack";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -95,7 +96,7 @@ export default function Signup() {
       assignedID: uuidv4(),
       firstName,
       lastName,
-      phone,
+      // phone,
       email: email,
       joinedAt: date,
       avatar: "",
@@ -152,7 +153,7 @@ export default function Signup() {
     <section className="auth__modal">
       <div className="auth__contents signup__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
-          &larr;
+          <p> &larr;</p>
         </p>
         <br />
         <div className="logo">
@@ -180,7 +181,7 @@ export default function Signup() {
               />
             </div>
           </label>
-          <label>
+          {/* <label>
             <span>Phone Number:</span>
             <input
               type="tel"
@@ -188,7 +189,7 @@ export default function Signup() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your phone number"
             />
-          </label>
+          </label> */}
           <label>
             <span>Email Address:</span>
             <input
