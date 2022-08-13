@@ -1,0 +1,50 @@
+@import "../../global_styles/global.scss";
+
+.error__page {
+  @include container();
+  @include flexBox(center, center, column);
+  height: 80vh;
+  img {
+    width: 200px;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+  p {
+    font-size: 2rem;
+  }
+  a {
+    @include button();
+    background: $mainColor;
+    color: #fff;
+    margin-top: 1rem;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@include mQ(600px) {
+  .error__page h1 {
+    font-size: 3rem;
+  }
+  .error__page p {
+    font-size: 1.3rem;
+  }
+}
+
+@include mQ(500px) {
+  .error__page img {
+    width: 150px;
+  }
+  .error__page h1 {
+    font-size: 2.5rem;
+  }
+  .error__page p {
+    font-size: 1.2rem;
+  }
+}
+@include mQ(350px) {
+  .error__page p {
+    text-align: center;
+  }
+}

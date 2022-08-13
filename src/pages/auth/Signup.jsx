@@ -44,7 +44,7 @@ export default function Signup() {
       navigate("/verify");
     }
   };
-  
+
   const redirectGUser = () => {
     if (previousURL.includes("property")) {
       return navigate(-1);
@@ -192,7 +192,6 @@ export default function Signup() {
             <span>Name:</span>
             <div className="name">
               <label>
-                <FaUser />
                 <input
                   type="text"
                   value={firstName}
@@ -201,7 +200,6 @@ export default function Signup() {
                 />
               </label>
               <label>
-                <FaUser />
                 <input
                   type="text"
                   value={lastName}
