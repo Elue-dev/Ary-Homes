@@ -33,14 +33,16 @@ export default function Contact() {
               <FaPhoneSquareAlt className="phone__contact__icon" />
               <p>Talk to administrators</p>
               <p>
-                If you are interested in our property or have
-                questions,talk to us directly
+                If you are interested in our property or have questions,talk to
+                us directly
               </p>
               <p>
-                Line 1: <a href="tel:2349052014239">+234 905 201 4239</a>
+                <b style={{ fontSize: "1.1rem" }}>Line 1:</b>
+                &nbsp;&nbsp;<a href="tel:2349052014239">+234 905 201 4239</a>
               </p>
               <p>
-                Line 2: <a href="tel:348168945509">+234 816 894 5509</a>
+                <b style={{ fontSize: "1.1rem" }}>Line 2:</b>
+                &nbsp;&nbsp;<a href="tel:348168945509">+234 816 894 5509</a>
               </p>
             </div>
             <br />
@@ -48,8 +50,7 @@ export default function Contact() {
               <IoChatbubbles className="message__contact__icon" />
               <p>Have a private chat</p>
               <p>
-                Prefer chats to phone calls? you can also talk to us via
-                chat
+                Prefer chats to phone calls? you can also talk to us via chat
               </p>
               <ReactWhatsapp
                 number="234-905-201-4239"
@@ -72,8 +73,8 @@ export default function Contact() {
           <div className="right__info">
             <p>
               {" "}
-              Fill this form with inquiries and get to us. We respond
-              within 24 hrs.
+              Fill this form with inquiries and get to us. We respond within 24
+              hrs.
             </p>
             <form ref={form}>
               <label>

@@ -59,15 +59,15 @@ function App() {
           }
         />
         <Route path="/blog" element={<Blog />} />
-        <Route
+        {/* <Route
           path="/bookmarks"
           element={
             <ProtectedRoute>
               <Bookmarks />
             </ProtectedRoute>
           }
-        />
-        <Route path="/about" element={<About />} />
+        /> */}
+        <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error404 />} />
       </Routes>

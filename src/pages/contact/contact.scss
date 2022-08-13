@@ -5,11 +5,12 @@
   min-height: 88vh;
   animation: slide-up 0.5s ease;
   padding-bottom: 5rem;
+  background: rgb(244, 244, 244);
   .contact__hero {
     background: url("../../assets/contact2.png");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
     height: 30vh;
     position: relative;
     z-index: 1;
@@ -29,7 +30,7 @@
 }
 .socials {
   position: fixed;
-  bottom: 46px;
+  bottom: 76px;
   line-height: 2;
   .c_icon {
     display: block;
@@ -112,6 +113,7 @@
             outline: 0;
             padding: 0.8rem;
             background: transparent;
+            font-size: 1rem;
           }
           textarea {
             font-family: "Figtree", sans-serif;
@@ -146,7 +148,7 @@
   }
 }
 
-@include mQ(600px) {
+@include mQ(900px) {
   .contact__contents .flex__cards {
     flex-direction: column;
   }
@@ -169,6 +171,7 @@
   }
   .contact__contents {
     width: 100%;
+    box-shadow: 0;
   }
   .contact__contents .flex__cards .left__info {
     width: 100%;

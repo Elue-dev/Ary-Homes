@@ -1,4 +1,30 @@
+@import "../../global_styles/global.scss";
+
 .blog {
-    min-height: 88vh;
-    animation: slide-up .5s ease;
+  width: 100%;
+  min-height: 88vh;
+  animation: slide-up 0.5s ease;
+  padding-bottom: 5rem;
+  background: rgb(244, 244, 244);
+  .blog__hero {
+    background: url("../../assets/blog.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 40vh;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    color: #333;
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+  }
 }

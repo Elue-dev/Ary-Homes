@@ -64,7 +64,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 150) {
       setScrollpage(true);
     } else {
       setScrollpage(false);
@@ -161,16 +161,17 @@ export default function Header() {
                     <p>Blog</p>
                   </li>
                 </NavLink>
-                <NavLink to="/about">
-                  <li>
-                    <IoInformationCircleOutline />
-                    <p>About</p>
-                  </li>
-                </NavLink>
                 <NavLink to="/contact">
                   <li>
                     <MdOutlineContactSupport />
                     <p>Contact</p>
+                  </li>
+                </NavLink>
+                <NavLink to="/bookmarks">
+                  <li>
+                    {/* <IoInformationCircleOutline /> */}
+                    <BsBookmarkStar />
+                    <p>Bookmarks</p>
                   </li>
                 </NavLink>
               </ul>
@@ -299,18 +300,19 @@ export default function Header() {
               <p>Blog</p>
             </li>
           </NavLink>
-          <NavLink to="/about">
-            <li>
-              <IoInformationCircleOutline />
-              <p>About</p>
-            </li>
-          </NavLink>
           <NavLink to="/contact">
             <li>
               <MdOutlineContactSupport />
               <p>Contact</p>
             </li>
           </NavLink>
+          <NavLink to="/bookmarks">
+            <li>
+              <BsBookmarkStar />
+              <p>Bookmarks</p>
+            </li>
+          </NavLink>
+
           <AdminOnlyLink>
             <NavLink to="/user/admin/home">
               <li>

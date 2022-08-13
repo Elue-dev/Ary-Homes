@@ -3,9 +3,16 @@
 footer {
   background: #111;
   color: #fff;
-  margin-top: auto;
-  height: 2rem;
+  // margin-top: 10rem;
   .footer__contents {
     text-align: center;
   }
 }
+
+// @include mQ(900px) {
+//   footer {
+//     position: fixed;
+//     bottom: 4rem;
+//     width: 100%;
+//   }
+// }
