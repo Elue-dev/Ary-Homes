@@ -139,17 +139,14 @@ export default function Comments({ id }) {
                     {commentDate}
                   </div>
                 </li>
-                {!showCommentForm ? (
-                  <button
-                    className="add__comment__btn"
-                    onClick={handleCommentForm}
-                  >
-                    Add a comment
-                  </button>
-                ) : null}
               </ul>
             );
           })
+        )}
+        {!showComments ? null : (
+          <button className="add__comment__btn" onClick={handleCommentForm}>
+            Add a comment
+          </button>
         )}
         <form onSubmit={addComment} className={showCommentForm ? null : "hide"}>
           <textarea

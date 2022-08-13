@@ -33,7 +33,7 @@ export default function Contact() {
               <FaPhoneSquareAlt className="phone__contact__icon" />
               <p>Talk to administrators</p>
               <p>
-                If you are interested in our property or have questions,talk to
+                If you are interested in our property or have questions, talk to
                 us directly
               </p>
               <p>

@@ -22,12 +22,21 @@
     .no__comments {
       border-top: 1px solid rgb(239, 238, 238);
       font-weight: 500;
-      line-height: 3
+      line-height: 3;
+    }
+    .add__comment__btn {
+      @include button();
+      padding: 0.3rem 0.5rem;
+      background-color: #333;
+      border-radius: 0.3rem;
+      color: #fff;
+      font-weight: 700;
     }
     .add__comment__btn__none {
       @include button();
       padding: 0.3rem 0.5rem;
       background-color: #333;
+      border-radius: 0.3rem;
       color: #fff;
       font-weight: 700;
       margin-top: 0.6rem;
@@ -52,13 +61,6 @@
             font-size: 1.4rem;
           }
         }
-      }
-      .add__comment__btn {
-        @include button();
-        padding: 0.3rem 0.5rem;
-        background-color: #333;
-        color: #fff;
-        font-weight: 700;
       }
     }
 
@@ -115,6 +117,9 @@
   }
   .reduce__height {
     height: 30px;
+  }
+  .comments__section .comments__section__details .add__comment__btn {
+    width: 100%;
   }
   .comments__section .comments__section__details form .submit__comment__btn,
   .comments__section .comments__section__details form .close__comment__btn {

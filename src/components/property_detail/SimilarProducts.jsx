@@ -45,7 +45,7 @@ export default function SimilarProducts() {
                     </ul>
                   ))}
                 </div>
-                <p className="similar__price">NGN {formatCurrency(price)}</p>
+                <p className="similar__price">NGN {formatCurrency(price)}/night</p>
                 <br />
               </div>
             </Link>
