@@ -12,6 +12,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { SAVE_URL, selectUserID } from "../../redux/slice/authSlice";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import useFetchCollection from "../../hooks/useFetchCollection";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Comments({ id }) {
   const [comment, setComment] = useState("");
@@ -19,6 +20,7 @@ export default function Comments({ id }) {
   const [showCommentForm, setShowCommentForm] = useState(false);
 
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -51,8 +53,11 @@ export default function Comments({ id }) {
   const addComment = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
     if (!comment) {
       window.scrollTo(0, 0);
+      setLoading(false);
       setComment("");
       setShowAlert(true);
       setAlertMessage(`Add a comment before submiting`);
@@ -76,6 +81,7 @@ export default function Comments({ id }) {
       createdAt: Timestamp.now().toDate(),
     };
     await addDoc(collection(database, "comments"), commentsConfig);
+    setLoading(false);
     setShowComments(false);
     setShowCommentForm(false);
     window.scrollTo(0, 0);
@@ -108,12 +114,14 @@ export default function Comments({ id }) {
             <p className={`no__comments ${contents}`}>
               There are no comments for this property yet.
             </p>
-            <button
-              className={`add__comment__btn__none ${contents}`}
-              onClick={handleCommentForm}
-            >
-              Add a comment
-            </button>
+            {!showCommentForm ? (
+              <button
+                className={`add__comment__btn__none ${contents}`}
+                onClick={handleCommentForm}
+              >
+                Add a comment
+              </button>
+            ) : null}
           </>
         ) : (
           filteredComments.map((com, index) => {
@@ -154,9 +162,16 @@ export default function Comments({ id }) {
             onChange={(e) => setComment(e.target.value)}
             placeholder="Enter your comment"
           />
-          <button type="submit" className="submit__comment__btn">
-            Submit comment
-          </button>
+          {loading ? (
+            <button type="submit" className="submit__comment__btn">
+              <BeatLoader loading={loading} size={10} color={"#fff"} />
+            </button>
+          ) : (
+            <button type="submit" className="submit__comment__btn">
+              Submit comment
+            </button>
+          )}
+
           <button
             onClick={() => setShowCommentForm(false)}
             type="button"

@@ -44,6 +44,7 @@ export default function Signup() {
       navigate("/verify");
     }
   };
+  
   const redirectGUser = () => {
     if (previousURL.includes("property")) {
       return navigate(-1);

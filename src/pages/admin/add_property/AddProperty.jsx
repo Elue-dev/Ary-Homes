@@ -146,7 +146,7 @@ export default function AddProperty() {
       setLoading(false);
       setProperty({ ...initialState });
       setImgUploadProgress(0);
-      navigate("/admin/home");
+      navigate("/user/admin/home");
     } catch (error) {
       setLoading(false);
     }

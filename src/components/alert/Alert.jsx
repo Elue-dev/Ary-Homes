@@ -14,7 +14,6 @@ export default function Alert() {
   let icon;
 
   if (alertType === "error") {
-    // background = "rgb(239, 58, 94)";
     background = "#fff";
     color = "crimson";
     border = ".3px solid #ae8625";
@@ -22,7 +21,6 @@ export default function Alert() {
   }
   if (alertType === "info") {
     background = "#fff";
-    // color = "#c1b464";
     color = "#333";
     border = ".3px solid #ae8625";
     icon = <FaInfo />;

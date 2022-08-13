@@ -214,7 +214,7 @@ export default function PropertyDetail() {
                 {property.availability === "Not Available" ? (
                   <p style={{ marginTop: ".5rem" }}>
                     Contacts of the administrators will be provided when this
-                    product is avilable.
+                    property is avilable.
                   </p>
                 ) : (
                   <div className="admins">

@@ -260,20 +260,20 @@ export default function Header() {
 
                           // ===uncomment the above later annd remove this===
                           <>
-                          <NavLink to={`/user/account/${user.uid}`}>
-                          <li>
-                            <MdOutlineManageAccounts />
-                            My Account
-                          </li>
-                        </NavLink>
+                            <NavLink to={`/user/account/${user.uid}`}>
+                              <li>
+                                <MdOutlineManageAccounts />
+                                My Account
+                              </li>
+                            </NavLink>
 
-                        <button
-                          className="logout__btn"
-                          onClick={logoutUser}
-                        >
-                          Log out
-                        </button>
-                        </>
+                            <button
+                              className="logout__btn"
+                              onClick={logoutUser}
+                            >
+                              Log out
+                            </button>
+                          </>
                         )}
                       </>
                     )}
@@ -285,43 +285,42 @@ export default function Header() {
         </>
       ) : null}
 
-        <div className="nav__bottom">
-          <ul>
-            <NavLink to="/">
+      <div className="nav__bottom">
+        <ul>
+          <NavLink to="/">
+            <li>
+              <BiHomeAlt />
+              <p>Home</p>
+            </li>
+          </NavLink>
+          <NavLink to="/blog">
+            <li>
+              <RiArticleLine />
+              <p>Blog</p>
+            </li>
+          </NavLink>
+          <NavLink to="/about">
+            <li>
+              <IoInformationCircleOutline />
+              <p>About</p>
+            </li>
+          </NavLink>
+          <NavLink to="/contact">
+            <li>
+              <MdOutlineContactSupport />
+              <p>Contact</p>
+            </li>
+          </NavLink>
+          <AdminOnlyLink>
+            <NavLink to="/user/admin/home">
               <li>
-                <BiHomeAlt />
-                <p>Home</p>
+                <div />
+                <button className="admin__btn">Admin</button>
               </li>
             </NavLink>
-            <NavLink to="/blog">
-              <li>
-                <RiArticleLine />
-                <p>Blog</p>
-              </li>
-            </NavLink>
-            <NavLink to="/about">
-              <li>
-                <IoInformationCircleOutline />
-                <p>About</p>
-              </li>
-            </NavLink>
-            <NavLink to="/contact">
-              <li>
-                <MdOutlineContactSupport />
-                <p>Contact</p>
-              </li>
-            </NavLink>
-            <AdminOnlyLink>
-              <NavLink to="/user/admin/home">
-                <li>
-                  <div />
-                  <button className="admin__btn">Admin</button>
-                </li>
-              </NavLink>
-            </AdminOnlyLink>
-          </ul>
-        </div>
-    
+          </AdminOnlyLink>
+        </ul>
+      </div>
     </>
   );
 }

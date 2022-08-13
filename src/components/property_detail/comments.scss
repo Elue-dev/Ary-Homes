@@ -22,6 +22,7 @@
     .no__comments {
       border-top: 1px solid rgb(239, 238, 238);
       font-weight: 500;
+      line-height: 3
     }
     .add__comment__btn__none {
       @include button();

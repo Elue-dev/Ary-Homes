@@ -5,7 +5,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import "./home.scss";
 
 export default function Home() {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  console.log(user)
 
   // useEffect(() => {
   //   window.setTimeout(() => logout(), 10000); ====> automatic logout, look for how to do 2 hours

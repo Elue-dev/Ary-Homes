@@ -27,13 +27,15 @@ import { uuidv4 } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
 import GoBack from "../../components/utilities/GoBack";
 import Notiflix from "notiflix";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Account() {
   const [photo] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showFields, setShowFields] = useState(false);
-  const { data, loading } = useFetchCollection("users");
+  const [loading, setLoading] = useState(false);
+  const { data } = useFetchCollection("users");
   const usersList = useSelector(selectUsers);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -167,6 +169,7 @@ export default function Account() {
   const updateUserProfilePhoto = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
     try {
       await updatePP(imageUrl);
       //as they are updating their PP, the avatar field in users is changing as well
@@ -174,6 +177,7 @@ export default function Account() {
       await updateDoc(docRef, {
         avatar: imageUrl,
       });
+      setLoading(false);
       setShowAlert(true);
       setAlertMessage("Profile picture updated successfully!");
       setShowFields(false);
@@ -184,6 +188,7 @@ export default function Account() {
         setAlertType(null);
       }, 6000);
     } catch (error) {
+      setLoading(false);
       setShowAlert(true);
       setAlertMessage(error.message);
       setAlertType("error");
@@ -338,9 +343,17 @@ export default function Account() {
               ) : null}
               &nbsp;
               {imageUrl !== "" && (
-                <button className="pp__upload__btn">
-                  Set as profile picture
-                </button>
+                <>
+                  {loading ? (
+                    <button className="pp__upload__btn">
+                      <BeatLoader loading={loading} size={10} color={"#fff"} />
+                    </button>
+                  ) : (
+                    <button className="pp__upload__btn">
+                      Set as profile picture
+                    </button>
+                  )}
+                </>
               )}
             </form>
           </div>
