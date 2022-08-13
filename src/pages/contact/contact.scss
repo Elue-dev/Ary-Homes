@@ -4,8 +4,6 @@
   width: 100%;
   min-height: 88vh;
   animation: slide-up 0.5s ease;
-  padding-bottom: 5rem;
-  background: rgb(244, 244, 244);
   .contact__hero {
     background: url("../../assets/contact2.png");
     background-repeat: no-repeat;
@@ -36,7 +34,7 @@
     display: block;
     font-size: 1.7rem;
     margin-bottom: 1.2rem;
-    color: #555;
+    color: #333;
   }
 }
 .contact__contents {
@@ -163,15 +161,15 @@
 }
 @include mQ(500px) {
   .socials {
-    top: 18rem;
+    top: 22rem;
     right: 0;
   }
   .socials .c_icon {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
   }
   .contact__contents {
     width: 100%;
-    box-shadow: 0;
+    box-shadow: none;
   }
   .contact__contents .flex__cards .left__info {
     width: 100%;
