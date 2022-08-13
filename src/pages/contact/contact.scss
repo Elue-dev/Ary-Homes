@@ -61,7 +61,7 @@
         a {
           color: #007bff;
           cursor: pointer;
-          margin-top: .6rem;
+          margin-top: 0.6rem;
           &:hover {
             text-decoration: underline;
             color: #073261;
@@ -82,7 +82,7 @@
           color: #fff;
           border-radius: 0.3rem;
           padding: 0 0.3rem;
-          margin-top: .5rem;
+          margin-top: 0.5rem;
         }
       }
     }
@@ -160,6 +160,16 @@
   }
 }
 @include mQ(500px) {
+  .socials {
+    top: 18rem;
+    right: 0;
+  }
+  .socials .c_icon {
+    font-size: 1.3rem;
+  }
+  .contact__contents {
+    width: 100%;
+  }
   .contact__contents .flex__cards .left__info {
     width: 100%;
     display: block;
@@ -170,16 +180,14 @@
     width: 100%;
     margin-bottom: 0.2rem;
   }
-  .contact__contents .flex__cards .left__info .phone__contact .phone__contact__icon {
+  .contact__contents
+    .flex__cards
+    .left__info
+    .phone__contact
+    .phone__contact__icon {
     font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-}
-
-@include mQ(300px) {
-    .contact__contents {
-        width: 100%;
-    }
+  }
 }
