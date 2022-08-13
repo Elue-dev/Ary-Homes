@@ -47,7 +47,8 @@ export default function Header() {
       location.pathname === "/login" ||
       location.pathname === "/signup" ||
       location.pathname === "/verify" ||
-      location.pathname === "/reset-password"
+      location.pathname === "/reset-password" ||
+      location.pathname === "/blog"
     ) {
       setShowHeader(false);
     } else {

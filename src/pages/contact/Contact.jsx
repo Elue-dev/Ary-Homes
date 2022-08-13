@@ -7,6 +7,7 @@ import { MdOutlineAlternateEmail, MdOutlineSubject } from "react-icons/md";
 import { SiRocketdotchat, SiFacebook } from "react-icons/si";
 import ReactWhatsapp from "react-whatsapp";
 import "./contact.scss";
+import Footer from "../../components/footer/Footer";
 
 export default function Contact() {
   const form = useRef();
@@ -130,38 +131,7 @@ export default function Contact() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-
-      {/* ====== */}
-
-      {/* <div className="contact__cards">
-        <div className="contact__card card card__1">
-          <FaPhoneSquareAlt />
-          <p>Talk to administrators</p>
-          <p>
-            If you are interested in our property or gave questions, talk to us
-            directly
-          </p>
-          <p>
-            Line 1: <span>+234 905 201 4239</span>
-          </p>
-          <p>
-            Line 2: <span>+234 816 894 5509</span>
-          </p>
-        </div>
-
-        <div className="contact__card  card__2">
-          <IoChatbubbles />
-          <p>Have a private chat</p>
-          <p>Prefer chats to phone calls, you can also talk to us via chat</p>
-          <p>Chat Line 1</p>
-          <p>Chat Line 2</p>
-        </div>
-      </div> */}
+      <Footer />
     </section>
   );
-}
-
-{
-  /* <div className="left__info__details"></div>
-<div className="right__info__details"></div> */
 }

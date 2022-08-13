@@ -2,7 +2,7 @@
 
 .comments__section {
   box-shadow: $box-shadow;
-  padding: 1rem 2rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
   .comments__section__details {
     h1 {
@@ -71,7 +71,7 @@
         border: 1px solid #888;
         border-radius: 0.3rem;
         display: block;
-        font-size: 1rem;
+        font-size: .9rem;
         font-family: "Figtree", sans-serif;
       }
       .submit__comment__btn {

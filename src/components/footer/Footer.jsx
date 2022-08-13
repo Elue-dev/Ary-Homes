@@ -30,6 +30,7 @@ export default function Footer() {
         <footer>
           <div className="footer__contents">
             <p> &copy; {year}. All rights reserved</p>
+            <i>Stay in class...</i>
           </div>
         </footer>
       ) : null}

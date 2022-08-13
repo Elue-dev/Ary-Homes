@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Footer from "../../components/footer/Footer";
 import Hero from "../../components/header/hero/Hero";
 import Properties from "../../components/properties/Properties";
 import { useAuth } from "../../contexts/AuthContext";
@@ -16,6 +17,7 @@ export default function Home() {
     <section className="home">
       <Hero />
       <Properties />
+      <Footer />
     </section>
   );
 }

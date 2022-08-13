@@ -33,7 +33,8 @@ import Comments from "./Comments";
 import admin1 from "../../assets/wisdom.jpeg";
 import admin2 from "../../assets/admin2.jpeg";
 import Slider from "./Slider";
-import Spinner from '../../components/utilities/Spinner'
+import Spinner from "../../components/utilities/Spinner";
+import Footer from "../footer/Footer";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -80,7 +81,7 @@ export default function PropertyDetail() {
 
   useEffect(() => {
     if (copied) {
-      setAlert('Reference ID copied to clipboard')
+      setAlert("Reference ID copied to clipboard");
       // setShowAlert(true);
       // setAlertMessage(`Reference ID copied to clipboard`);
       // setAlertType("success");
@@ -88,7 +89,7 @@ export default function PropertyDetail() {
         // setShowAlert(false);
         // setAlertMessage(null);
         // setAlertType(null);
-        setAlert('')
+        setAlert("");
       }, 4000);
     }
   }, [copied]);
@@ -158,7 +159,14 @@ export default function PropertyDetail() {
                 <AiFillTags />
                 <b>Ref. ID:</b> {id}
               </span>
-              {alert && <p className="alert message" style={{width:'fit-content', height:'1.6rem'}}>{alert}</p>}
+              {alert && (
+                <p
+                  className="alert message"
+                  style={{ width: "fit-content", height: "1.6rem" }}
+                >
+                  {alert}
+                </p>
+              )}
               <CopyToClipboard text={id} onCopy={() => setCopied(true)}>
                 <button className="copy__btn">
                   Copy Reference ID to clipboard
@@ -181,7 +189,7 @@ export default function PropertyDetail() {
             </div>
             <h3
               onClick={() => setShowSlider(true)}
-              style={{ textDecoration: "underline", cursor:'pointer' }}
+              style={{ textDecoration: "underline", cursor: "pointer" }}
             >
               <b>See all {property.imagesUrl.length} images</b>
             </h3>
@@ -310,6 +318,7 @@ export default function PropertyDetail() {
             <SimilarProducts />
           </div>
         </div>
+        <Footer />
       </section>
     </>
   );

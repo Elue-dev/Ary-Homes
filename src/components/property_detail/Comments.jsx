@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { GoCommentDiscussion } from "react-icons/go";
+import { BiDotsHorizontal } from "react-icons/bi";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import "./comments.scss";
 import { useAuth } from "../../contexts/AuthContext";
@@ -81,10 +82,10 @@ export default function Comments({ id }) {
       createdAt: Timestamp.now().toDate(),
     };
     await addDoc(collection(database, "comments"), commentsConfig);
+    window.scrollTo(0, 0);
     setLoading(false);
     setShowComments(false);
     setShowCommentForm(false);
-    window.scrollTo(0, 0);
     setComment("");
     setShowAlert(true);
     setAlertMessage(`Your comment has been added successfully`);
@@ -129,7 +130,7 @@ export default function Comments({ id }) {
             return (
               <ul key={index} className={contents}>
                 <li>
-                  <p>&rarr; {comment}</p>
+                  <p>{comment}</p>
                   <br />
                   <div className="comment__name">
                     <FaUserEdit /> {name}
