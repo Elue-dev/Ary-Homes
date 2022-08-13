@@ -114,9 +114,9 @@ export default function Comments({ id }) {
             <p className={`no__comments ${contents}`}>
               There are no comments for this property yet.
             </p>
-            {!showCommentForm ? (
+            {!showComments ? (
               <button
-                className={`add__comment__btn__none ${contents}`}
+                className={` cb add__comment__btn__none ${contents}`}
                 onClick={handleCommentForm}
               >
                 Add a comment
@@ -144,7 +144,7 @@ export default function Comments({ id }) {
           })
         )}
         {!showComments ? null : (
-          <button className="add__comment__btn" onClick={handleCommentForm}>
+          <button className=" cb add__comment__btn" onClick={handleCommentForm}>
             Add a comment
           </button>
         )}

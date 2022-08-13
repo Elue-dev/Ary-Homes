@@ -41,10 +41,6 @@
   }
   .error__page p {
     font-size: 1.2rem;
-  }
-}
-@include mQ(350px) {
-  .error__page p {
     text-align: center;
   }
 }

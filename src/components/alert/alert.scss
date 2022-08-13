@@ -17,6 +17,9 @@
 }
 
 @include mQ(500px) {
+  .custom__alert {
+    animation: none;
+  }
   .custom__alert p {
     font-size: 0.85rem;
     padding: 0rem 0;

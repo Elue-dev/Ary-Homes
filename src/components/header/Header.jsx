@@ -309,7 +309,7 @@ export default function Header() {
           <NavLink to="/bookmarks">
             <li>
               <BsBookmarkStar />
-              <p>Bookmarks</p>
+              <p>Saved</p>
             </li>
           </NavLink>
 
