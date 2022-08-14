@@ -286,44 +286,45 @@ export default function Header() {
           </header>
         </>
       ) : null}
-
-      <div className="nav__bottom">
-        <ul>
-          <NavLink to="/">
-            <li>
-              <BiHomeAlt />
-              <p>Home</p>
-            </li>
-          </NavLink>
-          <NavLink to="/blog">
-            <li>
-              <RiArticleLine />
-              <p>Blog</p>
-            </li>
-          </NavLink>
-          <NavLink to="/contact">
-            <li>
-              <MdOutlineContactSupport />
-              <p>Contact</p>
-            </li>
-          </NavLink>
-          <NavLink to="/bookmarks">
-            <li>
-              <BsBookmarkStar />
-              <p>Saved</p>
-            </li>
-          </NavLink>
-
-          <AdminOnlyLink>
-            <NavLink to="/user/admin/home">
+      {location.pathname === "/blog" ? null : (
+        <div className="nav__bottom">
+          <ul>
+            <NavLink to="/">
               <li>
-                <div />
-                <button className="admin__btn">Admin</button>
+                <BiHomeAlt />
+                <p>Home</p>
               </li>
             </NavLink>
-          </AdminOnlyLink>
-        </ul>
-      </div>
+            <NavLink to="/blog">
+              <li>
+                <RiArticleLine />
+                <p>Blog</p>
+              </li>
+            </NavLink>
+            <NavLink to="/contact">
+              <li>
+                <MdOutlineContactSupport />
+                <p>Contact</p>
+              </li>
+            </NavLink>
+            <NavLink to="/bookmarks">
+              <li>
+                <BsBookmarkStar />
+                <p>Saved</p>
+              </li>
+            </NavLink>
+
+            <AdminOnlyLink>
+              <NavLink to="/user/admin/home">
+                <li>
+                  <div />
+                  <button className="admin__btn">Admin</button>
+                </li>
+              </NavLink>
+            </AdminOnlyLink>
+          </ul>
+        </div>
+      )}
     </>
   );
 }

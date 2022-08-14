@@ -27,6 +27,7 @@ import {
   FILTER_BY_CATEGORY,
   selectFilteredBlogs,
 } from "../../redux/slice/filterSlice";
+import BlogFooter from "./blog_footer/BlogFooter";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -369,6 +370,7 @@ export default function Blog() {
           </div>
         </div>
       </div>
+      <BlogFooter />
     </section>
   );
 }

@@ -6,6 +6,8 @@
   animation: slide-up 0.5s ease;
   padding-bottom: 5rem;
   // background: rgb(244, 244, 244);
+  display: flex;
+  flex-direction: column;
   .blog__hero {
     background: url("../../assets/blog.jpg");
     background-repeat: no-repeat;
@@ -31,11 +33,13 @@
     // border-bottom: 2px solid rgb(177, 175, 175);
     @include flexBox(space-around, center, center);
     box-shadow: $box-shadow;
-    padding: 0.4rem;
+    padding: 1rem .4rem;
     position: relative;
 
     h1 {
       font-weight: 700;
+      @include flexBox(center, center, row);
+      gap: .3rem;
     }
     :last-child {
       font-size: 1.3rem;
@@ -415,17 +419,17 @@
 
 @include mQ(550px) {
   .blog__header .blog__header__logo h2 {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
   .blog .welcome h1 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .blog .welcome {
     justify-content: space-between;
     padding: 0.4rem 1rem;
   }
   .blog .welcome :last-child {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .blog .welcome h1 .hey__icon {
     font-size: 1rem;
@@ -441,7 +445,7 @@
     .posts__wrapper
     .flexed__contents
     .post__top {
-    font-size: 0.7rem;
+    font-size: 0.82rem;
   }
   .blog
     .blog__contents
@@ -451,7 +455,7 @@
     .posts__wrapper
     .flexed__contents
     .post__heading {
-    font-size: 0.8rem;
+    font-size: 0.92rem;
   }
   .blog
     .blog__contents
@@ -461,7 +465,7 @@
     .posts__wrapper
     .flexed__contents
     .post__description {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .blog .blog__contents .right__blog__contents .add__post {
     font-size: 1.2rem;
@@ -479,7 +483,7 @@
     width: auto;
   }
   .blog .blog__contents .right__blog__contents p {
-    font-size: 0.89rem;
+    font-size: 0.95rem;
   }
 }
 
