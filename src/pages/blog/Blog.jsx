@@ -28,6 +28,8 @@ import {
   selectFilteredBlogs,
 } from "../../redux/slice/filterSlice";
 import BlogFooter from "./blog_footer/BlogFooter";
+// import Bounce from "react-reveal/Bounce";
+import { motion, useViewportScroll } from "framer-motion";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -44,6 +46,7 @@ export default function Blog() {
   const dispatch = useDispatch();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const filteredBlogPosts = useSelector(selectFilteredBlogs);
+  const { scrollYProgress } = useViewportScroll();
 
   let postsArray = [];
 
@@ -134,7 +137,12 @@ export default function Blog() {
   };
 
   return (
-    <section className="blog">
+    <motion.section
+      className="blog"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: .1 }}
+    >
       <BlogHeader />
       <div className="welcome">
         <h1>
@@ -372,6 +380,6 @@ export default function Blog() {
         </div>
       </div>
       <BlogFooter />
-    </section>
+    </motion.section>
   );
 }
