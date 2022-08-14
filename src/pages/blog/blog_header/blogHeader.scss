@@ -1,35 +1,44 @@
 @import "../../../global_styles/global.scss";
 
 .blog__header {
+  background-color: #0c0c0c;
+  text-align: center;
   .blog__header__wrapper {
-    @include flexBox(space-around, center, row);
-    background-color: #000;
+    // @include flexBox(space-between, center, row);
+    @include container();
     padding: 0.7rem 0;
   }
   .blog__header__logo {
-    @include flexBox(flex-start, center, row);
+    @include flexBox(center, center, row);
     animation: slide-right 0.5s ease;
     font-family: "Nunito", sans-serif;
+    text-align: center;
     gap: 0.4rem;
     img {
       width: 70px;
       height: 70px;
       border-radius: 50%;
     }
-    a {
-      h2 {
-        font-weight: 700;
-        color: #fff;
-        span {
-          color: $mainColor;
-        }
-      }
+    h2 {
+      font-weight: 700;
+      color: #fff;
+      // span {
+      //   color: $mainColor;
+      // }
+    }
+  }
+  .blog__menu {
+    color: #fff;
+    .menu__icon {
+      font-size: 1.8rem;
+      cursor: pointer;
     }
   }
   a.active {
     font-weight: 700;
     font-size: 1.1rem;
   }
+
   .blog__header__social__links {
     color: #fff;
     ul {
@@ -67,7 +76,7 @@
 
 @include mQ(550px) {
   .blog__header .blog__header__wrapper {
-    padding: 0.7rem .7rem;
+    padding: 0.7rem 0.7rem;
   }
   .blog__header .blog__header__logo img {
     width: 50px;

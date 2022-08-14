@@ -6,6 +6,7 @@ import Home from "./home/Home";
 import ViewProperties from "./view_properties/ViewProperties";
 import AddProperty from "./add_property/AddProperty";
 import Users from "./users/Users";
+import AddBlogPost from "./add_blog_post/AddBlogPost";
 
 export default function Admin() {
   return (
@@ -18,6 +19,7 @@ export default function Admin() {
           <Route path='home' element={<Home />} />
           <Route path='view-properties' element={<ViewProperties />} />
           <Route path='add-property' element={<AddProperty />} />
+          <Route path='add-blog-post' element={<AddBlogPost />} />
           <Route path='users' element={<Users />} />
         </Routes>
       </div>

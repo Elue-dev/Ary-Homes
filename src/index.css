@@ -40,11 +40,9 @@ input {
   border-radius: 3px;
 }
 .error {
-  background: #fff;
   color: crimson;
 }
 .message {
-  background: #fff;
   color: green;
 }
 

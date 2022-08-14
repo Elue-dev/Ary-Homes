@@ -88,7 +88,7 @@ export default function Reset() {
           <label>
             <span>Email address:</span>
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"

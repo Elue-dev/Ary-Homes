@@ -345,7 +345,7 @@ export default function Account() {
               {imageUrl !== "" && (
                 <>
                   {loading ? (
-                    <button className="pp__upload__btn">
+                    <button disabled className="pp__upload__btn">
                       <BeatLoader loading={loading} size={10} color={"#fff"} />
                     </button>
                   ) : (
@@ -411,7 +411,7 @@ export default function Account() {
                 Email
               </span>
               <input
-                type="text"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />

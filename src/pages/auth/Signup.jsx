@@ -64,6 +64,7 @@ export default function Signup() {
       email: email || user.email,
       joinedAt: date,
       avatar: "",
+      contributor: false,
       createdAt: Timestamp.now().toDate(),
     };
     try {
@@ -221,7 +222,7 @@ export default function Signup() {
           <label>
             <span>Email Address:</span>
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your valid email"
@@ -248,7 +249,7 @@ export default function Signup() {
             </div>
           </label>
           {loading && (
-            <button type="submit" className="btn submit__btn">
+            <button type="button" disabled className="btn submit__btn">
               <BeatLoader loading={loading} size={10} color={"#fff"} />
             </button>
           )}

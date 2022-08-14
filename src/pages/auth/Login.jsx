@@ -161,7 +161,7 @@ export default function Login() {
           <label>
             <span>Email Address:</span>
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -189,7 +189,7 @@ export default function Login() {
             </div>
           </label>
           {loading && (
-            <button type="submit" className="btn submit__btn">
+            <button type="button" className="btn submit__btn" disabled>
               <BeatLoader loading={loading} size={10} color={"#fff"} />
             </button>
           )}

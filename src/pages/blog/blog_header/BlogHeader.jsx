@@ -14,36 +14,9 @@ export default function BlogHeader() {
           <Link to="/">
             <img src={logo} alt="ary homes logo" />
           </Link>
-          <Link to="/">
-            <h2>
-              <span>Ary</span>Homes Blog
-            </h2>
-          </Link>
-        </div>
-        <div className="blog__header__social__links">
-          <ul>
-            <li>
-              <a href="mailto: aryhomes1@gmail.com">
-                {" "}
-                <RiMailFill />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/aryhomes">
-                {" "}
-                <GrInstagram />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/aryhomes">
-                {" "}
-                <GrFacebook />
-              </a>
-            </li>
-            <li>
-              <BsWhatsapp />
-            </li>
-          </ul>
+          <h2>
+            AryHomes Blog
+          </h2>
         </div>
       </div>
     </div>

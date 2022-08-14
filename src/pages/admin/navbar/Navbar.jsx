@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaBlogger } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectUserName } from "../../../redux/slice/authSlice";
@@ -51,6 +51,12 @@ export default function Navbar() {
             <NavLink to="/user/admin/add-property">
               <MdAddBusiness />
               Add Property
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/user/admin/add-blog-post">
+              <FaBlogger />
+              Add A Blog Post
             </NavLink>
           </li>
           <li>
