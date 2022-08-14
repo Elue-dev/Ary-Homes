@@ -104,15 +104,34 @@
   .progress {
     background-color: #aaa;
     border: 1px solid transparent;
-    border-radius: .2rem;
+    border-radius: 0.2rem;
     .progress-bar {
       background-color: rgb(19, 178, 19);
       border: 1px solid transparent;
-      border-radius: .2rem;
+      border-radius: 0.2rem;
       color: #fff;
       font-size: 1.2rem;
       font-weight: 500;
       padding: 0 1rem;
     }
+  }
+}
+
+@include mQ(600px) {
+  .add__blog__post {
+    display: block;
+  }
+  .add__blog__post {
+    width: auto;
+  }
+  .add__blog__post form {
+    width: 100%;
+    padding-top: 1rem;
+  }
+  .add__blog__post label {
+    width: 100%;
+  }
+  .add__blog__post label input {
+    width: 100%;
   }
 }

@@ -33,6 +33,7 @@ export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
   const [pending, setPending] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  // const [fixHeading, setFixHeading] = useState(false);
   const [error, setError] = useState(null);
   const blogPosts = useSelector(selectBlogs);
   const [cgr, setCgr] = useState("All");
@@ -85,14 +86,14 @@ export default function Blog() {
 
     if (!name) {
       setError("Name is a required field");
+      window.setTimeout(() => setError(null), 5000);
       return;
     } else if (!email) {
       setError("Email is a required field");
-      window.setTimeout(() => setError(false), 5000);
+      window.setTimeout(() => setError(null), 5000);
       return;
     } else {
-      setError(false);
-      window.setTimeout(() => setError(false), 5000);
+      setError(null);
     }
 
     setPending(true);

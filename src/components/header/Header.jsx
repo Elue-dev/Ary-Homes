@@ -124,7 +124,7 @@ export default function Header() {
         <>
           <header
             className={
-              scrollPage ? ` header__wrapper fixed` : "header__wrapper"
+              scrollPage ? `header__wrapper fixed` : "header__wrapper"
             }
             style={{ transition: scrollPage && "all 1s ease" }}
           >

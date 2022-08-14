@@ -1,5 +1,11 @@
 @import "../../global_styles/global.scss";
 
+.fixed__welcome{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .blog {
   width: 100%;
   min-height: 100vh;
@@ -33,13 +39,12 @@
     // border-bottom: 2px solid rgb(177, 175, 175);
     @include flexBox(space-around, center, center);
     box-shadow: $box-shadow;
-    padding: 1rem .4rem;
+    padding: 1rem 0.4rem;
     position: relative;
-
     h1 {
       font-weight: 700;
       @include flexBox(center, center, row);
-      gap: .3rem;
+      gap: 0.3rem;
     }
     :last-child {
       font-size: 1.3rem;
@@ -477,7 +482,7 @@
     width: 100%;
   }
   .blog .blog__contents .right__blog__contents .newsletter {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
   .blog .welcome .menu__items {
     width: auto;
