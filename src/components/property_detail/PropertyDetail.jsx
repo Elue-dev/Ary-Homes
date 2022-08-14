@@ -35,7 +35,7 @@ import admin2 from "../../assets/admin2.jpeg";
 import Slider from "./Slider";
 import Spinner from "../../components/utilities/Spinner";
 import Footer from "../footer/Footer";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -47,7 +47,6 @@ export default function PropertyDetail() {
   const form = useRef();
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
-  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const { data } = useFetchCollection("users");
   const [fixPropName, setFixPropName] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
@@ -83,13 +82,7 @@ export default function PropertyDetail() {
   useEffect(() => {
     if (copied) {
       setAlert("Reference ID copied to clipboard");
-      // setShowAlert(true);
-      // setAlertMessage(`Reference ID copied to clipboard`);
-      // setAlertType("success");
       window.setTimeout(() => {
-        // setShowAlert(false);
-        // setAlertMessage(null);
-        // setAlertType(null);
         setAlert("");
       }, 4000);
     }
@@ -112,9 +105,12 @@ export default function PropertyDetail() {
           </div>
         )}
       </div>
-      <motion.section className="property__details" initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: .1 }}>
+      <motion.section
+        className="property__details"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
         <GoBack />
 
         <p className="details__links">

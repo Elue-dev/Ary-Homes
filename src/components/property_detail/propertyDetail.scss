@@ -23,7 +23,7 @@
   width: 100%;
   padding-top: 2rem;
   min-height: 100vh;
- z-index: 200;
+  z-index: 200;
   .details__links {
     @include container();
     @include flexBox(flex-start, center, center);
@@ -394,4 +394,38 @@
     :first-child {
     font-size: 1.3rem;
   }
+}
+
+@include mQ(350px) {
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins {
+    flex-direction: column;
+    display: block;
+  }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins
+    button {
+    width: 100%;
+  }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins
+    .admin__one {
+    margin-bottom: 1rem;
+  }
+  .property__details__contents .right__contents {
+    padding: 1.5rem 0.6rem;
+  }
+  .property__details__contents .left__contents .property__details__images img {
+    width: 227px;
+  }
+
 }

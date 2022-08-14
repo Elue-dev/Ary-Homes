@@ -48,7 +48,7 @@ export default function Header() {
       location.pathname === "/signup" ||
       location.pathname === "/verify" ||
       location.pathname === "/reset-password" ||
-      location.pathname === "/blog"
+      location.pathname.includes("blog")
     ) {
       setShowHeader(false);
     } else {
@@ -65,7 +65,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 150) {
+    if (window.scrollY > 10) {
       setScrollpage(true);
     } else {
       setScrollpage(false);
@@ -286,7 +286,7 @@ export default function Header() {
           </header>
         </>
       ) : null}
-      {location.pathname === "/blog" ? null : (
+      {location.pathname.includes('blog') ? null : (
         <div className="nav__bottom">
           <ul>
             <NavLink to="/">

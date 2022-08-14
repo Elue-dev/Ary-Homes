@@ -1,6 +1,6 @@
 @import "../../global_styles/global.scss";
 
-.fixed__welcome{
+.fixed__welcome {
   position: fixed;
   top: 0;
   width: 100%;
@@ -147,11 +147,13 @@
     gap: 0.9rem;
     @include container();
     padding-top: 3rem;
+  
+   
 
     .left__blog__contents {
       width: 70%;
       .blog__posts {
-        border: 0.3px solid rgb(232, 232, 232);
+        border: 0.3px solid   rgb(232, 232, 232);
         padding: 0.9rem 1rem;
 
         h1 {
@@ -245,6 +247,7 @@
     }
     .right__blog__contents {
       max-width: 30%;
+      height: fit-content;
       background: rgb(241, 241, 241);
       color: #000;
       padding: 0.9rem 1rem;
@@ -365,6 +368,10 @@
   .blog .blog__contents .left__blog__contents {
     width: 100%;
   }
+  .blog .blog__contents .left__blog__contents .blog__posts {
+    border: 1px solid rgb(238, 238, 238);
+  }
+   
   .blog .blog__contents .right__blog__contents {
     max-width: 100%;
   }
@@ -426,7 +433,7 @@
     font-size: 1.25rem;
   }
   .blog .welcome h1 {
-    font-size: 1.1rem;
+    font-size: .95rem;
   }
   .blog .welcome {
     justify-content: space-between;
@@ -459,7 +466,7 @@
     .posts__wrapper
     .flexed__contents
     .post__heading {
-    font-size: 0.92rem;
+    font-size: 0.8rem;
   }
   .blog
     .blog__contents
@@ -469,7 +476,7 @@
     .posts__wrapper
     .flexed__contents
     .post__description {
-    font-size: 1rem;
+    font-size: .8rem;
   }
   .blog .blog__contents .right__blog__contents .add__post {
     font-size: 1.2rem;

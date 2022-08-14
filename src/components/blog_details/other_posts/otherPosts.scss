@@ -1,0 +1,74 @@
+@import "../../../global_styles/global.scss";
+
+.related__blogs {
+  margin-top: 2rem;
+  .post_det {
+    @include grid(repeat(3, 1fr), 1rem);
+
+    .post_c {
+      width: 100%;
+      margin-top: 1rem;
+      .post_Iurl {
+        height: 220px;
+        width: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      h4 {
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+      .post_con {
+        @include flexBox(space-between, center, row);
+        p {
+          @include flexBox(flex-start, center, row);
+          gap: 0.2rem;
+          color: rgb(109, 109, 109);
+        }
+      }
+    }
+  }
+}
+
+@include mQ(900px) {
+  .related__blogs .post_det .post_c .post_con {
+    display: block;
+  }
+  .related__blogs .post_det {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  .related__blogs .post_det .post_c .post_Iurl {
+    height: 120px;
+  }
+  .related__blogs .post_det .post_c h4 {
+    font-size: 0.9rem;
+  }
+  .related__blogs .post_det .post_c .post_con p {
+    font-size: 0.7rem;
+  }
+}
+
+@include mQ(600px) {
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .right__post__details
+    .right__related
+    h4 {
+    font-size: 0.9rem;
+  }
+  .related__blogs .post_det .post_c h4 {
+    font-size: 0.9rem;
+  }
+  .related__blogs .post_det .post_c .post_con p {
+    font-size: 0.7rem;
+  }
+  .related__blogs h2 {
+    font-size: 1.4rem;
+  }
+}

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import Select from "react-select";
 import { useCustomAlert } from "../../../contexts/AlertContext";
+import useFetchCollection from "../../../hooks/useFetchCollection";
 
 const initialState = {
   name: "",
@@ -40,6 +41,8 @@ export default function AddProperty() {
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
+  const {data} = useFetchCollection("blogComments");
+  console.log(data)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

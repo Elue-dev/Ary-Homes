@@ -14,6 +14,7 @@ import AdminOnlyRoute from "../admin_only/AdminOnlyRoute";
 import PropertyDetail from "../property_detail/PropertyDetail";
 import ProtectedRoute from "../protected_route/ProtectedRoute";
 import { AnimatePresence } from "framer-motion";
+import BlogDetails from "../blog_details/BlogDetails";
 
 export default function AllRoutes() {
   const location = useLocation();
@@ -51,6 +52,7 @@ export default function AllRoutes() {
           }
         />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
         {/* <Route
       path="/bookmarks"
       element={

@@ -30,6 +30,7 @@ import {
 import BlogFooter from "./blog_footer/BlogFooter";
 // import Bounce from "react-reveal/Bounce";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -140,7 +141,7 @@ export default function Blog() {
       className="blog"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: .1 }}
+      transition={{ delay: 0.1 }}
     >
       <BlogHeader />
       <div className="welcome">
@@ -277,10 +278,12 @@ export default function Blog() {
                           <div className="post__description">
                             {description.substring(0, 120)}...
                           </div>
-                          <button className="read__more__post">
-                            <GiSemiClosedEye />
-                            Read More
-                          </button>
+                          <Link to={`/blog/${id}`}>
+                            <button className="read__more__post">
+                              <GiSemiClosedEye />
+                              Read More
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     );
@@ -319,12 +322,16 @@ export default function Blog() {
             a contributor, click on the button below to proceed
           </p>
           {display && (
-            <button onClick={handleShowLines} className="contributor__btn">
+            <motion.button onClick={handleShowLines} className="contributor__btn"  initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.01 }}>
               I want to become a contributor
-            </button>
+            </motion.button>
           )}
           {showLines && (
-            <div className="con__buttons">
+            <motion.div className="con__buttons"  initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.07 }}>
               <BsArrowLeft onClick={handleBack} />
               <ReactWhatsapp
                 number="234-905-201-4239"
@@ -340,7 +347,7 @@ export default function Blog() {
               >
                 <span>Message line 2</span>
               </ReactWhatsapp>
-            </div>
+            </motion.div>
           )}
           <br />
           <div className="newsletter">

@@ -2,6 +2,9 @@
   max-width: 1300px;
   width: 85%;
   margin: auto;
+  @include mQ(600px) {
+    width: 90%;
+  }
 }
 
 @mixin flexBox($justify, $align, $direction) {

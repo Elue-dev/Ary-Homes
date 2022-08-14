@@ -42,7 +42,7 @@ export default function Verify() {
           setError(
             "You have to verify your email first, if you have, click on Done, then Proceed"
           ),
-        4000
+        10000
       );
 
       return;
