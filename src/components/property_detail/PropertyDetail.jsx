@@ -35,6 +35,7 @@ import admin2 from "../../assets/admin2.jpeg";
 import Slider from "./Slider";
 import Spinner from "../../components/utilities/Spinner";
 import Footer from "../footer/Footer";
+import {motion} from 'framer-motion'
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -111,7 +112,9 @@ export default function PropertyDetail() {
           </div>
         )}
       </div>
-      <section className="property__details">
+      <motion.section className="property__details" initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: .1 }}>
         <GoBack />
 
         <p className="details__links">
@@ -319,7 +322,7 @@ export default function PropertyDetail() {
           </div>
         </div>
         <Footer />
-      </section>
+      </motion.section>
     </>
   );
 }

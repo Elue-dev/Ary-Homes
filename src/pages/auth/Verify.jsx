@@ -6,6 +6,7 @@ import { sendEmailVerification } from "firebase/auth";
 import logo from "../../assets/logo.jpg";
 import { TiInfoOutline } from "react-icons/ti";
 import { useCustomAlert } from "../../contexts/AlertContext";
+import {motion} from 'framer-motion'
 
 export default function Verify() {
   const [error, setError] = useState(null);
@@ -52,7 +53,9 @@ export default function Verify() {
     }
   };
   return (
-    <div className="auth__modal">
+    <motion.div className="auth__modal" initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: .1 }}>
       <div className="auth__contents verify__contents">
         <img src={logo} alt="ary homes logo" />
         <p className="verification__message" style={{ marginBottom: "1rem" }}>
@@ -78,6 +81,6 @@ export default function Verify() {
           </b>
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

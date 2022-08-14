@@ -15,6 +15,7 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../../components/utilities/GoBack";
 import { selectPreviousURL } from "../../redux/slice/authSlice";
 import { useSelector } from "react-redux";
+import {motion} from 'framer-motion'
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -175,7 +176,9 @@ export default function Signup() {
   };
 
   return (
-    <section className="auth__modal">
+    <motion.section className="auth__modal" initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: .1 }}>
       <div className="auth__contents signup__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
           <p> &larr;</p>
@@ -281,6 +284,6 @@ export default function Signup() {
           </Link>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

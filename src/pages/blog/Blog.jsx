@@ -29,7 +29,7 @@ import {
 } from "../../redux/slice/filterSlice";
 import BlogFooter from "./blog_footer/BlogFooter";
 // import Bounce from "react-reveal/Bounce";
-import { motion, useViewportScroll } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -46,7 +46,6 @@ export default function Blog() {
   const dispatch = useDispatch();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const filteredBlogPosts = useSelector(selectFilteredBlogs);
-  const { scrollYProgress } = useViewportScroll();
 
   let postsArray = [];
 

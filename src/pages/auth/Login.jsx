@@ -10,6 +10,7 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 import { useSelector } from "react-redux";
 import { selectPreviousURL } from "../../redux/slice/authSlice";
 import useFetchCollection from "../../hooks/useFetchCollection";
+import {motion} from 'framer-motion'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -144,7 +145,9 @@ export default function Login() {
   };
 
   return (
-    <section className="auth__modal">
+    <motion.section className="auth__modal"initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: .1 }}>
       <div className="auth__contents login__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
           &larr;
@@ -225,6 +228,6 @@ export default function Login() {
           </Link>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

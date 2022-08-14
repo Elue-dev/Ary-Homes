@@ -10,7 +10,6 @@
   }
   .blog__header__logo {
     @include flexBox(center, center, row);
-    animation: slide-right 0.5s ease;
     font-family: "Nunito", sans-serif;
     text-align: center;
     gap: 0.4rem;

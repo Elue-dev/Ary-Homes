@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
+import {motion} from 'framer-motion'
 
 export default function Reset() {
   const [email, setEmail] = useState("");
@@ -61,7 +62,9 @@ export default function Reset() {
   };
 
   return (
-    <section className="auth__modal">
+    <motion.section className="auth__modal" initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: .1 }}>
       <div className="auth__contents reset__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
           &larr;
@@ -109,6 +112,6 @@ export default function Reset() {
           <Link to="/login">Back to login</Link>
         </p>
       </div>
-    </section>
+    </motion.section>
   );
 }

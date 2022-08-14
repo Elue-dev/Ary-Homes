@@ -28,6 +28,7 @@ import { useNavigate } from "react-router-dom";
 import GoBack from "../../components/utilities/GoBack";
 import Notiflix from "notiflix";
 import BeatLoader from "react-spinners/BeatLoader";
+import {motion} from 'framer-motion'
 
 export default function Account() {
   const [photo] = useState("");
@@ -268,7 +269,9 @@ export default function Account() {
   ]);
 
   return (
-    <section className="user__account__info">
+    <motion.section className="user__account__info" initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: .1 }}>
       <GoBack />
       <div className="user__account__info__contents">
         <div className="account__info__desc">
@@ -439,6 +442,6 @@ export default function Account() {
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
