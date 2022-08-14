@@ -92,6 +92,11 @@
           @include flexBox(flex-start, center, row);
           gap: 0.3rem;
           font-size: 1.1rem;
+          cursor: pointer;
+        }
+        li.cat__active__alt {
+          background: #fff;
+          color: #000;
         }
       }
       .blog__header__social__links {
@@ -436,7 +441,7 @@
     .posts__wrapper
     .flexed__contents
     .post__top {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   .blog
     .blog__contents

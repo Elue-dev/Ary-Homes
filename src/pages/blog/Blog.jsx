@@ -51,6 +51,11 @@ export default function Blog() {
     postsArray = filteredBlogPosts;
   }
 
+  const handleChangeCategory = (c) => {
+    filterBlogPosts(c);
+    setShowMenu(false);
+  };
+
   const postsCategories = [
     "All",
     ...new Set(blogPosts.map((post) => post.category)),
@@ -148,7 +153,10 @@ export default function Blog() {
           </h3>
           {postsCategories.map((c, index) => (
             <ul key={index} className="category__li">
-              <li>
+              <li
+                onClick={() => handleChangeCategory(c)}
+                className={`${cgr}` === c ? "cat__active__alt" : null}
+              >
                 {" "}
                 <CgLayoutList />
                 {c}
