@@ -45,7 +45,7 @@ export default function Comments({ id }) {
   const handleCommentForm = () => {
     if (!user) {
       dispatch(SAVE_URL(url));
-      navigate("/login");
+      navigate("/user/login");
     } else {
       setShowCommentForm(!showCommentForm);
     }

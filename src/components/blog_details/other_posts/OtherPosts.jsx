@@ -19,7 +19,7 @@ export default function OtherPosts() {
     <div className="related__blogs">
       <h2>You would love to read:</h2>
       <div className="post_det">
-        {post?.map((p) => {
+        {post?.slice(1,5).map((p) => {
           const { imageUrl, readTime, addedAt, title, id } = p;
           return (
             <Link to={`/blog/${id}`} key={id}>

@@ -10,7 +10,7 @@ import {
 } from "react-icons/bs";
 import { FaCommentMedical, FaComments } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
-import { RiseLoader } from "react-spinners";
+import { BeatLoader, RiseLoader } from "react-spinners";
 import { database } from "../../firebase/firebase";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import useFetchDocuments from "../../hooks/useFetchDocuments";
@@ -24,12 +24,14 @@ import OtherPosts from "./other_posts/OtherPosts";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import BlogFooter from "../../pages/blog/blog_footer/BlogFooter";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
 
 export default function BlogDetails() {
   const { id } = useParams();
   const { document } = useFetchDocuments("blog", id);
   const { data } = useFetchCollection("blog");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [pending, setPending] = useState(false);
   const [blogPost, setBlogPost] = useState(null);
   const [storedId, setStoredId] = useState("");
@@ -48,6 +50,7 @@ export default function BlogDetails() {
       await updateDoc(docRef, {
         likes: blogPost.likes + 1,
       });
+      setLoading(false);
       setLiked(true);
       window.scrollTo(0, 0);
       setShowAlert(true);
@@ -58,6 +61,9 @@ export default function BlogDetails() {
         setAlertMessage(null);
         setAlertType(null);
       }, 8000);
+      window.setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } catch (error) {
       window.scrollTo(0, 0);
       setShowAlert(true);
@@ -72,6 +78,7 @@ export default function BlogDetails() {
   };
 
   const unLikePost = async () => {
+    setLoading(true);
     try {
       const docRef = doc(database, "blog", storedId);
       await updateDoc(docRef, {
@@ -87,6 +94,9 @@ export default function BlogDetails() {
         setAlertMessage(null);
         setAlertType(null);
       }, 10000);
+      window.setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } catch (error) {
       window.scrollTo(0, 0);
       setShowAlert(true);
@@ -111,6 +121,22 @@ export default function BlogDetails() {
   const submitComment = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
+    if (!name || !email || !gender || !comment) {
+      setLoading(false);
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`Please fill all fields before submitting`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
+      return;
+    }
+
     const today = new Date();
     const date = today.toDateString();
     try {
@@ -119,6 +145,7 @@ export default function BlogDetails() {
       await updateDoc(docRef, {
         comments: [...blogPost.comments, commentToAdd],
       });
+      setLoading(false);
       window.scrollTo(0, 0);
       setName("");
       setEmail("");
@@ -132,7 +159,11 @@ export default function BlogDetails() {
         setAlertMessage(null);
         setAlertType(null);
       }, 8000);
+      window.setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } catch (error) {
+      setLoading(false);
       window.scrollTo(0, 0);
       setShowAlert(true);
       setAlertMessage(`An unexpected error occured`);
@@ -196,7 +227,7 @@ export default function BlogDetails() {
     return (
       <RiseLoader
         loading={true}
-        color={"#333"}
+        color={"#ae8625"}
         className="post__details__loader"
       />
     );
@@ -279,7 +310,7 @@ export default function BlogDetails() {
               </h2>
               {blogPost.comments.length === 0 ? (
                 <div className="n__comment">
-                  <p>Be the first to add a comment</p>
+                  <p>Be the first to add a comment to this post</p>
                 </div>
               ) : (
                 <div className="y__comment">
@@ -356,7 +387,20 @@ export default function BlogDetails() {
                 cols=""
                 rows="8"
               />
-              <button type="submit">Submit Comment</button>
+              {loading ? (
+                <button type="submit" className="submit__comment__btn">
+                  <BeatLoader
+                    loading={loading}
+                    size={10}
+                    color={"#fff"}
+                    disabled
+                  />
+                </button>
+              ) : (
+                <button type="submit" className="submit__comment__btn">
+                  Submit comment
+                </button>
+              )}
             </form>
             <OtherPosts />
           </div>
@@ -394,7 +438,7 @@ export default function BlogDetails() {
                 )}
               </form>
             </div>
-            {data?.map((p) => {
+            {data?.slice(1, 5).map((p) => {
               const { id, imageUrl, title, readTime } = p;
               return (
                 <Link to={`/blog/${id}`} key={id}>

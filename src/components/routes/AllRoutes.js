@@ -23,12 +23,12 @@ export default function AllRoutes() {
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/user/login" element={<Login />} />
+        <Route path="/user/signup" element={<Signup />} />
         <Route path="/reset-password" element={<Reset />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
         <Route
-          path="/user/admin/*"
+          path="/admin/*"
           element={
             <AdminOnlyRoute>
               <Admin />

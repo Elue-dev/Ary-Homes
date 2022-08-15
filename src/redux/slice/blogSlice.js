@@ -10,7 +10,7 @@ const blogSlice = createSlice({
   reducers: {
     STORE_BLOGS: (state, action) => {
       state.blogs = action.payload.blogs;
-    },
+    }
   },
 });
 

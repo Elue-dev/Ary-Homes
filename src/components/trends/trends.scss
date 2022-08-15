@@ -50,7 +50,7 @@
 @include mQ(1000px) {
   .trends__wrapper {
     min-height: 38vh;
-    background-attachment: unset;
+    background-attachment: none;
   }
   .trends__wrapper .trends__contents {
     width: 100%;
@@ -65,6 +65,7 @@
     min-height: 40vh;
     margin-top: 2rem;
     margin-bottom: 0;
+    background-attachment: initial;
   }
   .trends__wrapper .trends__contents p {
     font-size: 1.1rem;

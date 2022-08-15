@@ -5,10 +5,10 @@ import Properties from "../../components/properties/Properties";
 import { useAuth } from "../../contexts/AuthContext";
 import {motion} from 'framer-motion'
 import "./home.scss";
+import SomeBlogPosts from "../../components/some_blog_posts/SomeBlogPosts";
 
 export default function Home() {
   const { logout, user } = useAuth();
-  console.log(user)
 
   // useEffect(() => {
   //   window.setTimeout(() => logout(), 10000); ====> automatic logout, look for how to do 2 hours
@@ -22,6 +22,7 @@ export default function Home() {
     transition={{ delay: .1 }}>
       <Hero />
       <Properties />
+      <SomeBlogPosts />
       <Footer />
     </motion.section>
   );

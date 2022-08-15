@@ -232,11 +232,9 @@ export default function Blog() {
                       title,
                       addedAt,
                       category,
-                      tags,
                       likes,
                       comments,
                       uploader,
-                      readTime,
                       description,
                     } = post;
                     return (
@@ -322,16 +320,23 @@ export default function Blog() {
             a contributor, click on the button below to proceed
           </p>
           {display && (
-            <motion.button onClick={handleShowLines} className="contributor__btn"  initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.01 }}>
+            <motion.button
+              onClick={handleShowLines}
+              className="contributor__btn"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.01 }}
+            >
               I want to become a contributor
             </motion.button>
           )}
           {showLines && (
-            <motion.div className="con__buttons"  initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.07 }}>
+            <motion.div
+              className="con__buttons"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.07 }}
+            >
               <BsArrowLeft onClick={handleBack} />
               <ReactWhatsapp
                 number="234-905-201-4239"

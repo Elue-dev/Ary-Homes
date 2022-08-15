@@ -30,8 +30,8 @@ import SimilarProducts from "./SimilarProducts";
 import ReactWhatsapp from "react-whatsapp";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import Comments from "./Comments";
-import admin1 from "../../assets/wisdom.jpeg";
-import admin2 from "../../assets/admin2.jpeg";
+import admin1 from "../../assets/sade.jpeg";
+import admin2 from "../../assets/wisdom.jpeg";
 import Slider from "./Slider";
 import Spinner from "../../components/utilities/Spinner";
 import Footer from "../footer/Footer";
@@ -230,12 +230,12 @@ export default function PropertyDetail() {
                         <img src={admin1} alt={adminUserOne[0]?.lastName} />
                         <BsPatchCheckFill className="verified__icon" />
                       </div>
-                      <a href="tel:+2348107339039">
+                      <a href="tel:+2348168945509">
                         <BsTelephoneForwardFill />
-                        08107339039
+                        08168945509
                       </a>
                       <ReactWhatsapp
-                        number="234-810-733-9039"
+                        number="234-816-894-5509"
                         message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
                         className="whatsapp"
                       >
@@ -246,12 +246,12 @@ export default function PropertyDetail() {
                     <div className="admin__two">
                       <img src={admin2} alt={adminUserTwo[0]?.lastName} />
                       <BsPatchCheckFill className="verified__icon" />
-                      <a href="tel:+2348125258449">
+                      <a href="tel:+2348107339039">
                         <BsTelephoneForwardFill />
-                        08125258449
+                        08107339039
                       </a>
                       <ReactWhatsapp
-                        number="234-812-525-8449"
+                        number="234-810-733-9039"
                         message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
                         className="whatsapp"
                       >

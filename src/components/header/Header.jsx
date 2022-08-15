@@ -44,10 +44,7 @@ export default function Header() {
 
   useEffect(() => {
     if (
-      location.pathname === "/login" ||
-      location.pathname === "/signup" ||
-      location.pathname === "/verify" ||
-      location.pathname === "/reset-password" ||
+      location.pathname.includes("user") ||
       location.pathname.includes("blog")
     ) {
       setShowHeader(false);
@@ -65,7 +62,7 @@ export default function Header() {
   }, [location.pathname]);
 
   const fixNavbar = () => {
-    if (window.scrollY > 10) {
+    if (window.scrollY > 150) {
       setScrollpage(true);
     } else {
       setScrollpage(false);
@@ -123,9 +120,7 @@ export default function Header() {
       {showHeader ? (
         <>
           <header
-            className={
-              scrollPage ? `header__wrapper fixed` : "header__wrapper"
-            }
+            className={scrollPage ? `header__wrapper fixed` : "header__wrapper"}
             style={{ transition: scrollPage && "all 1s ease" }}
           >
             <div className="header__contents">
@@ -142,7 +137,7 @@ export default function Header() {
 
               <ul>
                 <AdminOnlyLink>
-                  <NavLink to="/user/admin/home">
+                  <NavLink to="/admin/home">
                     <li>
                       <button className="admin__btn">Admin</button>
                     </li>
@@ -206,11 +201,11 @@ export default function Header() {
                         <p>
                           {" "}
                           <FiUserPlus />
-                          <NavLink to="/signup">Sign up</NavLink>
+                          <NavLink to="/user/signup">Sign up</NavLink>
                         </p>
                         <p>
                           <BiLogInCircle />
-                          <NavLink to="/login">Log in</NavLink>
+                          <NavLink to="/user/login">Log in</NavLink>
                         </p>
                       </>
                     )}
@@ -286,7 +281,8 @@ export default function Header() {
           </header>
         </>
       ) : null}
-      {location.pathname.includes('blog') ? null : (
+      {location.pathname.includes("blog") ||
+      location.pathname.includes("user") ? null : (
         <div className="nav__bottom">
           <ul>
             <NavLink to="/">
@@ -315,7 +311,7 @@ export default function Header() {
             </NavLink>
 
             <AdminOnlyLink>
-              <NavLink to="/user/admin/home">
+              <NavLink to="admin/home">
                 <li>
                   <div />
                   <button className="admin__btn">Admin</button>

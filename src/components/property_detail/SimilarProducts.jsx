@@ -26,7 +26,7 @@ export default function SimilarProducts() {
       <div className="similar__properties__contents">
         <h3>Similar Properties</h3>
         <div className="md__property__grid">
-        {properties.slice(6, 10)?.map((property) => {
+        {properties.slice(7,10)?.map((property) => {
           const { id, name, imagesUrl, price, features } = property;
           return (
             <Link to={`/property/${id}`} key={id} >

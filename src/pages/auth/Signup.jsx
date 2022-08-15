@@ -61,7 +61,7 @@ export default function Signup() {
       assignedID: uuidv4(),
       firstName,
       lastName,
-      // phone,
+      phone,
       email: email || user.email,
       joinedAt: date,
       avatar: "",
@@ -201,6 +201,7 @@ export default function Signup() {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
+                  required
                 />
               </label>
               <label>
@@ -213,7 +214,7 @@ export default function Signup() {
               </label>
             </div>
           </label>
-          {/* <label>
+          <label>
             <span>Phone Number:</span>
             <input
               type="tel"
@@ -221,7 +222,7 @@ export default function Signup() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your phone number"
             />
-          </label> */}
+          </label>
           <label>
             <span>Email Address:</span>
             <input
@@ -277,7 +278,7 @@ export default function Signup() {
         </div>
         <div className="new__user">
           <p>Own a AryHomes account?</p>
-          <Link to="/login">
+          <Link to="/user/login">
             <button className="btn signup__btn" style={{ color: "#fff" }}>
               Log in
             </button>
