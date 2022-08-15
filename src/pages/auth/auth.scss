@@ -282,11 +282,16 @@
   }
 }
 
+
+
 @include mQ(500px) {
   .auth__modal .auth__contents {
     width: 100%;
     background: #fff;
   }
+  .auth__modal .auth__contents .or {
+    background: #fff;
+}
   .auth__modal .auth__contents .close__icon {
     top: 2rem;
     right: 1rem;

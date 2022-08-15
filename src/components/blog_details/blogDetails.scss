@@ -41,6 +41,9 @@
             margin-bottom: 0.5rem;
           }
         }
+        h1 {
+          margin: 1rem 0;
+        }
         .post__top {
           @include flexBox(space-between, center, row);
           p {
@@ -289,6 +292,9 @@
       margin-top: 1.2rem;
     }
   }
+  .blog__post__details .post__details__wrapper .posts__grid .left__post__details form {
+   color: #333;
+}
   .blog__post__details
     .post__details__wrapper
     .posts__grid
