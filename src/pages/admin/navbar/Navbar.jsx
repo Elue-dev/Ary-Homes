@@ -36,31 +36,31 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <NavLink to="/user/admin/home">
+            <NavLink to="/admin/home">
               <FiHome />
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/user/admin/view-properties">
+            <NavLink to="/admin/view-properties">
               <SiHomeadvisor />
               View Properties
             </NavLink>
           </li>
           <li>
-            <NavLink to="/user/admin/add-property">
+            <NavLink to="/admin/add-property">
               <MdAddBusiness />
               Add Property
             </NavLink>
           </li>
           <li>
-            <NavLink to="/user/admin/add-blog-post">
+            <NavLink to="/admin/add-blog-post">
               <FaBlogger />
               Add A Blog Post
             </NavLink>
           </li>
           <li>
-            <NavLink to="/user/admin/users">
+            <NavLink to="/admin/users">
               <FiUsers />
               Users
             </NavLink>

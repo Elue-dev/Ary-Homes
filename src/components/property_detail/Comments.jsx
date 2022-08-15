@@ -22,6 +22,7 @@ export default function Comments({ id }) {
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [display, setDisplay] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,6 +39,12 @@ export default function Comments({ id }) {
   const hanndleShowComments = () => {
     setShowComments(!showComments);
     setShowCommentForm(false);
+    setDisplay(!display);
+  };
+
+  const handleClose = () => {
+    setShowCommentForm(false);
+    setDisplay(true);
   };
 
   const url = window.location.href;
@@ -47,7 +54,8 @@ export default function Comments({ id }) {
       dispatch(SAVE_URL(url));
       navigate("/user/login");
     } else {
-      setShowCommentForm(!showCommentForm);
+      setShowCommentForm(true);
+      setDisplay(false);
     }
   };
 
@@ -144,8 +152,12 @@ export default function Comments({ id }) {
             );
           })
         )}
-        {!showComments ? null : (
-          <button className=" cb add__comment__btn" onClick={handleCommentForm}>
+        {!display ? null : (
+          <button
+            className=" cb add__comment__btn"
+            onClick={handleCommentForm}
+            style={{ display: display ? "block" : "none" }}
+          >
             Add a comment
           </button>
         )}
@@ -171,7 +183,7 @@ export default function Comments({ id }) {
           )}
 
           <button
-            onClick={() => setShowCommentForm(false)}
+            onClick={handleClose}
             type="button"
             className="close__comment__btn"
           >

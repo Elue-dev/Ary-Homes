@@ -2,12 +2,7 @@ import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiChevronsRight, BiTimeFive } from "react-icons/bi";
-import {
-  BsFillBookmarkHeartFill,
-  BsFillHeartFill,
-  BsHeart,
-  BsPersonPlusFill,
-} from "react-icons/bs";
+import { BsFillHeartFill, BsPersonPlusFill } from "react-icons/bs";
 import { FaCommentMedical, FaComments } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { BeatLoader, RiseLoader } from "react-spinners";
@@ -24,7 +19,6 @@ import OtherPosts from "./other_posts/OtherPosts";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import BlogFooter from "../../pages/blog/blog_footer/BlogFooter";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
 
 export default function BlogDetails() {
   const { id } = useParams();
@@ -61,9 +55,6 @@ export default function BlogDetails() {
         setAlertMessage(null);
         setAlertType(null);
       }, 8000);
-      window.setTimeout(() => {
-        window.location.reload();
-      }, 1500);
     } catch (error) {
       window.scrollTo(0, 0);
       setShowAlert(true);
