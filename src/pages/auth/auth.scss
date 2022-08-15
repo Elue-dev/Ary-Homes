@@ -2,6 +2,8 @@
 
 .auth__modal {
   @include flexBox(center, center, column);
+  background: #fff;
+  height: 100vh;
   .login__contents {
     img {
       height: 70px;
@@ -44,12 +46,13 @@
   }
 
   .auth__contents {
-    background: #fff;
+    background: rgb(223, 223, 223);
     width: 400px;
     height: auto;
     padding: 1rem;
     position: relative;
-    @include container();
+    // @include container();
+
     .close__icon {
       position: absolute;
       right: 1rem;
@@ -144,7 +147,7 @@
       position: absolute;
       left: 45%;
       top: -12px;
-      background: #fff;
+      background: rgb(223, 223, 223);
       padding: 0 0.4rem;
     }
     .reset__password {
@@ -282,6 +285,7 @@
 @include mQ(500px) {
   .auth__modal .auth__contents {
     width: 100%;
+    background: #fff;
   }
   .auth__modal .auth__contents .close__icon {
     top: 2rem;
@@ -293,5 +297,8 @@
   .auth__modal .auth__contents .buttons .refresh__btn {
     background-color: #111;
     color: #fff;
+  }
+  .auth__modal .auth__contents .google__btn {
+    font-size: 1rem;
   }
 }

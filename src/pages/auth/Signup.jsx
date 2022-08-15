@@ -15,7 +15,7 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../../components/utilities/GoBack";
 import { selectPreviousURL } from "../../redux/slice/authSlice";
 import { useSelector } from "react-redux";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -61,7 +61,7 @@ export default function Signup() {
       assignedID: uuidv4(),
       firstName,
       lastName,
-      phone,
+      phone: "",
       email: email || user.email,
       joinedAt: date,
       avatar: "",
@@ -176,9 +176,12 @@ export default function Signup() {
   };
 
   return (
-    <motion.section className="auth__modal" initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: .1 }}>
+    <motion.section
+      className="auth__modal"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <div className="auth__contents signup__contents">
         <p className="close__icon" onClick={() => navigate(-1)}>
           <p> &larr;</p>
@@ -214,7 +217,7 @@ export default function Signup() {
               </label>
             </div>
           </label>
-          <label>
+          {/* <label>
             <span>Phone Number:</span>
             <input
               type="tel"
@@ -222,7 +225,7 @@ export default function Signup() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your phone number"
             />
-          </label>
+          </label> */}
           <label>
             <span>Email Address:</span>
             <input
