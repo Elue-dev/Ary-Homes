@@ -204,6 +204,14 @@ export default function Blog() {
               </li>
             </ul>
           </div>
+          <div className="blog__auth">
+            <Link to="/user/login">
+              <button>LOGIN</button>
+            </Link>
+            <Link to="/user/signup">
+              <button>SIGN UP</button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="blog__contents">

@@ -44,7 +44,7 @@ export default function AllRoutes() {
           }
         />
         <Route
-          path="/user/account/:uid"
+          path="/account/:uid"
           element={
             <ProtectedRoute>
               <Account />

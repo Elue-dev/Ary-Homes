@@ -257,7 +257,7 @@ export default function Header() {
 
                           // ===uncomment the above later annd remove this===
                           <>
-                            <NavLink to={`/user/account/${user.uid}`}>
+                            <NavLink to={`/account/${user.uid}`}>
                               <li>
                                 <MdOutlineManageAccounts />
                                 My Account

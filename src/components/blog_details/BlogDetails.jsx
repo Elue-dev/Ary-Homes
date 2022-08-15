@@ -143,7 +143,7 @@ export default function BlogDetails() {
       setComment("");
       setGender("");
       setShowAlert(true);
-      setAlertMessage(`Your comment has bee successfully added`);
+      setAlertMessage(`Your comment has been successfully added`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
