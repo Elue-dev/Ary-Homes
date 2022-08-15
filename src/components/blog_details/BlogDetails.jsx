@@ -2,7 +2,12 @@ import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiChevronsRight, BiTimeFive } from "react-icons/bi";
-import { BsPersonPlusFill } from "react-icons/bs";
+import {
+  BsFillBookmarkHeartFill,
+  BsFillHeartFill,
+  BsHeart,
+  BsPersonPlusFill,
+} from "react-icons/bs";
 import { FaCommentMedical, FaComments } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { RiseLoader } from "react-spinners";
@@ -32,13 +37,68 @@ export default function BlogDetails() {
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [gender, setGender] = useState("");
+  const [liked, setLiked] = useState(false);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
   const getDataId = data?.filter((d) => d.id === id);
 
-  const likePost = () => {
-    
-  }
+  const likePost = async () => {
+    try {
+      const docRef = doc(database, "blog", storedId);
+      await updateDoc(docRef, {
+        likes: blogPost.likes + 1,
+      });
+      setLiked(true);
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`You just liked this blog post :)`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
+    } catch (error) {
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`An unexpected error occured`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
+    }
+  };
+
+  const unLikePost = async () => {
+    try {
+      const docRef = doc(database, "blog", storedId);
+      await updateDoc(docRef, {
+        likes: blogPost.likes - 1,
+      });
+      setLiked(false);
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`You just unliked this blog post :(`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 10000);
+    } catch (error) {
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`An unexpected error occured`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 10000);
+    }
+  };
 
   useEffect(() => {
     setBlogPost(document);
@@ -55,16 +115,33 @@ export default function BlogDetails() {
     const date = today.toDateString();
     try {
       const docRef = doc(database, "blog", storedId);
-      await updateDoc(
-        docRef,
-        {
-          comments: [{ name, email, comment, gender, date }],
-        },
-        { merge: true }
-      );
-      alert("ongoing");
+      const commentToAdd = { name, email, comment, gender, date };
+      await updateDoc(docRef, {
+        comments: [...blogPost.comments, commentToAdd],
+      });
+      window.scrollTo(0, 0);
+      setName("");
+      setEmail("");
+      setComment("");
+      setGender("");
+      setShowAlert(true);
+      setAlertMessage(`Your comment has bee successfully added`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
     } catch (error) {
-      console.log(error.message);
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`An unexpected error occured`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
     }
   };
 
@@ -173,16 +250,28 @@ export default function BlogDetails() {
             </div>
             <div className="post__image">
               <img src={blogPost.imageUrl} alt={blogPost.name} />
+              {liked ? (
+                <BsFillHeartFill
+                  onClick={unLikePost}
+                  className="like__icon"
+                  color="red"
+                />
+              ) : (
+                <BsFillHeartFill
+                  onClick={likePost}
+                  className="like__icon"
+                  color="#fff"
+                />
+              )}
             </div>
             <div className="post__description">{blogPost.description}</div>
             <div className="post__tags">
               {blogPost.tags.map((tag, index) => (
                 <ul key={index}>
-                  <li># {tag}</li>
+                  <li>#{tag}</li>
                 </ul>
               ))}
             </div>
-            <button onClick={likePost}>Click to Like this post</button>
             <div className="post__comments">
               <h2>
                 {blogPost.comments.length}{" "}
@@ -308,8 +397,8 @@ export default function BlogDetails() {
             {data?.map((p) => {
               const { id, imageUrl, title, readTime } = p;
               return (
-                <Link to={`/blog/${id}`}>
-                  <div key={id} className="right__related">
+                <Link to={`/blog/${id}`} key={id}>
+                  <div className="right__related">
                     <div className="right__related__image">
                       <img src={imageUrl} alt={title} />
                     </div>

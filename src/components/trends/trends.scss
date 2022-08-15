@@ -50,6 +50,7 @@
 @include mQ(1000px) {
   .trends__wrapper {
     min-height: 38vh;
+    background-attachment: unset;
   }
   .trends__wrapper .trends__contents {
     width: 100%;

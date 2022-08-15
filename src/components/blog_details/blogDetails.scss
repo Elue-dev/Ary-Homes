@@ -72,6 +72,13 @@
             object-fit: cover;
             border-top: 0.3px solid rgb(232, 232, 232);
           }
+          .like__icon {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            cursor: pointer;
+          }
         }
         .post__tags {
           display: flex;
@@ -299,5 +306,68 @@
     form
     input {
     font-size: 0.9rem;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    form
+    button {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid
+    .gender__img {
+    width: 84px;
+    height: 69px;
+    border-radius: 0;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid {
+    gap: 1.4rem;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid
+    .commentor
+    :first-child {
+    font-size: 1.1rem;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid
+    .commentor
+    :nth-child(2) {
+    font-size: 0.7rem;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid
+    .commentor
+    :last-child {
+    font-size: 0.8rem;
   }
 }

@@ -72,3 +72,26 @@
     font-size: 1.4rem;
   }
 }
+
+@include mQ(350px) {
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .right__post__details
+    .right__related {
+    flex-direction: column;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .right__post__details
+    .right__related
+    .right__related__image
+    img {
+    width: 100%;
+  }
+  .related__blogs .post_det {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+  }
+}
