@@ -3,20 +3,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Nunito&family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap");
 
+
+/* lato */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700&family=Montserrat:wght@200;300;400;500;600;700&family=Nunito&family=Roboto+Slab:wght@200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  transition: 0.5s ease;
+   transition: 0.5s ease;
 }
 html {
   scroll-behavior: smooth;
   transition: 0.5s ease;
 }
 body {
-  font-family: "Mukta", sans-serif;
+  /* font-family: "Mukta", sans-serif; */
   /* font-family: "Figtree", sans-serif; */
+  font-family: 'Lato', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   color: #222;
   line-height: 1.5;
