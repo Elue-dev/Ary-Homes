@@ -46,7 +46,8 @@ export default function Header() {
   useEffect(() => {
     if (
       location.pathname.includes("user") ||
-      location.pathname.includes("blog")
+      location.pathname.includes("blog") ||
+      location.pathname === "/verify"
     ) {
       setShowHeader(false);
     } else {
@@ -151,23 +152,23 @@ export default function Header() {
                     <p>Home</p>
                   </li>
                 </NavLink>
-
-                <NavLink to="/blog">
+                <NavLink to="/all-properties">
                   <li>
-                    <RiArticleLine />
-                    <p>Blog</p>
+                    <GiFamilyHouse />
+                    <p>Properties</p>
                   </li>
                 </NavLink>
+
                 <NavLink to="/contact">
                   <li>
                     <MdOutlineContactSupport />
                     <p>Contact</p>
                   </li>
                 </NavLink>
-                <NavLink to="/all-properties">
+                <NavLink to="/blog">
                   <li>
-                    <GiFamilyHouse />
-                    <p>Properties</p>
+                    <RiArticleLine />
+                    <p>Blog</p>
                   </li>
                 </NavLink>
               </ul>
@@ -214,13 +215,13 @@ export default function Header() {
                         {user.emailVerified ? (
                           <div className="logged__in">
                             <p>Hi, {modifiedUserName}!</p>
-                            {/* <NavLink to="/bookmarks">
+                            <NavLink to="/bookmarks">
                               <li>
                                 <IoBookmarksOutline />
-                                <BsBookmarkStar />
+                                {/* <BsBookmarkStar /> */}
                                 Bookmarks
                               </li>
-                            </NavLink> */}
+                            </NavLink>
                             <NavLink to={`/account/${user.uid}`}>
                               <li>
                                 <MdOutlineManageAccounts />
@@ -291,22 +292,23 @@ export default function Header() {
                 <p>Home</p>
               </li>
             </NavLink>
-            <NavLink to="/blog">
+            <NavLink to="/all-properties">
               <li>
-                <RiArticleLine />
-                <p>Blog</p>
+                <GiFamilyHouse />
+                <p>Properties</p>
               </li>
             </NavLink>
+
             <NavLink to="/contact">
               <li>
                 <MdOutlineContactSupport />
                 <p>Contact</p>
               </li>
             </NavLink>
-            <NavLink to="/all-properties">
+            <NavLink to="/blog">
               <li>
-                <GiFamilyHouse />
-                <p>Properties</p>
+                <RiArticleLine />
+                <p>Blog</p>
               </li>
             </NavLink>
 

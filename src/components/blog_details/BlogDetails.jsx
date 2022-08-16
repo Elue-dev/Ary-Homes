@@ -367,7 +367,7 @@ export default function BlogDetails() {
                 </div>
               )}
             </div>
-            <ShareButtons id={id} />
+            {/* <ShareButtons id={id} /> */}
             <form onSubmit={submitComment}>
               <h2>
                 <FaCommentMedical />

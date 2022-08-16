@@ -15,14 +15,15 @@ export default function Trends() {
     <section className="trends__wrapper">
       <div className="trends__contents">
         <p>Trends</p>
-        {blogPost?.slice(0, 1).map((post) => (
-          <div key={post.id}>
-            <h2>{post.title}</h2>
-            <Link to={`/blog/${post.id}`}>
-              <button className="trends__read__button">Read More</button>
-            </Link>
-          </div>
-        ))}
+        <div>
+          <h2>
+            Why your work space must look refreshing and clean, and how it
+            affects performance
+          </h2>
+          <Link to="/blog/jbKYMwc3jhRMvrNRwpxc">
+            <button className="trends__read__button">Read More</button>
+          </Link>
+        </div>
       </div>
     </section>
   );

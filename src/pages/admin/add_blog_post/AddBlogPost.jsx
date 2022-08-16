@@ -190,13 +190,13 @@ export default function AddBlogPost() {
             name="category"
             value={blogPost && blogPost.category}
             onChange={(e) => handleInputChange(e)}
-            placeholder="e.g: Real estate, Lifestyle, Personnal development"
+            placeholder="e.g: Real estate, Lifestyle, Personal development"
             required
           />
         </label>
         <br />
         <label>
-          <span>Blog Post Uploader:</span>
+          <span>Blog Post Uploader:</span> 
           <input
             type="text"
             name="uploader"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useFetchDocuments from "../../hooks/useFetchDocuments";
 import {
   BsArrow90DegLeft,
@@ -36,6 +36,14 @@ import Slider from "./Slider";
 import Spinner from "../../components/utilities/Spinner";
 import Footer from "../footer/Footer";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  ADD_TO_BOOKMARKS,
+  selectBookmarks,
+} from "../../redux/slice/propertySlice";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { database } from "../../firebase/firebase";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -43,13 +51,17 @@ export default function PropertyDetail() {
   const [property, setProperty] = useState(null);
   const [users, setUsers] = useState([]);
   const [alert, setAlert] = useState(null);
-  const { formatCurrency } = useCustomAlert();
+  const { setShowAlert, setAlertMessage, setAlertType, formatCurrency } =
+    useCustomAlert();
+  const { user } = useAuth();
   const form = useRef();
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
   const { data } = useFetchCollection("users");
   const [fixPropName, setFixPropName] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const adminUserOne = users?.filter(
     (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL
@@ -87,6 +99,46 @@ export default function PropertyDetail() {
       }, 4000);
     }
   }, [copied]);
+
+  const addToBookmarks = async (p) => {
+    if (!user) {
+      navigate("/login");
+      setShowAlert(true);
+      setAlertMessage(`You have to logged in to add properties to bookmarks`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+      return;
+    }
+
+    dispatch(ADD_TO_BOOKMARKS(p));
+    setShowAlert(true);
+    setAlertMessage(`${p.name} added to your bookmarks`);
+    setAlertType("success");
+    window.setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage(null);
+      setAlertType(null);
+    }, 6000);
+
+    // ===store bookmark in database as well====
+    const today = new Date();
+    const date = today.toDateString();
+    try {
+      const docRef = collection(database, "bookmarks");
+      await addDoc(docRef, {
+        property: p,
+        user_email: user.email,
+        bookmarkedAt: date,
+        createdAt: Timestamp.now().toDate(),
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   if (!property) {
     return <Spinner />;
@@ -264,6 +316,13 @@ export default function PropertyDetail() {
               </div>
             </div>
             <Comments id={id} />
+            <div className="save__for__later">
+              Wish to save this property in your bookmarks to view later ? click
+              onn the button below
+              <button onClick={() => addToBookmarks(property)}>
+                Add to bookmarks
+              </button>
+            </div>
           </div>
           <div className="right__contents">
             <div>

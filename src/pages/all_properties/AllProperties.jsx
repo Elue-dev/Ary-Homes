@@ -86,6 +86,12 @@ export default function AllProperties() {
     setShowFilter(false);
   };
 
+  const handleSelectChange = (e) => {
+    setSort(e.target.value);
+    setSearch("");
+    setShowFilter(false);
+  };
+
   if (properties.length === 0) {
     return <Loader />;
   }
@@ -126,7 +132,7 @@ export default function AllProperties() {
       </div>
       <h2 className="heading_p">
         <FaHome />
-        Ary Homes Properties
+        Our Properties
       </h2>
       <div className="all__properties__wrapper">
         <div className={scrollPage ? "menu__filter fix_menu" : "menu__filter"}>
@@ -140,7 +146,7 @@ export default function AllProperties() {
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by location..."
             />
-            <select value={sort} onChange={(e) => setSort(e.target.value)}>
+            <select value={sort} onChange={handleSelectChange}>
               <option value="latest">Latest</option>
               <option value="lowest-price">Lowest Price</option>
               <option value="highest-price">Highest Price</option>

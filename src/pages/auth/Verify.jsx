@@ -6,7 +6,7 @@ import { sendEmailVerification } from "firebase/auth";
 import logo from "../../assets/logo.jpg";
 import { TiInfoOutline } from "react-icons/ti";
 import { useCustomAlert } from "../../contexts/AlertContext";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function Verify() {
   const [error, setError] = useState(null);
@@ -15,10 +15,10 @@ export default function Verify() {
   const location = useLocation();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
-  if (location.pathname === "/verify" && user.emailVerified) {
+  if (user.emailVerified) {
     navigate("/");
     setShowAlert(true);
-    setAlertMessage(`YOUR EMAIL(${user.email}) HAS BEEN VERIFIED.`);
+    setAlertMessage(`YOUR EMAIL (${user.email}) HAS BEEN VERIFIED.`);
     setAlertType("info");
     window.setTimeout(() => {
       setShowAlert(false);
@@ -30,7 +30,14 @@ export default function Verify() {
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      alert("verification sent");
+      setShowAlert(true);
+      setAlertMessage(`A verification email has been sent to you.`);
+      setAlertType("info");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 7000);
     });
   };
 
@@ -52,10 +59,14 @@ export default function Verify() {
       navigate("/");
     }
   };
+
   return (
-    <motion.div className="auth__modal" initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: .1 }}>
+    <motion.div
+      className="auth__modal"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <div className="auth__contents verify__contents">
         <img src={logo} alt="ary homes logo" />
         <p className="verification__message" style={{ marginBottom: "1rem" }}>

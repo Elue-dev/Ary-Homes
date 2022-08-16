@@ -346,7 +346,7 @@
     .prop__grid
     .image_
     .p_location {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
   .all__properties
     .all__properties__wrapper
@@ -355,5 +355,8 @@
     .image_
     .p_availability {
     font-size: 0.8rem;
+  }
+  .all__properties .all__properties__wrapper .properties__ h3 {
+    font-size: 1rem;
   }
 }

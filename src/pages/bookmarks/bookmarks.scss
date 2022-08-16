@@ -1,3 +1,101 @@
+@import "../../global_styles/global.scss";
+
 .bookmarks {
-    min-height: 88vh;
+  min-height: 88vh;
+  @include container();
+  padding-top: 4rem;
+  .bookmarks__wrapper {
+    .bookmark__heading{
+        margin-bottom: 1.4rem;
+        h2 {
+            margin-bottom: .8rem;
+            @include flexBox(flex-start, center, row);
+            gap: .3rem;
+            :first-child {
+                color: $mainColor;
+            }
+        }
+    }
+    .no__bookmark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include flexBox(center, center, column);
+      :first-child {
+        display: block;
+        color: $mainColor;
+        font-size: 8rem;
+        margin-bottom: 1.2rem;
+      }
+    }
+    .table {
+      padding: 5px;
+      width: 100%;
+      overflow-x: auto;
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 1rem;
+
+        thead {
+          border-top: 2px solid $mainColor;
+          border-bottom: 2px solid $mainColor;
+        }
+
+        th {
+          border: 1px solid #eee;
+        }
+
+        th,
+        td {
+          vertical-align: top;
+          text-align: left;
+          padding: 8px;
+          &.icons {
+            > * {
+              margin-right: 5px;
+              cursor: pointer;
+            }
+          }
+        }
+
+        tr {
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+          background-color: #eee;
+        }
+        .delievered {
+          color: $mainColor;
+          font-weight: 500;
+        }
+        .pending {
+          color: green;
+          font-weight: 500;
+        }
+      }
+      .bookmark__icon {
+        @include flexBox(center, center, column);
+        margin: auto;
+        color: $mainColor;
+      }
+    }
+  }
+}
+
+@include mQ(600px) {
+  .bookmarks .bookmarks__wrapper .table table {
+    font-size: 0.81rem;
+  }
+  .bookmarks .bookmarks__wrapper .no__bookmark h2 {
+    font-size: 0.8rem;
+  }
+  .bookmarks .bookmarks__wrapper h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
 }
