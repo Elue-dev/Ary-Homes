@@ -2,7 +2,7 @@
 .all__properties {
   @include container();
   margin-bottom: 8rem;
- 
+
   .property__filters.show {
     left: 0;
   }
@@ -109,7 +109,7 @@
     .properties__ {
       width: 100%;
       box-shadow: $box-shadow;
-      padding: 1rem .9rem;
+      padding: 1rem 0.9rem;
       i,
       b {
         color: $mainColor;
@@ -301,5 +301,59 @@
   }
   .all__properties .property__filters .locations__list button {
     height: 2.2rem;
+  }
+  .all__properties .heading_p {
+    font-size: 1.2rem;
+  }
+  .all__properties .all__properties__wrapper .menu__filter {
+    font-size: 2rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .desc_ {
+    font-size: 0.85rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .price_ {
+    font-size: 1.05rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .name_ {
+    font-size: 0.7rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .more_ {
+    padding: 0.2rem 0.5rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .image_
+    .p_location {
+    font-size: .9rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .image_
+    .p_availability {
+    font-size: 0.8rem;
   }
 }

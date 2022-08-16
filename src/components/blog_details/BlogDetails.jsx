@@ -26,6 +26,7 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 import BlogFooter from "../../pages/blog/blog_footer/BlogFooter";
 import { motion } from "framer-motion";
 import { useAuth } from "../../contexts/AuthContext";
+import ShareButtons from "./ShareButtons";
 
 export default function BlogDetails() {
   const { id } = useParams();
@@ -332,6 +333,7 @@ export default function BlogDetails() {
                 </ul>
               ))}
             </div>
+           
             <div className="post__comments">
               <h2>COMMENTS ({blogPost.comments.length})</h2>
               {blogPost.comments.length === 0 ? (
@@ -365,6 +367,7 @@ export default function BlogDetails() {
                 </div>
               )}
             </div>
+            <ShareButtons id={id} />
             <form onSubmit={submitComment}>
               <h2>
                 <FaCommentMedical />

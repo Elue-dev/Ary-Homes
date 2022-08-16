@@ -19,6 +19,7 @@ const initialState = {
   likes: "",
   read: 0,
   readTime: 0,
+  shares: 0,
   comments: [],
   description: "",
 };
