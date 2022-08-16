@@ -80,6 +80,9 @@ export default function AllProperties() {
   const filterByLocation = (loc) => {
     setLocations(loc);
     window.scrollTo(0, 0);
+    setLocations("All");
+    setSearch("");
+    setSort("latest");
     dispatch(FILTER_BY_LOCATION({ properties, location: loc }));
     setShowFilter(false);
   };
@@ -154,12 +157,14 @@ export default function AllProperties() {
                   <em>'{search}'</em>
                 </b>{" "}
               </h3>
-              <h3>
-                <>
-                  ({filteredProperties.length}{" "}
-                  {filteredProperties.length === 1 ? "RESULT" : "RESULTS"})
-                </>
-              </h3>
+              {filteredProperties.length !== 0 && (
+                <h3>
+                  <>
+                    ({filteredProperties.length}{" "}
+                    {filteredProperties.length === 1 ? "RESULT" : "RESULTS"})
+                  </>
+                </h3>
+              )}
             </>
           )}
           <motion.div
