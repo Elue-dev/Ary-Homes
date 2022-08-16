@@ -32,10 +32,9 @@ export default function BackToTopButton() {
             height: "30px",
             width: "30px",
             fontSize: "30px",
-            color: "#fff",
+            color: "#ae8625",
             cursor: "pointer",
             zIndex: "1000000",
-            background: "#ae8625",
           }}
           onClick={scrollUp}
         >
