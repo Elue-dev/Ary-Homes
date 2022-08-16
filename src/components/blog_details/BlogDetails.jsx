@@ -85,6 +85,9 @@ export default function BlogDetails() {
       await updateDoc(docRef, {
         likes: blogPost.likes - 1,
       });
+      if (blogPost?.likes < 0) {
+        setBlogPost({ ...blogPost, likes: 0 });
+      }
       setLiked(false);
       window.scrollTo(0, 0);
       setShowAlert(true);
@@ -330,10 +333,7 @@ export default function BlogDetails() {
               ))}
             </div>
             <div className="post__comments">
-              <h2>
-                {blogPost.comments.length}{" "}
-                {blogPost.comments.length === 1 ? "comment" : "comments"}
-              </h2>
+              <h2>COMMENTS ({blogPost.comments.length})</h2>
               {blogPost.comments.length === 0 ? (
                 <div className="n__comment">
                   <p>Be the first to add a comment to this post</p>

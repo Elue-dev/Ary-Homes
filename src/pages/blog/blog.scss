@@ -90,6 +90,9 @@
         right: 14px;
         margin-bottom: 3rem;
         cursor: pointer;
+        :first-child {
+          font-size: 1.8rem
+        }
       }
       .category__li {
         li {
@@ -148,6 +151,9 @@
     position: relative;
     cursor: pointer;
     transition: 0.2s ease;
+    :first-child {
+      font-size: 1.8rem;
+    }
     &:focus {
       transform: rotate(180deg);
     }

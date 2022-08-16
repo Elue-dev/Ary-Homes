@@ -54,7 +54,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/admin/add-blog-post">
+            <NavLink to="/admin/add-post">
               <FaBlogger />
               Add A Blog Post
             </NavLink>

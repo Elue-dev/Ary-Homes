@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
-import './admin.scss'
+import "./admin.scss";
 import Home from "./home/Home";
 import ViewProperties from "./view_properties/ViewProperties";
 import AddProperty from "./add_property/AddProperty";
@@ -16,11 +16,11 @@ export default function Admin() {
       </div>
       <div className="admin__contents">
         <Routes>
-          <Route path='home' element={<Home />} />
-          <Route path='view-properties' element={<ViewProperties />} />
-          <Route path='add-property' element={<AddProperty />} />
-          <Route path='add-blog-post' element={<AddBlogPost />} />
-          <Route path='users' element={<Users />} />
+          <Route path="home" element={<Home />} />
+          <Route path="view-properties" element={<ViewProperties />} />
+          <Route path="add-property" element={<AddProperty />} />
+          <Route path="add-post" element={<AddBlogPost />} />
+          <Route path="users" element={<Users />} />
         </Routes>
       </div>
     </div>

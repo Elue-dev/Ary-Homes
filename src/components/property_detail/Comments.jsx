@@ -111,7 +111,7 @@ export default function Comments({ id }) {
         <h1 onClick={hanndleShowComments}>
           <span>
             <GoCommentDiscussion />
-            Comments ({filteredComments.length})
+            COMMENTS ({filteredComments.length})
           </span>
 
           <div onClick={hanndleShowComments} className="toggle__icon">

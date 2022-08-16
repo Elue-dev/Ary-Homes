@@ -12,6 +12,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import Select from "react-select";
 import { useCustomAlert } from "../../../contexts/AlertContext";
 import useFetchCollection from "../../../hooks/useFetchCollection";
+import { motion } from "framer-motion";
 
 const initialState = {
   name: "",
@@ -41,8 +42,7 @@ export default function AddProperty() {
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
-  const {data} = useFetchCollection("blogComments");
-  console.log(data)
+  const { data } = useFetchCollection("blogComments");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -156,7 +156,12 @@ export default function AddProperty() {
   };
 
   return (
-    <section className="add__property">
+    <motion.section
+      className="add__property"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <h2>
         <GrFormAdd /> Add New Property
       </h2>
@@ -179,8 +184,8 @@ export default function AddProperty() {
           <span>Property Images:</span>
           <p className="images__info">
             <IoInformationCircleOutline />
-            Enter as many images as possible(6 at least), Let the rooms be the last set of
-            images
+            Enter as many images as possible(6 at least), Let the rooms be the
+            last set of images
           </p>
           <input
             type="file"
@@ -271,8 +276,9 @@ export default function AddProperty() {
           <span>Property Features:</span>
           <p className="feature__info">
             <IoInformationCircleOutline />
-            Must not be less than 5. Enter the features one after the other, start each with a capital letter
-            (e.g: 24hrs Electricity, WiFi access, Great security)
+            Must not be less than 5. Enter the features one after the other,
+            start each with a capital letter (e.g: 24hrs Electricity, WiFi
+            access, Great security)
           </p>
           <div className="features">
             <input
@@ -321,6 +327,6 @@ export default function AddProperty() {
           </button>
         )}
       </form>
-    </section>
+    </motion.section>
   );
 }

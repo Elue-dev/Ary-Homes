@@ -9,6 +9,7 @@ import { database } from "../../../firebase/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { useCustomAlert } from "../../../contexts/AlertContext";
 import Loader from "../../../components/utilities/Loader";
+import { motion } from "framer-motion";
 
 export default function Users() {
   const { data, loading } = useFetchCollection("users");
@@ -66,7 +67,12 @@ export default function Users() {
   }
 
   return (
-    <section className="users__admin">
+    <motion.section
+      className="users__admin"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <div className="users__admin__contents">
         <h2>Users</h2>
         <br />
@@ -116,6 +122,6 @@ export default function Users() {
           </div>
         </>
       </div>
-    </section>
+    </motion.section>
   );
 }

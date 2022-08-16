@@ -43,7 +43,7 @@
         display: block;
         text-align: left;
         width: 80%;
-        height: 2rem;
+        height: 3rem;
         font-size: 1rem;
         border: none;
         background-color: transparent;
@@ -144,6 +144,7 @@
           border-radius: 0.5rem;
           border: 2px solid #333;
           outline: 0;
+          font-size: 1rem;
         }
       }
       .no__property {
@@ -215,6 +216,9 @@
           .price_ {
             font-size: 1.3rem;
             font-weight: 700;
+            span {
+              font-weight: 500
+            }
           }
           .more_ {
             @include button();

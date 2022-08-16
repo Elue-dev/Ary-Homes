@@ -8,14 +8,13 @@ import {
   FILTER_BY_SEARCH,
   selectFilteredProperties,
   SORT_PROPERTIES,
-} from "../../redux/slice/propertySlice";
+} from "../../redux/slice/filterSlice";
 import Loader from "../../components/utilities/Loader";
 import { Link } from "react-router-dom";
 import { CgEyeAlt } from "react-icons/cg";
 import { TbHomeOff } from "react-icons/tb";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { useCustomAlert } from "../../contexts/AlertContext";
-import { IoClose, IoMenuOutline } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import { ImMenu2 } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
 
@@ -106,7 +105,7 @@ export default function AllProperties() {
         </div>
 
         <div className="locations__list">
-            <h2>Filter by location</h2>
+          <h2>Filter by location</h2>
           {allLocations.map((loc, index) => (
             <button
               key={index}
@@ -147,9 +146,20 @@ export default function AllProperties() {
             </select>
           </label>
           {search && (
-            <h3>
-              Properties located in <b>{search.toUpperCase()}</b>
-            </h3>
+            <>
+              <h3>
+                Property locations including{" "}
+                <b>
+                  <em>'{search}'</em>
+                </b>{" "}
+              </h3>
+              <h3>
+                <>
+                  ({filteredProperties.length}{" "}
+                  {filteredProperties.length === 1 ? "RESULT" : "RESULTS"})
+                </>
+              </h3>
+            </>
           )}
           <motion.div
             className="prop__grid"
@@ -197,10 +207,13 @@ export default function AllProperties() {
                       <h2>{name}</h2>
                     </div>
                     <div className="desc_">
-                      <p>{description.substring(0, 50)}...</p>
+                      <p>{description.substring(0, 60)}...</p>
                     </div>
                     <div className="price_">
-                      <p>NGN {formatCurrency(price)}</p>
+                      <p>
+                        NGN {formatCurrency(price)}
+                        <span>/night</span>
+                      </p>
                     </div>
                     <button className="more_">
                       <CgEyeAlt />

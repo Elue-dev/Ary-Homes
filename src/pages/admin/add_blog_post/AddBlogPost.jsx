@@ -9,6 +9,7 @@ import { database, storage } from "../../../firebase/firebase";
 import { BeatLoader } from "react-spinners";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const initialState = {
   heading: "",
@@ -67,12 +68,6 @@ export default function AddBlogPost() {
     );
   };
 
-  useEffect(() => {
-    if (blogPost.readTime < 1) {
-      setBlogPost({ ...blogPost, readTime: 1 });
-    }
-  }, [blogPost]);
-
   const handleAddTag = (e) => {
     e.preventDefault();
     const t = newTag.trim();
@@ -90,6 +85,16 @@ export default function AddBlogPost() {
     if (tags.length < 1) {
       setError("please add at least 1 tag");
       window.setTimeout(() => setError(""), 6000);
+      return;
+    }
+
+    if (blogPost.readTime <= 0) {
+      setShowAlert(true);
+      setAlertMessage(
+        `Your input for read time cannot be 0 or less, it has to be at least 2, or more`
+      );
+      setAlertType("error");
+      window.scrollTo(0, 0);
       return;
     }
 
@@ -123,14 +128,19 @@ export default function AddBlogPost() {
       setLoading(false);
       setBlogPost({ ...initialState });
       setUploadProgress(0);
-      navigate("/user/admin/home");
+      navigate("/admin/home");
     } catch (error) {
       setLoading(false);
     }
   };
 
   return (
-    <div className="add__blog__post">
+    <motion.div
+      className="add__blog__post"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <h2>
         <GrFormAdd /> Add New Blog Post
       </h2>
@@ -261,6 +271,6 @@ export default function AddBlogPost() {
           </button>
         )}
       </form>
-    </div>
+    </motion.div>
   );
 }
