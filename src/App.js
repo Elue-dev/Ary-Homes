@@ -4,6 +4,7 @@ import { useCustomAlert } from "./contexts/AlertContext";
 import Alert from "./components/alert/Alert";
 import Footer from "./components/footer/Footer";
 import ScrollToTop from "./components/utilities/ScrollToTop";
+import GoToTopButton from "./components/utilities/GoToTopButton";
 import AllRoutes from "./components/routes/AllRoutes";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <GoToTopButton />
       <ScrollToTop />
       <Header />
       {showAlert ? <Alert message={alertMessage} type={alertType} /> : null}

@@ -140,7 +140,7 @@ export default function Signup() {
       await googleSignIn();
       storeUsersInDatabase();
       setShowAlert(true);
-      setAlertMessage(`Google sign in was successful!`);
+      setAlertMessage(`GOOGLE SIGN IN WAS SUCCESSFUL!`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);

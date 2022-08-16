@@ -8,6 +8,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { database, storage } from "../../../firebase/firebase";
 import { BeatLoader } from "react-spinners";
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { useEffect } from "react";
 
 const initialState = {
   heading: "",
@@ -15,7 +16,8 @@ const initialState = {
   category: "",
   uploader: "",
   likes: "",
-  readTime: "",
+  read: 0,
+  readTime: 0,
   comments: [],
   description: "",
 };
@@ -65,6 +67,12 @@ export default function AddBlogPost() {
     );
   };
 
+  useEffect(() => {
+    if (blogPost.readTime < 1) {
+      setBlogPost({ ...blogPost, readTime: 1 });
+    }
+  }, [blogPost]);
+
   const handleAddTag = (e) => {
     e.preventDefault();
     const t = newTag.trim();
@@ -94,11 +102,12 @@ export default function AddBlogPost() {
         title: blogPost.heading,
         imageUrl: blogPost.imageUrl,
         tags,
+        read: blogPost.read,
         comments: blogPost.comments,
         likes: Number(blogPost.likes),
         uploader: blogPost.uploader,
         category: blogPost.category,
-        readTime: blogPost.readTime,
+        readTime: Number(blogPost.readTime),
         description: blogPost.description,
         addedAt: date,
         createdAt: Timestamp.now().toDate(),
@@ -190,11 +199,11 @@ export default function AddBlogPost() {
         <label>
           <span>Read Time:</span>
           <input
-            type="text"
+            type="number"
             name="readTime"
             value={blogPost && blogPost.readTime}
             onChange={(e) => handleInputChange(e)}
-            placeholder="e.g: 3 minuted read, 5 minutes read"
+            placeholder="Must be a number eg 1, 2, 3"
             required
           />
         </label>

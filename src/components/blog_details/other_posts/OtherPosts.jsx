@@ -38,7 +38,7 @@ export default function OtherPosts() {
                   <div className="readTime">
                     <p>
                       <BiTimeFive />
-                      {readTime}
+                      {readTime} mins read
                     </p>
                   </div>
                 </div>

@@ -20,7 +20,7 @@ import "./blog.scss";
 import BlogHeader from "./blog_header/BlogHeader";
 import RiseLoader from "react-spinners/RiseLoader";
 import ReactWhatsapp from "react-whatsapp";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import {
@@ -136,6 +136,19 @@ export default function Blog() {
     dispatch(FILTER_BY_CATEGORY({ blogPosts, category: cat }));
   };
 
+  //each time they click on the read more button 'read' will increase in the collection
+  const increaseRead = async (id) => {
+    const getDataId = data?.filter((d) => d.id === id);
+    try {
+      const docRef = doc(database, "blog", getDataId[0].id);
+      await updateDoc(docRef, {
+        read: getDataId[0].read + 1,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <motion.section
       className="blog"
@@ -153,7 +166,9 @@ export default function Blog() {
           <IoMdMenu />
         </div>
         <div className={showMenu ? "menu__items show" : "menu__items"}>
-          <div className="layer" onClick={() => setShowMenu(false)} />
+          {showMenu && (
+            <div className="layer" onClick={() => setShowMenu(false)} />
+          )}
           <div className="close__menu" onClick={() => setShowMenu(false)}>
             <IoCloseSharp />
           </div>
@@ -285,9 +300,12 @@ export default function Blog() {
                             {description.substring(0, 120)}...
                           </div>
                           <Link to={`/blog/${id}`}>
-                            <button className="read__more__post">
+                            <button
+                              className="read__more__post"
+                              onClick={() => increaseRead(id)}
+                            >
                               <GiSemiClosedEye />
-                              Read More
+                              READ MORE
                             </button>
                           </Link>
                         </div>
@@ -322,10 +340,9 @@ export default function Blog() {
           </h1>
           <p>
             Wish To Add A Blog Post? You can add a post to Ary Homes blog by
-            becoming a contributor. Once you are made a contributor, you would
-            be able to add blog posts, Or you can send details of the blog post
-            to us and we post it in your name. If you are interested in becoming
-            a contributor, click on the button below to proceed
+            becoming a contributor. Send details of the blog post
+            to us and we would post it in your name. If you are interested in becoming
+            a contributor, click on the button below to proceed.
           </p>
           {display && (
             <motion.button

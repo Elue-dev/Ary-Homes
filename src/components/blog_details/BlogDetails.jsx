@@ -1,4 +1,10 @@
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiChevronsRight, BiTimeFive } from "react-icons/bi";
@@ -19,11 +25,13 @@ import OtherPosts from "./other_posts/OtherPosts";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import BlogFooter from "../../pages/blog/blog_footer/BlogFooter";
 import { motion } from "framer-motion";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function BlogDetails() {
   const { id } = useParams();
   const { document } = useFetchDocuments("blog", id);
   const { data } = useFetchCollection("blog");
+  const subscribers = useFetchCollection("subscribers");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [pending, setPending] = useState(false);
@@ -48,7 +56,9 @@ export default function BlogDetails() {
       setLiked(true);
       window.scrollTo(0, 0);
       setShowAlert(true);
-      setAlertMessage(`You just liked this blog post :)`);
+      setAlertMessage(
+        `You just liked this blog post :), would be updated soon`
+      );
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -78,16 +88,15 @@ export default function BlogDetails() {
       setLiked(false);
       window.scrollTo(0, 0);
       setShowAlert(true);
-      setAlertMessage(`You just unliked this blog post :(`);
+      setAlertMessage(
+        `You just unliked this blog post :(, would be updated soon`
+      );
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
         setAlertMessage(null);
         setAlertType(null);
       }, 10000);
-      window.setTimeout(() => {
-        window.location.reload();
-      }, 1500);
     } catch (error) {
       window.scrollTo(0, 0);
       setShowAlert(true);
@@ -100,6 +109,13 @@ export default function BlogDetails() {
       }, 10000);
     }
   };
+
+  //to make sure likes is never < 0
+  useEffect(() => {
+    if (blogPost?.likes < 0) {
+      setBlogPost({ ...blogPost, likes: 0 });
+    }
+  }, [blogPost]);
 
   useEffect(() => {
     setBlogPost(document);
@@ -182,20 +198,40 @@ export default function BlogDetails() {
       setError(null);
     }
 
+    let subscribersEmails = [];
+    subscribers.data.map((mails) => subscribersEmails.push(mails.email));
+    if (subscribersEmails.includes(email)) {
+      setLoading(false);
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`YOU HAVE ALREADY SUBSCRIBED TO OUR NEWSLETTER!`);
+      setAlertType("info");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
+      return;
+    }
+
     setPending(true);
 
+    const today = new Date();
+    const date = today.toDateString();
     try {
       const subscribersRef = collection(database, "subscribers");
       await addDoc(subscribersRef, {
         name,
         email,
+        subscribedAt: date,
+        createdAt: Timestamp.now().toDate(),
       });
       setPending(false);
       setEmail("");
       setName("");
       window.scrollTo(0, 0);
       setShowAlert(true);
-      setAlertMessage(`You have successfully subscribed to our newsletter!`);
+      setAlertMessage(`YOU HAVE SUCESSFULLY SUBSCRIBED TO OUR NEWSLETTER!`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -204,7 +240,7 @@ export default function BlogDetails() {
       }, 8000);
     } catch (error) {
       setShowAlert(true);
-      setAlertMessage(`An unnexpected error occured`);
+      setAlertMessage(`AN UNEXPECTED ERROR OCCURED`);
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -234,7 +270,6 @@ export default function BlogDetails() {
       <BlogHeader />
       <div className="post__details__wrapper">
         <GoBack />
-
         <div className="posts__grid">
           <div className="left__post__details">
             <div className="top__links">
@@ -244,7 +279,7 @@ export default function BlogDetails() {
               <b>{blogPost.title}</b>
             </div>
             <div className="top__buttons">
-              <button>{blogPost.readTime}</button>
+              <button>{blogPost.readTime} mins read</button>
               <button>{blogPost.category}</button>
             </div>
             <h1>{blogPost.title}</h1>
@@ -441,7 +476,7 @@ export default function BlogDetails() {
                       <h4>{title}</h4>
                       <p>
                         <BiTimeFive />
-                        {readTime}
+                        {readTime} mins read
                       </p>
                     </div>
                   </div>

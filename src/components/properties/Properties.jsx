@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchCollection from "../../hooks/useFetchCollection";
@@ -6,7 +6,6 @@ import {
   selectProperties,
   STORE_PROPERTIES,
 } from "../../redux/slice/propertySlice";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { MdFeaturedPlayList } from "react-icons/md";
 import { BsCamera } from "react-icons/bs";
 import "./properties.scss";
@@ -16,7 +15,6 @@ import Trends from "../trends/Trends";
 import Loader from "../utilities/Loader";
 
 export default function Properties() {
-  const [like, setLike] = useState(false);
   const { data, loading } = useFetchCollection("properties");
   const properties = useSelector(selectProperties);
   const { formatCurrency } = useCustomAlert();
@@ -41,7 +39,7 @@ export default function Properties() {
           <MdFeaturedPlayList />
           Featured Properties
         </h2>
-        <Link to="/">View all properties</Link>
+        <Link to="/all-properties">View all properties</Link>
         <div className="properties__contents">
           {properties.slice(0, 4)?.map((property) => {
             const {

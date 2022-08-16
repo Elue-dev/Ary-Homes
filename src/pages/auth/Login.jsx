@@ -52,7 +52,7 @@ export default function Login() {
       setError("");
       await login(email, password);
       setShowAlert(true);
-      setAlertMessage(`You are successfully logged in!`);
+      setAlertMessage(`YOU ARE SUCCESSFULLY LOGGED IN!`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -66,9 +66,6 @@ export default function Login() {
         setError(
           "This email has already been signed in using google, log in using google instead."
         );
-        // window.setTimeout(() => {
-        //   setError("");
-        // }, 9000);
         setLoading(false);
         return;
       }

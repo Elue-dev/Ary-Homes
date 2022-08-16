@@ -15,6 +15,7 @@ import PropertyDetail from "../property_detail/PropertyDetail";
 import ProtectedRoute from "../protected_route/ProtectedRoute";
 import { AnimatePresence } from "framer-motion";
 import BlogDetails from "../blog_details/BlogDetails";
+import AllProperties from "../../pages/all_properties/AllProperties";
 
 export default function AllRoutes() {
   const location = useLocation();
@@ -27,6 +28,7 @@ export default function AllRoutes() {
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/reset-password" element={<Reset />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
+        <Route path="/all-properties" element={<AllProperties />} />
         <Route
           path="/admin/*"
           element={
@@ -53,14 +55,14 @@ export default function AllRoutes() {
         />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
-        {/* <Route
-      path="/bookmarks"
-      element={
-        <ProtectedRoute>
-          <Bookmarks />
-        </ProtectedRoute>
-      }
-    /> */}
+        <Route
+          path="/bookmarks"
+          element={
+            <ProtectedRoute>
+              <Bookmarks />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error404 />} />

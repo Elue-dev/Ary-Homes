@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BiTimeFive } from "react-icons/bi";
 import { BsFileEarmarkPost } from "react-icons/bs";
 import { MdOutlineDateRange } from "react-icons/md";
+import { FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import "./someBlogPosts.scss";
@@ -31,6 +32,9 @@ export default function SomeBlogPosts() {
                 <div className="s_img">
                   <img src={imageUrl} alt={title} />
                   <p>{category}</p>
+                  <b>
+                    <FaRegEye />
+                  </b>
                 </div>
                 <div className="s_content">
                   <h3>{title}</h3>
@@ -43,7 +47,7 @@ export default function SomeBlogPosts() {
                     <p>
                       {" "}
                       <BiTimeFive />
-                      {readTime}
+                      {readTime} mins read
                     </p>
                   </div>
                 </div>

@@ -180,7 +180,7 @@ export default function Account() {
       });
       setLoading(false);
       setShowAlert(true);
-      setAlertMessage("Profile picture updated successfully!");
+      setAlertMessage("PROFILE PICTURE UPDATED SUCCESSFULLY!");
       setShowFields(false);
       setAlertType("success");
       window.setTimeout(() => {
@@ -221,7 +221,7 @@ export default function Account() {
       });
       setShowAlert(true);
       setAlertMessage(
-        `Your account credentials have been successfully updated`
+        `YOUR ACCOUNT CREDENTIALS HAVE BEEN SUCCESSFULLY UPDATED`
       );
       setAlertType("success");
       window.setTimeout(() => {
@@ -231,7 +231,7 @@ export default function Account() {
       }, 6000);
     } catch (error) {
       setShowAlert(true);
-      setAlertMessage("An unexpected error occured");
+      setAlertMessage("AN UNEXPECTED ERROR OCCURED :(");
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);

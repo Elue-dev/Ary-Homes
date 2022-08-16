@@ -50,7 +50,7 @@
     }
     .menu__items {
       position: fixed;
-      right: 0;
+      right: -300px;
       top: 0;
       height: 100vh;
       box-shadow: $box-shadow;
@@ -62,7 +62,7 @@
       color: #fff;
       height: 100%;
       line-height: 3;
-      display: none;
+      transition: right 0.5s ease;
       .layer {
         position: fixed;
         width: 100%;
@@ -90,10 +90,6 @@
         right: 14px;
         margin-bottom: 3rem;
         cursor: pointer;
-        transition: 0.2s ease;
-        &:focus {
-          transform: rotate(50deg);
-        }
       }
       .category__li {
         li {
@@ -133,7 +129,7 @@
         @include flexBox(flex-start, center, row);
         // width: 100%;
         a {
-          display: inline
+          display: inline;
         }
         button {
           @include button();
@@ -145,7 +141,7 @@
       }
     }
     .menu__items.show {
-      display: block;
+      right: -1px;
     }
   }
   .menu__icon {
@@ -153,7 +149,7 @@
     cursor: pointer;
     transition: 0.2s ease;
     &:focus {
-      transform: rotate(50deg);
+      transform: rotate(180deg);
     }
   }
   .blog__contents {
@@ -436,7 +432,7 @@
     font-size: 1rem;
   }
   .blog .welcome :last-child {
-    font-size: 1.1rem;
+    font-size: 1.45rem;
   }
 }
 
@@ -445,11 +441,11 @@
     font-size: 1.25rem;
   }
   .blog .welcome h1 {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
   .blog .welcome {
     justify-content: space-between;
-    padding: 0.4rem 1rem;
+    padding: 0.6rem 1rem;
   }
   .blog .welcome :last-child {
     font-size: 1.3rem;
@@ -488,7 +484,7 @@
     .posts__wrapper
     .flexed__contents
     .post__description {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   .blog .blog__contents .right__blog__contents .add__post {
     font-size: 1.2rem;
@@ -507,6 +503,14 @@
   }
   .blog .blog__contents .right__blog__contents p {
     font-size: 0.95rem;
+  }
+  .blog
+    .blog__contents
+    .right__blog__contents
+    .newsletter
+    form
+    .subscribe__btn {
+    margin-bottom: 2rem;
   }
 }
 

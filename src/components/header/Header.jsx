@@ -6,7 +6,7 @@ import {
   IoInformationCircleOutline,
 } from "react-icons/io5";
 import { BsBookmarkStar } from "react-icons/bs";
-import { MdOutlineManageAccounts } from "react-icons/md";
+import { MdHomeWork, MdOutlineManageAccounts } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { CgMenuGridO } from "react-icons/cg";
@@ -26,6 +26,7 @@ import {
 import { AdminOnlyLink } from "../admin_only/AdminOnlyRoute";
 import { useAuth } from "../../contexts/AuthContext";
 import { useCustomAlert } from "../../contexts/AlertContext";
+import { GiFamilyHouse } from "react-icons/gi";
 
 export default function Header() {
   const [scrollPage, setScrollpage] = useState(false);
@@ -163,11 +164,10 @@ export default function Header() {
                     <p>Contact</p>
                   </li>
                 </NavLink>
-                <NavLink to="/bookmarks">
+                <NavLink to="/all-properties">
                   <li>
-                    {/* <IoInformationCircleOutline /> */}
-                    <BsBookmarkStar />
-                    <p>Bookmarks</p>
+                    <GiFamilyHouse />
+                    <p>Properties</p>
                   </li>
                 </NavLink>
               </ul>
@@ -221,7 +221,7 @@ export default function Header() {
                                 Bookmarks
                               </li>
                             </NavLink> */}
-                            <NavLink to={`/user/account/${user.uid}`}>
+                            <NavLink to={`/account/${user.uid}`}>
                               <li>
                                 <MdOutlineManageAccounts />
                                 My Account
@@ -303,10 +303,10 @@ export default function Header() {
                 <p>Contact</p>
               </li>
             </NavLink>
-            <NavLink to="/bookmarks">
+            <NavLink to="/all-properties">
               <li>
-                <BsBookmarkStar />
-                <p>Saved</p>
+                <GiFamilyHouse />
+                <p>Properties</p>
               </li>
             </NavLink>
 

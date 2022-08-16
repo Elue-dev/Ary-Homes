@@ -27,12 +27,20 @@
         p {
           position: absolute;
           top: 8px;
-          right: 5px;
+          left: 5px;
           background: $mainColor;
           color: #fff;
           border-radius: 0.1rem;
           padding: 0.2rem 0.4rem;
           font-weight: 700;
+        }
+        b {
+          position: absolute;
+          bottom: 0rem;
+          right: 1rem;
+          font-size: 2rem;
+          color: #fff;
+          height: fit-content;
         }
       }
       .s_content {

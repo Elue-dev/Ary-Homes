@@ -18,7 +18,7 @@ export default function Verify() {
   if (location.pathname === "/verify" && user.emailVerified) {
     navigate("/");
     setShowAlert(true);
-    setAlertMessage(`Your email (${user.email}) has been verified.`);
+    setAlertMessage(`YOUR EMAIL(${user.email}) HAS BEEN VERIFIED.`);
     setAlertType("info");
     window.setTimeout(() => {
       setShowAlert(false);

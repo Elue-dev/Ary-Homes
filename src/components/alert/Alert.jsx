@@ -21,7 +21,7 @@ export default function Alert() {
   }
   if (alertType === "info") {
     background = "#fff";
-    color = "#333";
+    color = "#ae8625";
     border = ".3px solid #ae8625";
     icon = <FaInfo />;
   }
@@ -42,7 +42,7 @@ export default function Alert() {
       className="custom__alert"
     >
       <p>
-        {icon} {alertMessage}
+        {icon} <b>{alertMessage}</b>
       </p>
     </div>
   );
