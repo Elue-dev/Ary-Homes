@@ -126,7 +126,7 @@ export default function AllProperties() {
       </div>
       <h2 className="heading_p">
         <FaHome />
-        Our Properties
+        Ary Homes Properties
       </h2>
       <div className="all__properties__wrapper">
         <div className={scrollPage ? "menu__filter fix_menu" : "menu__filter"}>
@@ -223,7 +223,7 @@ export default function AllProperties() {
                     <Link to={`/property/${id}`}>
                       <button className="more_">
                         <CgEyeAlt />
-                        More Details
+                        MORE DETAILS
                       </button>
                     </Link>
                   </div>

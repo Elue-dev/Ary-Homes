@@ -11,6 +11,7 @@ import { FaGlasses } from "react-icons/fa";
 import { BsExclude } from "react-icons/bs";
 import "./properties.scss";
 import { useCustomAlert } from "../../contexts/AlertContext";
+import { ImLocation2 } from "react-icons/im";
 
 export default function Recommended() {
   const [like, setLike] = useState(false);
@@ -79,7 +80,7 @@ export default function Recommended() {
                 </p>
 
                 <p className="property__id">Ref: {id}</p>
-                <p className="property__location">{location}</p>
+                <p className="property__location"><ImLocation2 />{location}</p>
                 <p className="property__price">
                   <span>NGN{formatCurrency(price)}</span>/night
                 </p>

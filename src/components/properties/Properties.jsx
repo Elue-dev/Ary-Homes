@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchCollection from "../../hooks/useFetchCollection";
@@ -6,13 +6,14 @@ import {
   selectProperties,
   STORE_PROPERTIES,
 } from "../../redux/slice/propertySlice";
-import { MdFeaturedPlayList } from "react-icons/md";
+import { MdDateRange, MdFeaturedPlayList } from "react-icons/md";
 import { BsCamera } from "react-icons/bs";
 import "./properties.scss";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import Recommended from "./Recommended";
 import Trends from "../trends/Trends";
 import Loader from "../utilities/Loader";
+import { ImLocation2 } from "react-icons/im";
 
 export default function Properties() {
   const { data, loading } = useFetchCollection("properties");
@@ -87,8 +88,8 @@ export default function Properties() {
                         <span>{name}</span>
                       </p>
 
-                      <p className="property__id">{addedAt}</p>
-                      <p className="property__location">{location}</p>
+                      <p className="property__id"><MdDateRange />{addedAt}</p>
+                      <p className="property__location"><ImLocation2 />{location}</p>
                       <p className="property__price">
                         <span>NGN{formatCurrency(price)}</span>/night
                       </p>

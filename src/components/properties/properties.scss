@@ -99,6 +99,8 @@
         .property__id,
         .property__location {
           color: #717171;
+          @include flexBox(flex-start, center, center);
+          gap: 0.3rem;
         }
       }
       &:hover {

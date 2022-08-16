@@ -21,8 +21,9 @@
     opacity: 1;
     .logo {
       @include flexBox(flex-start, center, row);
-      font-family: "Nunito", sans-serif;
+      font-family: 'Lato', sans-serif;
       gap: 0.4rem;
+      font-weight: 700;
       img {
         height: 45px;
         width: 45px;
