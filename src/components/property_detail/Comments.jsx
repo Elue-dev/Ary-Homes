@@ -20,9 +20,7 @@ export default function Comments({ id }) {
   const [showComments, setShowComments] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
 
-  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [display, setDisplay] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,12 +37,10 @@ export default function Comments({ id }) {
   const hanndleShowComments = () => {
     setShowComments(!showComments);
     setShowCommentForm(false);
-    setDisplay(!display);
   };
 
   const handleClose = () => {
     setShowCommentForm(false);
-    setDisplay(true);
   };
 
   const url = window.location.href;
@@ -55,7 +51,6 @@ export default function Comments({ id }) {
       navigate("/user/login");
     } else {
       setShowCommentForm(true);
-      setDisplay(false);
     }
   };
 
@@ -152,15 +147,14 @@ export default function Comments({ id }) {
             );
           })
         )}
-        {!display ? null : (
-          <button
-            className=" cb add__comment__btn"
-            onClick={handleCommentForm}
-            style={{ display: display ? "block" : "none" }}
-          >
+        {/* {!display ? null : ( */}
+        {showComments && (
+          <button className=" cb add__comment__btn" onClick={handleCommentForm}>
             Add a comment
           </button>
         )}
+
+        {/* )} */}
         <form onSubmit={addComment} className={showCommentForm ? null : "hide"}>
           <textarea
             name=""

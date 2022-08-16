@@ -186,7 +186,7 @@ export default function AllProperties() {
                 availability,
               } = property;
               return (
-                <Link to={`/property/${id}`} key={id}>
+                <div className="wrap_p" key={id}>
                   <div className="image_">
                     <img src={imagesUrl[0]} alt={name} />
                     <p
@@ -215,12 +215,14 @@ export default function AllProperties() {
                         <span>/night</span>
                       </p>
                     </div>
-                    <button className="more_">
-                      <CgEyeAlt />
-                      More Details
-                    </button>
+                    <Link to={`/property/${id}`}>
+                      <button className="more_">
+                        <CgEyeAlt />
+                        More Details
+                      </button>
+                    </Link>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </motion.div>
