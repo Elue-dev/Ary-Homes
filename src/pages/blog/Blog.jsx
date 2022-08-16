@@ -31,6 +31,7 @@ import BlogFooter from "./blog_footer/BlogFooter";
 // import Bounce from "react-reveal/Bounce";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import {useAuth}  from '../../contexts/AuthContext'
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -45,6 +46,7 @@ export default function Blog() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+  const {user} = useAuth()
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const filteredBlogPosts = useSelector(selectFilteredBlogs);
 
@@ -219,14 +221,16 @@ export default function Blog() {
               </li>
             </ul>
           </div>
-          <div className="blog__auth">
-            <Link to="/user/login">
-              <button>LOGIN</button>
-            </Link>
-            <Link to="/user/signup">
-              <button>SIGN UP</button>
-            </Link>
-          </div>
+          {!user && (
+            <div className="blog__auth">
+              <Link to="/user/login">
+                <button>LOGIN</button>
+              </Link>
+              <Link to="/user/signup">
+                <button>SIGN UP</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <div className="blog__contents">
@@ -340,9 +344,9 @@ export default function Blog() {
           </h1>
           <p>
             Wish To Add A Blog Post? You can add a post to Ary Homes blog by
-            becoming a contributor. Send details of the blog post
-            to us and we would post it in your name. If you are interested in becoming
-            a contributor, click on the button below to proceed.
+            becoming a contributor. Send details of the blog post to us and we
+            would post it in your name. If you are interested in becoming a
+            contributor, click on the button below to proceed.
           </p>
           {display && (
             <motion.button
