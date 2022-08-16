@@ -93,7 +93,7 @@
       height: fit-content;
       margin-top: -0.6rem;
       color: #000;
-      transition: position 0.2s ease;
+      transition: position 0.1s ease;
     }
     .fix_menu {
       position: fixed;
@@ -217,7 +217,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             span {
-              font-weight: 500
+              font-weight: 500;
             }
           }
           .more_ {
@@ -292,5 +292,8 @@
   }
   .all__properties .all__properties__wrapper .properties__ .no__property h2 {
     font-size: 1.1rem;
+  }
+  .all__properties .all__properties__wrapper .fix_menu {
+    font-size: 1.5rem;
   }
 }
