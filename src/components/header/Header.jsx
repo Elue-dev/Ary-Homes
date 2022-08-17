@@ -118,7 +118,7 @@ export default function Header() {
   };
 
   return (
-    <>
+    <div>
       {showHeader ? (
         <>
           <header
@@ -139,7 +139,7 @@ export default function Header() {
 
               <ul>
                 <AdminOnlyLink>
-                  <NavLink to="/admin/home">
+                  <NavLink to="/admin/view-properties">
                     <li>
                       <button className="admin__btn">Admin</button>
                     </li>
@@ -211,14 +211,13 @@ export default function Header() {
                       </>
                     )}
                     {user && (
-                      <>
+                      <div>
                         {user.emailVerified ? (
                           <div className="logged__in">
                             <p>Hi, {modifiedUserName}!</p>
                             <NavLink to="/bookmarks">
                               <li>
                                 <IoBookmarksOutline />
-                                {/* <BsBookmarkStar /> */}
                                 Bookmarks
                               </li>
                             </NavLink>
@@ -237,43 +236,43 @@ export default function Header() {
                             </button>
                           </div>
                         ) : (
-                          // <p style={{ display: "block", lineHeight: 1.2 }}>
-                          //   Seems you have yet to verifiy your email, either you
-                          //   changed your email or you failed to do this when
-                          //   signing up
-                          //   <br />
-                          //   <button
-                          //     onClick={sendVerificationEmail}
-                          //     className="header__verify__btn"
-                          //   >
-                          //     Verify now
-                          //   </button>
-                          //   <button
-                          //     className="logout__btn"
-                          //     onClick={logoutUser}
-                          //   >
-                          //     Log out
-                          //   </button>
-                          // </p>
-
-                          // ===uncomment the above later annd remove this===
                           <>
-                            <NavLink to={`/account/${user.uid}`}>
-                              <li>
-                                <MdOutlineManageAccounts />
-                                My Account
-                              </li>
-                            </NavLink>
+                            {" "}
+                            <p style={{ display: "block", lineHeight: 1.2 }}>
+                              Seems you have yet to verifiy your email, either
+                              you changed your email or you failed to do this
+                              when signing up <br />{" "}
+                              <button
+                                onClick={sendVerificationEmail}
+                                className="header__verify__btn"
+                              >
+                                Verify now
+                              </button>
+                              <button
+                                className="logout__btn"
+                                onClick={logoutUser}
+                              >
+                                Log out
+                              </button>
+                            </p>
+                            {/* <div>
+                              <NavLink to={`/account/${user.uid}`}>
+                                <li>
+                                  <MdOutlineManageAccounts />
+                                  My Account
+                                </li>
+                              </NavLink>
 
-                            <button
-                              className="logout__btn"
-                              onClick={logoutUser}
-                            >
-                              Log out
-                            </button>
+                              <button
+                                className="logout__btn"
+                                onClick={logoutUser}
+                              >
+                                Log out
+                              </button>
+                            </div> */}
                           </>
                         )}
-                      </>
+                      </div>
                     )}
                   </div>
                 </>
@@ -313,7 +312,7 @@ export default function Header() {
             </NavLink>
 
             <AdminOnlyLink>
-              <NavLink to="admin/home">
+              <NavLink to="admin/view-properties">
                 <li>
                   <div />
                   <button className="admin__btn">Admin</button>
@@ -323,6 +322,6 @@ export default function Header() {
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -2,8 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useFetchDocuments from "../../hooks/useFetchDocuments";
 import {
-  BsArrow90DegLeft,
-  BsArrow90DegRight,
+  BsBookmarkPlus,
   BsInfoCircle,
   BsPatchCheckFill,
   BsTelephoneForwardFill,
@@ -20,7 +19,7 @@ import {
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
-import { FaProductHunt, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
 import { useCustomAlert } from "../../contexts/AlertContext";
@@ -44,6 +43,7 @@ import {
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
+import { BeatLoader } from "react-spinners";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -51,6 +51,7 @@ export default function PropertyDetail() {
   const [property, setProperty] = useState(null);
   const [users, setUsers] = useState([]);
   const [alert, setAlert] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { setShowAlert, setAlertMessage, setAlertType, formatCurrency } =
     useCustomAlert();
   const { user } = useAuth();
@@ -58,6 +59,8 @@ export default function PropertyDetail() {
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
   const { data } = useFetchCollection("users");
+  const bookmarks = useFetchCollection("bookmarks");
+  const [storedBookmarks, setStoredBookmarks] = useState(null);
   const [fixPropName, setFixPropName] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
   const dispatch = useDispatch();
@@ -70,6 +73,11 @@ export default function PropertyDetail() {
     (u) => u.email === process.env.REACT_APP_ADMIN_EMAIL_TWO
   );
 
+  const matchBookmarks = bookmarks.data.find(
+    (bm) => bm.user_email === user.email
+  );
+  const matchBookmarkId = bookmarks.data.find((bm) => bm.property.id === id);
+
   useEffect(() => {
     setMessage(`I am interested in ${property?.name}...`);
   }, [property?.name]);
@@ -77,6 +85,10 @@ export default function PropertyDetail() {
   useEffect(() => {
     setUsers(data);
   }, [data]);
+
+  useEffect(() => {
+    setStoredBookmarks(bookmarks?.data);
+  }, [bookmarks]);
 
   useEffect(() => {
     setProperty(document);
@@ -101,10 +113,15 @@ export default function PropertyDetail() {
   }, [copied]);
 
   const addToBookmarks = async (p) => {
+    setLoading(true);
+
     if (!user) {
       navigate("/login");
+      setLoading(false);
       setShowAlert(true);
-      setAlertMessage(`You have to logged in to add properties to bookmarks`);
+      setAlertMessage(
+        `You have to be logged in to add properties to bookmarks`
+      );
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -114,8 +131,17 @@ export default function PropertyDetail() {
       return;
     }
 
+    if (matchBookmarks && matchBookmarkId) {
+      setAlert("This property is already in your bookmarks");
+      window.setTimeout(() => setAlert(null), 4000);
+      setLoading(false);
+      return;
+    }
+
     dispatch(ADD_TO_BOOKMARKS(p));
+    setLoading(false);
     setShowAlert(true);
+    window.scrollTo(0, 0);
     setAlertMessage(`${p.name} added to your bookmarks`);
     setAlertType("success");
     window.setTimeout(() => {
@@ -317,11 +343,36 @@ export default function PropertyDetail() {
             </div>
             <Comments id={id} />
             <div className="save__for__later">
-              Wish to save this property in your bookmarks to view later ? click
-              onn the button below
-              <button onClick={() => addToBookmarks(property)}>
-                Add to bookmarks
-              </button>
+              {alert && (
+                <p
+                  className="alert message"
+                  style={{ width: "fit-content", height: "1.6rem" }}
+                >
+                  {alert}
+                </p>
+              )}
+              <h3>
+                {" "}
+                <BsBookmarkPlus />
+                Bookmark Property
+              </h3>
+              <p>
+                {" "}
+                Wish to save this property to your bookmarks to view later?
+                click on the button below!
+              </p>
+              {loading ? (
+                <button className="bookmark__btn" disabled>
+                  <BeatLoader loading={loading} size={10} color={"#fff"} />
+                </button>
+              ) : (
+                <button
+                  onClick={() => addToBookmarks(property)}
+                  className="bookmark__btn"
+                >
+                  Add to bookmarks
+                </button>
+              )}
             </div>
           </div>
           <div className="right__contents">

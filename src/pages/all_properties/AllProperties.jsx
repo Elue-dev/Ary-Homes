@@ -17,6 +17,7 @@ import { useCustomAlert } from "../../contexts/AlertContext";
 import { IoClose } from "react-icons/io5";
 import { ImMenu2 } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
+import Pagination from "../../components/pagination/Pagination";
 
 export default function AllProperties() {
   const { data } = useFetchCollection("properties");
@@ -29,6 +30,18 @@ export default function AllProperties() {
   const dispatch = useDispatch();
   const { formatCurrency } = useCustomAlert();
   const filteredProperties = useSelector(selectFilteredProperties);
+
+  // ========pagination==========
+  const [currentPage, setCurrentPage] = useState(1);
+  const [propertiesPerPage, setpropertiesPerPage] = useState(6);
+
+  //get current products
+  const indexOfLastProduct = currentPage * propertiesPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - propertiesPerPage;
+  const currentProperties = filteredProperties.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   const fixNavbar = () => {
     if (window.scrollY > 150) {
@@ -144,7 +157,7 @@ export default function AllProperties() {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by location..."
+              placeholder="Search by location or property name..."
             />
             <select value={sort} onChange={handleSelectChange}>
               <option value="latest">Latest</option>
@@ -186,7 +199,7 @@ export default function AllProperties() {
                 </h2>
               </div>
             )}
-            {filteredProperties?.map((property) => {
+            {currentProperties?.map((property) => {
               const {
                 id,
                 name,
@@ -237,6 +250,12 @@ export default function AllProperties() {
               );
             })}
           </motion.div>
+          <Pagination
+            propertiesPerPage={propertiesPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalProducts={filteredProperties.length}
+          />
         </div>
       </div>
     </motion.section>

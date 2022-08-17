@@ -1,18 +1,25 @@
-import { useRef } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import { GrFormAdd } from "react-icons/gr";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { IoInformationCircleOutline, IoOptionsOutline } from "react-icons/io5";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import "./addProperty.scss";
 import { database, storage } from "../../../firebase/firebase";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import Select from "react-select";
 import { useCustomAlert } from "../../../contexts/AlertContext";
 import useFetchCollection from "../../../hooks/useFetchCollection";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { selectProperties } from "../../../redux/slice/propertySlice";
 
 const initialState = {
   name: "",
@@ -29,7 +36,13 @@ const status = [
 ];
 
 export default function AddProperty() {
-  const [property, setProperty] = useState(initialState);
+  const { id } = useParams();
+  const properties = useSelector(selectProperties);
+  const propertiesEdit = properties.find((property) => property.id === id);
+  const [property, setProperty] = useState(() => {
+    const newState = detectForm(id, initialState, propertiesEdit);
+    return newState;
+  });
   const [option, setOption] = useState("");
   const [newFeature, setNewFeature] = useState("");
   const [features, setFeatures] = useState([]);
@@ -42,12 +55,19 @@ export default function AddProperty() {
   const imageRef = useRef(null);
   const navigate = useNavigate();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
-  const { data } = useFetchCollection("blogComments");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProperty({ ...property, [name]: value });
   };
+
+  function detectForm(id, arg1, arg2) {
+    if (id === "ADD") {
+      return arg1;
+    } else {
+      return arg2;
+    }
+  }
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -139,7 +159,7 @@ export default function AddProperty() {
         createdAt: Timestamp.now().toDate(),
       });
       setShowAlert(true);
-      setAlertMessage(`Product added successfully`);
+      setAlertMessage(`property added successfully`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -155,6 +175,60 @@ export default function AddProperty() {
     }
   };
 
+  const editPropertytInDatabase = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    if (property.imageUrl !== propertiesEdit.imageUrl) {
+      const storageRef = ref(storage, propertiesEdit.imageUrl);
+      deleteObject(storageRef);
+    }
+
+    if (!property.availability) {
+      setError("please select an availabilty status");
+      window.setTimeout(() => setError(""), 6000);
+      return;
+    }
+
+    try {
+      const docRef = doc(database, "properties", id);
+      setDoc(docRef, {
+        name: property.name,
+        imagesUrl: property.imagesUrl,
+        price: Number(property.price),
+        features,
+        location: property.location,
+        availability: option.label,
+        description: property.description,
+        createdAt: propertiesEdit.createdAt,
+        editedAt: Timestamp.now().toDate(),
+      });
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`Property has been successfully editied`);
+      setAlertType("success");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+      setLoading(false);
+    } catch (error) {
+      setShowAlert(true);
+      setAlertMessage(
+        `An unknown error occured, please contact the developer of this application`
+      );
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
+      setLoading(false);
+    }
+  };
+
   return (
     <motion.section
       className="add__property"
@@ -163,10 +237,16 @@ export default function AddProperty() {
       transition={{ delay: 0.1 }}
     >
       <h2>
-        <GrFormAdd /> Add New Property
+        <GrFormAdd /> {detectForm(id, " Add New Property", "Edit Property")}
       </h2>
 
-      <form onSubmit={addPropertyToDatabase}>
+      <form
+        onSubmit={detectForm(
+          id,
+          addPropertyToDatabase,
+          editPropertytInDatabase
+        )}
+      >
         {error && <p className="alert error">{error}</p>}
         <label>
           <span>Property Name:</span>
@@ -194,7 +274,6 @@ export default function AddProperty() {
             ref={imageRef}
             onChange={(e) => handleImageChange(e)}
             placeholder="Images of the property"
-            required
           />
 
           {imageRef.current && (
@@ -245,6 +324,7 @@ export default function AddProperty() {
           <Select
             options={status}
             onChange={(option) => setOption(option)}
+            required
             placeholder="Choose one"
             className="select__input"
             theme={(theme) => ({
@@ -316,6 +396,7 @@ export default function AddProperty() {
             required
           />
         </label>
+        <p className="feature__info">PLEASE CHECK THAT ALL INPUTS ARE FILLED AND CONFIRM ALL THE DETAILS BEFORE SUBMITTING!</p>
         {loading && (
           <button type="submit" className="submit__property__btn">
             <BeatLoader loading={loading} size={10} color={"#fff"} />
@@ -323,7 +404,7 @@ export default function AddProperty() {
         )}
         {!loading && (
           <button type="submit" className="submit__property__btn">
-            Submit
+            {detectForm(id, "Submit Property", "Edit Property")}
           </button>
         )}
       </form>

@@ -1,0 +1,29 @@
+@import '../../../global_styles/global.scss';
+
+.view__prop__admin {
+    padding: 2rem;
+}
+
+label {
+  display: flex;
+  gap: 0.3rem;
+  // margin-bottom: 1rem;
+//   max-height: 50px;
+  :focus {
+    border: 3px solid $mainColor;
+  }
+  input {
+    padding: 0.4rem;
+    width: 100%;
+    font-size: 1rem;
+    border: 2px solid #333;
+    border-radius: 0.5rem;
+    transition: border 0.5s ease;
+    margin-bottom: 0.9rem;
+    outline: 0;
+    :hover,
+    :focus {
+      border: 1.5px solid $mainColor;
+    }
+  }
+}

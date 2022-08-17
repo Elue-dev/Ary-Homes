@@ -263,6 +263,28 @@
       }
     }
   }
+  .save__for__later {
+    line-height: 2.4;
+    background: rgb(254, 254, 254);
+    border: 1px dashed rgb(233, 233, 233);
+    padding: 1rem;
+    h3 {
+      display: block;
+      @include flexBox(flex-start, center, center);
+      gap: 0.4rem;
+      :first-child {
+        color: $mainColor;
+      }
+    }
+    .bookmark__btn {
+      @include button();
+      color: #fff;
+      background: #333;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      margin-top: 0.7rem;
+    }
+  }
 }
 
 @include mQ(1000px) {
@@ -427,5 +449,4 @@
   .property__details__contents .left__contents .property__details__images img {
     width: 227px;
   }
-
 }

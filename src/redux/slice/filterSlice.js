@@ -21,25 +21,28 @@ const filterSlice = createSlice({
       state.filteredBlogs = tempBlogs;
     },
     FILTER_BY_LOCATION: (state, action) => {
-      const { properties, location } = action.payload;
+      const { properties, location, search } = action.payload;
       let tempProperties = [];
       if (location === "All") {
         tempProperties = properties;
       } else {
         tempProperties = properties.filter(
-          (property) => property.location === location
+          (property) =>
+            property.location.toLowerCase() === location.toLowerCase()
         );
       }
       state.filteredProperties = tempProperties;
       // const length =  properties.filter(
-      //   (property) => property.location === location
+      //   (property) => property.location === location s
       // ).length;
     },
     FILTER_BY_SEARCH: (state, action) => {
       const { properties, search } = action.payload;
 
-      let tempProperties = properties.filter((property) =>
-        property.location.toLowerCase().includes(search.toLowerCase())
+      let tempProperties = properties.filter(
+        (property) =>
+          property.location.toLowerCase().includes(search.toLowerCase()) ||
+          property.name.toLowerCase().includes(search.toLowerCase())
       );
       state.filteredProperties = tempProperties;
     },

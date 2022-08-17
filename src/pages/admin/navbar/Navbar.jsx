@@ -36,19 +36,13 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <NavLink to="/admin/home">
-              <FiHome />
-              Home
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/admin/view-properties">
               <SiHomeadvisor />
               View Properties
             </NavLink>
           </li>
           <li>
-            <NavLink to="/admin/add-property">
+            <NavLink to="/admin/add-property/ADD">
               <MdAddBusiness />
               Add Property
             </NavLink>

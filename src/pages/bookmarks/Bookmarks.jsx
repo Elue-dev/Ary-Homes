@@ -59,8 +59,8 @@ export default function Bookmarks() {
       {
         width: "320px",
         borderRadius: "5px",
-        titleColor: "#c07d53",
-        okButtonBackground: "#c07d53",
+        titleColor: "#ae8625",
+        okButtonBackground: "#ae8625",
         cssAnimationStyle: "zoom",
       }
     );
@@ -84,8 +84,12 @@ export default function Bookmarks() {
               <FaRegBookmark /> YOUR BOOKMARKS
             </h2>
             <p>
-              You currently have <b>{filteredBookmarks.length} PROPERTIES</b> in
-              your bookmarks.
+              You currently have{" "}
+              <b>
+                {filteredBookmarks.length}{" "}
+                {filteredBookmarks.length === 1 ? "Property" : "Properties"}
+              </b>{" "}
+              in your bookmarks.
             </p>
           </div>
         ) : null}
