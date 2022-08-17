@@ -116,7 +116,7 @@ export default function PropertyDetail() {
     setLoading(true);
 
     if (!user) {
-      navigate("/login");
+      navigate("/user/login");
       setLoading(false);
       setShowAlert(true);
       setAlertMessage(
@@ -346,7 +346,7 @@ export default function PropertyDetail() {
               {alert && (
                 <p
                   className="alert message"
-                  style={{ width: "fit-content", fontSize:'.9rem'}}
+                  style={{ width: "fit-content", fontSize: ".9rem" }}
                 >
                   {alert}
                 </p>
