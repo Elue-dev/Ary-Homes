@@ -198,9 +198,8 @@ export default function Header() {
                     }
                   >
                     {!user && (
-                      <>
+                      <div className="auth_n_logged__in">
                         <p>
-                          {" "}
                           <FiUserPlus />
                           <NavLink to="/user/signup">Sign up</NavLink>
                         </p>
@@ -208,7 +207,7 @@ export default function Header() {
                           <BiLogInCircle />
                           <NavLink to="/user/login">Log in</NavLink>
                         </p>
-                      </>
+                      </div>
                     )}
                     {user && (
                       <div>

@@ -103,7 +103,7 @@ export default function Comments({ id }) {
   return (
     <div className="comments__section">
       <div className={wrapper}>
-        <h1 onClick={hanndleShowComments}>
+        <h2 onClick={hanndleShowComments}>
           <span>
             <GoCommentDiscussion />
             COMMENTS ({filteredComments.length})
@@ -112,7 +112,7 @@ export default function Comments({ id }) {
           <div onClick={hanndleShowComments} className="toggle__icon">
             {showComments ? <BsChevronUp /> : <BsChevronDown />}
           </div>
-        </h1>
+        </h2>
         {filteredComments.length === 0 ? (
           <>
             <p className={`no__comments ${contents}`}>
