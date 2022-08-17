@@ -74,7 +74,7 @@ export default function PropertyDetail() {
   );
 
   const matchBookmarks = bookmarks.data.find(
-    (bm) => bm.user_email === user.email
+    (bm) => bm.user_email === user?.email
   );
   const matchBookmarkId = bookmarks.data.find((bm) => bm.property.id === id);
 
