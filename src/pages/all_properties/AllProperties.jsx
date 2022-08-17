@@ -93,7 +93,7 @@ export default function AllProperties() {
   const filterByLocation = (loc) => {
     setLocations(loc);
     window.scrollTo(0, 0);
-    setSearch(loc);
+    setSearch('');
     setSort("latest");
     dispatch(FILTER_BY_LOCATION({ properties, location: loc }));
     setShowFilter(false);
