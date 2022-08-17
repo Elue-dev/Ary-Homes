@@ -93,7 +93,7 @@ export default function AllProperties() {
   const filterByLocation = (loc) => {
     setLocations(loc);
     window.scrollTo(0, 0);
-    setSearch("");
+    setSearch(loc);
     setSort("latest");
     dispatch(FILTER_BY_LOCATION({ properties, location: loc }));
     setShowFilter(false);
@@ -157,7 +157,7 @@ export default function AllProperties() {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by location or property name..."
+              placeholder="Search by location or name..."
             />
             <select value={sort} onChange={handleSelectChange}>
               <option value="latest">Latest</option>
@@ -250,12 +250,14 @@ export default function AllProperties() {
               );
             })}
           </motion.div>
-          <Pagination
-            propertiesPerPage={propertiesPerPage}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalProducts={filteredProperties.length}
-          />
+          {filteredProperties.length ? (
+            <Pagination
+              propertiesPerPage={propertiesPerPage}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalProducts={filteredProperties.length}
+            />
+          ) : null}
         </div>
       </div>
     </motion.section>

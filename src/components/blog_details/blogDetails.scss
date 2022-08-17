@@ -107,7 +107,7 @@
           .n__comment {
             p {
               margin: 1rem 0;
-              font-weight: 700
+              font-weight: 700;
             }
           }
           .y__comment {
@@ -410,5 +410,13 @@
     .commentor
     :last-child {
     font-size: 0.8rem;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    h2 {
+    font-size: 1.1rem;
   }
 }

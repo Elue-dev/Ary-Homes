@@ -4,6 +4,7 @@ import useFetchDocuments from "../../hooks/useFetchDocuments";
 import {
   BsBookmarkPlus,
   BsInfoCircle,
+  BsInfoLg,
   BsPatchCheckFill,
   BsTelephoneForwardFill,
 } from "react-icons/bs";
@@ -133,7 +134,7 @@ export default function PropertyDetail() {
 
     if (matchBookmarks && matchBookmarkId) {
       setAlert("This property is already in your bookmarks");
-      // window.setTimeout(() => setAlert(null), 4000);
+      window.setTimeout(() => setAlert(null), 4000);
       setLoading(false);
       return;
     }
@@ -345,10 +346,10 @@ export default function PropertyDetail() {
             <div className="save__for__later">
               {alert && (
                 <p
-                  className="alert message"
-                  style={{ width: "fit-content", fontSize: ".9rem" }}
+                  className="alert"
+                  style={{ width: "fit-content", fontSize: ".9rem", color:'#ae8625' }}
                 >
-                  {alert}
+                  <BsInfoLg />{alert}
                 </p>
               )}
               <h3>
