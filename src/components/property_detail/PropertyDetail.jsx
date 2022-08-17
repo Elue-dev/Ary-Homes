@@ -133,7 +133,7 @@ export default function PropertyDetail() {
 
     if (matchBookmarks && matchBookmarkId) {
       setAlert("This property is already in your bookmarks");
-      window.setTimeout(() => setAlert(null), 4000);
+      // window.setTimeout(() => setAlert(null), 4000);
       setLoading(false);
       return;
     }
@@ -346,7 +346,7 @@ export default function PropertyDetail() {
               {alert && (
                 <p
                   className="alert message"
-                  style={{ width: "fit-content", height: "1.6rem" }}
+                  style={{ width: "fit-content", fontSize:'.9rem'}}
                 >
                   {alert}
                 </p>
@@ -359,7 +359,7 @@ export default function PropertyDetail() {
               <p>
                 {" "}
                 Wish to save this property to your bookmarks to view later?
-                click on the button below!
+                click on the button below...
               </p>
               {loading ? (
                 <button className="bookmark__btn" disabled>

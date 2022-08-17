@@ -264,7 +264,7 @@
     }
   }
   .save__for__later {
-    line-height: 2.4;
+    line-height: 1.5;
     background: rgb(254, 254, 254);
     border: 1px dashed rgb(233, 233, 233);
     padding: 1rem;
@@ -272,6 +272,7 @@
       display: block;
       @include flexBox(flex-start, center, center);
       gap: 0.4rem;
+      margin-bottom: .5rem;
       :first-child {
         color: $mainColor;
       }

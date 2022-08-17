@@ -14,6 +14,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import Notiflix from "notiflix";
 import Loader from "../../components/utilities/Loader";
+import GoBack from "../../components/utilities/GoBack";
 
 export default function Bookmarks() {
   const { data, loading } = useFetchCollection("bookmarks");
@@ -77,6 +78,7 @@ export default function Bookmarks() {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.1 }}
     >
+      <GoBack />
       <div className="bookmarks__wrapper">
         {filteredBookmarks.length ? (
           <div className="bookmark__heading">

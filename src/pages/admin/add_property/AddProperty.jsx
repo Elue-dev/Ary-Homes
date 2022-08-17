@@ -396,7 +396,10 @@ export default function AddProperty() {
             required
           />
         </label>
-        <p className="feature__info">PLEASE CHECK THAT ALL INPUTS ARE FILLED AND CONFIRM ALL THE DETAILS BEFORE SUBMITTING!</p>
+        <p className="feature__info check">
+          PLEASE CHECK THAT ALL INPUTS ARE FILLED AND CONFIRM ALL THE DETAILS
+          BEFORE SUBMITTING...
+        </p>
         {loading && (
           <button type="submit" className="submit__property__btn">
             <BeatLoader loading={loading} size={10} color={"#fff"} />
