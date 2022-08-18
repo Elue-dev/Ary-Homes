@@ -3,19 +3,23 @@
 .bookmarks {
   min-height: 88vh;
   @include container();
-  padding-top: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+  .bookmarks__heading {
+    @include flexBox(flex-start, center, row);
+    margin-bottom: 1.9rem;
+    color: $mainColor;
+  }
   .bookmarks__wrapper {
-    .bookmark__heading{
-        margin-bottom: 1.4rem;
-        h2 {
-            margin-bottom: 1.3rem;
-            @include flexBox(flex-start, center, row);
-            gap: .3rem;
-            position: relative;
-            :first-child {
-                color: $mainColor;
-            }
-        }
+    .head {
+      h3 {
+        @include flexBox(flex-start, center, row);
+        gap: 0.4rem;
+        margin-bottom: 0.6rem;
+      }
+      p {
+        margin-bottom: 0.6rem;
+      }
     }
     .no__bookmark {
       position: absolute;
@@ -99,5 +103,8 @@
   .bookmarks .bookmarks__wrapper h2 {
     font-size: 1.1rem;
     text-align: center;
+  }
+  .bookmarks .bookmarks__heading h2 {
+    font-size: 1.3rem;
   }
 }

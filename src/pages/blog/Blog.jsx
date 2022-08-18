@@ -31,7 +31,8 @@ import BlogFooter from "./blog_footer/BlogFooter";
 // import Bounce from "react-reveal/Bounce";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {useAuth}  from '../../contexts/AuthContext'
+import { useAuth } from "../../contexts/AuthContext";
+import SavedBlog from "./save_blog/SaveBlog";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -46,7 +47,7 @@ export default function Blog() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
-  const {user} = useAuth()
+  const { user } = useAuth();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const filteredBlogPosts = useSelector(selectFilteredBlogs);
 
@@ -303,15 +304,34 @@ export default function Blog() {
                           <div className="post__description">
                             {description.substring(0, 120)}...
                           </div>
-                          <Link to={`/blog/${id}`}>
-                            <button
-                              className="read__more__post"
-                              onClick={() => increaseRead(id)}
+                          {error && (
+                            <p
+                              className="alert"
+                              style={{
+                                width: "fit-content",
+                                fontSize: ".9rem",
+                                color: "#ae8625",
+                              }}
                             >
-                              <GiSemiClosedEye />
-                              READ MORE
-                            </button>
-                          </Link>
+                              {error}
+                            </p>
+                          )}
+                          <div className="blog__buttons">
+                            <Link to={`/blog/${id}`}>
+                              <button
+                                className="read__more__post"
+                                onClick={() => increaseRead(id)}
+                              >
+                                <GiSemiClosedEye />
+                                READ MORE
+                              </button>
+                            </Link>
+                            <SavedBlog
+                              post={post}
+                              id={id}
+                              setError={setError}
+                            />
+                          </div>
                         </div>
                       </div>
                     );

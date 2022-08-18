@@ -1,0 +1,15 @@
+@import "../../../global_styles/global.scss";
+
+.save__blog {
+  button {
+    @include button();
+    margin-top: 0.6rem;
+    background: transparent;
+    border: 1px solid #111;
+    color: #222;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    @include flexBox(flex-start, center, row);
+    gap: 0.4rem;
+  }
+}

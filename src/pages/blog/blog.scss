@@ -259,6 +259,9 @@
           }
         }
       }
+      .blog__buttons {
+        @include flexBox(flex-start, center, row);
+      }
     }
     .right__blog__contents {
       max-width: 30%;
