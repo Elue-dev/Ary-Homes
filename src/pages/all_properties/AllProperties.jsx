@@ -9,7 +9,6 @@ import {
   selectFilteredProperties,
   SORT_PROPERTIES,
 } from "../../redux/slice/filterSlice";
-import Loader from "../../components/utilities/Loader";
 import { Link } from "react-router-dom";
 import { CgEyeAlt } from "react-icons/cg";
 import { TbHomeOff } from "react-icons/tb";
@@ -18,6 +17,7 @@ import { IoClose } from "react-icons/io5";
 import { ImMenu2 } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
 import Pagination from "../../components/pagination/Pagination";
+import Spinner from "../../components/utilities/Spinner";
 
 export default function AllProperties() {
   const { data } = useFetchCollection("properties");
@@ -93,8 +93,9 @@ export default function AllProperties() {
   const filterByLocation = (loc) => {
     setLocations(loc);
     window.scrollTo(0, 0);
-    setSearch('');
+    setSearch("");
     setSort("latest");
+    setCurrentPage(1);
     dispatch(FILTER_BY_LOCATION({ properties, location: loc }));
     setShowFilter(false);
   };
@@ -103,10 +104,11 @@ export default function AllProperties() {
     setSort(e.target.value);
     setSearch("");
     setShowFilter(false);
+    setCurrentPage(1);
   };
 
   if (properties.length === 0) {
-    return <Loader />;
+    return <Spinner />;
   }
 
   return (

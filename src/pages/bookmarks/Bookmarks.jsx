@@ -15,6 +15,7 @@ import { database } from "../../firebase/firebase";
 import Notiflix from "notiflix";
 import Loader from "../../components/utilities/Loader";
 import GoBack from "../../components/utilities/GoBack";
+import Spinner from "../../components/utilities/Spinner";
 
 export default function Bookmarks() {
   const { data, loading } = useFetchCollection("bookmarks");
@@ -68,7 +69,7 @@ export default function Bookmarks() {
   };
 
   if (loading) {
-    return <Loader />;
+    return <Spinner />;
   }
 
   return (

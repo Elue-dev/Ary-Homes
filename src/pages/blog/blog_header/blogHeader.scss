@@ -10,7 +10,6 @@
   }
   .blog__header__logo {
     @include flexBox(center, center, row);
-    font-family: "Nunito", sans-serif;
     text-align: center;
     gap: 0.4rem;
     img {
@@ -21,6 +20,7 @@
     h2 {
       font-weight: 700;
       color: #fff;
+      font-family: "Poppins", sans-serif;
       // span {
       //   color: $mainColor;
       // }

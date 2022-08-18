@@ -29,7 +29,7 @@ export default function Recommended() {
   }, [dispatch, data]);
 
   return (
-    <section className="properties">
+    <section className="properties exclusives">
       <h2 style={{ marginBottom: ".5rem" }}>
         <BsExclude />
         Exclusive homes for you

@@ -44,6 +44,7 @@
       font-weight: 700;
       @include flexBox(center, center, row);
       gap: 0.3rem;
+      // font-family: "Poppins", sans-serif;
     }
     :last-child {
       font-size: 1.3rem;
@@ -91,7 +92,7 @@
         margin-bottom: 3rem;
         cursor: pointer;
         :first-child {
-          font-size: 1.8rem
+          font-size: 1.8rem;
         }
       }
       .category__li {
@@ -451,7 +452,7 @@
   }
   .blog .welcome {
     justify-content: space-between;
-    padding: .9rem 1rem;
+    padding: 0.9rem 1rem;
   }
   .blog .welcome :last-child {
     font-size: 1.6rem;

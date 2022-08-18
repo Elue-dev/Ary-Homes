@@ -33,18 +33,15 @@ import Comments from "./Comments";
 import admin1 from "../../assets/sade.jpeg";
 import admin2 from "../../assets/wisdom.jpeg";
 import Slider from "./Slider";
-import Spinner from "../../components/utilities/Spinner";
 import Footer from "../footer/Footer";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  ADD_TO_BOOKMARKS,
-  selectBookmarks,
-} from "../../redux/slice/propertySlice";
+import { useDispatch } from "react-redux";
+import { ADD_TO_BOOKMARKS } from "../../redux/slice/propertySlice";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import { BeatLoader } from "react-spinners";
+import Spinner from "../../components/utilities/Spinner";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -63,7 +60,7 @@ export default function PropertyDetail() {
   const bookmarks = useFetchCollection("bookmarks");
   const [storedBookmarks, setStoredBookmarks] = useState(null);
   const [fixPropName, setFixPropName] = useState(false);
-  const [showSlider, setShowSlider] = useState(false);
+const [showSlider, setShowSlider] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -171,10 +168,6 @@ export default function PropertyDetail() {
     return <Spinner />;
   }
 
-  if (!property.imagesUrl) {
-    return <Loader />;
-  }
-
   return (
     <>
       <div className="popup">
@@ -260,7 +253,7 @@ export default function PropertyDetail() {
             </div>
             <div className="property__details__images">
               {property.imagesUrl.slice(0, 3)?.map((image, index) => (
-                <div key={index}>
+                <div key={index} onClick={() => setShowSlider(true)}>
                   <img src={image} alt={property.name} />
                 </div>
               ))}
@@ -347,9 +340,14 @@ export default function PropertyDetail() {
               {alert && (
                 <p
                   className="alert"
-                  style={{ width: "fit-content", fontSize: ".9rem", color:'#ae8625' }}
+                  style={{
+                    width: "fit-content",
+                    fontSize: ".9rem",
+                    color: "#ae8625",
+                  }}
                 >
-                  <BsInfoLg />{alert}
+                  <BsInfoLg />
+                  {alert}
                 </p>
               )}
               <h3>

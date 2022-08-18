@@ -173,14 +173,16 @@ export default function ViewProperties() {
                 <th>Reference ID</th>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Category</th>
+                <th>Location</th>
+                <th>Date Added</th>
                 <th>Price</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {currentProperties?.map((property, index) => {
-                const { id, name, price, imagesUrl, addedAt } = property;
+                const { id, name, price, imagesUrl, addedAt, location } =
+                  property;
                 return (
                   <tr key={id}>
                     <td>{index + 1}</td>
@@ -193,6 +195,7 @@ export default function ViewProperties() {
                       />
                     </td>
                     <td>{name}</td>
+                    <td>{location}</td>
                     <td>{addedAt}</td>
                     <td>NGN {formatCurrency(price)}</td>
                     <td className="icons">

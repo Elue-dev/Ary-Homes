@@ -1,11 +1,9 @@
 @import "../../global_styles//global.scss";
 
 .trends__wrapper {
-  background: url("../../assets/trends.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
+  background-position: center;
   min-height: 50vh;
   text-align: center;
   position: relative;
@@ -73,5 +71,4 @@
   .trends__wrapper .trends__contents h2 {
     font-size: 1.1rem;
   }
- 
 }

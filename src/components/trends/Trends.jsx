@@ -6,21 +6,26 @@ import "./trends.scss";
 export default function Trends() {
   const { data } = useFetchCollection("blog");
   const [blogPost, setBlogPost] = useState(null);
+  const [firstPost, setFirstPost] = useState(null);
 
   useEffect(() => {
     setBlogPost(data);
   }, [data]);
 
+  useEffect(() => {
+    setFirstPost(blogPost && blogPost[0]);
+  }, [blogPost]);
+
   return (
-    <section className="trends__wrapper">
+    <section
+      className="trends__wrapper"
+      style={{ background: `url(${firstPost?.imageUrl})` }}
+    >
       <div className="trends__contents">
-        <p>Trends</p>
+        <p>Recent Blog Post</p>
         <div>
-          <h2>
-            Why your work space must look refreshing and clean, and how it
-            affects performance
-          </h2>
-          <Link to="/blog/jbKYMwc3jhRMvrNRwpxc">
+          <h2>{firstPost?.title}</h2>
+          <Link to={`/blog/${firstPost?.id}`}>
             <button className="trends__read__button">Read More</button>
           </Link>
         </div>

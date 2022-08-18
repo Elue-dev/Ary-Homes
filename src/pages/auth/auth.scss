@@ -64,6 +64,7 @@
     }
     form {
       // @include container();
+      line-height: 0;
       label {
         line-height: 2;
         span {
@@ -76,6 +77,7 @@
           border: 1px solid #333;
           outline: 0;
           font-size: 1rem;
+          margin-bottom: 0;
         }
       }
       .name {
@@ -147,7 +149,7 @@
       position: absolute;
       left: 45%;
       top: -12px;
-      background: rgb(223, 223, 223);
+      background: rgb(241, 241, 241);
       padding: 0 0.4rem;
     }
     .reset__password {
@@ -282,8 +284,6 @@
   }
 }
 
-
-
 @include mQ(500px) {
   .auth__modal .auth__contents {
     width: 100%;
@@ -291,7 +291,7 @@
   }
   .auth__modal .auth__contents .or {
     background: #fff;
-}
+  }
   .auth__modal .auth__contents .close__icon {
     top: 2rem;
     right: 1rem;

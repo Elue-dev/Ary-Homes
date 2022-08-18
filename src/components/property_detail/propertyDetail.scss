@@ -108,6 +108,7 @@
       padding-top: 1rem;
       column-gap: 0.5rem;
       margin-top: 2rem;
+      cursor: pointer;
       img {
         width: 100%;
         height: 280px;
@@ -272,7 +273,7 @@
       display: block;
       @include flexBox(flex-start, center, center);
       gap: 0.4rem;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       :first-child {
         color: $mainColor;
       }

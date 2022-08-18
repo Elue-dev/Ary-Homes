@@ -1,4 +1,4 @@
-import { useEffect, } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchCollection from "../../hooks/useFetchCollection";
@@ -88,8 +88,14 @@ export default function Properties() {
                         <span>{name}</span>
                       </p>
 
-                      <p className="property__id"><MdDateRange />{addedAt}</p>
-                      <p className="property__location"><ImLocation2 />{location}</p>
+                      <p className="property__id">
+                        <MdDateRange />
+                        {addedAt}
+                      </p>
+                      <p className="property__location">
+                        <ImLocation2 />
+                        {location}
+                      </p>
                       <p className="property__price">
                         <span>NGN{formatCurrency(price)}</span>/night
                       </p>
