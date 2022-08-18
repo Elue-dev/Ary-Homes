@@ -3,16 +3,58 @@
 footer {
   background: #111;
   color: #fff;
-  margin-top: 9rem;
+  margin-top: 4rem;
   .footer__contents {
     text-align: center;
+    @include container();
+    .footer__Links {
+      margin-bottom: 1rem;
+      padding-top: 1rem;
+      ul {
+        @include flexBox(center, center, row);
+        gap: 1.7rem;
+        li {
+          list-style: none;
+          a {
+            color: #fff;
+            font-size: 1.5rem;
+          }
+        }
+        .whatasapp__link {
+          background: 0;
+          cursor: pointer;
+          border: 0;
+          outline: 0;
+          color: #fff;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    i {
+      font-weight: 600;
+    }
+  }
+  .rights {
+    text-align: center;
+    font-weight: 600;
   }
 }
 
-// @include mQ(900px) {
-//   footer {
-//     position: fixed;
-//     bottom: 4rem;
-//     width: 100%;
-//   }
-// }
+@include mQ(600px) {
+  footer .footer__contents .footer__Links ul li a,
+  footer .footer__contents .footer__Links ul .whatasapp__link {
+    font-size: 1.2rem;
+  }
+}
+
+@include mQ(350px) {
+  footer .footer__contents .footer__Links ul li a,
+  footer .footer__contents .footer__Links ul .whatasapp__link {
+    font-size: 1rem;
+  }
+  footer .footer__contents .footer__Links {
+    margin-bottom: 1.2rem;
+    padding-top: 0.5rem;
+  }
+}

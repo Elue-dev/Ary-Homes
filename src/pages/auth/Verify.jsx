@@ -47,7 +47,7 @@ export default function Verify() {
       window.setTimeout(
         () =>
           setError(
-            "You have to verify your email first, if you have, click on Done, then Proceed"
+            "You have to verify your email first, if you have, click on Done, then Proceed,If the email goes to your spam folder, click on Report As Not Spam, this will move the mail from spam to your inbox. then go to your inbox and continue from there"
           ),
         10000
       );

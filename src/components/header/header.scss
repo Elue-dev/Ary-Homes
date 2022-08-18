@@ -107,7 +107,7 @@
         p {
           @include flexBox(flex-start, center, row);
           :first-child {
-            margin-bottom: 0
+            margin-bottom: 0;
           }
         }
       }
@@ -270,6 +270,27 @@
 @include mQ(300px) {
   .nav__bottom ul {
     gap: 1.2rem;
+  }
+  .header__wrapper .header__contents .auth {
+    padding: 0.1em 0.3rem;
+  }
+  .header__wrapper .header__contents .user__img {
+    width: 20px;
+    height: 20px;
+  }
+  .header__wrapper .header__contents .auth .dot {
+    font-size: 1.6rem;
+    position: absolute;
+    top: -9px;
+    right: -5px;
+    color: rgb(11, 152, 11);
+  }
+  .header__wrapper .header__contents .logo img {
+    height: 30px;
+    width: 30px;
+  }
+  .header__wrapper .header__contents .logo a h2 {
+    font-size: 1rem;
   }
 }
 

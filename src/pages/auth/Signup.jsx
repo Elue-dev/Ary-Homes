@@ -2,6 +2,9 @@ import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaUser } from "react-icons/fa";
+import { BiUser } from "react-icons/bi";
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../../contexts/AuthContext";
@@ -199,21 +202,27 @@ export default function Signup() {
             <span>Name:</span>
             <div className="name">
               <label>
-                <input
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="First name"
-                  required
-                />
+                <div className="auth__icon">
+                  <BiUser />
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First name"
+                    required
+                  />
+                </div>
               </label>
               <label>
-                <input
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  placeholder="Last name"
-                />
+                <div className="auth__icon">
+                  <BiUser />
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Last name"
+                  />
+                </div>
               </label>
             </div>
           </label>
@@ -228,17 +237,21 @@ export default function Signup() {
           </label> */}
           <label>
             <span>Email Address:</span>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your valid email"
-            />
+            <div className="auth__icon">
+              <MdOutlineMail />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your valid email"
+              />
+            </div>
           </label>
           <br />
           <label>
             <span>Password:</span>
             <div className="password__visibility__toggler">
+              <RiLockPasswordLine />
               <input
                 type="password"
                 value={password}
@@ -246,6 +259,7 @@ export default function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 6 characters"
               />
+
               <span onClick={handlePasswordVisibility}>
                 {visible ? (
                   <AiOutlineEye size={20} />

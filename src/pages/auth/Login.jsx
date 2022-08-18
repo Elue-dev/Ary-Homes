@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import "./auth.scss";
 import { useAuth } from "../../contexts/AuthContext";
 import logo from "../../assets/logo.jpg";
@@ -163,18 +165,22 @@ export default function Login() {
         <form>
           <label>
             <span>Email Address:</span>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Enter your email"
-            />
+            <div className="auth__icon">
+              <MdOutlineMail />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+              />
+            </div>
           </label>
           <br />
           <label>
             <span>Password:</span>
             <div className="password__visibility__toggler">
+              <RiLockPasswordLine />
               <input
                 type="password"
                 value={password}

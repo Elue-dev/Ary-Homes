@@ -1,10 +1,29 @@
-@import '../../../global_styles/global.scss';
+@import "../../../global_styles/global.scss";
 
-.blog__footer{
-    background: #000;
-    color: #fff;
-    position: relative;
-    top: 5.2rem;
-    text-align: center;
+.blog__footer {
+  background: #000;
+  color: #fff;
+  position: relative;
+  top: 5.2rem;
+  text-align: center;
+  .blog__footer__links {
+    @include flexBox(center, center, row);
+    @include container();
+    gap: 2rem;
+    padding: 0.5rem;
+    a {
+      color: #fff;
+      margin-bottom: 1rem;
+      p {
+        @include flexBox(flex-start, center, row);
+        gap: 0.2rem;
+      }
+    }
+  }
 }
 
+@include mQ(350px) {
+  .blog__footer .blog__footer__links {
+    gap: 0.6rem;
+  }
+}
