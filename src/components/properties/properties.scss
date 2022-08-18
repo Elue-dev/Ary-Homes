@@ -111,11 +111,6 @@
     }
   }
 }
-.exclusives {
-  background: rgb(251, 251, 251);
-  padding: 1rem;
-  padding-top: 3rem;
-}
 
 @include mQ(1200px) {
   .properties .properties__contents {

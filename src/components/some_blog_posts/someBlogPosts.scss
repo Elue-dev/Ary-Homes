@@ -3,6 +3,8 @@
 .some__blog__posts {
   @include container();
   padding-top: 4rem;
+  background: rgb(248, 248, 248);
+  padding: 1rem;
   h1 {
     @include flexBox(flex-start, center, row);
     gap: 0.2rem;
