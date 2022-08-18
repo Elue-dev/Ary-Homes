@@ -1,10 +1,10 @@
 @import "../../global_styles/global.scss";
 
 .bookmarks {
-  min-height: 88vh;
+  min-height: 100vh;
   @include container();
   padding-top: 2rem;
-  padding-bottom: 6rem;
+  padding-bottom: 9rem;
   .bookmarks__heading {
     @include flexBox(flex-start, center, row);
     margin-bottom: 1.9rem;

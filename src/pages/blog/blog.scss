@@ -444,6 +444,9 @@
   .blog .welcome :last-child {
     font-size: 1.45rem;
   }
+  .blog .blog__contents .left__blog__contents .blog__buttons {
+    display: block;
+  }
 }
 
 @include mQ(550px) {

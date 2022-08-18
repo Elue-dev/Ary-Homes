@@ -147,7 +147,8 @@ export default function Bookmarks() {
             </b>{" "}
             in your bookmarks.
           </p>
-          <hr /><br />
+          <hr />
+          <br />
         </div>
         {filteredBookmarks.length ? (
           <div className="table">
@@ -240,8 +241,7 @@ export default function Bookmarks() {
                     <tr>
                       <th>S/N</th>
                       <th>Blog Title</th>
-                      <th>Blog Category</th>
-                      <th>Date Bookmarked</th>
+                      {/* <th>Date Bookmarked</th> */}
                       <th>See Details</th>
                       <th>Delete Bookmark</th>
                     </tr>
@@ -255,12 +255,12 @@ export default function Bookmarks() {
                           <td>
                             <b>{blog.blog_post.title.toUpperCase()}</b>
                           </td>
-                          <td>
+                          {/* <td>
                             <b>{blog.blog_post.category}</b>
-                          </td>
-                          <td>
+                          </td> */}
+                          {/* <td>
                             <b>{savedAt}</b>{" "}
-                          </td>
+                          </td> */}
                           <td>
                             <Link to={`/blog/${blog.blog_post.id}`}>
                               <HiEye size={22} className="bookmark__icon" />{" "}

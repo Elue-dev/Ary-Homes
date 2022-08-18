@@ -13,3 +13,10 @@
     gap: 0.4rem;
   }
 }
+
+@include mQ(600px) {
+  .save__blog button {
+    width: 100%;
+    justify-content: center;
+  }
+}
