@@ -31,37 +31,40 @@ export default function Footer() {
       {showFooter ? (
         <footer>
           <div className="footer__contents">
-            <div className="footer__Links">
-              <ul>
-                <li>
-                  <a href="mailto: aryhomes1@gmail.com">
-                    {" "}
-                    <RiMailFill />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/aryhomes">
-                    {" "}
-                    <GrInstagram />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.facebook.com/aryhomes">
-                    {" "}
-                    <GrFacebook />
-                  </a>
-                </li>
-                <li>
-                  <ReactWhatsapp
-                    number="234-905-201-4239"
-                    message="Hi, i am from Ary Homes website, i want to leave a message..."
-                    className="whatasapp__link"
-                  >
-                    <BsWhatsapp />
-                  </ReactWhatsapp>
-                </li>
-              </ul>
-            </div>
+            {location.pathname !== "/contact" && (
+              <div className="footer__Links">
+                <ul>
+                  <li>
+                    <a href="mailto: aryhomes1@gmail.com">
+                      {" "}
+                      <RiMailFill />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/aryhomes">
+                      {" "}
+                      <GrInstagram />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/aryhomes">
+                      {" "}
+                      <GrFacebook />
+                    </a>
+                  </li>
+                  <li>
+                    <ReactWhatsapp
+                      number="234-905-201-4239"
+                      message="Hi, i am from Ary Homes website, i want to leave a message..."
+                      className="whatasapp__link"
+                    >
+                      <BsWhatsapp />
+                    </ReactWhatsapp>
+                  </li>
+                </ul>
+              </div>
+            )}
+
             <i>Stay in class...</i>
           </div>
           <p className="rights"> &copy; {year}. All rights reserved</p>

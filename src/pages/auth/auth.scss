@@ -67,6 +67,7 @@
       line-height: 0;
       label {
         line-height: 2;
+        margin-bottom: .4rem;
         span {
           font-weight: 600;
         }
@@ -100,6 +101,8 @@
         background: $mainColor;
         border-radius: 1rem;
         color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
         &:hover {
           background: #c99b2f;
         }

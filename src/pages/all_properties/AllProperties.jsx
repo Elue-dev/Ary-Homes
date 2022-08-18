@@ -18,6 +18,7 @@ import { ImMenu2 } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
 import Pagination from "../../components/pagination/Pagination";
 import Spinner from "../../components/utilities/Spinner";
+import GoBack from "../../components/utilities/GoBack";
 
 export default function AllProperties() {
   const { data } = useFetchCollection("properties");
@@ -149,6 +150,7 @@ export default function AllProperties() {
         <FaHome />
         Our Properties
       </h2>
+      <GoBack />
       <div className="all__properties__wrapper">
         <div className={scrollPage ? "menu__filter fix_menu" : "menu__filter"}>
           <ImMenu2 onClick={() => setShowFilter(true)} />

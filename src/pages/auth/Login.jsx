@@ -66,7 +66,7 @@ export default function Login() {
     } catch (error) {
       if (allEmails.includes(email)) {
         setError(
-          "This email has already been signed in using google, log in using google instead."
+          "Wrong password. Also, this email has already been signed in using google, log in using google instead."
         );
         setLoading(false);
         return;

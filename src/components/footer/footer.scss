@@ -46,6 +46,10 @@ footer {
   footer .footer__contents .footer__Links ul .whatasapp__link {
     font-size: 1.2rem;
   }
+  footer .footer__contents i,
+  footer .rights {
+    opacity: 0;
+  }
 }
 
 @include mQ(350px) {

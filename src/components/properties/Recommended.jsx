@@ -30,10 +30,12 @@ export default function Recommended() {
 
   return (
     <section className="properties exclusives">
-      <h2 style={{ marginBottom: ".5rem" }}>
-        <BsExclude />
-        Exclusive homes for you
-      </h2>
+      {properties ? (
+        <h2 style={{ marginBottom: ".5rem" }}>
+          <BsExclude />
+          Exclusive homes for you
+        </h2>
+      ) : null}
       <div className="properties__contents exclusive__contents">
         {properties.slice(5, 9)?.map((property) => {
           const {
@@ -80,7 +82,10 @@ export default function Recommended() {
                 </p>
 
                 {/* <p className="property__id">Ref: {id}</p> */}
-                <p className="property__location"><ImLocation2 />{location}</p>
+                <p className="property__location">
+                  <ImLocation2 />
+                  {location}
+                </p>
                 <p className="property__price">
                   <span>NGN{formatCurrency(price)}</span>/night
                 </p>

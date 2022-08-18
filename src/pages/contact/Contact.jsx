@@ -8,17 +8,25 @@ import { SiRocketdotchat, SiFacebook } from "react-icons/si";
 import ReactWhatsapp from "react-whatsapp";
 import "./contact.scss";
 import Footer from "../../components/footer/Footer";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const form = useRef();
   const [message, setMessage] = useState("");
 
   return (
-    <motion.section className="contact" initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: .1 }}>
-      <div className="contact__hero"></div>
+    <motion.section
+      className="contact"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
+      <div className="contact__hero">
+        <div className="head__contact">
+          <h2>CONTACT US</h2>
+        </div>
+      </div>
+
       <div className="socials">
         <a href="mailto: aryhomes1@gmail.com">
           <GrMail className="c_icon" />
