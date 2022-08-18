@@ -304,18 +304,6 @@ export default function Blog() {
                           <div className="post__description">
                             {description.substring(0, 120)}...
                           </div>
-                          {error && (
-                            <p
-                              className="alert"
-                              style={{
-                                width: "fit-content",
-                                fontSize: ".9rem",
-                                color: "#ae8625",
-                              }}
-                            >
-                              {error}
-                            </p>
-                          )}
                           <div className="blog__buttons">
                             <Link to={`/blog/${id}`}>
                               <button

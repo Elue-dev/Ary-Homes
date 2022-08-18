@@ -22,10 +22,7 @@ export default function SaveBlog({ post, id, setError }) {
     setSavedBlogs(data);
   }, [data]);
 
-  const matchBlog = savedBlogs?.find((sb) => sb.user_email === user?.email);
-  const matchBlogId = savedBlogs?.find((bm) => bm.blog_post.id === id);
-
-  const saveBlogToBookmarks = async (post) => {
+  const saveBlogToBookmarks = async (post, id) => {
     try {
       setLoading(true);
 
@@ -45,10 +42,20 @@ export default function SaveBlog({ post, id, setError }) {
         return;
       }
 
+      const matchBlog = savedBlogs?.find((sb) => sb.user_email === user?.email);
+      const matchBlogId = savedBlogs?.find((bm) => bm.blog_post.id === id);
+
       if (matchBlog && matchBlogId) {
-        setError("This blog post is already in your bookmarks");
-        window.setTimeout(() => setError(null), 4000);
+        window.scrollTo(0, 0);
         setLoading(false);
+        setShowAlert(true);
+        setAlertMessage(`This blog post is already in your bookmarks`);
+        setAlertType("info");
+        window.setTimeout(() => {
+          setShowAlert(false);
+          setAlertMessage(null);
+          setAlertType(null);
+        }, 6000);
         return;
       }
 
@@ -70,7 +77,7 @@ export default function SaveBlog({ post, id, setError }) {
         setShowAlert(false);
         setAlertMessage(null);
         setAlertType(null);
-      }, 6000);
+      }, 8000);
     } catch (error) {
       setShowAlert(true);
       setAlertMessage("An unexpected error occured");
@@ -79,18 +86,18 @@ export default function SaveBlog({ post, id, setError }) {
         setShowAlert(false);
         setAlertMessage(null);
         setAlertType(null);
-      }, 6000);
+      }, 8000);
     }
   };
 
   return (
     <div className="save__blog">
       {loading ? (
-        <button disabled>
+        <button disabled style={{ minWidth: "50%" }}>
           <BeatLoader loading={loading} size={10} color={"#222"} />
         </button>
       ) : (
-        <button onClick={() => saveBlogToBookmarks(post)}>
+        <button onClick={() => saveBlogToBookmarks(post, id)}>
           <FaBookmark />
           SAVE TO BOOKMARKS
         </button>
