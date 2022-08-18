@@ -79,7 +79,7 @@ export default function Recommended() {
                   <span>{name}</span>
                 </p>
 
-                <p className="property__id">Ref: {id}</p>
+                {/* <p className="property__id">Ref: {id}</p> */}
                 <p className="property__location"><ImLocation2 />{location}</p>
                 <p className="property__price">
                   <span>NGN{formatCurrency(price)}</span>/night
