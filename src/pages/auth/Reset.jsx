@@ -109,7 +109,7 @@ export default function Reset() {
           )}
         </form>
         <p className="back__to__login">
-          <Link to="/login">Back to login</Link>
+          <Link to="/user/login">Back to login</Link>
         </p>
       </div>
     </motion.section>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsArrow90DegLeft, BsArrow90DegRight } from "react-icons/bs";
 import { RiCloseCircleFill } from "react-icons/ri";
+import { HiOutlineCamera } from "react-icons/hi";
 import "./slider.scss";
 
 export default function Slider({ property, setShowSlider }) {
@@ -22,9 +23,13 @@ export default function Slider({ property, setShowSlider }) {
 
   return (
     <div className="slider popup">
-      <p className="close__slider" onClick={()=>setShowSlider(false)}>
+      <p className="close__slider" onClick={() => setShowSlider(false)}>
         <RiCloseCircleFill />
       </p>
+      <span className="slide__length">
+        <HiOutlineCamera />
+        {currentSlide + 1}/{slideLength}
+      </span>
       <div className="property__details__contents">
         <div>
           <BsArrow90DegLeft onClick={prevSlide} className="arrow prev" />
