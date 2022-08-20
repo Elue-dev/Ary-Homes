@@ -118,7 +118,7 @@ const [showSlider, setShowSlider] = useState(false);
       setLoading(false);
       setShowAlert(true);
       setAlertMessage(
-        `You have to be logged in to add properties to bookmarks`
+        `You have to be logged in to bookmark properties`
       );
       setAlertType("error");
       window.setTimeout(() => {

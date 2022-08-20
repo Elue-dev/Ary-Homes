@@ -67,7 +67,7 @@
       line-height: 0;
       label {
         line-height: 2;
-        margin-bottom: .4rem;
+        margin-bottom: 0.4rem;
         span {
           font-weight: 600;
         }
@@ -184,6 +184,8 @@
         background: $mainColor;
         color: #fff;
         margin-top: 0.4rem;
+        font-size: 1rem;
+        font-weight: 700;
       }
     }
     .password__visibility__toggler {
@@ -324,6 +326,9 @@
     color: #fff;
   }
   .auth__modal .auth__contents .google__btn {
+    font-size: 1rem;
+  }
+  .auth__modal .auth__contents .reset__password__input .reset__password__btn {
     font-size: 1rem;
   }
 }

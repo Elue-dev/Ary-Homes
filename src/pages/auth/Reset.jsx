@@ -36,7 +36,7 @@ export default function Reset() {
         setMessage("REDIRECTING...");
       }, 5000);
       window.setTimeout(() => {
-        navigate("/login");
+        navigate("/user/login");
       }, 7000);
     } catch (err) {
       if (err.message === "Firebase: Error (auth/user-not-found).") {
