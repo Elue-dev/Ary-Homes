@@ -174,7 +174,7 @@ export default function AllProperties() {
           {search && (
             <>
               <h3>
-              Search results for{" "}
+                Search results for{" "}
                 <b>
                   <em>'{search}'</em>
                 </b>{" "}
@@ -243,7 +243,7 @@ export default function AllProperties() {
                         <span>/night</span>
                       </p>
                     </div>
-                    <Link to={`/property/${id}`}>
+                    <Link to={`/property/${name}/${id}`}>
                       <button className="more_">
                         <CgEyeAlt />
                         MORE DETAILS

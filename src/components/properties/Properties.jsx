@@ -55,7 +55,7 @@ export default function Properties() {
             } = property;
             return (
               <div key={id}>
-                <Link to={`/property/${id}`} style={{ textDecoration: "none" }}>
+                <Link to={`/property/${name}/${id}`} style={{ textDecoration: "none" }}>
                   <div className="properties__details">
                     <div className="properties__details__image">
                       <img src={imagesUrl[0]} alt={name} />

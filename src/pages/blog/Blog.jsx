@@ -124,7 +124,7 @@ export default function Blog() {
       }, 8000);
     } catch (error) {
       setShowAlert(true);
-      setAlertMessage(`An unnexpected error occured`);
+      setAlertMessage(`An unexpected error occured`);
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);

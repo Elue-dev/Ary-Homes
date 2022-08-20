@@ -31,7 +31,7 @@ export default function SaveBlog({ post, id, setError }) {
         setLoading(false);
         setShowAlert(true);
         setAlertMessage(
-          `You have to be logged in to add blog posts to your bookmarks`
+          `You have to be logged in to bookmark blog posts`
         );
         setAlertType("error");
         window.setTimeout(() => {

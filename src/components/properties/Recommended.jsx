@@ -53,7 +53,7 @@ export default function Recommended() {
               <div className="properties__details__image exclusive">
                 <div>
                   <Link
-                    to={`/property/${id}`}
+                    to={`/property/${name}/${id}`}
                     style={{ textDecoration: "none" }}
                   >
                     <div className="exclusive__image__wrapper">

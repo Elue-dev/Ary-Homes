@@ -9,7 +9,7 @@
   box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
   background: #fff;
   padding: 1rem;
-  @include flexBox(space-between, center, row);
+  @include flexBox(space-around, center, row);
 }
 
 //  .popup {

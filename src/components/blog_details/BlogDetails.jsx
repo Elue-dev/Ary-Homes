@@ -333,7 +333,7 @@ export default function BlogDetails() {
                 </ul>
               ))}
             </div>
-           
+
             <div className="post__comments">
               <h2>COMMENTS ({blogPost.comments.length})</h2>
               {blogPost.comments.length === 0 ? (

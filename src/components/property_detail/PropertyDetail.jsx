@@ -93,7 +93,7 @@ const [showSlider, setShowSlider] = useState(false);
   }, [document]);
 
   // const fixPropertyName = () => {
-  //   if (window.scrollY > 50) {
+  //   if (window.scrollY > 450) {
   //     setFixPropName(true);
   //   } else {
   //     setFixPropName(false);
