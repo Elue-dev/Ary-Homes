@@ -50,6 +50,9 @@ footer {
   footer .rights {
     opacity: 0;
   }
+  footer .footer__contents .footer__Links {
+   display: none;
+  }
 }
 
 @include mQ(350px) {

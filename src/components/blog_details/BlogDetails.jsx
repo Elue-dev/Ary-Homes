@@ -467,7 +467,7 @@ export default function BlogDetails() {
                 )}
               </form>
             </div>
-            {data?.slice(1, 5).map((p) => {
+            {data?.slice(1, 4).map((p) => {
               const { id, imageUrl, title, readTime } = p;
               return (
                 <Link to={`/blog/${id}`} key={id}>

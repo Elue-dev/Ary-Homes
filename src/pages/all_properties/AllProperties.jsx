@@ -174,7 +174,7 @@ export default function AllProperties() {
           {search && (
             <>
               <h3>
-                Property locations including{" "}
+              Search results for{" "}
                 <b>
                   <em>'{search}'</em>
                 </b>{" "}

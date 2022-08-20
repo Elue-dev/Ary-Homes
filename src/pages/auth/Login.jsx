@@ -54,7 +54,7 @@ export default function Login() {
       setError("");
       await login(email, password);
       setShowAlert(true);
-      setAlertMessage(`YOU ARE SUCCESSFULLY LOGGED IN!`);
+      setAlertMessage(`You are successfully logged in!`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);

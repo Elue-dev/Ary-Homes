@@ -85,9 +85,11 @@
         }
         .post__tags {
           display: flex;
-          gap: 0.7rem;
+          flex-wrap: wrap;
+          gap: 0.4rem;
           margin-top: 0.67rem;
           padding-bottom: 1rem;
+          width: fit-content;
           ul {
             li {
               list-style: none;
