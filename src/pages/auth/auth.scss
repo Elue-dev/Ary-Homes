@@ -194,13 +194,13 @@
       padding: 0 0.8rem;
       :first-child {
         font-size: 1.4rem;
+        display: block;
       }
       input {
         border: 0;
       }
       span {
         cursor: pointer;
-        border-left: 1px solid;
       }
     }
     .auth__icon {

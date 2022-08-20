@@ -165,10 +165,10 @@ export default function AllProperties() {
             />
             <select value={sort} onChange={handleSelectChange}>
               <option value="latest">Latest</option>
-              <option value="lowest-price">Lowest Price</option>
-              <option value="highest-price">Highest Price</option>
-              <option value="Available">Available</option>
-              <option value="Not Available">Not Available</option>
+              <option value="lowest-price">Sort by Lowest Price</option>
+              <option value="highest-price">Sort by Highest Price</option>
+              <option value="Available">Sort: Available</option>
+              <option value="Not Available">Sort: Not Available</option>
             </select>
           </label>
           {search && (
