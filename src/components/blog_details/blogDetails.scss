@@ -8,6 +8,9 @@
 }
 
 .blog__post__details {
+  background: url("../../assets/bg-tablet-pattern.svg");
+  background-repeat: no-repeat;
+  background-position: 700px -20px;
   .post__details__wrapper {
     margin-top: 3rem;
     .posts__grid {
@@ -33,6 +36,7 @@
           button {
             @include button();
             background: $mainColor;
+            // background-color: #fffbf3;
             color: #fff;
             cursor: auto;
             border-radius: 0.2rem;
@@ -283,9 +287,15 @@
     .right__post__details {
     max-width: 100%;
   }
+  .blog__post__details {
+    background-position: 200px -20px;
+  }
 }
 
 @include mQ(600px) {
+  .blog__post__details {
+    background-position: 0px 43px;
+  }
   .blog__post__details
     .post__details__wrapper
     .posts__grid
@@ -453,5 +463,42 @@
     .right__related
     p {
     font-size: 0.7rem;
+  }
+}
+
+@include mQ(500px) {
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid
+    .gender__img
+    img {
+    width: 40px;
+  }
+  .blog__post__details {
+    background-position: -138px 43px;
+  }
+}
+
+@include mQ(350px) {
+  .related__blogs .post_det {
+    grid-template-columns: 1fr;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid
+    .gender__img
+    img {
+    width: 35px;
+  }
+  .blog__post__details {
+    background-position: -222px 43px;
   }
 }
