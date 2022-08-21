@@ -20,7 +20,13 @@ import "./blog.scss";
 import BlogHeader from "./blog_header/BlogHeader";
 import RiseLoader from "react-spinners/RiseLoader";
 import ReactWhatsapp from "react-whatsapp";
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import {
@@ -36,6 +42,7 @@ import SavedBlog from "./save_blog/SaveBlog";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
+  const subscribers = useFetchCollection("subscribers");
   const [pending, setPending] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   // const [fixHeading, setFixHeading] = useState(false);
@@ -102,13 +109,33 @@ export default function Blog() {
       setError(null);
     }
 
+    let subscribersEmails = [];
+    subscribers.data.map((mails) => subscribersEmails.push(mails.email));
+    if (subscribersEmails.includes(email)) {
+      setPending(false);
+      window.scrollTo(0, 0);
+      setShowAlert(true);
+      setAlertMessage(`You have already subscribed to our newsletter`);
+      setAlertType("info");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 8000);
+      return;
+    }
+
     setPending(true);
 
+    const today = new Date();
+    const date = today.toDateString();
     try {
       const subscribersRef = collection(database, "subscribers");
       await addDoc(subscribersRef, {
         name,
         email,
+        subscribedAt: date,
+        createdAt: Timestamp.now().toDate(),
       });
       setPending(false);
       setEmail("");

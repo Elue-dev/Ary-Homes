@@ -201,14 +201,14 @@ export default function BlogDetails() {
     } else {
       setError(null);
     }
-
+    
     let subscribersEmails = [];
     subscribers.data.map((mails) => subscribersEmails.push(mails.email));
     if (subscribersEmails.includes(email)) {
       setLoading(false);
       window.scrollTo(0, 0);
       setShowAlert(true);
-      setAlertMessage(`YOU HAVE ALREADY SUBSCRIBED TO OUR NEWSLETTER!`);
+      setAlertMessage(`You have already subscribed to our newsletter!`);
       setAlertType("info");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -235,7 +235,7 @@ export default function BlogDetails() {
       setName("");
       window.scrollTo(0, 0);
       setShowAlert(true);
-      setAlertMessage(`YOU HAVE SUCESSFULLY SUBSCRIBED TO OUR NEWSLETTER!`);
+      setAlertMessage(`You have successfully subscribed to our newsletter!`);
       setAlertType("success");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -244,7 +244,7 @@ export default function BlogDetails() {
       }, 8000);
     } catch (error) {
       setShowAlert(true);
-      setAlertMessage(`AN UNEXPECTED ERROR OCCURED`);
+      setAlertMessage(`An unexpected error occured`);
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
