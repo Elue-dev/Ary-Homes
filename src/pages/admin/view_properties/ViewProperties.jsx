@@ -139,7 +139,7 @@ export default function ViewProperties() {
           type="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search by Property name or Reference Id..."
+          placeholder="Search by Property location or name"
         />
       </label>
       {search && (

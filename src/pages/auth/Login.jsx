@@ -72,7 +72,7 @@ export default function Login() {
         return;
       }
       if (error.message === "Firebase: Error (auth/user-not-found).") {
-        setError("No user with these credentials exist");
+        setError("No user with these credentials exists");
         window.setTimeout(() => {
           setError("");
         }, 6000);

@@ -172,12 +172,12 @@ export default function Bookmarks() {
                   </thead>
                   <tbody>
                     {filteredBookmarks?.map((bookmark, index) => {
-                      const { id, bookmarkedAt } = bookmark;
+                      const { id, bookmarkedAt, property } = bookmark;
                       return (
                         <tr key={id}>
                           <td>{index + 1}</td>
                           <td>
-                            <b>{bookmark.property.name.toUpperCase()}</b>
+                            <b>{property.name.toUpperCase()}</b>
                           </td>
                           <td>
                             <b>
@@ -189,7 +189,7 @@ export default function Bookmarks() {
                             <b>{bookmarkedAt}</b>{" "}
                           </td>
                           <td>
-                            <Link to={`/property/${bookmark.property.id}`}>
+                            <Link to={`/property/${property.name}/${bookmark.property.id}`}>
                               <HiEye size={22} className="bookmark__icon" />{" "}
                             </Link>
                           </td>

@@ -169,7 +169,7 @@ export default function AddProperty() {
       setLoading(false);
       setProperty({ ...initialState });
       setImgUploadProgress(0);
-      navigate("/user/admin/home");
+      navigate("/admin/view-properties");
     } catch (error) {
       setLoading(false);
     }
@@ -375,8 +375,8 @@ export default function AddProperty() {
           </div>
           <div className="features__list">
             <b>Features:</b>{" "}
-            {features.map((i) => (
-              <li>
+            {features.map((i, index) => (
+              <li key={index}>
                 <em key={i}>{i}.</em>
               </li>
             ))}

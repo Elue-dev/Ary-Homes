@@ -31,7 +31,7 @@ import ReactWhatsapp from "react-whatsapp";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import Comments from "./Comments";
 import admin1 from "../../assets/sade.jpeg";
-import admin2 from "../../assets/wisdom.jpeg";
+import admin2 from "../../assets/logo.jpg";
 import Slider from "./Slider";
 import Footer from "../footer/Footer";
 import { motion } from "framer-motion";
@@ -60,7 +60,7 @@ export default function PropertyDetail() {
   const bookmarks = useFetchCollection("bookmarks");
   const [storedBookmarks, setStoredBookmarks] = useState(null);
   const [fixPropName, setFixPropName] = useState(false);
-const [showSlider, setShowSlider] = useState(false);
+  const [showSlider, setShowSlider] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -117,9 +117,7 @@ const [showSlider, setShowSlider] = useState(false);
       navigate("/user/login");
       setLoading(false);
       setShowAlert(true);
-      setAlertMessage(
-        `You have to be logged in to bookmark properties`
-      );
+      setAlertMessage(`You have to be logged in to bookmark properties`);
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -252,7 +250,7 @@ const [showSlider, setShowSlider] = useState(false);
               )}
             </div>
             <div className="property__details__images">
-              {property.imagesUrl.slice(0, 3)?.map((image, index) => (
+              {property.imagesUrl?.map((image, index) => (
                 <div key={index} onClick={() => setShowSlider(true)}>
                   <img src={image} alt={property.name} />
                 </div>
@@ -297,6 +295,22 @@ const [showSlider, setShowSlider] = useState(false);
                   </p>
                 ) : (
                   <div className="admins">
+                    <div className="admin__two">
+                      <img src={admin2} alt={adminUserTwo[0]?.lastName} />
+                      <BsPatchCheckFill className="verified__icon" />
+                      <a href="tel:+2349052014239">
+                        <BsTelephoneForwardFill />
+                        09052014239
+                      </a>
+                      <ReactWhatsapp
+                        number="234-810-733-9039"
+                        message="Hi, i am from Ary Homes website, i want to make an inquiry.."
+                        className="whatsapp"
+                      >
+                        <TbBrandWhatsapp />
+                        &nbsp; <span>Message</span>
+                      </ReactWhatsapp>
+                    </div>
                     <div className="admin__one">
                       <div className="admin__image__wrapper">
                         <img src={admin1} alt={adminUserOne[0]?.lastName} />
@@ -308,22 +322,6 @@ const [showSlider, setShowSlider] = useState(false);
                       </a>
                       <ReactWhatsapp
                         number="234-816-894-5509"
-                        message="Hi, i am from Ary Homes website, i want to make an inquiry.."
-                        className="whatsapp"
-                      >
-                        <TbBrandWhatsapp />
-                        &nbsp; <span>Message</span>
-                      </ReactWhatsapp>
-                    </div>
-                    <div className="admin__two">
-                      <img src={admin2} alt={adminUserTwo[0]?.lastName} />
-                      <BsPatchCheckFill className="verified__icon" />
-                      <a href="tel:+2348107339039">
-                        <BsTelephoneForwardFill />
-                        08107339039
-                      </a>
-                      <ReactWhatsapp
-                        number="234-810-733-9039"
                         message="Hi, i am from Ary Homes website, i want to make an inquiry.."
                         className="whatsapp"
                       >
