@@ -5,7 +5,7 @@ import { selectBlogs, STORE_BLOGS } from "../../redux/slice/blogSlice";
 import { FaComments } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsArrowLeft, BsPersonPlusFill } from "react-icons/bs";
-import { BiCategory, BiCheckboxSquare, BiTimeFive } from "react-icons/bi";
+import { BiCategory, BiTimeFive } from "react-icons/bi";
 import { GiSemiClosedEye } from "react-icons/gi";
 import { GrInstagram, GrFacebook } from "react-icons/gr";
 import { BsWhatsapp } from "react-icons/bs";
