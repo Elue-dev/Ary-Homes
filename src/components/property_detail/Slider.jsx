@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { BsArrow90DegLeft, BsArrow90DegRight } from "react-icons/bs";
+import {
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill,
+} from "react-icons/bs";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { HiOutlineCamera } from "react-icons/hi";
 import "./slider.scss";
@@ -32,8 +35,14 @@ export default function Slider({ property, setShowSlider }) {
       </span>
       <div className="property__details__contents">
         <div>
-          <BsArrow90DegLeft onClick={prevSlide} className="arrow prev" />
-          <BsArrow90DegRight onClick={nextSlide} className="arrow next" />
+          <BsFillArrowLeftCircleFill
+            onClick={prevSlide}
+            className="arrow prev"
+          />
+          <BsFillArrowRightCircleFill
+            onClick={nextSlide}
+            className="arrow next"
+          />
         </div>
 
         <div className="images__wrapper">

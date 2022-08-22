@@ -250,7 +250,7 @@ export default function PropertyDetail() {
               )}
             </div>
             <div className="property__details__images">
-              {property.imagesUrl?.map((image, index) => (
+              {property.imagesUrl?.slice(0,6).map((image, index) => (
                 <div key={index} onClick={() => setShowSlider(true)}>
                   <img src={image} alt={property.name} />
                 </div>

@@ -9,6 +9,7 @@ import ReactWhatsapp from "react-whatsapp";
 import "./contact.scss";
 import Footer from "../../components/footer/Footer";
 import { motion } from "framer-motion";
+import facebook from "../../assets/facebook.svg";
 
 export default function Contact() {
   const form = useRef();
@@ -30,9 +31,11 @@ export default function Contact() {
       <div className="socials">
         <a href="mailto: aryhomes1@gmail.com">
           <GrMail className="c_icon" />
+          {/* <img src={facebook} alt="" className="c_icon" /> */}
         </a>
         <a href="https://www.facebook.com/aryhomes">
-          <SiFacebook className="c_icon" />
+          {/* <SiFacebook className="c_icon" /> */}
+          <img src={facebook} alt="" className="c_icon" />
         </a>
         <a href="https://www.instagram.com/aryhomes">
           <BsInstagram className="c_icon" />
@@ -66,7 +69,7 @@ export default function Contact() {
               </p>
               <ReactWhatsapp
                 number="234-905-201-4239"
-                message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
+                message="Hi, i am from Ary Homes website, i want to make an inquiry..."
                 className="chat"
               >
                 <SiRocketdotchat />
@@ -74,7 +77,7 @@ export default function Contact() {
               </ReactWhatsapp>
               <ReactWhatsapp
                 number="234-816-894-5509"
-                message="Hi, i am from Ary Homes website, i want to make an inquiry about a property.."
+                message="Hi, i am from Ary Homes website, i want to make an inquiry..."
                 className="chat"
               >
                 <SiRocketdotchat />
