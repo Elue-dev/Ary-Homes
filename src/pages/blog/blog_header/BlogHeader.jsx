@@ -12,7 +12,7 @@ export default function BlogHeader() {
             <img src={logo} alt="ary homes logo" />
           </Link>
           <Link to="/blog">
-            <h2>AryHomes Blog</h2>
+            <h1>AryHomes Blog</h1>
           </Link>
         </div>
       </div>
