@@ -184,7 +184,7 @@
         background: $mainColor;
         color: #fff;
         margin-top: 0.4rem;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 700;
       }
     }
@@ -226,7 +226,9 @@
           width: 60%;
           margin-top: 0.8rem;
           background: #111;
+          font-weight: 700;
           border-radius: 1rem;
+          font-size: 1.1rem;
         }
       }
     }
@@ -329,6 +331,7 @@
     font-size: 1rem;
   }
   .auth__modal .auth__contents .reset__password__input .reset__password__btn {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 }

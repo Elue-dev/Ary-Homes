@@ -23,7 +23,7 @@ export default function OtherPosts() {
         {post?.slice(2, 6).map((p) => {
           const { imageUrl, readTime, addedAt, title, id } = p;
           return (
-            <Link to={`/blog/$${id}`} key={id}>
+            <Link to={`/blog/${id}`} key={id}>
               <div className="post_c">
                 <div className="post_Iurl">
                   <img src={imageUrl} alt={title} />

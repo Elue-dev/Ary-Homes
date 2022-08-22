@@ -49,6 +49,16 @@ export default function Comments({ id }) {
     if (!user) {
       dispatch(SAVE_URL(url));
       navigate("/user/login");
+      setLoading(false);
+      setComment("");
+      setShowAlert(true);
+      setAlertMessage(`You have to be logged in to add comments`);
+      setAlertType("error");
+      window.setTimeout(() => {
+        setShowAlert(false);
+        setAlertMessage(null);
+        setAlertType(null);
+      }, 6000);
     } else {
       setShowCommentForm(true);
     }
