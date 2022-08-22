@@ -440,6 +440,13 @@
     p {
     font-size: 0.7rem;
   }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__image {
+    height: 276px;
+  }
 }
 
 @include mQ(500px) {
