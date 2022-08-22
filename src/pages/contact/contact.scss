@@ -47,7 +47,10 @@
 }
 .contact__contents {
   @include container();
-  background: #fff;
+  background: url("../../assets/bg-tablet-pattern.svg");
+  background-repeat: no-repeat;
+  background-position: 35px -30px;
+  // background: #fff;
   box-shadow: $box-shadow;
   padding: 1rem 2rem;
   margin-top: 1rem;
@@ -167,7 +170,7 @@
     width: 100%;
   }
 }
-@include mQ(500px) {
+@include mQ(600px) {
   .socials {
     top: 22rem;
     right: 0;
@@ -178,6 +181,7 @@
   .contact__contents {
     width: 100%;
     box-shadow: none;
+    background-position: 10px -51px;
   }
   .contact__contents .flex__cards .left__info {
     width: 100%;
@@ -198,5 +202,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@include mQ(400px) {
+  .contact__contents {
+    background-position: -44px -189px;
   }
 }
