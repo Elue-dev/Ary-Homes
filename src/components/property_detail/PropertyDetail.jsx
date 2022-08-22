@@ -187,7 +187,7 @@ export default function PropertyDetail() {
             <div className="single__item">
               <img src={admin2} alt={adminUserTwo[0]?.lastName} />
               <ReactWhatsapp
-                number="234-810-733-9039"
+                number="234-905-201-4239"
                 message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
                 className="whatsapp"
               >
@@ -197,7 +197,7 @@ export default function PropertyDetail() {
             <div className="single__item">
               <img src={admin1} alt={adminUserOne[0]?.lastName} />
               <ReactWhatsapp
-                number="234-810-733-9039"
+                number="234-816-894-5509"
                 message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
                 className="whatsapp"
               >
@@ -327,12 +327,12 @@ export default function PropertyDetail() {
                         09052014239
                       </a>
                       <ReactWhatsapp
-                        number="234-810-733-9039"
+                        number="234-905-201-4239"
                         message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />
-                        &nbsp; <span>Message</span>
+                        <span>MESSAGE</span>
                       </ReactWhatsapp>
                     </div>
                     <div className="admin__one">
@@ -350,7 +350,7 @@ export default function PropertyDetail() {
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />
-                        &nbsp; <span>Message</span>
+                        <span>MESSAGE</span>
                       </ReactWhatsapp>
                     </div>
                   </div>

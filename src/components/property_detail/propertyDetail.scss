@@ -32,7 +32,7 @@
     width: 100%;
     background: #fff;
     border-top: 0.2px solid rgb(164, 164, 164);
-    z-index: 100000000;
+    z-index: 1000000000;
     .contacts__bottom {
       @include container();
       @include flexBox(space-between, center, center);
@@ -47,7 +47,7 @@
         }
         button {
           @include button();
-          background: #333;
+          background: #222;
           color: #fff;
           padding: 0.3rem 0.6rem;
           outline: 0;
@@ -227,7 +227,7 @@
           .whatsapp {
             @include flexBox(flex-start, center, row);
             padding: 0.45rem 1.6rem;
-            background: rgb(26, 28, 26);
+            background: #222;
             color: #fff;
             border: 0;
             outline: 0;
@@ -316,7 +316,7 @@
     .bookmark__btn {
       @include button();
       color: #fff;
-      background: #333;
+      background: #222;
       font-weight: 700;
       padding: 0.5rem 1rem;
       margin-top: 0.7rem;
