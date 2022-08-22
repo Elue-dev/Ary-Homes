@@ -6,6 +6,7 @@ import ViewProperties from "./view_properties/ViewProperties";
 import AddProperty from "./add_property/AddProperty";
 import Users from "./users/Users";
 import AddBlogPost from "./add_blog_post/AddBlogPost";
+import Subscribers from "./subscribers/Subscribers";
 
 export default function Admin() {
   return (
@@ -19,6 +20,7 @@ export default function Admin() {
           <Route path="add-property/:id" element={<AddProperty />} />
           <Route path="add-post" element={<AddBlogPost />} />
           <Route path="users" element={<Users />} />
+          <Route path="subscribers" element={<Subscribers />} />
         </Routes>
       </div>
     </div>

@@ -22,8 +22,42 @@
 .property__details {
   width: 100%;
   padding-top: 2rem;
+  padding-bottom: 8rem;
   min-height: 100vh;
   z-index: 200;
+  .contacts__bottom__wrapper {
+    box-shadow: $box-shadow;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 0.2px solid rgb(164, 164, 164);
+    z-index: 100000000;
+    .contacts__bottom {
+      @include container();
+      @include flexBox(space-between, center, center);
+      padding: 1rem 0;
+      .single__item {
+        @include flexBox(space-between, center, center);
+        gap: 0.3rem;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        button {
+          @include button();
+          background: #333;
+          color: #fff;
+          padding: 0.3rem 0.6rem;
+          outline: 0;
+          font-weight: 700;
+          border-radius: 0.3rem;
+        }
+      }
+    }
+  }
+
   .details__links {
     @include container();
     @include flexBox(flex-start, center, center);
@@ -388,6 +422,9 @@
 }
 
 @include mQ(500px) {
+  .property__details {
+    margin-bottom: 0;
+  }
   .property__details__contents
     .left__contents
     .contact__info

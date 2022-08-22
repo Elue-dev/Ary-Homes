@@ -196,7 +196,7 @@ export default function AddBlogPost() {
         </label>
         <br />
         <label>
-          <span>Blog Post Uploader:</span> 
+          <span>Blog Post Uploader:</span>
           <input
             type="text"
             name="uploader"
@@ -229,7 +229,7 @@ export default function AddBlogPost() {
             <input
               type="text"
               name="tags"
-              value={newTag}
+              value={newTag.toLowerCase()}
               ref={tagsInput}
               onChange={(e) => setNewTag(e.target.value)}
               placeholder="ENTER ONE, THEN CLICK ADD BUTTON"

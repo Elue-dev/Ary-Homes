@@ -197,7 +197,7 @@ export default function ViewProperties() {
                     <td>{name}</td>
                     <td>{location}</td>
                     <td>{addedAt}</td>
-                    <td>NGN {formatCurrency(price)}</td>
+                    <td>NGN {formatCurrency(price)}/night</td>
                     <td className="icons">
                       <Link to={`/admin/add-property/${id}`}>
                         <FaEdit size={20} color="green" />

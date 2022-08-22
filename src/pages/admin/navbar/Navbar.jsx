@@ -59,6 +59,12 @@ export default function Navbar() {
               Users
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/admin/subscribers">
+              <FiUsers />
+              Newsletter subscribers
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>

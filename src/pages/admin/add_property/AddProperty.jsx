@@ -264,8 +264,7 @@ export default function AddProperty() {
           <span>Property Images:</span>
           <p className="images__info">
             <IoInformationCircleOutline />
-            Enter as many images as possible(6 at least), Let the rooms be the
-            last set of images
+            Enter as many images as possible(6 at least)
           </p>
           <input
             type="file"
@@ -275,7 +274,6 @@ export default function AddProperty() {
             onChange={(e) => handleImageChange(e)}
             placeholder="Images of the property"
           />
-
           {imageRef.current && (
             <>
               {imgUploadProgress === 100 ? (
@@ -294,6 +292,12 @@ export default function AddProperty() {
               )}
             </>
           )}
+          <br />
+          <p className="images__info">
+            <IoInformationCircleOutline />
+            Please wait for images to finish uploading before proceeding to fill
+            other fields
+          </p>
         </label>
         <br />
         <label>

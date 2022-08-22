@@ -9,7 +9,9 @@ export default function Trends() {
   const [firstPost, setFirstPost] = useState(null);
 
   useEffect(() => {
-    setBlogPost(data);
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const newArr = shuffle(data);
+    setBlogPost(newArr);
   }, [data]);
 
   useEffect(() => {

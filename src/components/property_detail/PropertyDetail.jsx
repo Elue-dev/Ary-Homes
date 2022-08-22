@@ -182,6 +182,30 @@ export default function PropertyDetail() {
         transition={{ delay: 0.1 }}
       >
         <GoBack />
+        <div className="contacts__bottom__wrapper">
+          <div className="contacts__bottom">
+            <div className="single__item">
+              <img src={admin2} alt={adminUserTwo[0]?.lastName} />
+              <ReactWhatsapp
+                number="234-810-733-9039"
+                message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
+                className="whatsapp"
+              >
+                <span>MESSAGE</span>
+              </ReactWhatsapp>
+            </div>
+            <div className="single__item">
+              <img src={admin1} alt={adminUserOne[0]?.lastName} />
+              <ReactWhatsapp
+                number="234-810-733-9039"
+                message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
+                className="whatsapp"
+              >
+                <span>MESSAGE</span>
+              </ReactWhatsapp>
+            </div>
+          </div>
+        </div>
 
         <p className="details__links">
           <Link to="/">Home</Link>
@@ -304,7 +328,7 @@ export default function PropertyDetail() {
                       </a>
                       <ReactWhatsapp
                         number="234-810-733-9039"
-                        message="Hi, i am from Ary Homes website, i want to make an inquiry.."
+                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />
@@ -322,7 +346,7 @@ export default function PropertyDetail() {
                       </a>
                       <ReactWhatsapp
                         number="234-816-894-5509"
-                        message="Hi, i am from Ary Homes website, i want to make an inquiry.."
+                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />

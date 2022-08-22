@@ -1,0 +1,11 @@
+@import "../../../global_styles/global.scss";
+
+.subscribers__admin {
+  @include container();
+  width: 95%;
+  min-height: 82vh;
+  padding: 1rem 0 0 1rem;
+  h2 {
+    text-align: center;
+  }
+}

@@ -281,7 +281,8 @@ export default function Header() {
         </>
       ) : null}
       {location.pathname.includes("blog") ||
-      location.pathname.includes("user") ? null : (
+      location.pathname.includes("user") ||
+      location.pathname.includes("property") ? null : (
         <div className="nav__bottom">
           <ul>
             <NavLink to="/">
