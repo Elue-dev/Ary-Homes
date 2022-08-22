@@ -9,10 +9,11 @@ import "./otherPosts.scss";
 export default function OtherPosts() {
   const { data } = useFetchCollection("blog");
   const [post, setPost] = useState(null);
-  const [newPost, setNewPost] = useState([]);
 
   useEffect(() => {
-    setPost(data);
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const newArr = shuffle(data);
+    setPost(newArr);
   }, [data]);
 
   return (

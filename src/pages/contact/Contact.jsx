@@ -34,8 +34,8 @@ export default function Contact() {
           {/* <img src={facebook} alt="" className="c_icon" /> */}
         </a>
         <a href="https://www.facebook.com/aryhomes">
-          {/* <SiFacebook className="c_icon" /> */}
-          <img src={facebook} alt="" className="c_icon" />
+          <SiFacebook className="c_icon" />
+          {/* <img src={facebook} alt="" className="c_icon" /> */}
         </a>
         <a href="https://www.instagram.com/aryhomes">
           <BsInstagram className="c_icon" />

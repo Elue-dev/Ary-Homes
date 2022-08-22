@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import Loader from "../utilities/Loader";
@@ -8,13 +8,14 @@ import { WiStars } from "react-icons/wi";
 import "./similarProducts.scss";
 
 export default function SimilarProducts() {
-  const { id } = useParams();
   const [properties, setProperties] = useState([]);
   const { data, loading } = useFetchCollection("properties");
   const { formatCurrency } = useCustomAlert();
 
   useEffect(() => {
-    setProperties(data);
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const newArr = shuffle(data);
+    setProperties(newArr);
   }, [data]);
 
   if (loading) {
@@ -26,33 +27,35 @@ export default function SimilarProducts() {
       <div className="similar__properties__contents">
         <h3>Similar Properties</h3>
         <div className="md__property__grid">
-        {properties.slice(7,10)?.map((property) => {
-          const { id, name, imagesUrl, price, features } = property;
-          return (
-            <Link to={`/property/${name}/${id}`} key={id} >
-              <div className="similar__properties__details">
-                <div className="similar__images">
-                  <img src={imagesUrl[0]} alt={name} />
-                </div>
-                <h2>{name}</h2>
-                <div className="similar__list">
-                  {features.slice(0, 4)?.map((feature, index) => (
-                    <ul key={index}>
-                      <li>
-                        <WiStars />
-                        {feature}
-                      </li>
-                    </ul>
-                  ))}
-                </div>
-                <p className="similar__price">NGN {formatCurrency(price)}/night</p>
-                <br />
-              </div>
-            </Link>
-          );
-        })}
+          {properties &&
+            properties.slice(7, 10)?.map((property) => {
+              const { id, name, imagesUrl, price, features } = property;
+              return (
+                <Link to={`/property/${name}/${id}`} key={id}>
+                  <div className="similar__properties__details">
+                    <div className="similar__images">
+                      <img src={imagesUrl[0]} alt={name} />
+                    </div>
+                    <h2>{name}</h2>
+                    <div className="similar__list">
+                      {features?.slice(0, 4)?.map((feature, index) => (
+                        <ul key={index}>
+                          <li>
+                            <WiStars />
+                            {feature}
+                          </li>
+                        </ul>
+                      ))}
+                    </div>
+                    <p className="similar__price">
+                      NGN {formatCurrency(price)}/night
+                    </p>
+                    <br />
+                  </div>
+                </Link>
+              );
+            })}
         </div>
-       
       </div>
     </div>
   );

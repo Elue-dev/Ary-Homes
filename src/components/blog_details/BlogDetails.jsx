@@ -33,6 +33,7 @@ export default function BlogDetails() {
   const { document } = useFetchDocuments("blog", id);
   const { data } = useFetchCollection("blog");
   const subscribers = useFetchCollection("subscribers");
+  const [related, setRelated] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [pending, setPending] = useState(false);
@@ -113,6 +114,12 @@ export default function BlogDetails() {
       }, 10000);
     }
   };
+
+  useEffect(() => {
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const newArr = shuffle(data);
+    setRelated(newArr);
+  }, [data]);
 
   //to make sure likes is never < 0
   useEffect(() => {
@@ -201,7 +208,7 @@ export default function BlogDetails() {
     } else {
       setError(null);
     }
-    
+
     let subscribersEmails = [];
     subscribers.data.map((mails) => subscribersEmails.push(mails.email));
     if (subscribersEmails.includes(email)) {
@@ -467,7 +474,7 @@ export default function BlogDetails() {
                 )}
               </form>
             </div>
-            {data?.slice(1, 4).map((p) => {
+            {related?.slice(1, 4).map((p) => {
               const { id, imageUrl, title, readTime } = p;
               return (
                 <Link to={`/blog/${id}`} key={id}>
