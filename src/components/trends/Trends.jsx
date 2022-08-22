@@ -21,10 +21,12 @@ export default function Trends() {
   return (
     <section
       className="trends__wrapper"
-      style={{ background: `url(${firstPost?.imageUrl})` }}
+      style={{
+        background: `url(${firstPost?.imageUrl})`,
+      }}
     >
       <div className="trends__contents">
-        <p>Recent Blog Post</p>
+        <p>Trends</p>
         <div>
           <h2>{firstPost?.title}</h2>
           <Link to={`/blog/${firstPost?.id}`}>

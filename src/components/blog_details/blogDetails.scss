@@ -264,8 +264,26 @@
             font-size: 0.9rem;
           }
         }
+        &.fixme {
+          width: 100%;
+          position: fixed;
+          top: 0;
+          right: 2%;
+          z-index: 9;
+          transition: 0.2s ease-in-out;
+        }
       }
     }
+  }
+}
+
+@include mQ(1300px) {
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .right__post__details.fixme {
+    width: 100%;
+    position: initial;
   }
 }
 

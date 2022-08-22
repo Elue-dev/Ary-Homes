@@ -328,7 +328,7 @@ export default function PropertyDetail() {
                       </a>
                       <ReactWhatsapp
                         number="234-905-201-4239"
-                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}`}
+                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />
@@ -346,7 +346,7 @@ export default function PropertyDetail() {
                       </a>
                       <ReactWhatsapp
                         number="234-816-894-5509"
-                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}`}
+                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />

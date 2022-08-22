@@ -2,7 +2,7 @@
 
 .some__blog__posts {
   @include container();
-  padding-top: 4rem;
+  margin-top: 6rem;
   background: rgb(248, 248, 248);
   padding: 1rem;
   h1 {

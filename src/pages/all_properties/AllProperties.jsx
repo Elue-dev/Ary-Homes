@@ -34,7 +34,7 @@ export default function AllProperties() {
 
   // ========pagination==========
   const [currentPage, setCurrentPage] = useState(1);
-  const [propertiesPerPage, setpropertiesPerPage] = useState(6);
+  const [propertiesPerPage] = useState(6);
 
   //get current products
   const indexOfLastProduct = currentPage * propertiesPerPage;

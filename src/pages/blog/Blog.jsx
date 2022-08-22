@@ -57,6 +57,7 @@ export default function Blog() {
   const { user } = useAuth();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const filteredBlogPosts = useSelector(selectFilteredBlogs);
+  const [scrollPage, setScrollpage] = useState(false);
 
   let postsArray = [];
 
@@ -65,6 +66,15 @@ export default function Blog() {
   } else {
     postsArray = filteredBlogPosts;
   }
+
+  const fixNavbar = () => {
+    if (window.scrollY > 120) {
+      setScrollpage(true);
+    } else {
+      setScrollpage(false);
+    }
+  };
+  window.addEventListener("scroll", fixNavbar);
 
   const handleChangeCategory = (c) => {
     filterBlogPosts(c);
@@ -162,6 +172,7 @@ export default function Blog() {
   };
 
   const filterBlogPosts = (cat) => {
+    window.scrollTo(0, 0);
     setCgr(cat);
     dispatch(FILTER_BY_CATEGORY({ blogPosts, category: cat }));
   };
@@ -356,7 +367,11 @@ export default function Blog() {
             </div>
           </div>
         </div>
-        <div className="right__blog__contents">
+        <div
+          className={
+            scrollPage ? "right__blog__contents fixme" : "right__blog__contents"
+          }
+        >
           <div className="post__categories">
             <h1>
               <BiCategory />

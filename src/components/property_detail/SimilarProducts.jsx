@@ -29,7 +29,7 @@ export default function SimilarProducts() {
         <h3>Similar Properties</h3>
         <div className="md__property__grid">
           {properties &&
-            properties.slice(5, 10)?.map((property) => {
+            properties.slice(5, 8)?.map((property) => {
               const { id, name, imagesUrl, price, features, location } =
                 property;
               return (

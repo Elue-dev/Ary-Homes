@@ -12,7 +12,9 @@ export default function SomeBlogPosts() {
   const [blogPosts, setBlogPosts] = useState(null);
 
   useEffect(() => {
-    setBlogPosts(data);
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const newArr = shuffle(data);
+    setBlogPosts(newArr);
   }, [data]);
 
   return (

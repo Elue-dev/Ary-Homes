@@ -375,6 +375,14 @@
           }
         }
       }
+      &.fixme {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 2%;
+        z-index: 9;
+        transition: 0.2s ease-in-out;
+      }
     }
   }
 }
@@ -395,6 +403,9 @@
   }
   .blog .blog__contents .right__blog__contents .post__categories {
     display: none;
+  }
+  .blog .blog__contents .right__blog__contents.fixme {
+    position: initial;
   }
 }
 

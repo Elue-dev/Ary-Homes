@@ -44,9 +44,19 @@ export default function BlogDetails() {
   const [comment, setComment] = useState("");
   const [gender, setGender] = useState("");
   const [liked, setLiked] = useState(false);
+  const [scrollPage, setScrollpage] = useState(false);
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
 
   const getDataId = data?.filter((d) => d.id === id);
+
+  const fixNavbar = () => {
+    if (window.scrollY > 120) {
+      setScrollpage(true);
+    } else {
+      setScrollpage(false);
+    }
+  };
+  window.addEventListener("scroll", fixNavbar);
 
   const likePost = async () => {
     try {
@@ -440,7 +450,11 @@ export default function BlogDetails() {
             </form>
             <OtherPosts />
           </div>
-          <div className="right__post__details">
+          <div
+            className={
+              scrollPage ? "right__post__details fixme" : "right__post__details"
+            }
+          >
             <div className="newsletter">
               <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
               {error && <p className="error alert">{error}</p>}

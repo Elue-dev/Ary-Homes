@@ -6,6 +6,7 @@
   position: relative;
   top: 5.2rem;
   text-align: center;
+  z-index: 100000000000;
   .blog__footer__links {
     @include flexBox(center, center, row);
     @include container();
