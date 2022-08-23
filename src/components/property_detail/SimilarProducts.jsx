@@ -29,7 +29,7 @@ export default function SimilarProducts() {
         <h3>Similar Properties</h3>
         <div className="md__property__grid">
           {properties &&
-            properties.slice(5, 8)?.map((property) => {
+            properties.slice(0, 3)?.map((property) => {
               const { id, name, imagesUrl, price, features, location } =
                 property;
               return (
@@ -61,6 +61,11 @@ export default function SimilarProducts() {
                 </Link>
               );
             })}
+          <Link to="/all-properties">
+            <div className="view__all">
+              <button>View All Properties</button>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

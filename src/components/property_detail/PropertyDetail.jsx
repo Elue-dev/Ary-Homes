@@ -21,6 +21,7 @@ import {
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
+import { MdMoreTime } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
@@ -252,7 +253,7 @@ export default function PropertyDetail() {
                 <b>Date Added:</b> {property.addedAt}
               </p>
               <p>
-                <AiOutlineCalendar />
+                <MdMoreTime />
                 <b>Minimum stay:</b> {property.minumum_stay}{" "}
                 {property.minumum_stay === 1 ? "Night" : "Nights"}
               </p>

@@ -28,7 +28,7 @@ const initialState = {
   location: "",
   availability: "",
   description: "",
-  minumum_stay: "",
+  minumum_stay: 0,
 };
 
 // const status = [
@@ -138,6 +138,17 @@ export default function AddProperty() {
       return;
     }
 
+    if (!property.availability) {
+      setError("please select the availability status for this property");
+      window.setTimeout(() => setError(""), 6000);
+      return;
+    }
+
+    if (property.minumum_stay < 1) {
+      setError("minimum stay cannot be 0 or less, has to be at least 1");
+      window.setTimeout(() => setError(""), 6000);
+      return;
+    }
     if (!property.availability) {
       setError("please select the availability status for this property");
       window.setTimeout(() => setError(""), 6000);
@@ -365,7 +376,7 @@ export default function AddProperty() {
         <label>
           <span>Minimum stay:</span>
           <input
-            type="text"
+            type="number"
             name="minumum_stay"
             value={property && property.minumum_stay}
             onChange={(e) => handleInputChange(e)}

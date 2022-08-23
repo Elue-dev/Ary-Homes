@@ -47,6 +47,17 @@
       }
     }
   }
+  .view__all {
+    @include flexBox(center, center, column);
+    button {
+      @include button();
+      background: #333;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
 }
 
 @include mQ(980px) {
