@@ -18,7 +18,7 @@ export default function Verify() {
   if (user.emailVerified) {
     navigate("/");
     setShowAlert(true);
-    setAlertMessage(`YOUR EMAIL (${user.email}) HAS BEEN VERIFIED.`);
+    setAlertMessage(`Your email(${user.email}) has been verified.`);
     setAlertType("info");
     window.setTimeout(() => {
       setShowAlert(false);
@@ -71,7 +71,12 @@ export default function Verify() {
         <img src={logo} alt="ary homes logo" />
         <p className="verification__message" style={{ marginBottom: "1rem" }}>
           Click on the <b>Proceed</b> button when you have verified your email
-          with the link sent to you
+          with the link sent to you.{" "}<br /><br />
+          <span>
+            If the email goes to your spam folder, click on{" "}
+            <b>'Report as not spam'</b>, this will move the mail from spam to
+            your inbox. then go to your inbox and continue from there.
+          </span>
         </p>
         {error && <p className="alert error">{error}</p>}
         <div className="buttons">

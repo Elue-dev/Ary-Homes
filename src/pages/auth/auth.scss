@@ -246,6 +246,8 @@
         background-color: #111;
         border: 1px solid #111;
         color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
         &:hover {
           background: #333;
         }
@@ -261,6 +263,8 @@
           border: 1px solid rgb(148, 148, 148);
           margin-top: 0.5rem;
           color: #333;
+          font-size: 1.1rem;
+          font-weight: 700;
           &:hover {
             background: #e7e7e7;
           }
@@ -326,7 +330,11 @@
   .auth__modal .auth__contents .buttons .refresh__btn {
     background-color: #111;
     color: #fff;
+    font-size: 1.1rem;
   }
+  .auth__modal .auth__contents .buttons .resend button {
+    font-size: 1.1rem;
+}
   .auth__modal .auth__contents .google__btn {
     font-size: 1rem;
   }

@@ -38,7 +38,7 @@ export default function AllRoutes() {
           }
         />
         <Route
-          path="/verify"
+          path="/user/verify"
           element={
             <ProtectedRoute>
               <Verify />

@@ -227,8 +227,8 @@
             @include button();
             @include flexBox(center, center, row);
             gap: 0.4rem;
-            background: #fff;
-            color: #333;
+            background: #333;
+            color: #fff;
             border: 1px solid #333;
             font-weight: 700;
             border-radius: 0.3rem;

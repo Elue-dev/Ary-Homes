@@ -45,7 +45,7 @@ export default function Signup() {
     if (previousURL.includes("property")) {
       return navigate(-1);
     } else {
-      navigate("/verify");
+      navigate("/user/verify");
     }
   };
 
