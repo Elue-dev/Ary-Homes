@@ -56,7 +56,6 @@ export default function Login() {
       setLoading(true);
       setError("");
       await login(email, password);
-      redirectUser();
       setShowAlert(true);
       setAlertMessage(`You are successfully logged in!`);
       setAlertType("success");
@@ -66,6 +65,7 @@ export default function Login() {
         setAlertType(null);
       }, 6000);
       setLoading(false);
+      redirectUser();
     } catch (error) {
       if (allEmails.includes(email)) {
         setError(
@@ -131,6 +131,7 @@ export default function Login() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      redirectUser();
       setShowAlert(true);
       setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");
@@ -151,9 +152,12 @@ export default function Login() {
         avatar: "",
         createdAt: Timestamp.now().toDate(),
       };
-      const usersRef = collection(database, "users");
-      await addDoc(usersRef, usersConfig);
-      redirectUser();
+      try {
+        const usersRef = collection(database, "users");
+        await addDoc(usersRef, usersConfig);
+      } catch (error) {
+        console.log(error.message);
+      }
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Google sign in failed. (You exited the google sign in)");

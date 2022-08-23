@@ -146,14 +146,17 @@ export default function Signup() {
         firstName,
         lastName,
         phone,
-        email: user.email,
+        email: email,
         joinedAt: date,
         avatar: "",
         createdAt: Timestamp.now().toDate(),
       };
-      const usersRef = collection(database, "users");
-      await addDoc(usersRef, usersConfig);
-      redirectGUser();
+      try {
+        const usersRef = collection(database, "users");
+        await addDoc(usersRef, usersConfig);
+      } catch (error) {
+        console.log(error.message);
+      }
       setShowAlert(true);
       setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");
@@ -162,6 +165,7 @@ export default function Signup() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
+      redirectGUser();
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Google sign in failed. (You exited the google sign in)");

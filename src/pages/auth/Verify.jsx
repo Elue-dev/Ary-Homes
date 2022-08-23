@@ -70,7 +70,7 @@ export default function Verify() {
       <div className="auth__contents verify__contents">
         <img src={logo} alt="ary homes logo" />
         <p className="verification__message" style={{ marginBottom: "1rem" }}>
-          Click on the <b>Proceed</b> button when you have verified your email
+          Verification email has been sent. Click on the <b>Proceed</b> button when you have verified your email
           with the link sent to you.{" "}<br /><br />
           <span>
             If the email goes to your spam folder, click on{" "}
