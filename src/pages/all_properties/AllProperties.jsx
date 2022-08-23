@@ -15,7 +15,6 @@ import { TbHomeOff } from "react-icons/tb";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import { IoClose } from "react-icons/io5";
 import { ImMenu2 } from "react-icons/im";
-import { FaHome } from "react-icons/fa";
 import Pagination from "../../components/pagination/Pagination";
 import Spinner from "../../components/utilities/Spinner";
 import GoBack from "../../components/utilities/GoBack";
@@ -119,6 +118,19 @@ export default function AllProperties() {
       transition={{ delay: 0.1 }}
       className="all__properties"
     >
+      <div className="hero__all-p-wrapper">
+        <div className="hero__all-p">
+          <h2>EXPLORE ARY HOMES PROPERTIES</h2>
+          <label>
+            <input
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by Location or Name..."
+            />
+          </label>
+        </div>
+      </div>
       {showFilter && (
         <div className="layer" onClick={() => setShowFilter(false)} />
       )}
@@ -146,25 +158,25 @@ export default function AllProperties() {
           CLEAR ALL FILTERS
         </button>
       </div>
-      <h2 className="heading_p">
+      {/* <h2 className="heading_p">
         <FaHome />
         Our Properties
-      </h2>
-      <GoBack />
+      </h2> */}
+      {/* <GoBack /> */}
       <div className="all__properties__wrapper">
         <div className={scrollPage ? "menu__filter fix_menu" : "menu__filter"}>
           <ImMenu2 onClick={() => setShowFilter(true)} />
         </div>
         <div className="properties__">
           <label>
-            <input
+            {/* <input
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by location or name..."
-            />
+            /> */}
             <select value={sort} onChange={handleSelectChange}>
-              <option value="latest">Latest</option>
+              <option value="latest">Sorting: Latest</option>
               <option value="lowest-price">Sort by Lowest Price</option>
               <option value="highest-price">Sort by Highest Price</option>
               <option value="Available">Sort: Available</option>

@@ -236,7 +236,7 @@ export default function PropertyDetail() {
             <div className="other__details">
               <p className="availability__texts">
                 <MdBookmarkAdd />
-                <b>Availabiity status:</b>
+                <b>Availability status:</b>
                 <span
                   style={{
                     color:

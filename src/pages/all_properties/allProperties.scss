@@ -1,8 +1,47 @@
 @import "../../global_styles/global.scss";
 .all__properties {
-  @include container();
+  // @include container();
   margin-bottom: 8rem;
-
+  .hero__all-p-wrapper {
+    background: url("../../assets/all-p-compressed.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 30vh;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    color: #333;
+    margin-bottom: 1rem;
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+    .hero__all-p {
+      @include container();
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      label {
+        margin-top: 1rem;
+        input {
+          max-width: 420px;
+          height: 3rem;
+          border-radius: 1.2rem;
+          text-align: center;
+        }
+      }
+    }
+  }
   .property__filters.show {
     left: 0;
   }
@@ -87,6 +126,7 @@
   .all__properties__wrapper {
     display: flex;
     gap: 2rem;
+    @include container();
     .menu__filter {
       font-size: 2.5rem;
       cursor: pointer;
@@ -141,7 +181,7 @@
           }
         }
         select {
-          width: 30%;
+          width: 100%;
           height: 35px;
           border-radius: 0.5rem;
           border: 2px solid #333;
@@ -151,7 +191,7 @@
       }
       .no__property {
         position: absolute;
-        top: 61%;
+        top: 68%;
         left: 54%;
         transform: translate(-50%, -50%);
         text-align: center;
@@ -272,6 +312,10 @@
   .properties__ .prop__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .all__properties .hero__all-p-wrapper .hero__all-p label input {
+    width: 338px;
+    height: 2.8rem;
+  }
 }
 @include mQ(500px) {
   .all__properties .all__properties__wrapper .properties__ .prop__grid {
@@ -372,4 +416,13 @@
   //   width: 100%;
   //   padding: 0.4rem;
   // }
+}
+
+@include mQ(350px) {
+  .all__properties .hero__all-p-wrapper .hero__all-p label input {
+    width: 247px;
+  }
+  .all__properties .hero__all-p-wrapper .hero__all-p h2 {
+    font-size: 1.3rem;
+  }
 }
