@@ -47,9 +47,10 @@
         }
         button {
           @include button();
-          background: #222;
-          color: #fff;
-          padding: 0.3rem 0.6rem;
+          background: transparent;
+          color: #222;
+          border: 1px solid #222;
+          padding: 0.3rem 1rem;
           outline: 0;
           font-weight: 700;
           border-radius: 0.3rem;
@@ -212,6 +213,7 @@
             border: 1px solid #777;
             border-radius: 0.3rem;
             padding: 0.3rem 0.5rem;
+            font-weight: 700;
             :first-child {
               font-size: 2rem;
               margin-right: 0.7rem;
@@ -236,7 +238,7 @@
             cursor: pointer;
             :first-child {
               font-size: 1.5rem;
-              margin-right: 0.7rem;
+              margin-right: 0.2rem;
             }
           }
           .verified__icon {
@@ -430,7 +432,7 @@
     .contact__info
     .contact__info__details
     .admins {
-    gap: 1rem;
+    gap: 1.7rem;
   }
   .property__details__contents
     .left__contents
@@ -445,7 +447,7 @@
     .contact__info__details
     .admins
     a {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .property__details__contents
     .left__contents
@@ -455,14 +457,6 @@
     .whatsapp
     :first-child {
     font-size: 1.3rem;
-  }
-  .property__details__contents
-    .left__contents
-    .contact__info
-    .contact__info__details
-    .admins
-    .admin__image__wrapper {
-    right: -61px;
   }
 }
 
