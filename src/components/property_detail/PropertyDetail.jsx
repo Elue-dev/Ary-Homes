@@ -12,8 +12,9 @@ import { TbBrandWhatsapp } from "react-icons/tb";
 import { AiOutlineCalendar, AiFillTags } from "react-icons/ai";
 import { TiArrowForwardOutline } from "react-icons/ti";
 import { IoLocation } from "react-icons/io5";
-import { ImSortAmountDesc } from "react-icons/im";
-import { GrUserAdmin } from "react-icons/gr";
+import { TbListDetails } from "react-icons/tb";
+import { RiAdminLine } from "react-icons/ri";
+import { AiFillCheckCircle } from "react-icons/ai";
 import {
   MdBookmarkAdd,
   MdOutlineAlternateEmail,
@@ -292,7 +293,8 @@ export default function PropertyDetail() {
                 {property.features.map((feature, index) => (
                   <ul key={index}>
                     <li>
-                      <TiArrowForwardOutline />
+                      {/* <TiArrowForwardOutline /> */}
+                      <AiFillCheckCircle />
                       {feature}.
                     </li>
                   </ul>
@@ -301,7 +303,7 @@ export default function PropertyDetail() {
             </div>
             <div className="property__description">
               <h2>
-                <ImSortAmountDesc />
+                <TbListDetails />
                 Description
               </h2>
               <p>{property.description}</p>
@@ -309,7 +311,7 @@ export default function PropertyDetail() {
             <div className="contact__info">
               <div className="contact__info__details">
                 <h2>
-                  <GrUserAdmin />
+                  <RiAdminLine style={{color:'#888'}} />
                   Contact the administrators
                 </h2>
                 {property.availability === "Not Available" ? (

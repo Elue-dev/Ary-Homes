@@ -456,6 +456,22 @@
     :first-child {
     font-size: 1.3rem;
   }
+  .property__details__contents
+    .left__contents
+    .contact__info
+    .contact__info__details
+    .admins
+    .admin__image__wrapper {
+    right: -61px;
+  }
+}
+
+@include mQ(380px) {
+  .property__details .contacts__bottom__wrapper .contacts__bottom {
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
 }
 
 @include mQ(350px) {
@@ -488,5 +504,25 @@
   }
   .property__details__contents .left__contents .property__details__images img {
     width: 227px;
+  }
+  .property__details
+    .contacts__bottom__wrapper
+    .contacts__bottom
+    .single__item
+    img {
+    width: 27px;
+    height: 30px;
+  }
+  .property__details
+    .contacts__bottom__wrapper
+    .contacts__bottom
+    .single__item
+    button {
+    padding: 0.1rem 0.3rem;
+  }
+  .property__details .contacts__bottom__wrapper .contacts__bottom {
+    justify-content: flex-start;
+    padding: 1rem 0;
+    gap: 2rem;
   }
 }
