@@ -138,14 +138,16 @@
       }
     }
     .property__details__images {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      // display: grid;
+      // grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      overflow-x: auto;
       padding-top: 1rem;
       column-gap: 0.5rem;
       margin-top: 2rem;
       cursor: pointer;
       img {
-        width: 100%;
+        width: 450px;
         height: 280px;
         object-fit: cover;
         object-fit: cover;
@@ -382,7 +384,7 @@
     margin-top: 2rem;
   }
   .property__details__contents .left__contents .property__details__images img {
-    width: 295px;
+    width: 315px;
   }
   .property__details__contents .left__contents .property__features h2 {
     font-size: 1.2rem;

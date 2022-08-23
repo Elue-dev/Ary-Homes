@@ -21,7 +21,7 @@ import {
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
-import { MdMoreTime } from "react-icons/md";
+import { MdMoreTime,  MdSwipe } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
@@ -289,17 +289,19 @@ export default function PropertyDetail() {
               )}
             </div>
             <div className="property__details__images">
-              {property.imagesUrl?.slice(0, 6).map((image, index) => (
-                <div key={index} onClick={() => setShowSlider(true)}>
+              {property.imagesUrl.map((image, index) => (
+                //i removed this onclick from the div below...onClick={() => setShowSlider(true)}
+                <div key={index}>
                   <img src={image} alt={property.name} />
                 </div>
               ))}
             </div>
             <h3
-              onClick={() => setShowSlider(true)}
-              style={{ textDecoration: "underline", cursor: "pointer" }}
+              // onClick={() => setShowSlider(true)}
+              style={{ cursor: "pointer", fontSize: ".9rem" }}
             >
-              <b>See all {property.imagesUrl.length} images</b>
+              <MdSwipe />
+              &nbsp; <b>Swipe to see all {property.imagesUrl.length} images</b>
             </h3>
             <div className="property__features">
               <h2>What does this property offer?</h2>
