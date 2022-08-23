@@ -56,6 +56,7 @@ export default function Login() {
       setLoading(true);
       setError("");
       await login(email, password);
+      redirectUser();
       setShowAlert(true);
       setAlertMessage(`You are successfully logged in!`);
       setAlertType("success");
@@ -65,7 +66,6 @@ export default function Login() {
         setAlertType(null);
       }, 6000);
       setLoading(false);
-      redirectUser();
     } catch (error) {
       if (allEmails.includes(email)) {
         setError(

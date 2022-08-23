@@ -100,10 +100,10 @@ export default function Signup() {
       setError("");
       await signup(email, password);
       await updateName(firstName + " " + lastName);
+      redirectUser();
       storeUsersInDatabase();
       verifyUser();
       setLoading(false);
-      redirectUser();
     } catch (error) {
       if (error.message === "Firebase: Error (auth/email-already-in-use).") {
         setError("Email already in use");
@@ -153,6 +153,7 @@ export default function Signup() {
       };
       const usersRef = collection(database, "users");
       await addDoc(usersRef, usersConfig);
+      redirectGUser();
       setShowAlert(true);
       setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");
@@ -161,7 +162,6 @@ export default function Signup() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
-      redirectGUser();
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Google sign in failed. (You exited the google sign in)");
