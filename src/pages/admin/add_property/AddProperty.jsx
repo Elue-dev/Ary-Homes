@@ -28,12 +28,13 @@ const initialState = {
   location: "",
   availability: "",
   description: "",
+  minumum_stay: "",
 };
 
-const status = [
-  { value: "Available", label: "Available" },
-  { value: "Not Available", label: "Not Available" },
-];
+// const status = [
+//   { value: "Available", label: "Available" },
+//   { value: "Not Available", label: "Not Available" },
+// ];
 
 export default function AddProperty() {
   const { id } = useParams();
@@ -43,7 +44,7 @@ export default function AddProperty() {
     const newState = detectForm(id, initialState, propertiesEdit);
     return newState;
   });
-  const [option, setOption] = useState("");
+  // const [option, setOption] = useState("");
   const [newFeature, setNewFeature] = useState("");
   const [features, setFeatures] = useState([]);
   const featuresInput = useRef(null);
@@ -137,11 +138,12 @@ export default function AddProperty() {
       return;
     }
 
-    if (!option) {
+    if (!property.availability) {
       setError("please select the availability status for this property");
       window.setTimeout(() => setError(""), 6000);
       return;
     }
+
     window.scrollTo(0, 0);
     const today = new Date();
     const date = today.toDateString();
@@ -153,7 +155,8 @@ export default function AddProperty() {
         features,
         price: Number(property.price),
         location: property.location,
-        availability: option.label,
+        minumum_stay: Number(property.minumum_stay),
+        availability: property.availability,
         description: property.description,
         addedAt: date,
         createdAt: Timestamp.now().toDate(),
@@ -180,29 +183,33 @@ export default function AddProperty() {
 
     setLoading(true);
 
-    if (property.imageUrl !== propertiesEdit.imageUrl) {
-      const storageRef = ref(storage, propertiesEdit.imageUrl);
+    if (property.imagesUrl !== propertiesEdit.imagesUrl) {
+      const storageRef = ref(storage, propertiesEdit.imagesUrl);
       deleteObject(storageRef);
     }
 
     if (!property.availability) {
-      setError("please select an availabilty status");
+      setError("Please select an availabilty status");
       window.setTimeout(() => setError(""), 6000);
       return;
     }
 
+    const today = new Date();
+    const date = today.toDateString();
     try {
       const docRef = doc(database, "properties", id);
       setDoc(docRef, {
         name: property.name,
         imagesUrl: property.imagesUrl,
+        features: property.features,
         price: Number(property.price),
-        features,
         location: property.location,
-        availability: option.label,
+        minumum_stay: Number(property.minumum_stay),
+        availability: property.availability,
         description: property.description,
-        createdAt: propertiesEdit.createdAt,
-        editedAt: Timestamp.now().toDate(),
+        addedAt: propertiesEdit.addedAt,
+        editedAt: date,
+        createdAt: Timestamp.now().toDate(),
       });
       window.scrollTo(0, 0);
       setShowAlert(true);
@@ -314,7 +321,7 @@ export default function AddProperty() {
         <br />
         <label>
           <span>Availability of property</span>
-          {/* <select
+          <select
             name="availability"
             value={property.availability}
             onChange={(e) => handleInputChange(e)}
@@ -324,8 +331,8 @@ export default function AddProperty() {
             </option>
             <option value="Available">Available</option>
             <option value="Not Available">Not Available</option>
-          </select> */}
-          <Select
+          </select>
+          {/* <Select
             options={status}
             onChange={(option) => setOption(option)}
             required
@@ -340,7 +347,7 @@ export default function AddProperty() {
                 primary: "rgb(193, 180, 100)",
               },
             })}
-          />
+          /> */}
         </label>
 
         <br />
@@ -352,6 +359,17 @@ export default function AddProperty() {
             value={property && property.location}
             onChange={(e) => handleInputChange(e)}
             placeholder="e.g: Victoria Island"
+            required
+          />
+        </label>
+        <label>
+          <span>Minimum stay:</span>
+          <input
+            type="text"
+            name="minumum_stay"
+            value={property && property.minumum_stay}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="e.g: 1, 2, 3"
             required
           />
         </label>

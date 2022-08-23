@@ -167,6 +167,8 @@ export default function PropertyDetail() {
     return <Spinner />;
   }
 
+  console.log(property);
+
   return (
     <>
       <div className="popup">
@@ -249,6 +251,17 @@ export default function PropertyDetail() {
                 <AiOutlineCalendar />
                 <b>Date Added:</b> {property.addedAt}
               </p>
+              <p>
+                <AiOutlineCalendar />
+                <b>Minimum stay:</b> {property.minumum_stay}{" "}
+                {property.minumum_stay === 1 ? "Night" : "Nights"}
+              </p>
+              {property.editedAt ? (
+                <p>
+                  <AiOutlineCalendar />
+                  <b>Last Edited:</b> {property.editedAt}
+                </p>
+              ) : null}
               <span>
                 <AiFillTags />
                 <b>Ref. ID:</b> {id}
@@ -311,7 +324,7 @@ export default function PropertyDetail() {
             <div className="contact__info">
               <div className="contact__info__details">
                 <h2>
-                  <RiAdminLine style={{color:'#888'}} />
+                  <RiAdminLine style={{ color: "#888" }} />
                   Contact the administrators
                 </h2>
                 {property.availability === "Not Available" ? (

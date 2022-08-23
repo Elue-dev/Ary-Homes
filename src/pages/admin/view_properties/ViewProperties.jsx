@@ -32,6 +32,8 @@ export default function ViewProperties() {
     useCustomAlert();
   const dispatch = useDispatch();
 
+  console.log(properties)
+
   // ========pagination==========
   const [currentPage, setCurrentPage] = useState(1);
   const [propertiesPerPage, setpropertiesPerPage] = useState(5);
