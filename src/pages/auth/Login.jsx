@@ -13,6 +13,9 @@ import { useSelector } from "react-redux";
 import { selectPreviousURL } from "../../redux/slice/authSlice";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import { motion } from "framer-motion";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { database } from "../../firebase/firebase";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -22,7 +25,7 @@ export default function Login() {
   const [visible, setVisible] = useState(false);
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const { login, googleSignIn } = useAuth();
+  const { login, googleSignIn, user } = useAuth();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const previousURL = useSelector(selectPreviousURL);
   const { data } = useFetchCollection("users");
@@ -104,6 +107,27 @@ export default function Login() {
     setLoading(false);
   };
 
+  const storeUsersInDatabase = async () => {
+    const today = new Date();
+    const date = today.toDateString();
+    const usersConfig = {
+      assignedID: uuidv4(),
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: email || user.email,
+      joinedAt: date,
+      avatar: "",
+      createdAt: Timestamp.now().toDate(),
+    };
+    try {
+      const usersRef = collection(database, "users");
+      await addDoc(usersRef, usersConfig);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
@@ -115,6 +139,20 @@ export default function Login() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
+      const today = new Date();
+      const date = today.toDateString();
+      const usersConfig = {
+        assignedID: uuidv4(),
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: user.email,
+        joinedAt: date,
+        avatar: "",
+        createdAt: Timestamp.now().toDate(),
+      };
+      const usersRef = collection(database, "users");
+      await addDoc(usersRef, usersConfig);
       redirectUser();
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {

@@ -93,7 +93,7 @@ export default function Users() {
                   </tr>
                 </thead>
                 <tbody>
-                  {users?.map((user, index) => {
+                  {users && users.map((user, index) => {
                     const { id, email, joinedAt, firstName, lastName } = user;
                     return (
                       <tr key={id}>

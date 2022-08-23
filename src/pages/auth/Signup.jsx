@@ -64,11 +64,10 @@ export default function Signup() {
       assignedID: uuidv4(),
       firstName,
       lastName,
-      phone: "",
-      email: email || user.email,
+      phone,
+      email: email,
       joinedAt: date,
       avatar: "",
-      contributor: false,
       createdAt: Timestamp.now().toDate(),
     };
     try {
@@ -104,7 +103,6 @@ export default function Signup() {
       storeUsersInDatabase();
       verifyUser();
       setLoading(false);
-      // navigate("/verify");
       redirectUser();
     } catch (error) {
       if (error.message === "Firebase: Error (auth/email-already-in-use).") {
@@ -141,7 +139,20 @@ export default function Signup() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      storeUsersInDatabase();
+      const today = new Date();
+      const date = today.toDateString();
+      const usersConfig = {
+        assignedID: uuidv4(),
+        firstName,
+        lastName,
+        phone,
+        email: user.email,
+        joinedAt: date,
+        avatar: "",
+        createdAt: Timestamp.now().toDate(),
+      };
+      const usersRef = collection(database, "users");
+      await addDoc(usersRef, usersConfig);
       setShowAlert(true);
       setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");
