@@ -227,8 +227,8 @@
             @include button();
             @include flexBox(center, center, row);
             gap: 0.4rem;
-            background: #333;
-            color: #fff;
+            background: transparent;
+            color: #333;
             border: 1px solid #333;
             font-weight: 700;
             border-radius: 0.3rem;
@@ -339,8 +339,7 @@
     .prop__grid
     .inner_c
     .more_ {
-      padding: 0.4rem 0.7rem;
-      font-size: .95rem;
+    padding: 0.2rem 0.5rem;
   }
   .all__properties
     .all__properties__wrapper
