@@ -21,7 +21,7 @@ import {
   MdOutlineSubject,
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
-import { MdMoreTime,  MdSwipe } from "react-icons/md";
+import { MdMoreTime, MdSwipe } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
 import Loader from "../utilities/Loader";
@@ -76,7 +76,7 @@ export default function PropertyDetail() {
   const matchBookmarks = bookmarks.data.find(
     (bm) => bm.user_email === user?.email
   );
-  console.log(matchBookmarks)
+
   const matchBookmarkId = bookmarks.data.find((bm) => bm.property.id === id);
 
   useEffect(() => {
@@ -168,8 +168,6 @@ export default function PropertyDetail() {
   if (!property) {
     return <Spinner />;
   }
-
-  console.log(property);
 
   return (
     <>
@@ -293,6 +291,10 @@ export default function PropertyDetail() {
               {property.imagesUrl.map((image, index) => (
                 //i removed this onclick from the div below...onClick={() => setShowSlider(true)}
                 <div key={index}>
+                  <p className="image__length">
+                    {property.imagesUrl.indexOf(image) + 1} /{" "}
+                    {property.imagesUrl.length}{" "}
+                  </p>
                   <img src={image} alt={property.name} />
                 </div>
               ))}

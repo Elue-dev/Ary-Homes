@@ -145,7 +145,18 @@
       padding-top: 1rem;
       column-gap: 0.5rem;
       margin-top: 2rem;
+      position: relative;
       cursor: pointer;
+      .image__length {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 0.6rem;
+        border-top-left-radius: .5rem;
+        min-width: 80px;
+        // margin-left: .3rem;
+        // margin-top: .5rem;
+      }
       img {
         width: 450px;
         height: 280px;

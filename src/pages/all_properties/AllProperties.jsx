@@ -120,7 +120,7 @@ export default function AllProperties() {
     >
       <div className="hero__all-p-wrapper">
         <div className="hero__all-p">
-          <h2>EXPLORE ARY HOMES PROPERTIES</h2>
+          <h2>EXPLORE OUR PROPERTIES</h2>
           <label>
             <input
               type="search"
