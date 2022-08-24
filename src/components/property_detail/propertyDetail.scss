@@ -64,11 +64,12 @@
     @include flexBox(flex-start, center, center);
     gap: 0.3rem;
     padding-bottom: 0.8rem;
+    font-weight: 700;
     a {
       color: #555;
     }
     :last-child {
-      font-weight: 500;
+      font-weight: 700;
     }
   }
 }
@@ -78,11 +79,32 @@
   gap: 1rem;
   .left__contents {
     width: 70%;
-    // animation: slide-right 0.5s ease;
+    .property__details__images {
+      // display: grid;
+      // grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      overflow-x: auto;
+      column-gap: 0.5rem;
+      position: relative;
+      cursor: pointer;
+      .image__length {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 0.6rem;
+        min-width: 80px;
+        font-weight: 700;
+      }
+      img {
+        width: 450px;
+        height: 280px;
+      }
+    }
     .left__contents__card {
       box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.1);
       padding: 1rem;
       margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
       @include flexBox(space-between, center, row);
       .card__name {
         h2 {
@@ -103,6 +125,8 @@
     }
     .other__details {
       line-height: 2.9;
+      border-bottom: .1px solid rgb(190, 190, 190);
+      padding-bottom: .9rem;
       p,
       span {
         @include flexBox(flex-start, center, center);
@@ -137,36 +161,13 @@
         }
       }
     }
-    .property__details__images {
-      // display: grid;
-      // grid-template-columns: repeat(3, 1fr);
-      display: flex;
-      overflow-x: auto;
-      padding-top: 1rem;
-      column-gap: 0.5rem;
-      margin-top: 2rem;
-      position: relative;
-      cursor: pointer;
-      .image__length {
-        position: absolute;
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        padding: 0.6rem;
-        min-width: 80px;
-        // margin-left: .3rem;
-        // margin-top: .5rem;
-      }
-      img {
-        width: 450px;
-        height: 280px;
-        object-fit: cover;
-        object-fit: cover;
-      }
-    }
+   
     .property__features {
-      padding-top: 1rem;
+      padding-top: 1.3rem;
+      padding-bottom: 1.3rem;
+      border-bottom: .1px solid rgb(190, 190, 190);
       h2 {
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.9rem;
       }
       .flex__features {
         @include grid(repeat(2, 1fr), 1rem);
@@ -186,6 +187,7 @@
     .property__description {
       padding: 2rem 0;
       line-height: 1.9;
+      border-bottom: .1px solid rgb(190, 190, 190);
       h2 {
         @include flexBox(flex-start, center, center);
         gap: 0.3rem;
@@ -196,7 +198,7 @@
       }
     }
     .contact__info {
-      padding-bottom: 2rem;
+      padding: 2.5rem 0;
       .contact__info__details {
         h2 {
           @include flexBox(flex-start, center, center);
@@ -316,7 +318,7 @@
     background: rgb(254, 254, 254);
     border: 1px dashed rgb(233, 233, 233);
     padding: 1rem;
-    margin: 1.5rem 0;
+    margin: 2.8rem 0;
     h3 {
       display: block;
       @include flexBox(flex-start, center, center);

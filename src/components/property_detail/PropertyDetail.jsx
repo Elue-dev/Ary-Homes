@@ -10,7 +10,6 @@ import {
 } from "react-icons/bs";
 import { TbBrandWhatsapp } from "react-icons/tb";
 import { AiOutlineCalendar, AiFillTags } from "react-icons/ai";
-import { TiArrowForwardOutline } from "react-icons/ti";
 import { IoLocation } from "react-icons/io5";
 import { TbListDetails } from "react-icons/tb";
 import { RiAdminLine } from "react-icons/ri";
@@ -24,7 +23,6 @@ import { BiChevronsRight } from "react-icons/bi";
 import { MdMoreTime, MdSwipe } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import "./propertyDetail.scss";
-import Loader from "../utilities/Loader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../utilities/GoBack";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -214,8 +212,28 @@ export default function PropertyDetail() {
           <Link to="/">Home</Link>
           <BiChevronsRight /> <span>{property?.name}</span>
         </p>
+
         <div className="property__details__contents">
           <div className="left__contents">
+            <div className="property__details__images">
+              {property.imagesUrl.map((image, index) => (
+                //i removed this onclick from the div below...onClick={() => setShowSlider(true)}
+                <div key={index}>
+                  <p className="image__length">
+                    {property.imagesUrl.indexOf(image) + 1} /{" "}
+                    {property.imagesUrl.length}{" "}
+                  </p>
+                  <img src={image} alt={property.name} />
+                </div>
+              ))}
+            </div>
+            <h3
+              // onClick={() => setShowSlider(true)}
+              style={{ cursor: "pointer", fontSize: ".9rem" }}
+            >
+              <MdSwipe />
+              &nbsp; <b>Swipe to see all {property.imagesUrl.length} images</b>
+            </h3>
             <div
               className={
                 fixPropName
@@ -287,25 +305,7 @@ export default function PropertyDetail() {
                 </p>
               )}
             </div>
-            <div className="property__details__images">
-              {property.imagesUrl.map((image, index) => (
-                //i removed this onclick from the div below...onClick={() => setShowSlider(true)}
-                <div key={index}>
-                  <p className="image__length">
-                    {property.imagesUrl.indexOf(image) + 1} /{" "}
-                    {property.imagesUrl.length}{" "}
-                  </p>
-                  <img src={image} alt={property.name} />
-                </div>
-              ))}
-            </div>
-            <h3
-              // onClick={() => setShowSlider(true)}
-              style={{ cursor: "pointer", fontSize: ".9rem" }}
-            >
-              <MdSwipe />
-              &nbsp; <b>Swipe to see all {property.imagesUrl.length} images</b>
-            </h3>
+
             <div className="property__features">
               <h2>What does this property offer?</h2>
               <div className="flex__features">
