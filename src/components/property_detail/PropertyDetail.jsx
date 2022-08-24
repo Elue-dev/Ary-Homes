@@ -347,14 +347,14 @@ export default function PropertyDetail() {
                         <BsTelephoneForwardFill />
                         09052014239
                       </a>
-                      <ReactWhatsapp
+                      {/* <ReactWhatsapp
                         number="234-905-201-4239"
                         message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />
                         <span>MESSAGE</span>
-                      </ReactWhatsapp>
+                      </ReactWhatsapp> */}
                     </div>
                     <div className="admin__one">
                       <div className="admin__image__wrapper">
@@ -365,14 +365,14 @@ export default function PropertyDetail() {
                         <BsTelephoneForwardFill />
                         08168945509
                       </a>
-                      <ReactWhatsapp
+                      {/* <ReactWhatsapp
                         number="234-816-894-5509"
                         message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
                         className="whatsapp"
                       >
                         <TbBrandWhatsapp />
                         <span>MESSAGE</span>
-                      </ReactWhatsapp>
+                      </ReactWhatsapp> */}
                     </div>
                   </div>
                 )}

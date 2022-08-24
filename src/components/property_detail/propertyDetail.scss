@@ -223,8 +223,9 @@
             @include flexBox(flex-start, center, row);
             display: block;
             margin-bottom: 0.4rem;
-            border: 1px solid #777;
+            border: 1px solid #333;
             border-radius: 0.3rem;
+            color: #333;
             padding: 0.3rem 0.5rem;
             font-weight: 700;
             :first-child {
