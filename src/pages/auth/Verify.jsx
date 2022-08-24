@@ -18,7 +18,7 @@ export default function Verify() {
   if (user.emailVerified) {
     navigate("/");
     setShowAlert(true);
-    setAlertMessage(`Your email(${user.email}) has been verified.`);
+    setAlertMessage(`Your email (${user.email}) has been verified.`);
     setAlertType("info");
     window.setTimeout(() => {
       setShowAlert(false);

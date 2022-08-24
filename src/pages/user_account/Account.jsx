@@ -28,7 +28,7 @@ import { useNavigate } from "react-router-dom";
 import GoBack from "../../components/utilities/GoBack";
 import Notiflix from "notiflix";
 import BeatLoader from "react-spinners/BeatLoader";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function Account() {
   const [photo] = useState("");
@@ -101,8 +101,8 @@ export default function Account() {
 
   const updateUserEmail = async () => {
     try {
-      await updateMail(email);
-      setEmail(email);
+      await updateMail(email || user.email);
+      setEmail(email || user.email);
     } catch (error) {
       setShowAlert(true);
       setAlertMessage(error.message);
@@ -117,7 +117,7 @@ export default function Account() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const storageRef = ref(storage, `Ary Homes/${Date.now()}${file.name}`);
+    const storageRef = ref(storage, `AryHomesAvatars/${Date.now()}${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -180,7 +180,7 @@ export default function Account() {
       });
       setLoading(false);
       setShowAlert(true);
-      setAlertMessage("PROFILE PICTURE UPDATED SUCCESSFULLY!");
+      setAlertMessage("Profile picture updated!");
       setShowFields(false);
       setAlertType("success");
       window.setTimeout(() => {
@@ -208,20 +208,21 @@ export default function Account() {
     try {
       updateUserEmail();
       const docRef = doc(database, "users", userID.userId);
-      setDoc(docRef, {
-        assignedID: uuidv4(),
+      const today = new Date();
+      const date = today.toDateString();
+      updateDoc(docRef, {
         firstName,
         lastName,
         phone,
         avatar: "",
         joinedAt: getUser.joinedAt,
         email: email || user.email,
-        editedAt: Timestamp.now().toDate(),
-        createdAt: user.metadata.creationTime,
+        editedAt: date,
+        createdAt: Timestamp.now().toDate(),
       });
       setShowAlert(true);
       setAlertMessage(
-        `YOUR ACCOUNT CREDENTIALS HAVE BEEN SUCCESSFULLY UPDATED`
+        `Your account credentials have been successfully updated`
       );
       setAlertType("success");
       window.setTimeout(() => {
@@ -231,7 +232,7 @@ export default function Account() {
       }, 6000);
     } catch (error) {
       setShowAlert(true);
-      setAlertMessage("AN UNEXPECTED ERROR OCCURED :(");
+      setAlertMessage("An unexpected error occured, this can happen when you sign in with google and not credentials");
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -269,9 +270,12 @@ export default function Account() {
   ]);
 
   return (
-    <motion.section className="user__account__info" initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: .1 }}>
+    <motion.section
+      className="user__account__info"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <GoBack />
       <div className="user__account__info__contents">
         <div className="account__info__desc">

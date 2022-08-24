@@ -76,6 +76,7 @@ export default function PropertyDetail() {
   const matchBookmarks = bookmarks.data.find(
     (bm) => bm.user_email === user?.email
   );
+  console.log(matchBookmarks)
   const matchBookmarkId = bookmarks.data.find((bm) => bm.property.id === id);
 
   useEffect(() => {
