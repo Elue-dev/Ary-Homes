@@ -60,3 +60,50 @@
     margin-bottom: 0.3rem;
   }
 }
+.popup {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #000;
+    opacity: 0.97;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: 0.2s ease-in-out;
+    .alert_box {
+      position: relative;
+      padding: 32px;
+      width: 100%;
+      max-width: 640px;
+      background: #fff;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      button {
+        background-color: #ae8625;
+        color: #fff;
+        padding: 0.4rem 0.6rem;
+        margin-right: 0.5rem;
+        border: 0;
+        outline: 0;
+        border-radius: 0.3rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .dismiss {
+        background: transparent;
+        color: #333;
+        border: 1px solid #000;
+      }
+    }
+  }
+  .show {
+    transform: scale(1);
+  }
+  
