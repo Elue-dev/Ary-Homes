@@ -42,7 +42,7 @@ export default function Properties() {
         </h2>
         <Link to="/all-properties">View all properties</Link>
         <div className="properties__contents">
-          {properties.slice(0, 4)?.map((property) => {
+          {properties.slice(5,9)?.map((property) => {
             const {
               id,
               name,
@@ -55,7 +55,10 @@ export default function Properties() {
             } = property;
             return (
               <div key={id}>
-                <Link to={`/property/${name}/${id}`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/property/${name}/${id}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="properties__details">
                     <div className="properties__details__image">
                       <img src={imagesUrl[0]} alt={name} />

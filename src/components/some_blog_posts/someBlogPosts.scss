@@ -3,7 +3,7 @@
 .some__blog__posts {
   @include container();
   margin-top: 6rem;
-  background: rgb(248, 248, 248);
+  // background: rgb(248, 248, 248);
   padding: 1rem;
   h1 {
     @include flexBox(flex-start, center, row);
@@ -17,14 +17,17 @@
     @include grid(repeat(4, 1fr), 0.9rem);
     .some__posts__det {
       margin-top: 1rem;
+      box-shadow: $box-shadow;
+      border-radius: 0.3rem;
+      overflow: hidden;
       .s_img {
         position: relative;
         img {
           width: 100%;
           height: 230px;
           object-fit: cover;
-          border-radius: 0.6rem;
           border: 0.5px solid rgb(200, 200, 200);
+          overflow: hidden;
         }
         p {
           position: absolute;
@@ -46,14 +49,16 @@
         }
       }
       .s_content {
+        padding: 0.4rem 0.8rem 1rem 0.8rem;
         h3 {
           font-size: 1.2rem;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.7rem;
         }
         .b_content {
           @include flexBox(space-between, center, row);
           color: rgb(126, 126, 126);
           p {
+            font-size: 0.9rem;
             @include flexBox(flex-start, center, row);
             gap: 0.2rem;
           }

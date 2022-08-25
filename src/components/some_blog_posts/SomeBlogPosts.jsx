@@ -27,7 +27,7 @@ export default function SomeBlogPosts() {
           </h1>
         )}
         <div className="p_grid">
-          {blogPosts?.slice(1, 5).map((post) => {
+          {blogPosts?.slice(3, 7).map((post) => {
             const { id, addedAt, readTime, title, imageUrl, category } = post;
             return (
               <Link key={id} to={`/blog/${id}`}>
