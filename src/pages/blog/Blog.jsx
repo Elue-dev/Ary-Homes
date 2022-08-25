@@ -361,7 +361,7 @@ export default function Blog() {
               </ReactWhatsapp> */}
               <ReactWhatsapp
                 number="234-810-733-9039"
-                message="Hi, i am from Ary Homes website, i want to become a contributor so i can add blog posts..."
+                message="Hi, i am from Ary Homes website, i want to become a contributor and add blog posts, sending the details of the blog posts now..."
                 className="blog__chat"
               >
                 <span>Send a message</span>

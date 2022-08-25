@@ -339,7 +339,7 @@
           @include button();
           color: #fff;
           background: #333;
-          font-weight: 600;
+          font-weight: 700;
           font-size: 1.1rem;
           padding: 0.2rem 0.5rem;
           width: 100%;
@@ -370,6 +370,8 @@
           font-weight: 700;
           margin-top: 0.7rem;
           width: 80%;
+          font-size: 1.1rem;
+          text-transform: uppercase;
         }
       }
       .newsletter {
@@ -401,6 +403,7 @@
             color: #fff;
             border: 1px solid rgb(131, 131, 131);
             font-weight: 700;
+            font-size: 1.1rem;
             margin-top: 0.7rem;
             display: block;
             width: 100%;
