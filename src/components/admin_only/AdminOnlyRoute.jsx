@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectEmail } from "../../redux/slice/authSlice";
+import "./adminOnlyRoute.scss";
 
 export default function AdminOnlyRoute({ children }) {
   const userEmail = useSelector(selectEmail);
@@ -12,10 +13,10 @@ export default function AdminOnlyRoute({ children }) {
     return children;
   } else {
     return (
-      <section style={{ minHeight: "80vh" }}>
+      <section style={{ minHeight: "80vh" }} className="admin__only">
         <div className="container">
           <h2>PERMISSION DENIED</h2>
-          <p>This page can only be viewed by an admin</p>
+          <p>This page can only be viewed by an admin.</p>
           <br />
           <Link to="/">
             <button className="--btn --btn-primary">&larr; Back to Home</button>
