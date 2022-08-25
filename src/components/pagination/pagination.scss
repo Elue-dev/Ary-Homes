@@ -1,38 +1,37 @@
-@import '../../global_styles/global.scss';
+@import "../../global_styles/global.scss";
 
 .pagination {
-    list-style: none;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 2px solid #ccc;
-  
+  list-style: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .hidden {
+    display: none;
+  }
+
+  li {
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    min-width: 2.4rem;
+    height: 2rem;
+    padding: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
-  
-    .hidden {
-      display: none;
-    }
-  
-    li {
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      min-width: 2.4rem;
-      height: 2rem;
-      padding: 3px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-    p {
-      margin-left: 1rem;
-      .page {
-        color: $mainColor;
-      }
+    cursor: pointer;
+  }
+  p {
+    margin-left: 1rem;
+    .page {
+      color: $mainColor;
     }
   }
-  .active {
-    background-color: $mainColor;
-    color: #fff;
-  }
+}
+.active {
+  background-color: $mainColor;
+  color: #fff;
+}

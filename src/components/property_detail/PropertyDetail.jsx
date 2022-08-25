@@ -36,12 +36,16 @@ import Slider from "./Slider";
 import Footer from "../footer/Footer";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { ADD_TO_BOOKMARKS } from "../../redux/slice/propertySlice";
+import {
+  ADD_TO_BOOKMARKS,
+  selectProperties,
+} from "../../redux/slice/propertySlice";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import { BeatLoader } from "react-spinners";
 import Spinner from "../../components/utilities/Spinner";
+import { SAVE_URL } from "../../redux/slice/authSlice";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -111,10 +115,12 @@ export default function PropertyDetail() {
     }
   }, [copied]);
 
+  const url = window.location.href;
   const addToBookmarks = async (p) => {
     setLoading(true);
 
     if (!user) {
+      dispatch(SAVE_URL(url));
       navigate("/user/login");
       setLoading(false);
       setShowAlert(true);
@@ -271,8 +277,15 @@ export default function PropertyDetail() {
               </p>
               <p>
                 <MdMoreTime />
-                <b>Minimum stay:</b> {property.minumum_stay}{" "}
-                {property.minumum_stay === 1 ? "Night" : "Nights"}
+                <b>Minimum stay:</b>{" "}
+                {property.minumum_stay === "N/A" ? (
+                  <p>N/A</p>
+                ) : (
+                  <>
+                    {property.minumum_stay}{" "}
+                    {property.minumum_stay === "1" ? "Night" : "Nights"}
+                  </>
+                )}
               </p>
               {property.editedAt ? (
                 <p>

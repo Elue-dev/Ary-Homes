@@ -1,0 +1,130 @@
+@import "../../../global_styles/global.scss";
+
+.post__info {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.add__a__blog__post {
+  background: rgb(233, 233, 233);
+  @include flexBox(center, center, column);
+  form {
+    width: 500px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: #fff;
+    width: 500px;
+    padding: 1.5rem;
+    label {
+      display: block;
+      span {
+        display: block;
+        font-weight: 600;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 0.5px solid rgb(134, 134, 134);
+        border-radius: 0.3rem;
+        outline: 0;
+        font-size: 1rem;
+      }
+      select {
+        cursor: pointer;
+      }
+      textarea {
+        line-height: 1.5;
+        font-family: sans-serif;
+      }
+    }
+    .upload__btn {
+      background: #222;
+      color: #fff;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      margin-top: 0.3rem;
+      width: 50px;
+      cursor: pointer;
+    }
+    .success__msg {
+      @include flexBox(left, center, row);
+      gap: 0.4rem;
+      background: rgb(19, 178, 19);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.3rem;
+      margin-top: 0.3rem;
+      :first-child {
+        color: #fff;
+      }
+    }
+    .features {
+      display: flex;
+      gap: 0.2rem;
+      .features__btn {
+        background: #222;
+        color: #fff;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.3rem;
+        border: 0;
+        outline: 0;
+        font-weight: 700;
+        width: 80px;
+        cursor: pointer;
+      }
+    }
+    .images__info,
+    .feature__info {
+      @include flexBox(left, center, row);
+      gap: 0.3rem;
+      background: rgb(193, 180, 100);
+      color: #fff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .features__list {
+      background: #f4f4f4;
+      padding: 0.8rem;
+    }
+    .submit__property__btn {
+      background: #222;
+      color: #fff;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+  .progress {
+    background-color: #aaa;
+    border: 1px solid transparent;
+    border-radius: 0.2rem;
+    .progress-bar {
+      background-color: rgb(19, 178, 19);
+      border: 1px solid transparent;
+      border-radius: 0.2rem;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0 1rem;
+    }
+  }
+}
+
+@include mQ(600px) {
+  .add__a__blog__post form {
+    width: 100%;
+  }
+}

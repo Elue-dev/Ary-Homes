@@ -36,9 +36,11 @@ import {
 import BlogFooter from "./blog_footer/BlogFooter";
 // import Bounce from "react-reveal/Bounce";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import SavedBlog from "./save_blog/SaveBlog";
+import { SAVE_BLOG_URL } from "../../redux/slice/authSlice";
+import Pagination from "../../components/pagination/Pagination";
 
 export default function Blog() {
   const { data, loading } = useFetchCollection("blog");
@@ -58,6 +60,7 @@ export default function Blog() {
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const filteredBlogPosts = useSelector(selectFilteredBlogs);
   const [scrollPage, setScrollpage] = useState(false);
+  const navigate = useNavigate();
 
   let postsArray = [];
 
@@ -67,14 +70,14 @@ export default function Blog() {
     postsArray = filteredBlogPosts;
   }
 
-  const fixNavbar = () => {
-    if (window.scrollY > 120) {
-      setScrollpage(true);
-    } else {
-      setScrollpage(false);
-    }
-  };
-  window.addEventListener("scroll", fixNavbar);
+  // const fixNavbar = () => {
+  //   if (window.scrollY > 120) {
+  //     setScrollpage(true);
+  //   } else {
+  //     setScrollpage(false);
+  //   }
+  // };
+  // window.addEventListener("scroll", fixNavbar);
 
   const handleChangeCategory = (c) => {
     filterBlogPosts(c);
@@ -190,6 +193,28 @@ export default function Blog() {
     }
   };
 
+  const url = window.location.href;
+  const handleRedirect = () => {
+    if (!user) {
+      dispatch(SAVE_BLOG_URL(url));
+      navigate("/user/login");
+    } else {
+      navigate("/blog/add-blog-post");
+    }
+  };
+
+  // ========pagination==========
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
+  //get current products
+  const indexOfLastProduct = currentPage * postsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - postsPerPage;
+  const currentPosts = postsArray.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
   return (
     <motion.section
       className="blog"
@@ -270,9 +295,114 @@ export default function Blog() {
               </Link>
             </div>
           )}
+          <div className="add__blog__post" onClick={handleRedirect}>
+            <button>Add Blog Post</button>
+          </div>
         </div>
       </div>
       <div className="blog__contents">
+        <div className="right__blog__contents">
+          <div className="post__categories">
+            <h1>
+              <BiCategory />
+              CATEGORIES
+            </h1>
+            {postsCategories.map((category, index) => (
+              <ul key={index} className="categories__list">
+                <li
+                  onClick={() => filterBlogPosts(category)}
+                  className={`${cgr}` === category ? "cat__active" : null}
+                >
+                  &#8250; {category}
+                </li>
+              </ul>
+            ))}
+          </div>
+          <h1 className="add__post">
+            <MdLibraryAdd />
+            ADD BLOG POST
+          </h1>
+          <p>
+            Wish To Add A Blog Post? You can add a post to Ary Homes blog by
+            becoming a contributor. All you have to do is sign in, and you can
+            add posts.
+          </p>
+          <div className="add__blog__post_p" onClick={handleRedirect}>
+            <button>Add Blog Post</button>
+          </div>
+          Alternatively you can send details of the blog post to us and we would
+          post it in your name. If you are interested in becoming a contributor,
+          click on the button below to proceed.
+          {display && (
+            <motion.button
+              onClick={handleShowLines}
+              className="contributor__btn"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.01 }}
+            >
+              I want to become a contributor
+            </motion.button>
+          )}
+          {showLines && (
+            <motion.div
+              className="con__buttons"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.07 }}
+            >
+              <BsArrowLeft onClick={handleBack} />
+              {/* <ReactWhatsapp
+                number="234-905-201-4239"
+                message="Hi, i am from Ary Homes website, i want to become a contributor so i can add blog posts..."
+                className="blog__chat"
+              >
+                <span>Message line 1</span>
+              </ReactWhatsapp> */}
+              <ReactWhatsapp
+                number="234-810-733-9039"
+                message="Hi, i am from Ary Homes website, i want to become a contributor so i can add blog posts..."
+                className="blog__chat"
+              >
+                <span>Send a message</span>
+              </ReactWhatsapp>
+            </motion.div>
+          )}
+          <br />
+          <div className="newsletter">
+            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+            {error && <p className="error alert">{error}</p>}
+            <form onSubmit={handleSubscribe}>
+              <label>
+                <span>Name:</span>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="First or Full name"
+                />
+              </label>
+              <label>
+                <span>Email:</span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email"
+                />
+              </label>
+              {pending ? (
+                <button type="button" className="subscribe__btn" disabled>
+                  LOADING...
+                </button>
+              ) : (
+                <button type="submit" className="subscribe__btn">
+                  SUBSRIBE
+                </button>
+              )}
+            </form>
+          </div>
+        </div>
         <div className="left__blog__contents">
           <div className="blog__posts">
             <h1>
@@ -291,7 +421,7 @@ export default function Blog() {
                 />
               ) : (
                 <>
-                  {postsArray.map((post) => {
+                  {currentPosts.map((post) => {
                     const {
                       id,
                       imageUrl,
@@ -365,107 +495,14 @@ export default function Blog() {
                 </>
               )}
             </div>
-          </div>
-        </div>
-        <div
-          className={
-            scrollPage ? "right__blog__contents fixme" : "right__blog__contents"
-          }
-        >
-          <div className="post__categories">
-            <h1>
-              <BiCategory />
-              CATEGORIES
-            </h1>
-            {postsCategories.map((category, index) => (
-              <ul key={index} className="categories__list">
-                <li
-                  onClick={() => filterBlogPosts(category)}
-                  className={`${cgr}` === category ? "cat__active" : null}
-                >
-                  &#8250; {category}
-                </li>
-              </ul>
-            ))}
-          </div>
-          <h1 className="add__post">
-            <MdLibraryAdd />
-            ADD BLOG POST
-          </h1>
-          <p>
-            Wish To Add A Blog Post? You can add a post to Ary Homes blog by
-            becoming a contributor. Send details of the blog post to us and we
-            would post it in your name. If you are interested in becoming a
-            contributor, click on the button below to proceed.
-          </p>
-          {display && (
-            <motion.button
-              onClick={handleShowLines}
-              className="contributor__btn"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.01 }}
-            >
-              I want to become a contributor
-            </motion.button>
-          )}
-          {showLines && (
-            <motion.div
-              className="con__buttons"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.07 }}
-            >
-              <BsArrowLeft onClick={handleBack} />
-              <ReactWhatsapp
-                number="234-905-201-4239"
-                message="Hi, i am from Ary Homes website, i want to become a contributor so i can add blog posts..."
-                className="blog__chat"
-              >
-                <span>Message line 1</span>
-              </ReactWhatsapp>
-              <ReactWhatsapp
-                number="234-810-733-9039"
-                message="Hi, i am from Ary Homes website, i want to become a contributor so i can add blog posts..."
-                className="blog__chat"
-              >
-                <span>Message line 2</span>
-              </ReactWhatsapp>
-            </motion.div>
-          )}
-          <br />
-          <div className="newsletter">
-            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
-            {error && <p className="error alert">{error}</p>}
-            <form onSubmit={handleSubscribe}>
-              <label>
-                <span>Name:</span>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="First or Full name"
-                />
-              </label>
-              <label>
-                <span>Email:</span>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
-                />
-              </label>
-              {pending ? (
-                <button type="button" className="subscribe__btn" disabled>
-                  LOADING...
-                </button>
-              ) : (
-                <button type="submit" className="subscribe__btn">
-                  SUBSRIBE
-                </button>
-              )}
-            </form>
+            {postsArray.length ? (
+              <Pagination
+                propertiesPerPage={postsPerPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                totalProducts={postsArray.length}
+              />
+            ) : null}
           </div>
         </div>
       </div>

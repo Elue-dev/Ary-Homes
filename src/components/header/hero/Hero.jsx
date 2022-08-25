@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <div className="hero">
       <div className="hero__contents">
-        <h1>Luxury Shortlet Apartments</h1>
+        <h1>Luxury Shortlet Apartment</h1>
         <p>
           Let's find the perfect place for you{user?.displayName && ","}
           <span>&nbsp;{name ? modifiedName && `${shortenedName}` : null}</span>

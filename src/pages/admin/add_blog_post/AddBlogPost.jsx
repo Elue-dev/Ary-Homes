@@ -255,7 +255,7 @@ export default function AddBlogPost() {
             name="description"
             value={blogPost && blogPost.description}
             onChange={(e) => handleInputChange(e)}
-            placeholder="e.g: A beautiful 4 bedroom apartment with all en-suite private rooms, with 2 living room and a kitchen available for guests use. Apartment is in the centre of Abuja close to banks, Malls, shopping complex. It’s at a no distance from all key areas of... "
+            placeholder="Enter post description "
             rerquiredcols="30"
             rows="10"
             required

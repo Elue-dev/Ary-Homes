@@ -16,7 +16,7 @@ import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../../components/utilities/GoBack";
-import { selectPreviousURL } from "../../redux/slice/authSlice";
+import { selectBlogURL, selectPreviousURL } from "../../redux/slice/authSlice";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
@@ -34,6 +34,7 @@ export default function Signup() {
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const { updateName, signup, googleSignIn, user } = useAuth();
   const previousURL = useSelector(selectPreviousURL);
+  const blogURL = useSelector(selectBlogURL);
 
   const verifyUser = () => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -43,7 +44,9 @@ export default function Signup() {
 
   const redirectUser = () => {
     if (previousURL.includes("property")) {
-      return navigate(-1);
+      return navigate(-2);
+    } else if (blogURL.includes("blog")) {
+      navigate("/blog");
     } else {
       navigate("/user/verify");
     }
@@ -51,7 +54,9 @@ export default function Signup() {
 
   const redirectGUser = () => {
     if (previousURL.includes("property")) {
-      return navigate(-1);
+      return navigate(-2);
+    } else if (blogURL.includes("blog")) {
+      navigate("/blog");
     } else {
       navigate("/");
     }
