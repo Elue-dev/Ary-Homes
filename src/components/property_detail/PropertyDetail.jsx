@@ -21,7 +21,7 @@ import {
 } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
 import { MdMoreTime, MdSwipe } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaRegEdit } from "react-icons/fa";
 import "./propertyDetail.scss";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import GoBack from "../utilities/GoBack";
@@ -289,7 +289,7 @@ export default function PropertyDetail() {
               </p>
               {property.editedAt ? (
                 <p>
-                  <AiOutlineCalendar />
+                  <FaRegEdit />
                   <b>Last Edited:</b> {property.editedAt}
                 </p>
               ) : null}

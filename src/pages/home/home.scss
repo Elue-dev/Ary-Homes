@@ -1,3 +1,16 @@
+@import '../../global_styles/global.scss';
+
 .home {
   animation: slide-up 0.5s ease;
+}
+
+.progress__bar__animate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: $mainColor;
+  transform-origin: 0%;
+  z-index: 10000000000;
 }

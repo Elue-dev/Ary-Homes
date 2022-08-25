@@ -6,6 +6,17 @@
   width: 100%;
 }
 
+.progress__bar__animate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: $mainColor;
+  transform-origin: 0%;
+  z-index: 10000000000;
+}
+
 .blog {
   width: 100%;
   min-height: 100vh;
