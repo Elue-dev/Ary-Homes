@@ -488,6 +488,9 @@
   .blog .blog__contents .left__blog__contents .blog__buttons {
     display: block;
   }
+  .blog .blog__contents .right__blog__contents {
+    margin-top: 0.5rem;
+  }
 }
 
 @include mQ(550px) {
