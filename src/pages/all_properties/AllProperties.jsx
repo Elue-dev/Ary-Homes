@@ -158,23 +158,12 @@ export default function AllProperties() {
           CLEAR ALL FILTERS
         </button>
       </div>
-      {/* <h2 className="heading_p">
-        <FaHome />
-        Our Properties
-      </h2> */}
-      {/* <GoBack /> */}
       <div className="all__properties__wrapper">
         <div className={scrollPage ? "menu__filter fix_menu" : "menu__filter"}>
           <ImMenu2 onClick={() => setShowFilter(true)} />
         </div>
         <div className="properties__">
           <label>
-            {/* <input
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by location or name..."
-            /> */}
             <select value={sort} onChange={handleSelectChange}>
               <option value="latest">Sorting: Latest</option>
               <option value="lowest-price">Sort by Lowest Price</option>
@@ -185,12 +174,15 @@ export default function AllProperties() {
           </label>
           {search && (
             <>
-              <h3>
-                Search results for{" "}
-                <b>
-                  <em>'{search}'</em>
-                </b>{" "}
-              </h3>
+              {filteredProperties.length !== 0 && (
+                <h3>
+                  Search results for{" "}
+                  <b>
+                    <em>'{search}'</em>
+                  </b>{" "}
+                </h3>
+              )}
+
               {filteredProperties.length !== 0 && (
                 <h3>
                   <>

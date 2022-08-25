@@ -28,7 +28,7 @@ const initialState = {
   location: "",
   availability: "",
   description: "",
-  minumum_stay: 0,
+  minumum_stay: "",
 };
 
 // const status = [
@@ -144,11 +144,6 @@ export default function AddProperty() {
       return;
     }
 
-    if (property.minumum_stay < 1) {
-      setError("minimum stay cannot be 0 or less, has to be at least 1");
-      window.setTimeout(() => setError(""), 6000);
-      return;
-    }
     if (!property.availability) {
       setError("please select the availability status for this property");
       window.setTimeout(() => setError(""), 6000);
@@ -166,7 +161,7 @@ export default function AddProperty() {
         features,
         price: Number(property.price),
         location: property.location,
-        minumum_stay: Number(property.minumum_stay),
+        minumum_stay: property.minumum_stay.toString(),
         availability: property.availability,
         description: property.description,
         addedAt: date,
@@ -215,7 +210,7 @@ export default function AddProperty() {
         features: property.features,
         price: Number(property.price),
         location: property.location,
-        minumum_stay: Number(property.minumum_stay),
+        minumum_stay: property.minumum_stay,
         availability: property.availability,
         description: property.description,
         addedAt: propertiesEdit.addedAt,
@@ -376,11 +371,11 @@ export default function AddProperty() {
         <label>
           <span>Minimum stay:</span>
           <input
-            type="number"
+            type="text"
             name="minumum_stay"
             value={property && property.minumum_stay}
             onChange={(e) => handleInputChange(e)}
-            placeholder="e.g: 1, 2, 3"
+            placeholder="e.g: 1, 2, 3, If it has none write N/A"
             required
           />
         </label>

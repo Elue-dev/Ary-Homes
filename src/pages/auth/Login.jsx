@@ -10,7 +10,7 @@ import logo from "../../assets/logo.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import { useSelector } from "react-redux";
-import { selectPreviousURL } from "../../redux/slice/authSlice";
+import { selectBlogURL, selectPreviousURL } from "../../redux/slice/authSlice";
 import useFetchCollection from "../../hooks/useFetchCollection";
 import { motion } from "framer-motion";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
@@ -28,6 +28,7 @@ export default function Login() {
   const { login, googleSignIn, user } = useAuth();
   const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
   const previousURL = useSelector(selectPreviousURL);
+  const blogURL = useSelector(selectBlogURL);
   const { data } = useFetchCollection("users");
 
   const allEmails = [];
@@ -36,6 +37,8 @@ export default function Login() {
   const redirectUser = () => {
     if (previousURL.includes("property")) {
       return navigate(-1);
+    } else if (blogURL.includes("blog")) {
+      navigate("/blog");
     } else {
       navigate("/");
     }

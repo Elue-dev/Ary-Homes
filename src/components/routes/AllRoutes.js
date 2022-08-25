@@ -16,6 +16,7 @@ import ProtectedRoute from "../protected_route/ProtectedRoute";
 import { AnimatePresence } from "framer-motion";
 import BlogDetails from "../blog_details/BlogDetails";
 import AllProperties from "../../pages/all_properties/AllProperties";
+import AddBlogPost from "../../pages/blog/add_blog_post/AddBlogPost";
 
 export default function AllRoutes() {
   const location = useLocation();
@@ -55,6 +56,14 @@ export default function AllRoutes() {
         />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route
+          path="/blog/add-blog-post"
+          element={
+            <ProtectedRoute>
+              <AddBlogPost />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/bookmarks"
           element={

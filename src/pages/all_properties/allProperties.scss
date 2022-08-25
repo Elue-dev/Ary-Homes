@@ -238,12 +238,12 @@
             position: absolute;
             bottom: 20px;
             right: 16px;
-            font-weight: 500;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.15rem;
             color: #fff;
             background: rgba(0, 0, 0, 0.6);
             // background: $mainColor;
-            padding: 0.1rem 0.6rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 0.2rem;
           }
         }
@@ -337,7 +337,7 @@
   }
 
   .all__properties .all__properties__wrapper .properties__ .no__property {
-    top: 68%;
+    top: 73%;
     left: 49%;
   }
   .all__properties .all__properties__wrapper .properties__ .no__property h2 {
@@ -393,7 +393,7 @@
     .prop__grid
     .image_
     .p_location {
-    font-size: 0.9rem;
+    font-size: 1.02rem;
   }
   .all__properties
     .all__properties__wrapper
@@ -406,18 +406,6 @@
   .all__properties .all__properties__wrapper .properties__ h3 {
     font-size: 1rem;
   }
-  // .all__properties .all__properties__wrapper .properties__ label {
-  //   flex-direction: column;
-  //   gap: 0;
-  //   margin-bottom: 3.5rem;
-  // }
-  // .all__properties .all__properties__wrapper .properties__ label input {
-  //   width: 100%;
-  // }
-  // .all__properties .all__properties__wrapper .properties__ label select {
-  //   width: 100%;
-  //   padding: 0.4rem;
-  // }
 }
 
 @include mQ(350px) {
