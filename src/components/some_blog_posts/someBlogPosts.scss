@@ -3,8 +3,6 @@
 .some__blog__posts {
   @include container();
   margin-top: 6rem;
-  // background: rgb(248, 248, 248);
-  padding: 1rem;
   h1 {
     @include flexBox(flex-start, center, row);
     gap: 0.2rem;
@@ -14,7 +12,7 @@
     }
   }
   .p_grid {
-    @include grid(repeat(4, 1fr), 0.9rem);
+    @include grid(repeat(4, 1fr), 0.5rem);
     .some__posts__det {
       margin-top: 1rem;
       box-shadow: $box-shadow;
