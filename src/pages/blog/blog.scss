@@ -148,9 +148,10 @@
         @include flexBox(center, center, row);
         button {
           @include button();
-          font-weight: 600;
+          font-weight: 700;
           font-size: 1.1rem;
-          padding: 0.5rem 0.7rem;
+          padding: 0.6rem 0.8rem;
+          color: #333;
         }
       }
     }
@@ -342,6 +343,7 @@
           font-size: 1.1rem;
           padding: 0.2rem 0.5rem;
           width: 100%;
+          text-transform: uppercase;
         }
       }
       .contributor__btn {
@@ -354,6 +356,7 @@
         font-size: 1.1rem;
         margin-top: 0.7rem;
         padding: 0.2rem 0.5rem;
+        text-transform: uppercase;
       }
       .con__buttons {
         :first-child {

@@ -296,7 +296,7 @@ export default function Blog() {
             </div>
           )}
           <div className="add__blog__post" onClick={handleRedirect}>
-            <button>Add Blog Post</button>
+            <button>ADD BLOG POST</button>
           </div>
         </div>
       </div>

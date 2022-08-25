@@ -129,7 +129,7 @@ export default function AddBlogPost() {
       setLoading(false);
       setBlogPost({ ...initialState });
       setUploadProgress(0);
-      navigate("/admin/home");
+      navigate("/admin/view-properties");
     } catch (error) {
       setLoading(false);
     }

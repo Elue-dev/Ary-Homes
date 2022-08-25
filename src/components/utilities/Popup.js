@@ -13,7 +13,7 @@ export default function Popup() {
   useEffect(() => {
     window.setTimeout(() => {
       setShowPopup(true);
-    }, 10000);
+    }, 15000);
   },[]);
 
   const handleRedirect = () => {
