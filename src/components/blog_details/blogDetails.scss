@@ -120,10 +120,9 @@
               @include flexBox(flex-start, flex-start, row);
               padding: 0.9rem 0.6rem;
               gap: 1rem;
-              border-bottom: 1px solid rgb(232, 232, 232);
               .gender__img {
-                width: 100px;
-                height: 100px;
+                width: 45px;
+                height: 45px;
                 border-radius: 50%;
 
                 img {
@@ -135,13 +134,15 @@
 
               .commentor {
                 :first-child {
-                  font-size: 1.8rem;
+                  font-size: 1rem;
                   font-weight: 700;
                   margin-bottom: 0.2rem;
+                  color: $mainColor;
                 }
                 :nth-child(2) {
                   color: rgb(108, 108, 108);
                   margin-bottom: 0.4rem;
+                  font-size: 0.7rem;
                   @include flexBox(flex-start, center, row);
                   gap: 0.2rem;
                   :first-child {
@@ -149,6 +150,12 @@
                   }
                 }
               }
+            }
+            .comment_d {
+              padding: 0 0.6rem;
+              border-bottom: 0.4px solid rgb(215, 215, 215);
+              padding-bottom: 0.4rem;
+              font-weight: 500;
             }
           }
         }
@@ -184,6 +191,7 @@
             margin-bottom: 0.9rem;
             font-size: 1rem;
             font-family: sans-serif;
+            color: #333;
           }
           textarea {
             margin-bottom: 0.2rem;
@@ -464,6 +472,15 @@
     .left__post__details
     .post__image {
     height: 276px;
+  }
+  .blog__post__details
+    .post__details__wrapper
+    .posts__grid
+    .left__post__details
+    .post__comments
+    .y__comment
+    .comments__grid {
+    gap: 0.4rem;
   }
 }
 

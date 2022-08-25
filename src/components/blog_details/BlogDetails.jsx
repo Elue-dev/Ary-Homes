@@ -362,23 +362,25 @@ export default function BlogDetails() {
                   {blogPost.comments.map((c, index) => {
                     const { comment, name, gender, date } = c;
                     return (
-                      <div key={index} className="comments__grid">
-                        <div className="gender__img">
-                          {gender === "male" ? (
-                            <img src={maleImg} alt={name} />
-                          ) : (
-                            <img src={femaleImg} alt={name} />
-                          )}
+                      <>
+                        <div key={index} className="comments__grid">
+                          <div className="gender__img">
+                            {gender === "male" ? (
+                              <img src={maleImg} alt={name} />
+                            ) : (
+                              <img src={femaleImg} alt={name} />
+                            )}
+                          </div>
+                          <div className="commentor">
+                            <p>{name}</p>
+                            <p>
+                              <MdOutlineDateRange />
+                              {date}
+                            </p>
+                          </div>
                         </div>
-                        <div className="commentor">
-                          <p>{name}</p>
-                          <p>
-                            <MdOutlineDateRange />
-                            {date}
-                          </p>
-                          <p>{comment}</p>
-                        </div>
-                      </div>
+                        <p className="comment_d">{comment}</p>
+                      </>
                     );
                   })}
                 </div>
