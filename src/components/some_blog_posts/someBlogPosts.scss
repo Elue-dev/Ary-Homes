@@ -130,6 +130,11 @@
 }
 
 @include mQ(600px) {
+  .some__blog__posts h1 {
+    font-size: 1.3rem;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
   .refine__search .refine__search__contents h2 {
     font-size: 1.2rem;
   }
@@ -150,6 +155,9 @@
   }
   .some__blog__posts .p_grid .some__posts__det .s_content .b_content p {
     font-size: 0.8rem;
+  }
+  .some__blog__posts .p_grid .some__posts__det {
+    margin-top: .2rem;
   }
 }
 
