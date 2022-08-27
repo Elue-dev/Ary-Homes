@@ -42,7 +42,7 @@ export default function Properties() {
         </h2>
         <Link to="/all-properties">View all properties</Link>
         <div className="properties__contents">
-          {properties.slice(5,9)?.map((property) => {
+          {properties.slice(0,4)?.map((property) => {
             const {
               id,
               name,
