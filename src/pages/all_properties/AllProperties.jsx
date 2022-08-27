@@ -203,7 +203,7 @@ export default function AllProperties() {
               <div className="no__property">
                 <TbHomeOff className="empty__icon" />
                 <h2>
-                  No properties match your search (<i>'{search}'</i> )
+                  No properties found
                 </h2>
               </div>
             )}
