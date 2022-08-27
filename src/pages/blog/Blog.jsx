@@ -242,13 +242,14 @@ export default function Blog() {
           <div className="menu__icon" onClick={() => setShowMenu(true)}>
             <IoMdMenu />
           </div>
+          {showMenu && (
+            <div className="layerr" onClick={() => setShowMenu(false)} />
+          )}
           <div className={showMenu ? "menu__items show" : "menu__items"}>
-            {showMenu && (
-              <div className="layer" onClick={() => setShowMenu(false)} />
-            )}
             <div className="close__menu" onClick={() => setShowMenu(false)}>
               <IoCloseSharp />
             </div>
+
             <h3>
               <BiCategory />
               CATEGORIES

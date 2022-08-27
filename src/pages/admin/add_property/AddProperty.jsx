@@ -332,7 +332,7 @@ export default function AddProperty() {
             value={property.availability}
             onChange={(e) => handleInputChange(e)}
           >
-            <option value="" disabled>
+            <option value="" disabled>f
               ---Choose availability status---
             </option>
             <option value="Available">Available</option>
