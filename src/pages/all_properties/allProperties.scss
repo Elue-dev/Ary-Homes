@@ -1,6 +1,7 @@
 @import "../../global_styles/global.scss";
 .all__properties {
   // @include container();
+  min-height: 100vh;
   margin-bottom: 8rem;
   .hero__all-p-wrapper {
     background: url("../../assets/all-p-compressed.jpg");
