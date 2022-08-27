@@ -117,7 +117,10 @@ export default function Account() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const storageRef = ref(storage, `AryHomesAvatars/${Date.now()}${file.name}`);
+    const storageRef = ref(
+      storage,
+      `AryHomesAvatars/${Date.now()}${file.name}`
+    );
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -232,7 +235,9 @@ export default function Account() {
       }, 6000);
     } catch (error) {
       setShowAlert(true);
-      setAlertMessage("An unexpected error occured, this can happen when you sign in with google and not credentials");
+      setAlertMessage(
+        "An unexpected error occured, this can happen when you sign in with google and not credentials"
+      );
       setAlertType("error");
       window.setTimeout(() => {
         setShowAlert(false);
@@ -281,6 +286,11 @@ export default function Account() {
         <div className="account__info__desc">
           <div className="account__info__flex">
             <>
+              {createdAt > lastLogin ? (
+                <h3 style={{ textDecoration: "none", marginBottom: "1rem" }}>
+                  Welcome back!{" "}
+                </h3>
+              ) : null}
               <h2>
                 {user.photoURL ? (
                   <img
