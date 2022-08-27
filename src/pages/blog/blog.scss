@@ -363,8 +363,9 @@
         @include button();
         margin: 1rem 0;
         width: 100%;
-        background: $mainColor;
-        color: #fff;
+        background: #fff;
+        color: $mainColor;
+        border: 1pm solid $mainColor;
         font-weight: 700;
         font-size: 1.1rem;
         margin-top: 0.7rem;
