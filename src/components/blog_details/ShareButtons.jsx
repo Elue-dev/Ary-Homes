@@ -18,7 +18,7 @@ export default function ShareButtons({ id, title, heading, name }) {
   const location = useLocation();
 
   const url = location.pathname.includes("blog")
-    ? `https://aryhomes.netlify.app/blog${id}`
+    ? `https://aryhomes.netlify.app/blog/${id}`
     : `https://aryhomes.netlify.app/property/${name}/${id}`;
 
   return (
