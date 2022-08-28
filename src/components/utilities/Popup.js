@@ -10,11 +10,11 @@ export default function Popup() {
   const { user } = useAuth();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    window.setTimeout(() => {
-      setShowPopup(true);
-    }, 15000);
-  },[]);
+  // useEffect(() => {
+  //   window.setTimeout(() => {
+  //     setShowPopup(true);
+  //   }, 15000);
+  // },[]);
 
   const handleRedirect = () => {
     dispatch(SAVE_BLOG_URL("/blog"));

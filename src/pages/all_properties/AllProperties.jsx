@@ -18,6 +18,7 @@ import { ImMenu2 } from "react-icons/im";
 import Pagination from "../../components/pagination/Pagination";
 import Spinner from "../../components/utilities/Spinner";
 import GoBack from "../../components/utilities/GoBack";
+import { animateScroll as scroll } from "react-scroll";
 
 export default function AllProperties() {
   const { data } = useFetchCollection("properties");

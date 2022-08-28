@@ -1,5 +1,6 @@
 import { useState } from "react";
-import  "./pagination.scss";
+import "./pagination.scss";
+import { animateScroll as scroll } from "react-scroll";
 
 export default function Pagination({
   currentPage,
@@ -17,13 +18,15 @@ export default function Pagination({
   //paginate
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
+    scroll.scrollToTop();
   };
 
   //go to next page
   const paginateNext = () => {
     setCurrentPage(currentPage + 1);
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
+    scroll.scrollToTop();
 
     // Show next set of pageNumbers
     if (currentPage + 1 > maxPageNumberLimit) {
@@ -34,7 +37,8 @@ export default function Pagination({
 
   const paginatePrev = () => {
     setCurrentPage(currentPage - 1);
-     window.scroll(0, 0);
+    // window.scroll(0, 0);
+    scroll.scrollToTop();
     // Show prev set of pageNumbers
     if ((currentPage - 1) % pageNumberLimit === 0) {
       setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);

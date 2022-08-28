@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TbArrowBigTop } from "react-icons/tb";
+import { animateScroll as scroll } from "react-scroll";
 
 export default function BackToTopButton() {
   const [showButton, setShowButton] = useState(false);
@@ -15,17 +16,14 @@ export default function BackToTopButton() {
   }, []);
 
   const scrollUp = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scroll.scrollToTop();
   };
 
   return (
     <div>
       {showButton ? (
         <div
+          to=""
           style={{
             position: "fixed",
             bottom: "30px",
