@@ -46,7 +46,7 @@ export default function Signup() {
     if (previousURL.includes("property")) {
       return navigate(-2);
     } else if (blogURL.includes("blog")) {
-      navigate("/blog");
+      navigate("/blog/add-blog-post");
     } else {
       navigate("/user/verify");
     }
@@ -56,7 +56,7 @@ export default function Signup() {
     if (previousURL.includes("property")) {
       return navigate(-2);
     } else if (blogURL.includes("blog")) {
-      navigate("/blog");
+      navigate("/blog/add-blog-post");
     } else {
       navigate("/");
     }
@@ -144,24 +144,24 @@ export default function Signup() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      const today = new Date();
-      const date = today.toDateString();
-      const usersConfig = {
-        assignedID: uuidv4(),
-        firstName,
-        lastName,
-        phone,
-        email: email,
-        joinedAt: date,
-        avatar: "",
-        createdAt: Timestamp.now().toDate(),
-      };
-      try {
-        const usersRef = collection(database, "users");
-        await addDoc(usersRef, usersConfig);
-      } catch (error) {
-        console.log(error.message);
-      }
+      // const today = new Date();
+      // const date = today.toDateString();
+      // const usersConfig = {
+      //   assignedID: uuidv4(),
+      //   firstName,
+      //   lastName,
+      //   phone,
+      //   email: email,
+      //   joinedAt: date,
+      //   avatar: "",
+      //   createdAt: Timestamp.now().toDate(),
+      // };
+      // try {
+      //   const usersRef = collection(database, "users");
+      //   await addDoc(usersRef, usersConfig);
+      // } catch (error) {
+      //   console.log(error.message);
+      // }
       setShowAlert(true);
       setAlertMessage(`Google sign in was successful!`);
       setAlertType("success");

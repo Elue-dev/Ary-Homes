@@ -38,7 +38,7 @@ export default function Login() {
     if (previousURL.includes("property")) {
       return navigate(-1);
     } else if (blogURL.includes("blog")) {
-      navigate("/blog");
+      navigate("/blog/add-blog-post");
     } else {
       navigate("/");
     }
@@ -143,24 +143,24 @@ export default function Login() {
         setAlertMessage(null);
         setAlertType(null);
       }, 6000);
-      const today = new Date();
-      const date = today.toDateString();
-      const usersConfig = {
-        assignedID: uuidv4(),
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: user.email,
-        joinedAt: date,
-        avatar: "",
-        createdAt: Timestamp.now().toDate(),
-      };
-      try {
-        const usersRef = collection(database, "users");
-        await addDoc(usersRef, usersConfig);
-      } catch (error) {
-        console.log(error.message);
-      }
+      // const today = new Date();
+      // const date = today.toDateString();
+      // const usersConfig = {
+      //   assignedID: uuidv4(),
+      //   firstName: "",
+      //   lastName: "",
+      //   phone: "",
+      //   email: user.email,
+      //   joinedAt: date,
+      //   avatar: "",
+      //   createdAt: Timestamp.now().toDate(),
+      // };
+      // try {
+      //   const usersRef = collection(database, "users");
+      //   await addDoc(usersRef, usersConfig);
+      // } catch (error) {
+      //   console.log(error.message);
+      // }
     } catch (err) {
       if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
         setError("Google sign in failed. (You exited the google sign in)");

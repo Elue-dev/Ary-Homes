@@ -1,11 +1,19 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { SAVE_BLOG_URL } from "../../redux/slice/authSlice";
 
 export default function AddPostAlert() {
   const [showAlert, setShowAlert] = useState(true);
   const [scrollPage, setScrollpage] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const handleRedirect = () => {
+    dispatch(SAVE_BLOG_URL("/blog"));
+    setShowAlert(false);
+  };
 
   const fixAlert = () => {
     if (window.scrollY > 150) {
@@ -26,10 +34,7 @@ export default function AddPostAlert() {
               <p>
                 Did you know? You can add blog posts to our blog, all you have
                 to do is sign in.
-                <Link
-                  to="/blog/add-blog-post"
-                  onClick={() => setShowAlert(false)}
-                >
+                <Link to="/blog/add-blog-post" onClick={handleRedirect}>
                   Begin now
                 </Link>
                 <span onClick={() => setShowAlert(false)}>Dismiss</span>
