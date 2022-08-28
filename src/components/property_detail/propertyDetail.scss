@@ -286,6 +286,7 @@
         border-radius: 0.2rem;
         background: #fff;
         margin-bottom: 0.4rem;
+        padding: .4rem;
         :first-child {
           margin-left: 0.4rem;
         }
@@ -293,7 +294,7 @@
         textarea {
           border: 0;
           outline: 0;
-          padding: 0.8rem;
+          margin-bottom: 0;
           background: transparent;
         }
         textarea {
@@ -301,6 +302,7 @@
           line-height: 1.7;
           word-spacing: 0.2rem;
           width: 100%;
+          font-size: 1rem
         }
       }
       button {

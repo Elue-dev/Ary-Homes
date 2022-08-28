@@ -36,16 +36,14 @@ import Slider from "./Slider";
 import Footer from "../footer/Footer";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import {
-  ADD_TO_BOOKMARKS,
-  selectProperties,
-} from "../../redux/slice/propertySlice";
+import { ADD_TO_BOOKMARKS } from "../../redux/slice/propertySlice";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { database } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import { BeatLoader } from "react-spinners";
 import Spinner from "../../components/utilities/Spinner";
 import { SAVE_URL } from "../../redux/slice/authSlice";
+import emailjs from "@emailjs/browser";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -82,8 +80,12 @@ export default function PropertyDetail() {
   const matchBookmarkId = bookmarks.data.find((bm) => bm.property.id === id);
 
   useEffect(() => {
-    setMessage(`I am interested in ${property?.name}...`);
-  }, [property?.name]);
+    setMessage(
+      `I am interested in ${property?.name} with Reference ID of ${
+        property?.id
+      }, which goes for NGN${formatCurrency(property?.price)}/night...`
+    );
+  }, [property?.name, property?.id, property?.price, formatCurrency]);
 
   useEffect(() => {
     setUsers(data);
@@ -167,6 +169,49 @@ export default function PropertyDetail() {
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAIJS_SERVICE_ID,
+        "template_fxbkfjk",
+        form.current,
+        "LI-G3ioYQBUa9IpIn"
+      )
+      .then(
+        (result) => {
+          setLoading(false);
+          setShowAlert(true);
+          window.scrollTo(0, 0);
+          setAlertMessage(
+            `Your message was sent successfully, we'll keep in touch.`
+          );
+          setAlertType("success");
+          window.setTimeout(() => {
+            setShowAlert(false);
+            setAlertMessage(null);
+            setAlertType(null);
+          }, 6000);
+        },
+        (error) => {
+          setLoading(false);
+          setShowAlert(true);
+          window.scrollTo(0, 0);
+          setAlertMessage(error.text);
+          setAlertType("error");
+          window.setTimeout(() => {
+            setShowAlert(false);
+            setAlertMessage(null);
+            setAlertType(null);
+          }, 6000);
+        }
+      );
+    e.target.reset();
   };
 
   if (!property) {
@@ -442,7 +487,7 @@ export default function PropertyDetail() {
           <div className="right__contents">
             <div>
               <h3>Need to reach out?</h3>
-              <form ref={form}>
+              <form ref={form} onSubmit={sendEmail}>
                 <label>
                   <FaUser />
                   <input
@@ -466,7 +511,7 @@ export default function PropertyDetail() {
                   <input
                     type="text"
                     name="subject"
-                    placeholder="Subject"
+                    placeholder="Subject, e.g Enquiry about a property"
                     required
                   />
                 </label>
@@ -476,12 +521,23 @@ export default function PropertyDetail() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     cols=""
-                    rows="3"
+                    rows="6"
+                    required
                   ></textarea>
                 </label>
-                <button type="submit" className="property__message__btn">
-                  Send Message
-                </button>
+                {loading ? (
+                  <button
+                    type="button"
+                    disabled
+                    className="property__message__btn"
+                  >
+                    <BeatLoader loading={loading} size={10} color={"#fff"} />
+                  </button>
+                ) : (
+                  <button type="submit" className="property__message__btn">
+                    SEND MESSAGE
+                  </button>
+                )}
               </form>
               <p>
                 By proceeding, you consent to receive texts at the email you
