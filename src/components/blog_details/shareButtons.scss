@@ -2,13 +2,18 @@
 
 .share__buttons {
   margin-top: 1rem;
-  h3 {
+  border: 1px solid rgb(239, 238, 238);
+  padding: 0.2rem 0.5rem;
+  h2 {
     padding-left: 0.3rem;
+    margin-top: 0.3rem;
+    border-bottom: 1px solid rgb(239, 238, 238);
   }
   .share__btn {
     @include button();
     background: transparent;
     font-size: 2rem;
+    margin-top: .5rem;
   }
   .facebook {
     color: #4267b3;

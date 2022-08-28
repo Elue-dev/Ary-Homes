@@ -165,7 +165,7 @@
           h2 {
             @include flexBox(flex-start, center, row);
             gap: 0.3rem;
-            margin-bottom: 2rem;
+            margin: 1rem 0;
             position: relative;
             &::after {
               position: absolute;

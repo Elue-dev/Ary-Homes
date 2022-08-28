@@ -29,7 +29,7 @@ export default function ShareButtons({
 
   return (
     <div className="share__buttons">
-      <h3>{heading}</h3>
+      <h2>{heading}</h2>
       <FacebookButton
         url={url}
         appId={process.env.REACT_APP_FACEBOOK_APP_ID}

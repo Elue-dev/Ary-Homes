@@ -47,10 +47,7 @@
 }
 .contact__contents {
   @include container();
-  background: url("../../assets/bg-tablet-pattern.svg");
-  background-repeat: no-repeat;
-  background-position: 35px -30px;
-  // background: #fff;
+  background: #fff;
   box-shadow: $box-shadow;
   padding: 1rem 2rem;
   margin-top: 1rem;

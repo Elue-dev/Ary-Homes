@@ -33,7 +33,7 @@ export default function BackToTopButton() {
             fontSize: "30px",
             color: "#ae8625",
             cursor: "pointer",
-            zIndex: "1000000",
+            zIndex: "100000000000",
           }}
           onClick={scrollUp}
         >

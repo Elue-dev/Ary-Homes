@@ -355,7 +355,7 @@ export default function BlogDetails() {
               <h2>COMMENTS ({blogPost.comments.length})</h2>
               {blogPost.comments.length === 0 ? (
                 <div className="n__comment">
-                  <p>Be the first to add a comment to this post</p>
+                  <p>Be the first to add a comment to this post.</p>
                 </div>
               ) : (
                 <div className="y__comment">

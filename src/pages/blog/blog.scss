@@ -413,7 +413,7 @@
           }
           .subscribe__btn {
             @include button();
-            background: rgb(68, 68, 68);
+            background: #333;
             color: #fff;
             border: 1px solid rgb(131, 131, 131);
             font-weight: 700;
@@ -421,7 +421,6 @@
             margin-top: 0.7rem;
             display: block;
             width: 100%;
-            border-radius: 0.3rem;
           }
         }
       }
@@ -433,6 +432,35 @@
         z-index: 9;
         transition: 0.2s ease-in-out;
       }
+    }
+  }
+}
+.add__post__alert {
+  background: #987d3e;
+  &.fixAlert {
+    width: 100%;
+    position: fixed;
+    top: 3.5rem;
+    z-index: 1000;
+    transition: 0.2s ease-in-out;
+  }
+  .add__post__alert__wrapper {
+    @include container();
+    text-align: center;
+   
+    padding: 0.5rem 0;
+    color: #fff;
+    span {
+      margin-left: 0.4rem;
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+    a {
+      margin-left: 0.4rem;
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 700;
     }
   }
 }
@@ -514,6 +542,12 @@
 }
 
 @include mQ(550px) {
+  .add__post__alert .add__post__alert__wrapper {
+    padding: 0.3rem 0;
+  }
+  .add__post__alert .add__post__alert__wrapper p {
+   font-size: .9rem;
+  }
   .blog__header .blog__header__logo h2 {
     font-size: 1.25rem;
   }
