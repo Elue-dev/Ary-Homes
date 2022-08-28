@@ -22,11 +22,7 @@ export default function BackToTopButton() {
   return (
     <div>
       {showButton ? (
-        <div
-          onClick={scrollUp}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
+        <div onClick={scrollUp}>
           <IoMdArrowDropup
             style={{
               position: "fixed",
