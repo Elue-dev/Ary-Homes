@@ -386,7 +386,7 @@ export default function BlogDetails() {
                 </div>
               )}
             </div>
-            <ShareButtons title={blogPost.title} heading="Share this post" />
+            <ShareButtons post_id={id} title={blogPost.title} heading="Share this post" />
             <form onSubmit={submitComment}>
               <h2>
                 <FaCommentMedical />

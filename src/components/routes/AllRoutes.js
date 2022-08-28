@@ -28,7 +28,7 @@ export default function AllRoutes() {
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/reset-password" element={<Reset />} />
-        <Route path="/property/:name/:id" element={<PropertyDetail />} />
+        <Route path="/property/:id" element={<PropertyDetail />} />
         <Route path="/all-properties" element={<AllProperties />} />
         <Route
           path="/admin/*"

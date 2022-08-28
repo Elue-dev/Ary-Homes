@@ -189,7 +189,7 @@ export default function Bookmarks() {
                             <b>{bookmarkedAt}</b>{" "}
                           </td>
                           <td>
-                            <Link to={`/property/${property.name}/${bookmark.property.id}`}>
+                            <Link to={`/property/${bookmark.property.id}`}>
                               <HiEye size={22} className="bookmark__icon" />{" "}
                             </Link>
                           </td>

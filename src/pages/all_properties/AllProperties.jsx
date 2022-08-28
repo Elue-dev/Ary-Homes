@@ -248,7 +248,7 @@ export default function AllProperties() {
                         <span>/night</span>
                       </p>
                     </div>
-                    <Link to={`/property/${name}/${id}`}>
+                    <Link to={`/property/${id}`}>
                       <button className="more_">
                         <CgEyeAlt />
                         MORE DETAILS

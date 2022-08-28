@@ -466,20 +466,7 @@ export default function PropertyDetail() {
                 </button>
               )}
             </div>
-            <ShareButtons
-              id={id}
-              name={property.name}
-              heading="Share this property"
-            />
-            {/* <iframe
-              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31716.495570651143!2d3.4535066586150993!3d6.450240895461513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf452da3bd44b%3A0x47331fb41adc9d28!2s${property.location}%20Phase%201%20106104%2C%20${property.location}!5e0!3m2!1sen!2sng!4v1661140137875!5m2!1sen!2sng`}
-              width="600"
-              height="450"
-              style={{border:0}}
-              allowFullScreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe> */}
+            <ShareButtons property_id={id} heading="Share this property" />
           </div>
           <div className="right__contents">
             <div>

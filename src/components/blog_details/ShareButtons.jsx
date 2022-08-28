@@ -14,12 +14,18 @@ import {
 import "./shareButtons.scss";
 import { useLocation } from "react-router-dom";
 
-export default function ShareButtons({ id, title, heading, name }) {
+export default function ShareButtons({
+  property_id,
+  post_id,
+  title,
+  heading,
+}) {
+
   const location = useLocation();
 
   const url = location.pathname.includes("blog")
-    ? `https://aryhomes.netlify.app/blog/${id}`
-    : `https://aryhomes.netlify.app/property/${name}/${id}`;
+    ? `https://aryhomes.netlify.app/blog/${post_id}`
+    : `https://aryhomes.netlify.app/property/${property_id}`;
 
   return (
     <div className="share__buttons">
