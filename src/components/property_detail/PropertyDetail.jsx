@@ -8,7 +8,6 @@ import {
   BsPatchCheckFill,
   BsTelephoneForwardFill,
 } from "react-icons/bs";
-import { TbBrandWhatsapp } from "react-icons/tb";
 import { AiOutlineCalendar, AiFillTags } from "react-icons/ai";
 import { IoLocation } from "react-icons/io5";
 import { TbListDetails } from "react-icons/tb";
@@ -44,6 +43,7 @@ import { BeatLoader } from "react-spinners";
 import Spinner from "../../components/utilities/Spinner";
 import { SAVE_URL } from "../../redux/slice/authSlice";
 import emailjs from "@emailjs/browser";
+import ShareButtons from "../blog_details/ShareButtons";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -423,14 +423,6 @@ export default function PropertyDetail() {
                         <BsTelephoneForwardFill />
                         08168945509
                       </a>
-                      {/* <ReactWhatsapp
-                        number="234-816-894-5509"
-                        message={`Hi, i am from Ary Homes website, i want to make an inquiry about ${property.name}...`}
-                        className="whatsapp"
-                      >
-                        <TbBrandWhatsapp />
-                        <span>MESSAGE</span>
-                      </ReactWhatsapp> */}
                     </div>
                   </div>
                 )}
@@ -474,6 +466,11 @@ export default function PropertyDetail() {
                 </button>
               )}
             </div>
+            <ShareButtons
+              id={id}
+              name={property.name}
+              heading="Share this property"
+            />
             {/* <iframe
               src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31716.495570651143!2d3.4535066586150993!3d6.450240895461513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf452da3bd44b%3A0x47331fb41adc9d28!2s${property.location}%20Phase%201%20106104%2C%20${property.location}!5e0!3m2!1sen!2sng!4v1661140137875!5m2!1sen!2sng`}
               width="600"

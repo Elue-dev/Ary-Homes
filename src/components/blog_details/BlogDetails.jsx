@@ -303,7 +303,7 @@ export default function BlogDetails() {
               <button>{blogPost.readTime} mins read</button>
               <button>{blogPost.category}</button>
             </div>
-            <h1 style={{textTransform: 'capitalize'}}>{blogPost.title}</h1>
+            <h1 style={{ textTransform: "capitalize" }}>{blogPost.title}</h1>
             <div className="post__top">
               <div className="left__post__top">
                 <p>
@@ -386,7 +386,7 @@ export default function BlogDetails() {
                 </div>
               )}
             </div>
-            {/* <ShareButtons id={id} /> */}
+            <ShareButtons title={blogPost.title} heading="Share this post" />
             <form onSubmit={submitComment}>
               <h2>
                 <FaCommentMedical />

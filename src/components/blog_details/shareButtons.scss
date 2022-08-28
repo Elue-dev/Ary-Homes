@@ -1,0 +1,31 @@
+@import "../../global_styles/global.scss";
+
+.share__buttons {
+  margin-top: 1rem;
+  h3 {
+    padding-left: 0.3rem;
+  }
+  .share__btn {
+    @include button();
+    background: transparent;
+    font-size: 2rem;
+  }
+  .facebook {
+    color: #4267b3;
+  }
+  .twitter {
+    color: #1da1f2;
+  }
+  .reddit {
+    color: #ff4500;
+  }
+  .linkedin {
+    color: #0077b5;
+  }
+}
+
+@include mQ(500px) {
+  .share__buttons .share__btn {
+    font-size: 2rem;
+  }
+}
