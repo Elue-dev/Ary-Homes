@@ -435,6 +435,7 @@
     }
   }
 }
+
 .add__post__alert {
   background: #987d3e;
   &.fixAlert {
@@ -447,7 +448,7 @@
   .add__post__alert__wrapper {
     @include container();
     text-align: center;
-   
+
     padding: 0.5rem 0;
     color: #fff;
     span {
@@ -546,7 +547,7 @@
     padding: 0.3rem 0;
   }
   .add__post__alert .add__post__alert__wrapper p {
-   font-size: .9rem;
+    font-size: 0.9rem;
   }
   .blog__header .blog__header__logo h2 {
     font-size: 1.25rem;

@@ -1,0 +1,240 @@
+@import "../../global_styles//global.scss";
+
+.user__account__info {
+  min-height: 100vh;
+  padding: 2rem 0 5rem 0;
+  animation: slide-up 0.5s ease;
+  @include flexBox(center, flex-start, column);
+  .user__account__info__contents {
+    .account__info__desc {
+      line-height: 2;
+      margin-bottom: 1rem;
+      .account__info__flex {
+        h2 {
+          color: $mainColor;
+          @include flexBox(flex-start, center, row);
+          gap: 0.5rem;
+          :first-child {
+            color: rgb(85, 85, 85);
+            font-size: 1.8rem;
+          }
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+        .click__to__change {
+          text-decoration: underline;
+          cursor: pointer;
+          padding-bottom: 1rem;
+          animation: slide-left 0.5s ease;
+        }
+      }
+
+      .user__img__details {
+        display: none;
+        animation: slide-right 0.5s ease;
+        .progress {
+          background-color: #aaa;
+          border: 1px solid transparent;
+          border-radius: 10px;
+          display: inline-block;
+          margin-bottom: 0.5rem;
+          .progress-bar {
+            background-color: #111;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0 0.4rem;
+          }
+        }
+
+        .pp__upload__input {
+          border: 0.5px solid #999;
+          padding: 0.5rem;
+          border-radius: 0.3rem;
+        }
+        .pp__upload__btn {
+          @include button();
+          border-radius: 0.3rem;
+          background: $mainColor;
+          color: #fff;
+          font-weight: 700;
+          animation: slide-right 0.5s ease;
+        }
+        .user__img__wrapper {
+          width: fit-content;
+          height: auto;
+          border-radius: 0.5rem;
+          padding-top: 1rem;
+          .uploaded__image {
+            height: 100px;
+            width: 100px;
+            border-radius: 0.3rem;
+            object-fit: cover;
+          }
+          .flex__wrapper {
+            @include flexBox(space-between, flex-start, row);
+            .fallback__image {
+              height: 100px;
+            }
+            .close__upload {
+              font-size: 2rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .account__info__details {
+        line-height: 2.5;
+      }
+      h3 {
+        text-decoration: underline;
+      }
+      p {
+        @include flexBox(flex-start, center, row);
+        gap: 0.3rem;
+        :first-child {
+          color: $mainColor;
+          font-size: 1.3rem;
+        }
+      }
+    }
+    @include container();
+    background: #f8f9fa;
+    padding: 3rem;
+    form {
+      h3 {
+        text-decoration: underline;
+        padding: 2rem 0 1rem 0;
+      }
+      .form__inputs {
+        @include grid(repeat(2, 1fr), 1rem);
+
+        label {
+          span {
+            @include flexBox(flex-start, center, row);
+            width: max-content;
+            margin-bottom: 0.3rem;
+            gap: 0.4rem;
+            font-weight: 600;
+            :first-child {
+              font-size: 1.3rem;
+              color: rgb(174, 174, 174);
+            }
+          }
+          input {
+            padding: 0.7rem;
+            width: 100%;
+            border-radius: 0.3rem;
+            outline: 0;
+            border: 1px solid #999;
+            font-size: 0.99rem;
+          }
+        }
+      }
+      .user__profile__btn {
+        @include button();
+        background: $mainColor;
+        color: #fff;
+        width: 100%;
+        border-radius: 0.3rem;
+        margin-top: 1rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+    }
+    .account__info__logout {
+      @include button();
+      border-radius: 0.3rem;
+      background: #222;
+      color: #fff;
+      font-weight: 700;
+      width: 200px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@include mQ(600px) {
+  .user__account__info {
+    background: #f8f9fa;
+    padding-bottom: 6rem;
+  }
+  .user__account__info .user__account__info__contents {
+    width: 100%;
+    padding: 1.3rem 1rem;
+  }
+  .user__account__info .user__account__info__contents .account__info__desc h2 {
+    font-size: 1.4rem;
+  }
+  .user__account__info .user__account__info__contents .account__info__desc h3 {
+    text-decoration: underline;
+    font-size: 1.08rem;
+  }
+  .user__account__info .user__account__info__contents .account__info__desc p,
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    span {
+    font-size: .9rem;
+    width: initial;
+  }
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    p
+    :first-child {
+    color: #ae8625;
+    font-size: 1rem;
+  }
+  .user__account__info .user__account__info__contents form .form__inputs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 0rem;
+  }
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    .user__img__details
+    .pp__upload__btn,
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    .user__img__details
+    .pp__upload__input {
+    width: 90%;
+    margin-bottom: 0.3rem;
+  }
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    span {
+    font-weight: 600;
+  }
+  .user__account__info .user__account__info__contents .account__info__logout {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .user__account__info .user__account__info__contents .account__info__logout {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+}
+
+@include mQ(350px) {
+  .user__account__info .user__account__info__contents .account__info__desc p,
+  .user__account__info
+    .user__account__info__contents
+    .account__info__desc
+    span {
+    font-size: 0.72rem;
+    width: initial;
+  }
+}

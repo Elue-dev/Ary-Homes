@@ -6,7 +6,6 @@ import Footer from "./components/footer/Footer";
 import ScrollToTop from "./components/utilities/ScrollToTop";
 import GoToTopButton from "./components/utilities/GoToTopButton";
 import AllRoutes from "./components/routes/AllRoutes";
-import Popup from "./components/utilities/Popup";
 import { useAuth } from "./contexts/AuthContext";
 import AddPostAlert from "./pages/blog/AddPostAlert";
 import { useState } from "react";
@@ -22,7 +21,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Popup />
       <GoToTopButton />
       <ScrollToTop />
       <Header />

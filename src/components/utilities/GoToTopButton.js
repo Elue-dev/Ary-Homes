@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { TbArrowBigTop } from "react-icons/tb";
+import { IoMdArrowDropup } from "react-icons/io";
 import { animateScroll as scroll } from "react-scroll";
 
 export default function BackToTopButton() {
@@ -7,7 +7,7 @@ export default function BackToTopButton() {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 150) {
         setShowButton(true);
       } else {
         setShowButton(false);
@@ -23,21 +23,26 @@ export default function BackToTopButton() {
     <div>
       {showButton ? (
         <div
-          to=""
-          style={{
-            position: "fixed",
-            bottom: "30px",
-            right: "20px",
-            height: "30px",
-            width: "30px",
-            fontSize: "30px",
-            color: "#ae8625",
-            cursor: "pointer",
-            zIndex: "100000000000",
-          }}
           onClick={scrollUp}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
-          <TbArrowBigTop />
+          <IoMdArrowDropup
+            style={{
+              position: "fixed",
+              bottom: "65px",
+              right: "20px",
+              height: "30px",
+              width: "30px",
+              borderRadius: "50%",
+              fontSize: "10px",
+              background: "#333",
+              boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.1)",
+              color: "#fff",
+              cursor: "pointer",
+              zIndex: "10000000000000",
+            }}
+          />
         </div>
       ) : null}
     </div>

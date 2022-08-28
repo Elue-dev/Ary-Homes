@@ -13,7 +13,7 @@
     @include button();
     background: transparent;
     font-size: 2rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
   .facebook {
     color: #4267b3;
@@ -32,5 +32,8 @@
 @include mQ(500px) {
   .share__buttons .share__btn {
     font-size: 2rem;
+  }
+  .share__buttons h2 {
+    font-size: 1.2rem;
   }
 }
