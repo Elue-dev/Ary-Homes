@@ -9,11 +9,58 @@ import ReactWhatsapp from "react-whatsapp";
 import "./contact.scss";
 import Footer from "../../components/footer/Footer";
 import { motion } from "framer-motion";
-import facebook from "../../assets/facebook.svg";
+import { useCustomAlert } from "../../contexts/AlertContext";
+import emailjs from "@emailjs/browser";
+import { BeatLoader } from "react-spinners";
 
 export default function Contact() {
   const form = useRef();
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { setShowAlert, setAlertMessage, setAlertType } = useCustomAlert();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAIJS_SERVICE_ID,
+        "template_fv6c1c2",
+        form.current,
+        "rzn_FYgukUIewDy1s"
+      )
+      .then(
+        (result) => {
+          setLoading(false);
+          setShowAlert(true);
+          window.scrollTo(0, 0);
+          setAlertMessage(
+            `Your message was sent successfully, we'll keep in touch.`
+          );
+          setAlertType("success");
+          window.setTimeout(() => {
+            setShowAlert(false);
+            setAlertMessage(null);
+            setAlertType(null);
+          }, 6000);
+        },
+        (error) => {
+          setLoading(false);
+          setShowAlert(true);
+          window.scrollTo(0, 0);
+          setAlertMessage(error.text);
+          setAlertType("error");
+          window.setTimeout(() => {
+            setShowAlert(false);
+            setAlertMessage(null);
+            setAlertType(null);
+          }, 6000);
+        }
+      );
+    e.target.reset();
+  };
 
   return (
     <motion.section
@@ -91,7 +138,7 @@ export default function Contact() {
               Fill this form with inquiries and get to us. We respond within 24
               hrs.
             </p>
-            <form ref={form}>
+            <form ref={form} onSubmit={sendEmail}>
               <label>
                 <FaUser />
                 <input
@@ -129,9 +176,19 @@ export default function Contact() {
                   placeholder="Enter your message"
                 ></textarea>
               </label>
-              <button type="submit" className="property__message__btn">
-                Send Message
-              </button>
+              {loading ? (
+                <button
+                  type="button"
+                  disabled
+                  className="property__message__btn"
+                >
+                  <BeatLoader loading={loading} size={10} color={"#fff"} />
+                </button>
+              ) : (
+                <button type="submit" className="property__message__btn">
+                  SEND MESSAGE
+                </button>
+              )}
             </form>
           </div>
         </div>

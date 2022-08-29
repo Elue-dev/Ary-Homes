@@ -37,7 +37,7 @@ export default function Recommended() {
         </h2>
       ) : null}
       <div className="properties__contents exclusive__contents">
-        {properties.slice(5,9)?.map((property) => {
+        {properties.slice(5, 9)?.map((property) => {
           const {
             id,
             name,

@@ -179,9 +179,9 @@ export default function PropertyDetail() {
     emailjs
       .sendForm(
         process.env.REACT_APP_EMAIJS_SERVICE_ID,
-        "template_fxbkfjk",
+        "template_fv6c1c2",
         form.current,
-        "LI-G3ioYQBUa9IpIn"
+        "rzn_FYgukUIewDy1s"
       )
       .then(
         (result) => {

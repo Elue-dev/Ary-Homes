@@ -20,8 +20,8 @@ export default function Hero() {
           Let's find the perfect place for you{user?.displayName && ","}
           <span>&nbsp;{name ? modifiedName && `${shortenedName}` : null}</span>
         </p>
-        <Link to="/contact">
-          <button className="hero__btn">REACH OUT TO US</button>
+        <Link to="/all-properties">
+          <button className="hero__btn">EXOLORE OUR PROPERTIES</button>
         </Link>
       </div>
     </div>

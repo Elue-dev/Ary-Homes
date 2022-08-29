@@ -14,7 +14,10 @@ export default function Error404() {
     >
       <img src={errorImg} alt="error" />
       <h1>SORRY</h1>
-      <p>We can't seem to find the page you are looking for</p>
+      <p>
+        We can't seem to find the page you are looking for, it may be due to
+        something we've done or the page no longer exists
+      </p>
       <Link to="/">&larr; Visit Ary Home's homepage</Link>
     </motion.div>
   );
