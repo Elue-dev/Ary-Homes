@@ -30,10 +30,9 @@ export default function SimilarProducts() {
         <div className="md__property__grid">
           {properties &&
             properties.slice(0, 3)?.map((property) => {
-              const { id, name, imagesUrl, price, features, location } =
-                property;
+              const { id, name, imagesUrl, price, location } = property;
               return (
-                <Link to={`/property/${name}/${id}`} key={id}>
+                <Link to={`/property/${id}`} key={id}>
                   <div className="similar__properties__details">
                     <div className="similar__images">
                       <img src={imagesUrl && imagesUrl[0]} alt={name} />

@@ -1,12 +1,12 @@
 @import "../../../global_styles//global.scss";
 
 .hero {
-  // font-family: Roboto, sans-serif;
   font-family: 'Lato', sans-serif;
   background: url("../../../assets//backgroundc.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
   height: 70vh;
   position: relative;
   z-index: 1;

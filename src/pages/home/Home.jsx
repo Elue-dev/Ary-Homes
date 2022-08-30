@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { motion, useScroll, useSpring } from "framer-motion";
 import "./home.scss";
 import SomeBlogPosts from "../../components/some_blog_posts/SomeBlogPosts";
+import Briefing from "../../components/briefing/Briefing";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -32,6 +33,7 @@ export default function Home() {
         transition={{ delay: 0.1 }}
       >
         <Hero />
+        {/* <Briefing /> */}
         <Properties />
         <SomeBlogPosts />
         <Footer />
