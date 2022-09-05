@@ -1,15 +1,14 @@
 import { useState } from "react";
-import "./pagination.scss";
-import { animateScroll as scroll } from "react-scroll";
+import styles from "./pagination.scss";
 
 export default function Pagination({
   currentPage,
   setCurrentPage,
-  propertiesPerPage,
+  productsPerPage,
   totalProducts,
 }) {
   const pageNumbers = [];
-  const totalPages = totalProducts / propertiesPerPage;
+  const totalPages = totalProducts / productsPerPage;
   //limit page numbers shown
   const [pageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
@@ -18,15 +17,12 @@ export default function Pagination({
   //paginate
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    // window.scroll(0, 0);
-    scroll.scrollToTop();
+    window.scroll(0, 1500);
   };
 
   //go to next page
   const paginateNext = () => {
     setCurrentPage(currentPage + 1);
-    // window.scroll(0, 0);
-    scroll.scrollToTop();
 
     // Show next set of pageNumbers
     if (currentPage + 1 > maxPageNumberLimit) {
@@ -37,8 +33,6 @@ export default function Pagination({
 
   const paginatePrev = () => {
     setCurrentPage(currentPage - 1);
-    // window.scroll(0, 0);
-    scroll.scrollToTop();
     // Show prev set of pageNumbers
     if ((currentPage - 1) % pageNumberLimit === 0) {
       setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
@@ -48,14 +42,14 @@ export default function Pagination({
 
   //go to next page
 
-  for (let i = 1; i <= Math.ceil(totalProducts / propertiesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (
-    <ul className="pagination">
+    <ul className={styles.pagination}>
       <li
         onClick={paginatePrev}
-        className={currentPage === pageNumbers[0] ? `hidden` : null}
+        className={currentPage === pageNumbers[0] ? `${styles.hidden}` : null}
       >
         Prev
       </li>
@@ -65,7 +59,7 @@ export default function Pagination({
             <li
               key={number}
               onClick={() => paginate(number)}
-              className={currentPage === number ? `active` : null}
+              className={currentPage === number ? `${styles.active}` : null}
             >
               {number}
             </li>
@@ -75,13 +69,15 @@ export default function Pagination({
       <li
         onClick={paginateNext}
         className={
-          currentPage === pageNumbers[pageNumbers.length - 1] ? `hidden` : null
+          currentPage === pageNumbers[pageNumbers.length - 1]
+            ? `${styles.hidden}`
+            : null
         }
       >
         Next
       </li>
       <p>
-        <b className="page">{`page ${currentPage}`}</b>
+        <b className={styles.page}>{`page ${currentPage}`}</b>
         &nbsp; <span>of</span>
         &nbsp; <b>{`${Math.ceil(totalPages)}`}</b>
       </p>

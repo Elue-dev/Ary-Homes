@@ -47,7 +47,7 @@ export default function Header() {
     if (
       location.pathname.includes("user") ||
       location.pathname.includes("blog") ||
-      location.pathname === "/verify"
+      location.pathname === "/user/verify"
     ) {
       setShowHeader(false);
     } else {
@@ -100,7 +100,7 @@ export default function Header() {
 
   const sendVerificationEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      navigate("/verify");
+      navigate("/user/verify");
     });
   };
 
@@ -190,7 +190,7 @@ export default function Header() {
                   <FaRegUserCircle />
                 )}
 
-                {user && <BsDot className="dot" />}
+                {user && <BsDot className="dot" />}x
                 <>
                   <div
                     className={

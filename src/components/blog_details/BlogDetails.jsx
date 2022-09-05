@@ -25,7 +25,6 @@ import OtherPosts from "./other_posts/OtherPosts";
 import { useCustomAlert } from "../../contexts/AlertContext";
 import BlogFooter from "../../pages/blog/blog_footer/BlogFooter";
 import { motion } from "framer-motion";
-import { useAuth } from "../../contexts/AuthContext";
 import ShareButtons from "./ShareButtons";
 
 export default function BlogDetails() {
