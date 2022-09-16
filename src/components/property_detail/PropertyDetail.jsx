@@ -269,7 +269,7 @@ export default function PropertyDetail() {
             <div className="property__details__images">
               {property.imagesUrl.map((image, index) => (
                 //i removed this onclick from the div below...onClick={() => setShowSlider(true)}
-                <div key={index}>
+                <div ƒadskey={index}>
                   <p className="image__length">
                     {property.imagesUrl.indexOf(image) + 1} /{" "}
                     {property.imagesUrl.length}{" "}
