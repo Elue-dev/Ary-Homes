@@ -190,7 +190,7 @@ export default function Header() {
                   <FaRegUserCircle />
                 )}
 
-                {user && <BsDot className="dot" />}x
+                {user && <BsDot className="dot" />}
                 <>
                   <div
                     className={
