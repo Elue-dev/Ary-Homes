@@ -44,6 +44,7 @@
           width: 50px;
           height: 50px;
           border-radius: 50%;
+          object-fit: cover;
         }
         button {
           @include button();
@@ -98,6 +99,7 @@
       img {
         width: 450px;
         height: 280px;
+        object-fit: cover;
       }
     }
     .left__contents__card {
@@ -125,8 +127,8 @@
     }
     .other__details {
       line-height: 2.9;
-      border-bottom: .1px solid rgb(190, 190, 190);
-      padding-bottom: .9rem;
+      border-bottom: 0.1px solid rgb(190, 190, 190);
+      padding-bottom: 0.9rem;
       p,
       span {
         @include flexBox(flex-start, center, center);
@@ -161,11 +163,11 @@
         }
       }
     }
-   
+
     .property__features {
       padding-top: 1.3rem;
       padding-bottom: 1.3rem;
-      border-bottom: .1px solid rgb(190, 190, 190);
+      border-bottom: 0.1px solid rgb(190, 190, 190);
       h2 {
         padding-bottom: 0.9rem;
       }
@@ -187,7 +189,7 @@
     .property__description {
       padding: 2rem 0;
       line-height: 1.9;
-      border-bottom: .1px solid rgb(190, 190, 190);
+      border-bottom: 0.1px solid rgb(190, 190, 190);
       h2 {
         @include flexBox(flex-start, center, center);
         gap: 0.3rem;
@@ -286,7 +288,7 @@
         border-radius: 0.2rem;
         background: #fff;
         margin-bottom: 0.4rem;
-        padding: .4rem;
+        padding: 0.4rem;
         :first-child {
           margin-left: 0.4rem;
         }
@@ -302,7 +304,7 @@
           line-height: 1.7;
           word-spacing: 0.2rem;
           width: 100%;
-          font-size: 1rem
+          font-size: 1rem;
         }
       }
       button {
@@ -396,7 +398,7 @@
     gap: 0.1rem;
   }
   .property__details__contents .left__contents .property__details__images img {
-    width: 371px;
+    width: 337px;
     border-radius: 0;
   }
   .property__details__contents .left__contents .property__features h2 {
