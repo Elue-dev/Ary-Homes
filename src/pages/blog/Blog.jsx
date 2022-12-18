@@ -230,6 +230,7 @@ export default function Blog() {
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % postsArray?.length;
     setItemOffset(newOffset);
+    window.scrollTo(0, 0);
   };
 
   //get current products

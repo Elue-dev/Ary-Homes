@@ -61,6 +61,7 @@ export default function AllProperties() {
     const newOffset =
       (event.selected * itemsPerPage) % filteredProperties?.length;
     setItemOffset(newOffset);
+    window.scrollTo(0, 0);
   };
 
   const fixNavbar = () => {
