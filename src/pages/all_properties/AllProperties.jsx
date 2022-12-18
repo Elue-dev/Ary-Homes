@@ -19,6 +19,7 @@ import Pagination from "../../components/pagination/Pagination";
 import Spinner from "../../components/utilities/Spinner";
 import GoBack from "../../components/utilities/GoBack";
 import { animateScroll as scroll } from "react-scroll";
+import ReactPaginate from "react-paginate";
 
 export default function AllProperties() {
   const { data } = useFetchCollection("properties");
@@ -33,16 +34,34 @@ export default function AllProperties() {
   const filteredProperties = useSelector(selectFilteredProperties);
 
   // ========pagination==========
-  const [currentPage, setCurrentPage] = useState(1);
-  const [propertiesPerPage] = useState(6);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [propertiesPerPage] = useState(6);
 
-  //get current products
-  const indexOfLastProduct = currentPage * propertiesPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - propertiesPerPage;
-  const currentProperties = filteredProperties.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
+  // //get current products
+  // const indexOfLastProduct = currentPage * propertiesPerPage;
+  // const indexOfFirstProduct = indexOfLastProduct - propertiesPerPage;
+  // const currentProperties = filteredProperties.slice(
+  //   indexOfFirstProduct,
+  //   indexOfLastProduct
+  // );
+
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 6;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+
+    setCurrentItems(filteredProperties?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(filteredProperties?.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, filteredProperties]);
+
+  const handlePageClick = (event) => {
+    const newOffset =
+      (event.selected * itemsPerPage) % filteredProperties?.length;
+    setItemOffset(newOffset);
+  };
 
   const fixNavbar = () => {
     if (window.scrollY > 150) {
@@ -96,7 +115,7 @@ export default function AllProperties() {
     window.scrollTo(0, 0);
     setSearch("");
     setSort("latest");
-    setCurrentPage(1);
+    setPageCount(1);
     dispatch(FILTER_BY_LOCATION({ properties, location: loc }));
     setShowFilter(false);
   };
@@ -105,7 +124,7 @@ export default function AllProperties() {
     setSort(e.target.value);
     setSearch("");
     setShowFilter(false);
-    setCurrentPage(1);
+    setPageCount(1);
   };
 
   if (properties.length === 0) {
@@ -203,12 +222,10 @@ export default function AllProperties() {
             {filteredProperties.length === 0 && (
               <div className="no__property">
                 <TbHomeOff className="empty__icon" />
-                <h2>
-                  No properties found
-                </h2>
+                <h2>No properties found</h2>
               </div>
             )}
-            {currentProperties?.map((property) => {
+            {currentItems?.map((property) => {
               const {
                 id,
                 name,
@@ -260,13 +277,27 @@ export default function AllProperties() {
             })}
           </motion.div>
           {filteredProperties.length ? (
-            <Pagination
-              propertiesPerPage={propertiesPerPage}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalProducts={filteredProperties.length}
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              previousLabel="Prev"
+              renderOnZeroPageCount={null}
+              containerClassName="pagination"
+              pageLinkClassName="page-num"
+              previousLinkClassName="page-num"
+              nextLinkClassName="page-num"
+              activeLinkClassName="activePage"
             />
-          ) : null}
+          ) : //  <Pagination
+          //   propertiesPerPage={propertiesPerPage}
+          //   currentPage={currentPage}
+          //   setCurrentPage={setCurrentPage}
+          //   totalProducts={filteredProperties.length}
+          // />
+          null}
         </div>
       </div>
     </motion.section>

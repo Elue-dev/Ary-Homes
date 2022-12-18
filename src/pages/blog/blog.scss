@@ -329,6 +329,7 @@
           }
         }
       }
+
       .add__post {
         @include flexBox(flex-start, center, row);
         gap: 0.3rem;
@@ -434,6 +435,36 @@
       }
     }
   }
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+.pagination .page-num {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: normal;
+  color: #333;
+  border: 1px solid $mainColor;
+  margin: 2px;
+}
+
+.pagination .page-num:hover {
+  color: #fff;
+  background-color: $mainColor;
+}
+.activePage {
+  color: #fff;
+  background-color: $mainColor;
+  height: 100%;
+  width: 100%;
 }
 
 .add__post__alert {

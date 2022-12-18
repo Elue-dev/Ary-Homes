@@ -20,6 +20,8 @@ import "./blog.scss";
 import BlogHeader from "./blog_header/BlogHeader";
 import RiseLoader from "react-spinners/RiseLoader";
 import ReactWhatsapp from "react-whatsapp";
+import ReactPaginate from "react-paginate";
+
 import {
   addDoc,
   collection,
@@ -210,16 +212,33 @@ export default function Blog() {
   };
 
   // ========pagination==========
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postsPerPage] = useState(5);
+
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 5;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+
+    setCurrentItems(postsArray?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(postsArray?.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, postsArray]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % postsArray?.length;
+    setItemOffset(newOffset);
+  };
 
   //get current products
-  const indexOfLastProduct = currentPage * postsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - postsPerPage;
-  const currentPosts = postsArray.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
+  // const indexOfLastProduct = currentPage * postsPerPage;
+  // const indexOfFirstProduct = indexOfLastProduct - postsPerPage;
+  // const currentPosts = postsArray.slice(
+  //   indexOfFirstProduct,
+  //   indexOfLastProduct
+  // );
 
   return (
     <>
@@ -433,7 +452,7 @@ export default function Blog() {
                   />
                 ) : (
                   <>
-                    {currentPosts.map((post) => {
+                    {currentItems.map((post) => {
                       const {
                         id,
                         imageUrl,
@@ -508,11 +527,19 @@ export default function Blog() {
                 )}
               </div>
               {postsArray.length ? (
-                <Pagination
-                  propertiesPerPage={postsPerPage}
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                  totalProducts={postsArray.length}
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="Next"
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={3}
+                  pageCount={pageCount}
+                  previousLabel="Prev"
+                  renderOnZeroPageCount={null}
+                  containerClassName="pagination"
+                  pageLinkClassName="page-num"
+                  previousLinkClassName="page-num"
+                  nextLinkClassName="page-num"
+                  activeLinkClassName="activePage"
                 />
               ) : null}
             </div>
